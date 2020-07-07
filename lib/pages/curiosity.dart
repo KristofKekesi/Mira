@@ -160,7 +160,8 @@ class setCuriosity extends StatelessWidget {
                               Row(
                                 children: <Widget>[
                                   Text(
-                                    AppLocalizations.of(context).translate('roverSpecLaunch'),
+                                    AppLocalizations.of(context).translate(
+                                        'roverSpecLaunch'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.white,
@@ -183,7 +184,8 @@ class setCuriosity extends StatelessWidget {
                               Row(
                                 children: <Widget>[
                                   Text(
-                                    AppLocalizations.of(context).translate('roverSpecArrive'),
+                                    AppLocalizations.of(context).translate(
+                                        'roverSpecArrive'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.white,
@@ -206,7 +208,8 @@ class setCuriosity extends StatelessWidget {
                               Row(
                                 children: <Widget>[
                                   Text(
-                                    AppLocalizations.of(context).translate('roverSpecEnd'),
+                                    AppLocalizations.of(context).translate(
+                                        'roverSpecEnd'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.white,
@@ -229,7 +232,8 @@ class setCuriosity extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.only(top: 20),
                                 child: new Text(
-                                  AppLocalizations.of(context).translate('roverSpecOperator'),
+                                  AppLocalizations.of(context).translate(
+                                      'roverSpecOperator'),
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -246,7 +250,8 @@ class setCuriosity extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                AppLocalizations.of(context).translate('roverSpecManufacturer'),
+                                AppLocalizations.of(context).translate(
+                                    'roverSpecManufacturer'),
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
@@ -279,7 +284,8 @@ class setCuriosity extends StatelessWidget {
                                     },
                                     color: Colors.white,
                                     child: new Text(
-                                      AppLocalizations.of(context).translate('roverSpecButton'),
+                                      AppLocalizations.of(context).translate(
+                                          'roverSpecButton'),
                                       style: TextStyle(
                                         letterSpacing: 15.0,
                                         fontSize: 15,
@@ -391,7 +397,8 @@ class _askCuriosity extends State<askCuriosity> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Text(
-                                    AppLocalizations.of(context).translate('roverImgSearchDate'),
+                                    AppLocalizations.of(context).translate(
+                                        'roverImgSearchDate'),
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15,
@@ -414,7 +421,8 @@ class _askCuriosity extends State<askCuriosity> {
                                     ),
                                   ),
                                   Text(
-                                    AppLocalizations.of(context).translate('roverImgSearchSol'),
+                                    AppLocalizations.of(context).translate(
+                                        'roverImgSearchSol'),
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15,
@@ -425,7 +433,8 @@ class _askCuriosity extends State<askCuriosity> {
                                 ],
                               ),
                               Text(
-                                AppLocalizations.of(context).translate('roverImgSearchDateDotted'),
+                                AppLocalizations.of(context).translate(
+                                    'roverImgSearchDateDotted'),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
@@ -446,7 +455,8 @@ class _askCuriosity extends State<askCuriosity> {
                               Padding(
                                 padding: EdgeInsets.only(top: 20),
                                 child: new Text(
-                                  AppLocalizations.of(context).translate('roverImgSearchSolDotted'),
+                                  AppLocalizations.of(context).translate(
+                                      'roverImgSearchSolDotted'),
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
@@ -504,7 +514,8 @@ class _askCuriosity extends State<askCuriosity> {
                                     },
                                     color: Colors.white,
                                     child: new Text(
-                                      AppLocalizations.of(context).translate('roverImgSearchSetTime'),
+                                      AppLocalizations.of(context).translate(
+                                          'roverImgSearchSetTime'),
                                       style: TextStyle(
                                         letterSpacing: 10,
                                         fontSize: 15,
@@ -536,7 +547,8 @@ class _askCuriosity extends State<askCuriosity> {
                                   },
                                   color: Colors.white,
                                   child: new Text(
-                                    AppLocalizations.of(context).translate('roverImgSearchButton'),
+                                    AppLocalizations.of(context).translate(
+                                        'roverImgSearchButton'),
                                     style: TextStyle(
                                       letterSpacing: 15.0,
                                       fontSize: 15,
@@ -564,6 +576,7 @@ class _askCuriosity extends State<askCuriosity> {
 class askCuriositySite extends StatefulWidget {
   final url;
   final title;
+
   askCuriositySite({Key key, this.url, this.title}) : super(key: key);
 
   createState() => _askCuriositySite();
