@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:mira/localization.dart';
 
@@ -32,7 +34,11 @@ class Splash extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      loadingText: Text("Loading", style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),),
+      loadingText: Text(
+        AppLocalizations.of(context).translate('loading'),
+        style: TextStyle(
+            fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
+      ),
       imageBackground: AssetImage('lib/images/background.jpg'),
       image: Image(
         image: AssetImage('lib/images/home_mira_logo.png'),
@@ -46,19 +52,52 @@ class Splash extends StatelessWidget {
 
 void autoAboutDialog(context) {
   showAboutDialog(
-    context: context,
-    applicationVersion: '0.0.1',
-    applicationName: 'NASA Mira',
-    applicationLegalese: 'Kristof Kekesi',
-    applicationIcon: Image.asset('lib/images/home_mira_logo.png', height: 40, width: 40,)
-  );
+      context: context,
+      applicationVersion: '0.0.1',
+      applicationName: 'NASA Mira',
+      applicationLegalese: 'Kristof Kekesi',
+      applicationIcon: Image.asset(
+        'lib/images/home_mira_logo.png',
+        height: 40,
+        width: 40,
+      ));
 }
 
-void main() => runApp(MaterialApp(
+void main() => runApp(Mira());
+
+class Mira extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('hu', ''),
+        const Locale('en', ''),
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        for (var supportedLocale in supportedLocales) {
+          if (locale.languageCode == supportedLocale.languageCode) {
+            return supportedLocale;
+          }
+        }
+        return supportedLocales.first;
+      },
+
       title: 'NASA Mira',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.grey,
+      ),
       home: Splash(), //Home(),
-    ));
+    );
+  }
+}
 
 class Home extends StatelessWidget {
   @override
@@ -75,13 +114,13 @@ class Home extends StatelessWidget {
               Align(
                 alignment: Alignment(-0.6, 0),
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.only(bottom: 0, top: 20, left: 20),
                   child: Text(
-                    'NASA MIRA',
+                    AppLocalizations.of(context).translate('title'),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 35,
-                      color: Color(0xffe66909),
+                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -123,11 +162,11 @@ class Home extends StatelessWidget {
                             onPressed: () {
                               final action = CupertinoActionSheet(
                                 title: Text(
-                                  'Martian vehicles',
-                                  style: TextStyle(fontSize: 30),
+                                  AppLocalizations.of(context).translate('vehicleMenuTitle'),
+                                  style: TextStyle(fontSize: 27),
                                 ),
                                 message: Text(
-                                  'Select a vehicle!',
+                                  AppLocalizations.of(context).translate('vehicleMenuSub'),
                                   style: TextStyle(
                                       fontSize: 15.0, letterSpacing: 5),
                                 ),
@@ -171,7 +210,7 @@ class Home extends StatelessWidget {
                                   ),
                                 ],
                                 cancelButton: CupertinoActionSheetAction(
-                                  child: Text('Cancel'),
+                                  child: Text(AppLocalizations.of(context).translate('vehicleMenuClose')),
                                   isDestructiveAction: true,
                                   isDefaultAction: true,
                                   onPressed: () {
@@ -185,7 +224,7 @@ class Home extends StatelessWidget {
                             },
                             color: Colors.white,
                             child: Text(
-                              'MENU',
+                              AppLocalizations.of(context).translate('menu'),
                               style: TextStyle(
                                 letterSpacing: 20.0,
                                 fontSize: 15,
@@ -204,10 +243,12 @@ class Home extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25),
                             ),
-                            onPressed: () {autoAboutDialog(context);},
+                            onPressed: () {
+                              autoAboutDialog(context);
+                            },
                             color: Colors.white,
                             child: Text(
-                              'CREDITS',
+                              AppLocalizations.of(context).translate('credits'),
                               style: TextStyle(
                                 letterSpacing: 8.5,
                                 fontSize: 15,
@@ -221,7 +262,7 @@ class Home extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.all(15),
                         child: Text(
-                          'API Key from NASA',
+                          AppLocalizations.of(context).translate('key'),
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,

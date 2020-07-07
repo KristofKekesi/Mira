@@ -1,3 +1,23 @@
 {
-  "loading": "Loading"
+  "title": "NASA Mira",
+  "loading": "Loading",
+  "menu": "MENU",
+  "credits": "CREDITS",
+  "key": "API Key from NASA",
+  "vehicleMenuTitle": "Martian Vehicles",
+  "vehicleMenuSub": "Select a vehicle!",
+  "vehicleMenuClose": "Cancel",
+  "roverSpecLaunch": "Launch: ",
+  "roverSpecArrive": "Arrive: ",
+  "roverSpecLast": "Last Connection: ",
+  "roverSpecEnd": "Mission's End: ",
+  "roverSpecOperator": "Operator: ",
+  "roverSpecManufacturer": "Manufacturer: ",
+  "roverSpecButton": "IMAGES",
+  "roverImgSearchDate": "DATE",
+  "roverImgSearchSol": "SOL",
+  "roverImgSearchDateDotted": "DATE: ",
+  "roverImgSearchSolDotted": "SOL: ",
+  "roverImgSearchSetTime": "SET TIME",
+  "roverImgSearchButton": "SEARCH"
 }

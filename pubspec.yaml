@@ -23,11 +23,5 @@ flutter:
   uses-material-design: true
 
   assets:
-  - lib/images/background.jpg
-  - lib/images/header.jpg
-
-  - lib/images/home_nasa_logo.png
-  - lib/images/home_mira_logo.png
-
-  - lib/images/mira_logo.png
-  - lib/images/mira_logo.png
+  - lib/images/
+  - lib/
