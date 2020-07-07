@@ -1,8 +1,7 @@
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:nasamira/widgets.dart';
+import 'package:mira/widgets.dart';
 
 import 'dart:async';
 
@@ -570,9 +569,6 @@ class askCuriositySite extends StatefulWidget {
 }
 
 class _askCuriositySite extends State<askCuriositySite> {
-  final Completer<WebViewController> _controller =
-      Completer<WebViewController>();
-  WebViewController _myController;
 
   @override
   Widget build(BuildContext context) {
@@ -580,18 +576,7 @@ class _askCuriositySite extends State<askCuriositySite> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: WebView(
-          initialUrl: widget.url,
-          javascriptMode: JavascriptMode.unrestricted,
-          //onWebViewCreated: (WebViewController webViewController) {
-          //  _controller.complete(webViewController);
-          //  _myController = webWievController;
-          //  _myController.evaculateJavascript(
-          //      'document.getElemenById("main-header").style.display = "none";');
-          //},
-          //onPageFinished: (String url) {
-          //  print('Page finished');
-          //}
+        body: Container(
         )
     );
   }

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:nasamira/splash.dart';
+import 'package:mira/localization.dart';
 
-import 'package:nasamira/pages/spirit.dart';
-import 'package:nasamira/pages/curiosity.dart';
-import 'package:nasamira/pages/opportunity.dart';
+import 'package:mira/pages/spirit.dart';
+import 'package:mira/pages/curiosity.dart';
+import 'package:mira/pages/opportunity.dart';
 
-import 'dart:convert';
+import 'package:splashscreen/splashscreen.dart';
 
 var routes = <String, WidgetBuilder>{
   '/home': (BuildContext context) => Home(),
@@ -19,9 +19,43 @@ class MyNavigator {
   }
 }
 
-void main() =>
-    runApp(MaterialApp(
-      title: 'NASA MIRA',
+class Splash extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen(
+      seconds: 2,
+      title: Text(
+        'NASA Mira',
+        style: TextStyle(
+          fontSize: 25,
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      loadingText: Text("Loading", style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),),
+      imageBackground: AssetImage('lib/images/background.jpg'),
+      image: Image(
+        image: AssetImage('lib/images/home_mira_logo.png'),
+      ),
+      photoSize: 50,
+      loaderColor: Colors.white,
+      navigateAfterSeconds: Home(),
+    );
+  }
+}
+
+void autoAboutDialog(context) {
+  showAboutDialog(
+    context: context,
+    applicationVersion: '0.0.1',
+    applicationName: 'NASA Mira',
+    applicationLegalese: 'Kristof Kekesi',
+    applicationIcon: Image.asset('lib/images/home_mira_logo.png', height: 40, width: 40,)
+  );
+}
+
+void main() => runApp(MaterialApp(
+      title: 'NASA Mira',
       debugShowCheckedModeBanner: false,
       home: Splash(), //Home(),
     ));
@@ -170,7 +204,7 @@ class Home extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25),
                             ),
-                            onPressed: () {},
+                            onPressed: () {autoAboutDialog(context);},
                             color: Colors.white,
                             child: Text(
                               'CREDITS',
@@ -204,13 +238,5 @@ class Home extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-// ignore: camel_case_types
-class error extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Text('something');
   }
 }

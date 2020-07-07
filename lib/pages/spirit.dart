@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:nasamira/widgets.dart';
+import 'package:mira/widgets.dart';
 
 // ignore: non_constant_identifier_names
 bool Spirittimeformat = false;
