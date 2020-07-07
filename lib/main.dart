@@ -55,7 +55,7 @@ void autoAboutDialog(context) {
       context: context,
       applicationVersion: '0.0.1',
       applicationName: 'NASA Mira',
-      applicationLegalese: 'Kristof Kekesi',
+      applicationLegalese: 'Kristóf Kékesi',
       applicationIcon: Image.asset(
         'lib/images/home_mira_logo.png',
         height: 40,

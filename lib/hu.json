@@ -1,0 +1,23 @@
+{
+  "title": "NASA Mira",
+  "loading": "Betöltés",
+  "menu": "MENÜ",
+  "credits": "KREDITEK",
+  "key": "API Kulcs a NASA-tól",
+  "vehicleMenuTitle": "Marsjárók",
+  "vehicleMenuSub": "Válosszon járművet!",
+  "vehicleMenuClose": "Mégse",
+  "roverSpecLaunch": "Kilövés: ",
+  "roverSpecArrive": "Érkezés: ",
+  "roverSpecLast": "Kapcsolat Megszakadt: ",
+  "roverSpecEnd": "Küldetés Vége: ",
+  "roverSpecOperator": "Működtető: ",
+  "roverSpecManufacturer": "Gyártó: ",
+  "roverSpecButton": "KÉPEK",
+  "roverImgSearchDate": "DÁTUM",
+  "roverImgSearchSol": "SOL",
+  "roverImgSearchDateDotted": "DÁTUM: ",
+  "roverImgSearchSolDotted": "SOL: ",
+  "roverImgSearchSetTime": "IDŐ BEÁLLÍTÁSA",
+  "roverImgSearchButton": "KERESÉS"
+}
