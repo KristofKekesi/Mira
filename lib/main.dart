@@ -57,9 +57,9 @@ void autoAboutDialog(context) {
       applicationName: 'NASA Mira',
       applicationLegalese: 'Kristóf Kékesi',
       applicationIcon: Image.asset(
-        'lib/images/home_mira_logo.png',
-        height: 40,
-        width: 40,
+        'lib/images/mira_logo.png',
+        height: 20,
+        width: 20,
       ));
 }
 

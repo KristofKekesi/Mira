@@ -19,5 +19,13 @@
   "roverImgSearchDateDotted": "DATE: ",
   "roverImgSearchSolDotted": "SOL: ",
   "roverImgSearchSetTime": "SET TIME",
-  "roverImgSearchButton": "SEARCH"
+  "roverImgSearchButton": "SEARCH",
+
+  "selectVehicles": "Vehicle Selector",
+  "credits": "Credits",
+  "specButton": "Images made by the Rover",
+  "timePicker": "Select time format!",
+  "searchImage": "Search for images"
+
+
 }
