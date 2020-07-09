@@ -5,7 +5,7 @@
   "credits": "KREDITEK",
   "key": "API Kulcs a NASA-tól",
   "vehicleMenuTitle": "Marsjárók",
-  "vehicleMenuSub": "Válosszon járművet!",
+  "vehicleMenuSub": "Válasszon járművet!",
   "vehicleMenuClose": "Mégse",
   "roverSpecLaunch": "Kilövés: ",
   "roverSpecArrive": "Érkezés: ",
@@ -25,5 +25,6 @@
   "creditsTooltip": "Kreditek",
   "specButton": "Képek a Marsjárótól",
   "timePicker": "Dátum fomrátuma",
+  "setDate": "Dátum választása",
   "searchImage": "Képek keresése"
 }
