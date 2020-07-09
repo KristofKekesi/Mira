@@ -20,4 +20,10 @@
   "roverImgSearchSolDotted": "SOL: ",
   "roverImgSearchSetTime": "IDŐ BEÁLLÍTÁSA",
   "roverImgSearchButton": "KERESÉS"
+  
+  "selectVehicles": "Jármű választó",
+  "creditsTooltip": "Kreditek",
+  "specButton": "Képek a Marsjárótól",
+  "timePicker": "Dátum fomrátuma",
+  "searchImage": "Képek keresése"
 }

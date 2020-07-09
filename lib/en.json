@@ -24,8 +24,6 @@
   "selectVehicles": "Vehicle Selector",
   "credits": "Credits",
   "specButton": "Images made by the Rover",
-  "timePicker": "Select time format!",
+  "timePicker": "Select date format!",
   "searchImage": "Search for images"
-
-
 }
