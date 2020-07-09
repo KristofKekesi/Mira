@@ -248,7 +248,7 @@ class setSpirit extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(top: 10),
                             child: new Center(
-                              child: FlatButton(
+                              child: Tooltip(message: AppLocalizations.of(context).translate('specButton'), child: FlatButton(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(25),
                                 ),
@@ -273,6 +273,7 @@ class setSpirit extends StatelessWidget {
                                 ),
                               ),
                             ),
+                          ),
                           ),
                         ],
                       ),
@@ -353,11 +354,8 @@ class _askSpirit extends State<askSpirit> {
                               image: AssetImage('lib/images/background.jpg'),
                               fit: BoxFit.fitHeight,
                             ),
-                            borderRadius: new BorderRadius.only(
-                              topLeft: const Radius.circular(25),
-                              topRight: const Radius.circular(25),
-                              bottomLeft: const Radius.circular(25),
-                              bottomRight: const Radius.circular(25),
+                            borderRadius: new BorderRadius.all(
+                              Radius.circular(25)
                             )),
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: Padding(
@@ -382,7 +380,7 @@ class _askSpirit extends State<askSpirit> {
                                             : Colors.black38),
                                   ),
                                   Tooltip(
-                                    message: 'Select time format!',
+                                    message: AppLocalizations.of(context).translate('timePicker'),
                                     child: Switch(
                                       value: Spirittimeformat,
                                       activeTrackColor: Colors.black38,
@@ -450,7 +448,9 @@ class _askSpirit extends State<askSpirit> {
                               Padding(
                                 padding: EdgeInsets.only(top: 10),
                                 child: new Center(
-                                  child: FlatButton(
+                                  child: Tooltip(
+                                    message: AppLocalizations.of(context).translate('setDate'),
+                                    child: FlatButton(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: new BorderRadius.circular(25),
                                     ),
@@ -492,6 +492,7 @@ class _askSpirit extends State<askSpirit> {
                                       ),
                                     ),
                                   ),
+                                ),
                                 ),
                               ),
                               Center(

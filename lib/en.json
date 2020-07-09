@@ -22,7 +22,7 @@
   "roverImgSearchButton": "SEARCH",
 
   "selectVehicles": "Vehicle Selector",
-  "credits": "Credits",
+  "creditsTooltip": "Credits",
   "specButton": "Images made by the Rover",
   "timePicker": "Select date format!",
   "searchImage": "Search for images"

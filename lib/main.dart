@@ -88,7 +88,7 @@ class Mira extends StatelessWidget {
         return supportedLocales.first;
       },
 
-      title: 'NASA Mira',
+      title: "NASA Mira",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
@@ -155,81 +155,89 @@ class Home extends StatelessWidget {
                         alignment: Alignment(0, 0.9),
                         child: Padding(
                           padding: EdgeInsets.all(10),
-                          child: FlatButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            onPressed: () {
-                              final action = CupertinoActionSheet(
-                                title: Text(
-                                  AppLocalizations.of(context).translate('vehicleMenuTitle'),
-                                  style: TextStyle(fontSize: 27),
-                                ),
-                                message: Text(
-                                  AppLocalizations.of(context).translate('vehicleMenuSub'),
-                                  style: TextStyle(
-                                      fontSize: 15.0, letterSpacing: 5),
-                                ),
-                                actions: <Widget>[
-                                  CupertinoActionSheetAction(
-                                    child: Text('MER-A Spirit'),
+                          child: Tooltip(
+                            message: AppLocalizations.of(context)
+                                .translate('selectVehicles'),
+                            child: FlatButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              onPressed: () {
+                                final action = CupertinoActionSheet(
+                                  title: Text(
+                                    AppLocalizations.of(context)
+                                        .translate('vehicleMenuTitle'),
+                                    style: TextStyle(fontSize: 27),
+                                  ),
+                                  message: Text(
+                                    AppLocalizations.of(context)
+                                        .translate('vehicleMenuSub'),
+                                    style: TextStyle(
+                                        fontSize: 15.0, letterSpacing: 5),
+                                  ),
+                                  actions: <Widget>[
+                                    CupertinoActionSheetAction(
+                                      child: Text('MER-A Spirit'),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => setSpirit(),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    CupertinoActionSheetAction(
+                                      child: Text('MER-B Opportunity'),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                setOpportunity(),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    CupertinoActionSheetAction(
+                                      child: Text('Curiosity'),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                setCuriosity(),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                  cancelButton: CupertinoActionSheetAction(
+                                    child: Text(AppLocalizations.of(context)
+                                        .translate('vehicleMenuClose')),
+                                    isDestructiveAction: true,
+                                    isDefaultAction: true,
                                     onPressed: () {
-                                      Navigator.of(context).pop();
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => setSpirit(),
-                                        ),
-                                      );
+                                      Navigator.pop(context);
                                     },
                                   ),
-                                  CupertinoActionSheetAction(
-                                    child: Text('MER-B Opportunity'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              setOpportunity(),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  CupertinoActionSheetAction(
-                                    child: Text('Curiosity'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => setCuriosity(),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ],
-                                cancelButton: CupertinoActionSheetAction(
-                                  child: Text(AppLocalizations.of(context).translate('vehicleMenuClose')),
-                                  isDestructiveAction: true,
-                                  isDefaultAction: true,
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
+                                );
+                                showCupertinoModalPopup(
+                                    context: context,
+                                    builder: (context) => action);
+                              },
+                              color: Colors.white,
+                              child: Text(
+                                AppLocalizations.of(context).translate('menu'),
+                                style: TextStyle(
+                                  letterSpacing: 20.0,
+                                  fontSize: 15,
+                                  color: Colors.orangeAccent,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              );
-                              showCupertinoModalPopup(
-                                  context: context,
-                                  builder: (context) => action);
-                            },
-                            color: Colors.white,
-                            child: Text(
-                              AppLocalizations.of(context).translate('menu'),
-                              style: TextStyle(
-                                letterSpacing: 20.0,
-                                fontSize: 15,
-                                color: Colors.orangeAccent,
-                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
@@ -239,7 +247,9 @@ class Home extends StatelessWidget {
                         alignment: Alignment(0, 0.9),
                         child: Padding(
                           padding: EdgeInsets.all(0),
-                          child: FlatButton(
+                          child: Tooltip(
+                            message: AppLocalizations.of(context).translate('creditsTooltip'),
+                            child: FlatButton(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25),
                             ),
@@ -258,6 +268,7 @@ class Home extends StatelessWidget {
                             ),
                           ),
                         ),
+                      ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(15),
