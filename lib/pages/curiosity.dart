@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mira/localization.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 import 'package:mira/widgets.dart';
 
 import 'dart:async';
 
 // ignore: non_constant_identifier_names
+int sol = 1000;
 bool Curiositytimeformat = false;
 
 String typeCuriosity = 'Rover';
@@ -88,224 +90,220 @@ class setCuriosity extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: new SafeArea(
           child: new Container(
-            decoration: new BoxDecoration(
-              color: Colors.white,
-            ),
-            child: new Column(
+        decoration: new BoxDecoration(
+          color: Colors.white,
+        ),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            new Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                new Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 35, bottom: 15),
-                      child: new Text(
-                        'CURIOSITY',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Color(0xffe66909),
-                        ),
-                      ),
+                Padding(
+                  padding: EdgeInsets.only(left: 35, bottom: 15),
+                  child: new Text(
+                    'CURIOSITY',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Color(0xffe66909),
                     ),
-                    new Center(
-                      child: new Container(
-                        decoration: new BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('lib/images/background.jpg'),
-                              fit: BoxFit.fitHeight,
-                            ),
-                            borderRadius: new BorderRadius.only(
-                              topLeft: const Radius.circular(25),
-                              topRight: const Radius.circular(25),
-                              bottomLeft: const Radius.circular(25),
-                              bottomRight: const Radius.circular(25),
-                            )),
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * 0.8,
-                        height: MediaQuery
-                            .of(context)
-                            .size
-                            .height * 0.6,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: 30, right: 30, top: 15),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                  ),
+                ),
+                new Center(
+                  child: new Container(
+                    decoration: new BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('lib/images/background.jpg'),
+                          fit: BoxFit.fitHeight,
+                        ),
+                        borderRadius: new BorderRadius.only(
+                          topLeft: const Radius.circular(25),
+                          topRight: const Radius.circular(25),
+                          bottomLeft: const Radius.circular(25),
+                          bottomRight: const Radius.circular(25),
+                        )),
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    height: MediaQuery.of(context).size.height * 0.6,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 30, right: 30, top: 15),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Row(
                             children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    typeCuriosity + ' ',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 40,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  Text(
-                                    countryCuriosity,
-                                    style: TextStyle(
-                                      fontSize: 35,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    AppLocalizations.of(context).translate(
-                                        'roverSpecLaunch'),
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    launchCuriosity_rm +
-                                        '/' +
-                                        launchCuriosity_rd +
-                                        '/' +
-                                        launchCuriosity_ry,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    AppLocalizations.of(context).translate(
-                                        'roverSpecArrive'),
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    arriveCuriosity_rm +
-                                        '/' +
-                                        arriveCuriosity_rd +
-                                        '/' +
-                                        arriveCuriosity_ry,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    AppLocalizations.of(context).translate(
-                                        'roverSpecEnd'),
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    endCuriosity_rm +
-                                        '/' +
-                                        endCuriosity_rd +
-                                        '/' +
-                                        endCuriosity_ry,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20),
-                                child: new Text(
-                                  AppLocalizations.of(context).translate(
-                                      'roverSpecOperator'),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
                               Text(
-                                operatorCuriosity,
+                                typeCuriosity + ' ',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 30,
+                                  fontSize: 40,
                                   color: Colors.white,
                                 ),
                               ),
                               Text(
-                                AppLocalizations.of(context).translate(
-                                    'roverSpecManufacturer'),
+                                countryCuriosity,
                                 style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 35,
                                   color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                manufacturerCuriosity,
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 10),
-                                child: new Center(
-                                  child: FlatButton(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: new BorderRadius.circular(
-                                          25),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => askCuriosity(),
-                                        ),
-                                      );
-                                    },
-                                    color: Colors.white,
-                                    child: new Text(
-                                      AppLocalizations.of(context).translate(
-                                          'roverSpecButton'),
-                                      style: TextStyle(
-                                        letterSpacing: 15.0,
-                                        fontSize: 15,
-                                        color: Colors.orangeAccent,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
                                 ),
                               ),
                             ],
                           ),
-                        ),
+                          Row(
+                            children: <Widget>[
+                              Text(
+                                AppLocalizations.of(context)
+                                    .translate('roverSpecLaunch'),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                launchCuriosity_rm +
+                                    '/' +
+                                    launchCuriosity_rd +
+                                    '/' +
+                                    launchCuriosity_ry,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Text(
+                                AppLocalizations.of(context)
+                                    .translate('roverSpecArrive'),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                arriveCuriosity_rm +
+                                    '/' +
+                                    arriveCuriosity_rd +
+                                    '/' +
+                                    arriveCuriosity_ry,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Text(
+                                AppLocalizations.of(context)
+                                    .translate('roverSpecEnd'),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                endCuriosity_rm +
+                                    '/' +
+                                    endCuriosity_rd +
+                                    '/' +
+                                    endCuriosity_ry,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 20),
+                            child: new Text(
+                              AppLocalizations.of(context)
+                                  .translate('roverSpecOperator'),
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            operatorCuriosity,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            AppLocalizations.of(context)
+                                .translate('roverSpecManufacturer'),
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            manufacturerCuriosity,
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: new Center(
+                              child: Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate('specButton'),
+                                child: FlatButton(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: new BorderRadius.circular(25),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => askCuriosity(),
+                                      ),
+                                    );
+                                  },
+                                  color: Colors.white,
+                                  child: new Text(
+                                    AppLocalizations.of(context)
+                                        .translate('roverSpecButton'),
+                                    style: TextStyle(
+                                      letterSpacing: 15.0,
+                                      fontSize: 15,
+                                      color: Colors.orangeAccent,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                )
+                  ),
+                ),
               ],
-            ),
-          )),
+            )
+          ],
+        ),
+      )),
     );
   }
 }
@@ -346,95 +344,56 @@ class _askCuriosity extends State<askCuriosity> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: new SafeArea(
           child: new Container(
-            decoration: new BoxDecoration(
-              color: Colors.white,
-            ),
-            child: new Column(
+        decoration: new BoxDecoration(
+          color: Colors.white,
+        ),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            new Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                new Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 35, bottom: 15),
-                      child: new Text(
-                        'CURIOSITY',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Color(0xffe66909),
-                        ),
-                      ),
+                Padding(
+                  padding: EdgeInsets.only(left: 35, bottom: 15),
+                  child: new Text(
+                    'CURIOSITY',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Color(0xffe66909),
                     ),
-                    new Center(
-                      child: new Container(
-                        decoration: new BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('lib/images/background.jpg'),
-                              fit: BoxFit.fitHeight,
-                            ),
-                            borderRadius: new BorderRadius.only(
-                              topLeft: const Radius.circular(25),
-                              topRight: const Radius.circular(25),
-                              bottomLeft: const Radius.circular(25),
-                              bottomRight: const Radius.circular(25),
-                            )),
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * 0.8,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: 30, right: 30, top: 20, bottom: 20),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                  ),
+                ),
+                new Center(
+                  child: new Container(
+                    decoration: new BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('lib/images/background.jpg'),
+                          fit: BoxFit.fitHeight,
+                        ),
+                        borderRadius: new BorderRadius.only(
+                          topLeft: const Radius.circular(25),
+                          topRight: const Radius.circular(25),
+                          bottomLeft: const Radius.circular(25),
+                          bottomRight: const Radius.circular(25),
+                        )),
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          left: 30, right: 30, top: 20, bottom: 20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(
-                                    AppLocalizations.of(context).translate(
-                                        'roverImgSearchDate'),
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: Curiositytimeformat == false
-                                            ? Colors.white
-                                            : Colors.black38),
-                                  ),
-                                  Tooltip(
-                                    message: 'Select time format!',
-                                    child: Switch(
-                                      value: Curiositytimeformat,
-                                      activeTrackColor: Colors.black38,
-                                      inactiveTrackColor: Colors.black38,
-                                      inactiveThumbColor: Colors.white,
-                                      activeColor: Colors.white,
-                                      onChanged: (bool value) {
-                                        setState(() =>
-                                        Curiositytimeformat = value);
-                                      },
-                                    ),
-                                  ),
-                                  Text(
-                                    AppLocalizations.of(context).translate(
-                                        'roverImgSearchSol'),
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: Curiositytimeformat == true
-                                            ? Colors.white
-                                            : Colors.black38),
-                                  ),
-                                ],
-                              ),
                               Text(
-                                AppLocalizations.of(context).translate(
-                                    'roverImgSearchDateDotted'),
+                                AppLocalizations.of(context)
+                                    .translate('roverImgSearchDate'),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
@@ -442,115 +401,125 @@ class _askCuriosity extends State<askCuriosity> {
                                         ? Colors.white
                                         : Colors.black38),
                               ),
-                              Text(
-                                '${_dateCuriosity.month}/${_dateCuriosity
-                                    .day}/${_dateCuriosity.year}',
-                                style: TextStyle(
-                                    fontSize: 30,
-                                    color: Curiositytimeformat == false
-                                        ? Colors.white
-                                        : Colors.black38,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20),
-                                child: new Text(
-                                  AppLocalizations.of(context).translate(
-                                      'roverImgSearchSolDotted'),
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Curiositytimeformat == true
-                                          ? Colors.white
-                                          : Colors.black38),
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate('timePicker'),
+                                child: Switch(
+                                  value: Curiositytimeformat,
+                                  activeTrackColor: Colors.black38,
+                                  inactiveTrackColor: Colors.black38,
+                                  inactiveThumbColor: Colors.white,
+                                  activeColor: Colors.white,
+                                  onChanged: (bool value) {
+                                    setState(() => Curiositytimeformat = value);
+                                  },
                                 ),
                               ),
                               Text(
-                                '1000',
+                                AppLocalizations.of(context)
+                                    .translate('roverImgSearchSol'),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 30,
+                                    fontSize: 15,
                                     color: Curiositytimeformat == true
                                         ? Colors.white
                                         : Colors.black38),
                               ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 10),
-                                child: new Center(
-                                  child: FlatButton(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: new BorderRadius.circular(
-                                          25),
-                                    ),
-                                    onPressed: () {
-                                      if (Curiositytimeformat == false) {
-                                        final action = SizedBox(
-                                            height: 200,
-                                            child: CupertinoDatePicker(
-                                              initialDateTime: _dateCuriosity,
-                                              mode: CupertinoDatePickerMode
-                                                  .date,
-                                              backgroundColor: Colors.white,
-                                              minimumDate: arriveCuriosity,
-                                              maximumDate: maxCuriosity,
-                                              onDateTimeChanged: (
-                                                  dateCuriosity) {
-                                                print(_dateCuriosity);
-                                                setState(() {
-                                                  _dateCuriosity =
-                                                      dateCuriosity;
-                                                });
-                                              },
-                                            ));
-                                        showCupertinoModalPopup(
-                                            context: context,
-                                            builder: (context) => action);
-                                      } else {
-                                        final action = isnotavailable();
-                                        showCupertinoModalPopup(
-                                            context: context,
-                                            builder: (context) => action);
-                                      }
-                                    },
-                                    color: Colors.white,
-                                    child: new Text(
-                                      AppLocalizations.of(context).translate(
-                                          'roverImgSearchSetTime'),
-                                      style: TextStyle(
-                                        letterSpacing: 10,
-                                        fontSize: 15,
-                                        color: Colors.orangeAccent,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Center(
+                            ],
+                          ),
+                          Text(
+                            AppLocalizations.of(context)
+                                .translate('roverImgSearchDateDotted'),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                color: Curiositytimeformat == false
+                                    ? Colors.white
+                                    : Colors.black38),
+                          ),
+                          Text(
+                            '${_dateCuriosity.month}/${_dateCuriosity.day}/${_dateCuriosity.year}',
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: Curiositytimeformat == false
+                                    ? Colors.white
+                                    : Colors.black38,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 20),
+                            child: new Text(
+                              AppLocalizations.of(context)
+                                  .translate('roverImgSearchSolDotted'),
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Curiositytimeformat == true
+                                      ? Colors.white
+                                      : Colors.black38),
+                            ),
+                          ),
+                          Text(
+                            sol.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,
+                                color: Curiositytimeformat == true
+                                    ? Colors.white
+                                    : Colors.black38),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: new Center(
+                              child: Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate('setDate'),
                                 child: FlatButton(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: new BorderRadius.circular(25),
                                   ),
                                   onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            askCuriositySite(
-                                                title: '${_dateCuriosity
-                                                    .month}/${_dateCuriosity
-                                                    .day}/${_dateCuriosity
-                                                    .year}',
-                                                url: 'https://codepen.io/KristofKekesi/full/eYmxpXK/?rover=curiosity&type=sol&num=100&key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz'),
-                                      ),
-                                    );
+                                    if (Curiositytimeformat == false) {
+                                      final action = SizedBox(
+                                          height: 200,
+                                          child: CupertinoDatePicker(
+                                            initialDateTime: _dateCuriosity,
+                                            mode: CupertinoDatePickerMode.date,
+                                            backgroundColor: Colors.white,
+                                            minimumDate: arriveCuriosity,
+                                            maximumDate: maxCuriosity,
+                                            onDateTimeChanged: (dateCuriosity) {
+                                              print(_dateCuriosity);
+                                              setState(() {
+                                                _dateCuriosity = dateCuriosity;
+                                              });
+                                            },
+                                          ));
+                                      showCupertinoModalPopup(
+                                          context: context,
+                                          builder: (context) => action);
+                                    } else {
+                                      showCupertinoModalPopup(
+                                          context: context,
+                                          builder: (context) => Container(
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                    decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    ),
+                                    child: NumberPicker.integer(initialValue: sol, minValue: 1, maxValue: 100000, onChanged: (val){setState((){sol = val;});})
+                                          ),
+                                      );
+                                    }
                                   },
                                   color: Colors.white,
                                   child: new Text(
-                                    AppLocalizations.of(context).translate(
-                                        'roverImgSearchButton'),
+                                    AppLocalizations.of(context)
+                                        .translate('roverImgSearchSetTime'),
                                     style: TextStyle(
-                                      letterSpacing: 15.0,
+                                      letterSpacing: 10,
                                       fontSize: 15,
                                       color: Colors.orangeAccent,
                                       fontWeight: FontWeight.bold,
@@ -558,16 +527,52 @@ class _askCuriosity extends State<askCuriosity> {
                                   ),
                                 ),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
+                          Center(
+                            child: Tooltip(
+                              message: AppLocalizations.of(context)
+                                  .translate('searchImage'),
+                              child: FlatButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(25),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => askCuriositySite(
+                                          title:
+                                              '${_dateCuriosity.month}/${_dateCuriosity.day}/${_dateCuriosity.year}',
+                                          url:
+                                              'https://codepen.io/KristofKekesi/full/eYmxpXK/?rover=curiosity&type=sol&num=100&key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz'),
+                                    ),
+                                  );
+                                },
+                                color: Colors.white,
+                                child: new Text(
+                                  AppLocalizations.of(context)
+                                      .translate('roverImgSearchButton'),
+                                  style: TextStyle(
+                                    letterSpacing: 15.0,
+                                    fontSize: 15,
+                                    color: Colors.orangeAccent,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                )
+                  ),
+                ),
               ],
-            ),
-          )),
+            )
+          ],
+        ),
+      )),
     );
   }
 }
@@ -583,15 +588,12 @@ class askCuriositySite extends StatefulWidget {
 }
 
 class _askCuriositySite extends State<askCuriositySite> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: Container(
-        )
-    );
+        body: Container());
   }
 }

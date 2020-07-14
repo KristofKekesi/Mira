@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:numberpicker/numberpicker.dart';
 
-import 'dart:convert';
-import 'dart:async';
+import 'package:mira/pages/curiosity.dart';
 
 // ignore: camel_case_types
 class isnotavailable extends StatelessWidget {
@@ -53,11 +52,11 @@ class credits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-      builder: (context, scrollController) {
-        return SingleChildScrollView(
-          child: Text('Kekesi Kristof: Programming')
-        );
-      }
+        builder: (context, scrollController) {
+          return SingleChildScrollView(
+              child: Text('Kekesi Kristof: Programming')
+          );
+        }
     );
   }
 }

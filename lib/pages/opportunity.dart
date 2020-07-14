@@ -85,222 +85,227 @@ class setOpportunity extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: new SafeArea(
-          child: new Container(
-            decoration: new BoxDecoration(
-              color: Colors.white,
-            ),
-            child: new Column(
+        child: new Container(
+          decoration: new BoxDecoration(
+            color: Colors.white,
+          ),
+          child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                new Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 35, bottom: 15),
-                      child: new Text(
-                        'MER-B OPORTUNITY',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          color: Color(0xffe66909),
-                        ),
-                      ),
-                    ),
-                    new Center(
-                      child: new Container(
-                        decoration: new BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('lib/images/background.jpg'),
-                              fit: BoxFit.fitHeight,
-                            ),
-                            borderRadius: new BorderRadius.only(
-                              topLeft: const Radius.circular(25),
-                              topRight: const Radius.circular(25),
-                              bottomLeft: const Radius.circular(25),
-                              bottomRight: const Radius.circular(25),
-                            )),
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width * 0.8,
-                        height: MediaQuery
-                            .of(context)
-                            .size
-                            .height * 0.6,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: 30, right: 30, top: 15),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    typeOpportunity + ' ',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 40,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  Text(
-                                    countryOpportunity,
-                                    style: TextStyle(
-                                      fontSize: 35,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    AppLocalizations.of(context).translate(
-                                        'roverSpecLaunch'),
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    launchOpportunity_rm +
-                                        '/' +
-                                        launchOpportunity_rd +
-                                        '/' +
-                                        launchOpportunity_ry,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    AppLocalizations.of(context).translate(
-                                        'roverSpecArrive'),
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    arriveOpportunity_rm + '/' +
-                                        arriveOpportunity_rd + '/' +
-                                        arriveOpportunity_ry,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    AppLocalizations.of(context).translate(
-                                        'roverSpecEnd'),
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    endOpportunity_rm + '/' +
-                                        endOpportunity_rd + '/' +
-                                        endOpportunity_ry,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20),
-                                child: new Text(
-                                  AppLocalizations.of(context).translate(
-                                      'roverSpecOperator'),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                operatorOpportunity,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                AppLocalizations.of(context).translate(
-                                'roverSpecManufacturer'),
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                manufacturerOpportunity,
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 10),
-                                child: new Center(
-                                  child: FlatButton(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: new BorderRadius.circular(
-                                          25),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              askOpportunity(),
-                                        ),
-                                      );
-                                    },
-                                    color: Colors.white,
-                                    child: new Text(
-                                      AppLocalizations.of(context).translate(
-                                          'roverSpecButton'),
-                                      style: TextStyle(
-                                        letterSpacing: 15.0,
-                                        fontSize: 15,
-                                        color: Colors.orangeAccent,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+          new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+          Padding(
+          padding: EdgeInsets.only(left: 35, bottom: 15),
+          child: new Text(
+            'MER-B OPORTUNITY',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 25,
+              color: Color(0xffe66909),
+            ),
+          ),
+        ),
+        new Center(
+          child: new Container(
+            decoration: new BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('lib/images/background.jpg'),
+                  fit: BoxFit.fitHeight,
+                ),
+                borderRadius: new BorderRadius.only(
+                  topLeft: const Radius.circular(25),
+                  topRight: const Radius.circular(25),
+                  bottomLeft: const Radius.circular(25),
+                  bottomRight: const Radius.circular(25),
+                )),
+            width: MediaQuery
+                .of(context)
+                .size
+                .width * 0.8,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * 0.6,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  left: 30, right: 30, top: 15),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+              Row(
+              children: <Widget>[
+                Text(
+                typeOpportunity + ' ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40,
+                  color: Colors.white,
+                ),
+              ),
+              Text(
+                countryOpportunity,
+                style: TextStyle(
+                  fontSize: 35,
+                  color: Colors.white,
+                ),
+              ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Text(
+                  AppLocalizations.of(context).translate(
+                      'roverSpecLaunch'),
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  launchOpportunity_rm +
+                      '/' +
+                      launchOpportunity_rd +
+                      '/' +
+                      launchOpportunity_ry,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
                 )
               ],
             ),
-          )),
+            Row(
+              children: <Widget>[
+                Text(
+                  AppLocalizations.of(context).translate(
+                      'roverSpecArrive'),
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  arriveOpportunity_rm + '/' +
+                      arriveOpportunity_rd + '/' +
+                      arriveOpportunity_ry,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                )
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Text(
+                  AppLocalizations.of(context).translate(
+                      'roverSpecEnd'),
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  endOpportunity_rm + '/' +
+                      endOpportunity_rd + '/' +
+                      endOpportunity_ry,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                )
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: new Text(
+                AppLocalizations.of(context).translate(
+                    'roverSpecOperator'),
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Text(
+              operatorOpportunity,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              AppLocalizations.of(context).translate(
+                  'roverSpecManufacturer'),
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              manufacturerOpportunity,
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: new Center(
+                child: Tooltip(
+                  message: AppLocalizations.of(context).translate('specButton'),
+                  child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(
+                          25),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              askOpportunity(),
+                        ),
+                      );
+                    },
+                    color: Colors.white,
+                    child: new Text(
+                      AppLocalizations.of(context).translate(
+                          'roverSpecButton'),
+                      style: TextStyle(
+                        letterSpacing: 15.0,
+                        fontSize: 15,
+                        color: Colors.orangeAccent,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      ],
+    )],
+    )
+    ,
+    )
+    )
+    ,
     );
   }
 }
@@ -402,7 +407,7 @@ class _askOpportunity extends State<askOpportunity> {
                                             : Colors.black38),
                                   ),
                                   Tooltip(
-                                    message: 'Select time format!',
+                                    message: AppLocalizations.of(context).translate('timePicker'),
                                     child: Switch(
                                       value: Opportunitytimeformat,
                                       activeTrackColor: Colors.black38,
@@ -429,7 +434,7 @@ class _askOpportunity extends State<askOpportunity> {
                               ),
                               Text(
                                   AppLocalizations.of(context).translate(
-                                  'roverImgSearchDateDotted'),
+                                      'roverImgSearchDateDotted'),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15,
@@ -472,7 +477,9 @@ class _askOpportunity extends State<askOpportunity> {
                               Padding(
                                 padding: EdgeInsets.only(top: 10),
                                 child: new Center(
-                                  child: FlatButton(
+                                  child: Tooltip(
+                                    message: AppLocalizations.of(context).translate('setDate'),
+                                    child: FlatButton(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: new BorderRadius.circular(
                                           25),
@@ -518,11 +525,14 @@ class _askOpportunity extends State<askOpportunity> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
+                                    ),
                                   ),
                                 ),
                               ),
                               Center(
-                                child: FlatButton(
+                                child: Tooltip(
+                                  message: AppLocalizations.of(context).translate('searchImage'),
+                                  child: FlatButton(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: new BorderRadius.circular(25),
                                   ),
@@ -560,6 +570,7 @@ class _askOpportunity extends State<askOpportunity> {
                                     ),
                                   ),
                                 ),
+                              ),
                               ),
                             ],
                           ),

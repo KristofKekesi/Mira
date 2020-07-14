@@ -15,6 +15,7 @@ dependencies:
   splashscreen: 1.2.0
   cupertino_icons: ^0.1.2
   characters: ^1.0.0
+  numberpicker: ^1.2.0
 
 dev_dependencies:
   flutter_test:
