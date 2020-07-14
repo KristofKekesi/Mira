@@ -5,6 +5,7 @@ import 'package:mira/localization.dart';
 import 'package:mira/widgets.dart';
 
 // ignore: non_constant_identifier_names
+int sol = 1000;
 bool Spirittimeformat = false;
 
 String typeSpirit = 'Rover';
@@ -452,7 +453,7 @@ class _askSpirit extends State<askSpirit> {
                             ),
                           ),
                           Text(
-                            '1000',
+                            sol.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 30,
@@ -490,10 +491,19 @@ class _askSpirit extends State<askSpirit> {
                                           context: context,
                                           builder: (context) => action);
                                     } else {
-                                      final action = isnotavailable();
                                       showCupertinoModalPopup(
-                                          context: context,
-                                          builder: (context) => action);
+                                        context: context,
+                                        builder: (context) => Container(
+                                            width: MediaQuery
+                                                .of(context)
+                                                .size
+                                                .width,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                            ),
+                                            child: NumberPicker.integer(initialValue: sol, minValue: 1, maxValue: 100000, onChanged: (val){setState((){sol = val;});})
+                                        ),
+                                      );
                                     }
                                   },
                                   color: Colors.white,
