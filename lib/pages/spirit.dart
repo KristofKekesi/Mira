@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mira/localization.dart';
 
 import 'package:mira/widgets.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 // ignore: non_constant_identifier_names
 int sol = 1000;
