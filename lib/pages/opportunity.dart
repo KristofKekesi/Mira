@@ -467,7 +467,7 @@ class _askOpportunity extends State<askOpportunity> {
                                 ),
                               ),
                               Text(
-                                '1000',
+                                sol.toString(),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 30,
