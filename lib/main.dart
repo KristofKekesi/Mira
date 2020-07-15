@@ -104,184 +104,194 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
+        child: Padding(
+          padding: EdgeInsets.only(
+              left: MediaQuery.of(context).size.width * .1,
+              right: MediaQuery.of(context).size.width * .1),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Align(
-                alignment: Alignment(-0.6, 0),
-                child: Padding(
-                  padding: EdgeInsets.only(bottom: 0, top: 20, left: 20),
-                  child: Text(
-                    AppLocalizations.of(context).translate('title'),
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 35,
-                      color: Colors.black,
+              Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.width * .05, left: (MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .04),
+                    child: Container(
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          AppLocalizations.of(context).translate('title'),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: MediaQuery.of(context).size.width * .12,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('lib/images/background.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular((MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .04),
+                      ),
+                    ),
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.all(MediaQuery.of(context).size.width * .1),
+                          child: Image.asset(
+                            'lib/images/home_mira_logo.png',
+                            width: MediaQuery.of(context).size.width * .5,
+                            height: MediaQuery.of(context).size.width * .5,
+                          ),
+                        ),
+                       Tooltip(
+                              message: AppLocalizations.of(context)
+                                  .translate('creditsTooltip'),
+                              child: FlatButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                                onPressed: () {
+                                  autoAboutDialog(context);
+                                },
+                                color: Colors.white,
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width * .4, child: Center(child: Text(
+                                  AppLocalizations.of(context)
+                                      .translate('credits'),
+                                  style: TextStyle(
+                                    letterSpacing: 7,
+                                    fontSize: MediaQuery.of(context).size.width * .05,
+                                    color: Colors.deepOrange,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                ),
+                            ),
+                              ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * .02,
+                              bottom: MediaQuery.of(context).size.height * .02,
+                          ),
+                          child: Text(
+                            AppLocalizations.of(context).translate('key'),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: MediaQuery.of(context).size.width * .045,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              Center(
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.width * .05,
+                    bottom: MediaQuery.of(context).size.width * .1),
                 child: Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('lib/images/background.jpg'),
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25),
-                        topRight: Radius.circular(25),
-                        bottomLeft: const Radius.circular(25),
-                        bottomRight: const Radius.circular(25),
-                      )),
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(25),
-                        child: Image.asset(
-                          'lib/images/home_mira_logo.png',
-                          width: 170,
-                          height: 170,
+                      borderRadius: BorderRadius.all(Radius.circular((MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .04))),
+                  width: MediaQuery.of(context).size.width * .8,
+                  child: GestureDetector(
+                    onTap: () {
+                      final action = CupertinoActionSheet(
+                        title: Text(
+                          AppLocalizations.of(context)
+                              .translate('vehicleMenuTitle'),
+                          style: TextStyle(fontSize: 27),
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment(0, 0.9),
-                        child: Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate('selectVehicles'),
-                            child: FlatButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              onPressed: () {
-                                final action = CupertinoActionSheet(
-                                  title: Text(
-                                    AppLocalizations.of(context)
-                                        .translate('vehicleMenuTitle'),
-                                    style: TextStyle(fontSize: 27),
-                                  ),
-                                  message: Text(
-                                    AppLocalizations.of(context)
-                                        .translate('vehicleMenuSub'),
-                                    style: TextStyle(
-                                        fontSize: 15.0, letterSpacing: 5),
-                                  ),
-                                  actions: <Widget>[
-                                    CupertinoActionSheetAction(
-                                      child: Text('MER-A Spirit'),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => setSpirit(),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                    CupertinoActionSheetAction(
-                                      child: Text('MER-B Opportunity'),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                setOpportunity(),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                    CupertinoActionSheetAction(
-                                      child: Text('Curiosity'),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                setCuriosity(),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ],
-                                  cancelButton: CupertinoActionSheetAction(
-                                    child: Text(AppLocalizations.of(context)
-                                        .translate('vehicleMenuClose')),
-                                    isDestructiveAction: true,
-                                    isDefaultAction: true,
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                );
-                                showCupertinoModalPopup(
-                                    context: context,
-                                    builder: (context) => action);
-                              },
-                              color: Colors.white,
-                              child: Text(
-                                AppLocalizations.of(context).translate('menu'),
-                                style: TextStyle(
-                                  letterSpacing: 20.0,
-                                  fontSize: 15,
-                                  color: Colors.orangeAccent,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
+                        message: Text(
+                          AppLocalizations.of(context)
+                              .translate('vehicleMenuSub'),
+                          style: TextStyle(fontSize: 15.0, letterSpacing: 5),
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment(0, 0.9),
-                        child: Padding(
-                          padding: EdgeInsets.all(0),
-                          child: Tooltip(
-                            message: AppLocalizations.of(context).translate('creditsTooltip'),
-                            child: FlatButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                            ),
+                        actions: <Widget>[
+                          CupertinoActionSheetAction(
+                            child: Text('MER-A Spirit'),
                             onPressed: () {
-                              autoAboutDialog(context);
+                              Navigator.of(context).pop();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => setSpirit(),
+                                ),
+                              );
                             },
-                            color: Colors.white,
-                            child: Text(
-                              AppLocalizations.of(context).translate('credits'),
-                              style: TextStyle(
-                                letterSpacing: 8.5,
-                                fontSize: 15,
-                                color: Colors.orangeAccent,
+                          ),
+                          CupertinoActionSheetAction(
+                            child: Text('MER-B Opportunity'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => setOpportunity(),
+                                ),
+                              );
+                            },
+                          ),
+                          CupertinoActionSheetAction(
+                            child: Text('Curiosity'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => setCuriosity(),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                        cancelButton: CupertinoActionSheetAction(
+                          child: Text(AppLocalizations.of(context)
+                              .translate('vehicleMenuClose')),
+                          isDestructiveAction: true,
+                          isDefaultAction: true,
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      );
+                      showCupertinoModalPopup(
+                          context: context, builder: (context) => action);
+                    },
+                    child: Tooltip(
+                      message: AppLocalizations.of(context)
+                          .translate('selectVehicles'),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * .02,
+                          bottom: MediaQuery.of(context).size.height * .02,
+                        ),
+                        child: Center(
+                          child: Text(
+                            AppLocalizations.of(context).translate('menu'),
+                            style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width * .1,
                                 fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                                color: Colors.white),
                           ),
                         ),
                       ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(15),
-                        child: Text(
-                          AppLocalizations.of(context).translate('key'),
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
