@@ -1,7 +1,7 @@
 {
   "title": "NASA Mira",
   "loading": "Betöltés",
-  "menu": "JARMUVEK",
+  "menu": "JÁRMŰVEK",
   "credits": "KREDITEK",
   "key": "API Kulcs a NASA-tól",
   "vehicleMenuTitle": "Marsjárók",
@@ -19,7 +19,7 @@
   "roverImgSearchDateDotted": "DÁTUM: ",
   "roverImgSearchSolDotted": "SOL: ",
   "roverImgSearchSetTime": "IDŐ BEÁLLÍTÁSA",
-  "roverImgSearchButton": "KERESÉS"
+  "roverImgSearchButton": "KERESÉS",
   
   "selectVehicles": "Jármű választó",
   "creditsTooltip": "Kreditek",
