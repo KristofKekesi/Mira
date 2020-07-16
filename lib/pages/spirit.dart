@@ -390,7 +390,7 @@ class _askSpirit extends State<askSpirit> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: new Text(
-          'MER-A Spirit',
+          'Spirit',
           style: TextStyle(
               fontSize: MediaQuery.of(context).size.width * .07,
               fontWeight: FontWeight.bold,
@@ -554,9 +554,9 @@ class _askSpirit extends State<askSpirit> {
                                             backgroundColor: Colors.white,
                                             minimumDate: arriveSpirit,
                                             maximumDate: maxSpirit,
-                                            onDateTimeChanged: (dateSpirit) {
+                                            onDateTimeChanged: (dateCuriosity) {
                                               setState(() {
-                                                dateSpirit = dateSpirit;
+                                                dateCuriosity = dateCuriosity;
                                               });
                                             },
                                           ));
@@ -586,7 +586,8 @@ class _askSpirit extends State<askSpirit> {
                                     }
                                   },
                                   color: Colors.white,
-                                  child: new Text(
+                                  child: Container(width: MediaQuery.of(context).size.width *
+                                      .6,child: Center(child: new Text(
                                     AppLocalizations.of(context)
                                         .translate('roverImgSearchSetTime'),
                                     style: TextStyle(
@@ -595,6 +596,8 @@ class _askSpirit extends State<askSpirit> {
                                       color: Colors.orangeAccent,
                                       fontWeight: FontWeight.bold,
                                     ),
+                                  ),
+                                  ),
                                   ),
                                 ),
                               ),
