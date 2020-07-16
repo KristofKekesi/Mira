@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mira/localization.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-import 'package:mira/widgets.dart';
-
-import 'dart:async';
-
 // ignore: non_constant_identifier_names
 int sol = 1000;
 bool Curiositytimeformat = false;
@@ -68,6 +64,7 @@ class setCuriosity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.white,
       appBar: new AppBar(
         centerTitle: true,
         title: new Text(
@@ -321,6 +318,7 @@ class _askCuriosity extends State<askCuriosity> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.white,
       appBar: new AppBar(
         centerTitle: true,
         title: new Text(

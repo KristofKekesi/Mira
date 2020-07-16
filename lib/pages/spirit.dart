@@ -2,15 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mira/localization.dart';
 
-import 'package:mira/widgets.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 // ignore: non_constant_identifier_names
 int sol = 1000;
+// ignore: non_constant_identifier_names
 bool Spirittimeformat = false;
 
 String typeSpirit = 'Rover';
-String countrySpirit = 'USA';
 
 // ignore: non_constant_identifier_names
 int launchSpirit_y = 2003;
@@ -66,12 +65,13 @@ class setSpirit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        backgroundColor: Colors.white,
       appBar: new AppBar(
         centerTitle: true,
         title: new Text(
-          'Spirit',
+          'MER-A Spirit',
           style: TextStyle(
-              fontSize: 20.0, fontWeight: FontWeight.bold, letterSpacing: 2.0),
+              fontSize: MediaQuery.of(context).size.width * .07, fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: 2.0),
         ),
         backgroundColor: Color(0xffe66909),
       ),
@@ -82,81 +82,64 @@ class setSpirit extends StatelessWidget {
         },
         child: Tooltip(
           message: 'Home',
-          child: Icon(Icons.chevron_left, color: Color(0xffe66909)),
+          child: Icon(Icons.chevron_left, color: Colors.deepOrange),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: new SafeArea(
-          child: new Container(
-        decoration: new BoxDecoration(
-          color: Colors.white,
-        ),
-        child: new Column(
+          child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(left: 35, bottom: 15),
+                  padding: EdgeInsets.only(left: (MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .04 + MediaQuery.of(context).size.width * .1),
                   child: new Text(
-                    'MER-A SPIRIT',
+                    'SPIRIT',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                      color: Color(0xffe66909),
+                      fontSize: MediaQuery.of(context).size.width * .1,
+                      color: Colors.black,
                     ),
                   ),
                 ),
-                new Center(
-                  child: new Container(
-                    decoration: new BoxDecoration(
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * .1,
+                      right: MediaQuery.of(context).size.width * .1
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('lib/images/background.jpg'),
-                          fit: BoxFit.fitHeight,
+                          fit: BoxFit.fill,
                         ),
-                        borderRadius: new BorderRadius.only(
-                          topLeft: const Radius.circular(25),
-                          topRight: const Radius.circular(25),
-                          bottomLeft: const Radius.circular(25),
-                          bottomRight: const Radius.circular(25),
-                        )),
+                        borderRadius: new BorderRadius.all(
+                          Radius.circular((MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .04),
+                        ),),
                     width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.height * 0.6,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 30, right: 30, top: 15),
+                      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * .1, right: MediaQuery.of(context).size.width * .1, top: MediaQuery.of(context).size.width * .07, bottom: MediaQuery.of(context).size.width * .07),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Row(
-                            children: <Widget>[
                               Text(
-                                typeSpirit + ' ',
+                                typeSpirit,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 40,
+                                  fontSize:  MediaQuery.of(context).size.width * .12,
                                   color: Colors.white,
                                 ),
                               ),
-                              Text(
-                                countrySpirit,
-                                style: TextStyle(
-                                  fontSize: 35,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
                           Row(
                             children: <Widget>[
                               Text(
                                 AppLocalizations.of(context)
                                     .translate('roverSpecLaunch'),
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize:  MediaQuery.of(context).size.width * .05,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -168,7 +151,7 @@ class setSpirit extends StatelessWidget {
                                     '/' +
                                     launchSpirit_ry,
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize:  MediaQuery.of(context).size.width * .05,
                                   color: Colors.white,
                                 ),
                               )
@@ -180,7 +163,7 @@ class setSpirit extends StatelessWidget {
                                 AppLocalizations.of(context)
                                     .translate('roverSpecArrive'),
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize:  MediaQuery.of(context).size.width * .05,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -192,7 +175,7 @@ class setSpirit extends StatelessWidget {
                                     '/' +
                                     arriveSpirit_ry,
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize:  MediaQuery.of(context).size.width * .05,
                                   color: Colors.white,
                                 ),
                               )
@@ -204,7 +187,7 @@ class setSpirit extends StatelessWidget {
                                 AppLocalizations.of(context)
                                     .translate('roverSpecEnd'),
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize:  MediaQuery.of(context).size.width * .05,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -216,19 +199,19 @@ class setSpirit extends StatelessWidget {
                                     '/' +
                                     endSpirit_ry,
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize:  MediaQuery.of(context).size.width * .05,
                                   color: Colors.white,
                                 ),
                               )
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 20),
+                            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .03),
                             child: new Text(
                               AppLocalizations.of(context)
                                   .translate('roverSpecOperator'),
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize:  MediaQuery.of(context).size.width * .05,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
@@ -238,7 +221,7 @@ class setSpirit extends StatelessWidget {
                             operatorSpirit,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 30,
+                              fontSize:  MediaQuery.of(context).size.width * .1,
                               color: Colors.white,
                             ),
                           ),
@@ -246,7 +229,7 @@ class setSpirit extends StatelessWidget {
                             AppLocalizations.of(context)
                                 .translate('roverSpecManufacturer'),
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize:  MediaQuery.of(context).size.width * .05,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -254,13 +237,13 @@ class setSpirit extends StatelessWidget {
                           Text(
                             manufacturerSpirit,
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize:  MediaQuery.of(context).size.width * .1,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 10),
+                            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .03),
                             child: new Center(
                               child: Tooltip(
                                 message: AppLocalizations.of(context)
@@ -278,15 +261,17 @@ class setSpirit extends StatelessWidget {
                                     );
                                   },
                                   color: Colors.white,
-                                  child: new Text(
+                                  child: Container(width:  MediaQuery.of(context).size.width * .6, child: Center(child: Text(
                                     AppLocalizations.of(context)
                                         .translate('roverSpecButton'),
                                     style: TextStyle(
-                                      letterSpacing: 15.0,
-                                      fontSize: 15,
-                                      color: Colors.orangeAccent,
+                                      letterSpacing: 7,
+                                      fontSize:  MediaQuery.of(context).size.width * .05,
+                                      color: Colors.deepOrange,
                                       fontWeight: FontWeight.bold,
                                     ),
+                                  ),
+                                  ),
                                   ),
                                 ),
                               ),
@@ -301,8 +286,7 @@ class setSpirit extends StatelessWidget {
             )
           ],
         ),
-      )),
-    );
+      ));
   }
 }
 
@@ -319,6 +303,7 @@ class _askSpirit extends State<askSpirit> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.white,
       appBar: new AppBar(
         centerTitle: true,
         title: new Text(
