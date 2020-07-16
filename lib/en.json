@@ -9,7 +9,8 @@
   "vehicleMenuClose": "Cancel",
   "roverSpecLaunch": "Launch: ",
   "roverSpecArrive": "Arrive: ",
-  "roverSpecLast": "Last Connection: ",
+  "roverSpecLast": "Last Connection",
+  "roverSpecLastMin": "LC: * ",
   "roverSpecEnd": "Mission's End: ",
   "roverSpecOperator": "Operator: ",
   "roverSpecManufacturer": "Manufacturer: ",
@@ -23,7 +24,9 @@
 
   "selectVehicles": "Vehicle Selector",
   "creditsTooltip": "Credits",
+  "back": "Back",
   "specButton": "Images made by the Rover",
+  "tooltipHome": "Home",
   "timePicker": "Select date format!",
   "setDate": "Set date",
   "searchImage": "Search for images"
