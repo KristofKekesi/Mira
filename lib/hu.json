@@ -9,7 +9,8 @@
   "vehicleMenuClose": "Mégse",
   "roverSpecLaunch": "Kilövés: ",
   "roverSpecArrive": "Érkezés: ",
-  "roverSpecLast": "Kapcsolat Megszakadt: ",
+  "roverSpecLast": "Kapcsolat Megszakadt",
+  "roverSpecLastMin": "LC: * ",
   "roverSpecEnd": "Küldetés Vége: ",
   "roverSpecOperator": "Működtető: ",
   "roverSpecManufacturer": "Gyártó: ",
@@ -23,7 +24,9 @@
   
   "selectVehicles": "Jármű választó",
   "creditsTooltip": "Kreditek",
+  "back": "Vissza",
   "specButton": "Képek a Marsjárótól",
+  "tooltipHome": "Főoldal",
   "timePicker": "Dátum fomrátuma",
   "setDate": "Dátum választása",
   "searchImage": "Képek keresése"
