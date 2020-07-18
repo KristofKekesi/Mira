@@ -1,4 +1,5 @@
-<img width="128" align="center" src="lib/icons/logo.svg">
+<p align="center">
+<img width="128" align="center" src="lib/images/home_mira_logo.png">
 </p>
 <h1 align="center">
   NASA Mira
