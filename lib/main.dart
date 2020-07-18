@@ -65,7 +65,22 @@ void autoAboutDialog(context) {
 
 void main() => runApp(Mira());
 
-class Mira extends StatelessWidget {
+class Mira extends StatefulWidget {
+
+  @override
+  _MiraState createState() => _MiraState();
+}
+
+class _MiraState extends State<Mira> {
+  @override
+  void initState(){
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

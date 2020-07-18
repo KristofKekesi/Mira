@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mira/localization.dart';
+import 'package:mira/pages/search.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 // ignore: non_constant_identifier_names
@@ -622,6 +623,14 @@ class _askSpirit extends State<askSpirit> {
                     borderRadius: BorderRadius.all(Radius.circular((MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .04))),
                 width: MediaQuery.of(context).size.width * .8,
                 child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                      builder: (context) => searchWindow(url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz', model: 'Curiosity', date: '${dateCuriosity.month}/${dateCuriosity.day}/${dateCuriosity.year}')
+                    ),
+                    );
+                      },
                   child: Tooltip(
                     message: AppLocalizations.of(context)
                         .translate('searchImage'),
