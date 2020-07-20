@@ -26,7 +26,7 @@ Send an email to kristofkekesiofficial@gmail.com with your name and email addres
 ## Made with <img src="https://img.shields.io/badge/Flutter-blue.svg" alt=""> <img src="https://img.shields.io/badge/Android Studio-green.svg" alt="">
 Made with __Flutter SDK__ in __Dart__ in __Flutter__. Programmed in __Android Studio__. 
 
-## Contributors <img src="https://img.shields.io/badge/45-blue.svg" alt="">
+## Contributors <img src="https://img.shields.io/badge/1-blue.svg" alt="">
 [![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/0)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/0)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/1)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/1)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/2)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/2)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/3)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/3)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/4)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/4)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/5)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/5)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/6)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/6)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/7)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/7)
 
 * _[Programming]_  - [__Kristóf Kékesi__](https://github.com/KristofKekesi)
