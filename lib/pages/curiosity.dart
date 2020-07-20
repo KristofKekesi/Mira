@@ -34,7 +34,7 @@ String getZero(input) {
 }
 
 DateTime arriveCuriosity = DateTime.parse('${getZero(arriveCuriosity_y)}-${getZero(arriveCuriosity_m)}-${getZero(arriveCuriosity_d)}');
-DateTime dateCuriosity = DateTime.parse('2019-06-13');
+DateTime _dateCuriosity = DateTime.parse('2019-06-13');
 DateTime maxCuriosity = DateTime.now();
 
 // ignore: non_constant_identifier_names
@@ -79,7 +79,7 @@ class setCuriosity extends StatelessWidget {
                 fontSize: MediaQuery.of(context).size.width * .07,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                letterSpacing: 2.0),
+            ),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
@@ -229,7 +229,7 @@ class setCuriosity extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   AppLocalizations.of(context)
-                                      .translate('roverSpecEnd'),
+                                      .translate('roverSpecEndMin'),
                                   style: TextStyle(
                                     fontSize:
                                     MediaQuery.of(context).size.width * .05,
@@ -255,6 +255,16 @@ class setCuriosity extends StatelessWidget {
                               "* " +
                                   AppLocalizations.of(context)
                                       .translate('roverSpecLast'),
+                              style: TextStyle(
+                                fontSize:
+                                MediaQuery.of(context).size.width * .05,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              "** " +
+                                  AppLocalizations.of(context)
+                                      .translate('roverSpecEnd'),
                               style: TextStyle(
                                 fontSize:
                                 MediaQuery.of(context).size.width * .05,
@@ -334,7 +344,6 @@ class setCuriosity extends StatelessWidget {
                                           AppLocalizations.of(context)
                                               .translate('roverSpecButton'),
                                           style: TextStyle(
-                                            letterSpacing: 7,
                                             fontSize: MediaQuery.of(context)
                                                 .size
                                                 .width *
@@ -395,7 +404,7 @@ class _askSpirit extends State<askSpirit> {
               fontSize: MediaQuery.of(context).size.width * .07,
               fontWeight: FontWeight.bold,
               color: Colors.white,
-              letterSpacing: 2.0),
+              ),
         ),
       ),
       floatingActionButton: Tooltip(message: AppLocalizations.of(context).translate('tooltipHome'), child: FloatingActionButton(
@@ -504,7 +513,7 @@ class _askSpirit extends State<askSpirit> {
                             ),
                           ),
                           Text(
-                            '${dateCuriosity.month}/${dateCuriosity.day}/${dateCuriosity.year}',
+                            '${_dateCuriosity.month}/${_dateCuriosity.day}/${_dateCuriosity.year}',
                             style: TextStyle(
                                 fontSize: MediaQuery.of(context).size.width * .1,
                                 color: Curiositytimeformat == false
@@ -549,14 +558,14 @@ class _askSpirit extends State<askSpirit> {
                                       final action = SizedBox(
                                           height: 200,
                                           child: CupertinoDatePicker(
-                                            initialDateTime: dateCuriosity,
+                                            initialDateTime: _dateCuriosity,
                                             mode: CupertinoDatePickerMode.date,
                                             backgroundColor: Colors.white,
                                             minimumDate: arriveCuriosity,
                                             maximumDate: maxCuriosity,
                                             onDateTimeChanged: (dateCuriosity) {
                                               setState(() {
-                                                dateCuriosity = dateCuriosity;
+                                                _dateCuriosity = dateCuriosity;
                                               });
                                             },
                                           ));
@@ -591,9 +600,8 @@ class _askSpirit extends State<askSpirit> {
                                     AppLocalizations.of(context)
                                         .translate('roverImgSearchSetTime'),
                                     style: TextStyle(
-                                      letterSpacing: 10,
                                       fontSize: 15,
-                                      color: Colors.orangeAccent,
+                                      color: Colors.deepOrange,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -624,12 +632,25 @@ class _askSpirit extends State<askSpirit> {
                 width: MediaQuery.of(context).size.width * .8,
                 child: GestureDetector(
                   onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                      builder: (context) => searchWindow(url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz', model: 'Curiosity', date: '${dateCuriosity.month}/${dateCuriosity.day}/${dateCuriosity.year}')
-                    ),
-                    );
+                    if(Curiositytimeformat == true) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => searchWindow(
+                                url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=$sol&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
+                                date: '$sol sol')
+                        ),
+                      );
+                    } else if(Curiositytimeformat == false) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => searchWindow(
+                                url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${_dateCuriosity.year}-${_dateCuriosity.month}-${_dateCuriosity.day}&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
+                                date: '${_dateCuriosity.month}/${_dateCuriosity.day}/${_dateCuriosity.year}')
+                        ),
+                      );
+                    }
                       },
                   child: Tooltip(
                     message: AppLocalizations.of(context)

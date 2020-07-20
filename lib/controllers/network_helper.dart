@@ -3,15 +3,13 @@ import 'dart:convert';
 
 import '../models/model.dart';
 
-const url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=100&api_key=<KEY>";
-
 class GetData {
-  String getPath() {
+  String getPath(url) {
     return url;
   }
 
-  Future<List<Data>> getData() async {
-    final res = await http.get(getPath());
+  Future<List<Data>> getData(url) async {
+    final res = await http.get(getPath(url));
 
     if (res.statusCode == 200) {
       var json = jsonDecode(res.body);

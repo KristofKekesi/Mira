@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mira/localization.dart';
+import 'package:mira/pages/search.dart';
 
 import 'package:numberpicker/numberpicker.dart';
 
@@ -49,7 +50,7 @@ String getZero(input) {
 
 DateTime arriveOpportunity = DateTime.parse(
     '${getZero(arriveOpportunity_y)}-${getZero(arriveOpportunity_m)}-${getZero(arriveOpportunity_d)}');
-DateTime dateOpportunity = DateTime.parse('2017-03-13');
+DateTime _dateOpportunity = DateTime.parse('2017-03-13');
 DateTime maxOpportunity = DateTime.parse(
     '${getZero(lcOpportunity_y)}-${getZero(lcOpportunity_m)}-${getZero(lcOpportunity_d)}');
 
@@ -88,10 +89,10 @@ class setOpportunity extends StatelessWidget {
           title: new Text(
             'MER-B Opportunity',
             style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * .07,
+                fontSize: MediaQuery.of(context).size.width * .05,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                letterSpacing: 2.0),
+),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
@@ -114,7 +115,7 @@ class setOpportunity extends StatelessWidget {
                       'OPPORTUNITY',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: MediaQuery.of(context).size.width * .1,
+                        fontSize: MediaQuery.of(context).size.width * .09,
                         color: Colors.black,
                       ),
                     ),
@@ -241,7 +242,7 @@ class setOpportunity extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   AppLocalizations.of(context)
-                                      .translate('roverSpecEnd'),
+                                      .translate('roverSpecEndMin'),
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -273,6 +274,16 @@ class setOpportunity extends StatelessWidget {
                                 color: Colors.white,
                               ),
                             ),
+                        Text(
+                          "** " +
+                              AppLocalizations.of(context)
+                                  .translate('roverSpecEnd'),
+                          style: TextStyle(
+                            fontSize:
+                            MediaQuery.of(context).size.width * .05,
+                            color: Colors.white,
+                          ),
+                        ),
                             Padding(
                               padding: EdgeInsets.only(
                                   top:
@@ -346,7 +357,6 @@ class setOpportunity extends StatelessWidget {
                                           AppLocalizations.of(context)
                                               .translate('roverSpecButton'),
                                           style: TextStyle(
-                                            letterSpacing: 7,
                                             fontSize: MediaQuery.of(context)
                                                     .size
                                                     .width *
@@ -412,12 +422,12 @@ class _askOpportunity extends State<askOpportunity> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: new Text(
-          'Opportunity',
+          'MER-B Opportunity',
           style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * .07,
+              fontSize: MediaQuery.of(context).size.width * .05,
               fontWeight: FontWeight.bold,
               color: Colors.white,
-              letterSpacing: 2.0),
+),
         ),
       ),
       floatingActionButton: Tooltip(
@@ -541,7 +551,7 @@ class _askOpportunity extends State<askOpportunity> {
                             ),
                           ),
                           Text(
-                            '${dateOpportunity.month}/${dateOpportunity.day}/${dateOpportunity.year}',
+                            '${_dateOpportunity.month}/${_dateOpportunity.day}/${_dateOpportunity.year}',
                             style: TextStyle(
                                 fontSize:
                                     MediaQuery.of(context).size.width * .1,
@@ -592,14 +602,14 @@ class _askOpportunity extends State<askOpportunity> {
                                       final action = SizedBox(
                                           height: 200,
                                           child: CupertinoDatePicker(
-                                            initialDateTime: dateOpportunity,
+                                            initialDateTime: _dateOpportunity,
                                             mode: CupertinoDatePickerMode.date,
                                             backgroundColor: Colors.white,
                                             minimumDate: arriveOpportunity,
                                             maximumDate: maxOpportunity,
                                             onDateTimeChanged: (dateOpportunity) {
                                               setState(() {
-                                                dateOpportunity = dateOpportunity;
+                                                _dateOpportunity = dateOpportunity;
                                               });
                                             },
                                           ));
@@ -636,9 +646,8 @@ class _askOpportunity extends State<askOpportunity> {
                                       AppLocalizations.of(context)
                                           .translate('roverImgSearchSetTime'),
                                       style: TextStyle(
-                                        letterSpacing: 10,
                                         fontSize: 15,
-                                        color: Colors.orangeAccent,
+                                        color: Colors.deepOrange,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -672,6 +681,27 @@ class _askOpportunity extends State<askOpportunity> {
                             .04))),
                 width: MediaQuery.of(context).size.width * .8,
                 child: GestureDetector(
+                  onTap: (){
+                    if(Opportunitytimeformat == true) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => searchWindow(
+                                url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=$sol&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
+                                date: '$sol sol')
+                        ),
+                      );
+                    } else if(Opportunitytimeformat == false) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => searchWindow(
+                                url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?earth_date=${_dateOpportunity.year}-${_dateOpportunity.month}-${_dateOpportunity.day}&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
+                                date: '${_dateOpportunity.month}/${_dateOpportunity.day}/${_dateOpportunity.year}')
+                        ),
+                      );
+                    }
+                  },
                   child: Tooltip(
                     message:
                         AppLocalizations.of(context).translate('searchImage'),
