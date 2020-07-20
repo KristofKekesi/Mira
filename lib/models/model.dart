@@ -11,8 +11,16 @@ class Data {
   final String name;
 @JsonKey(name: 'src')
   final String src;
+@JsonKey(name: 'cam')
+  final String cam;
+@JsonKey(name: 'camera')
+  final String camera;
+@JsonKey(name: 'date')
+  final String date;
+@JsonKey(name: 'sol')
+  final int sol;
 
-  Data({this.id, this.name, this.src});
+  Data({this.id, this.name, this.src, this.cam, this.camera, this.date, this.sol});
 
   factory Data.fromJson(Map<String, dynamic> json) => _$EmployeesFromJson(json);
   Map<String, dynamic> toJson() => _$EmployeesToJson(this);

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mira/localization.dart';
-
+import 'package:mira/pages/search.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 // ignore: non_constant_identifier_names
@@ -48,7 +48,7 @@ String getZero(input) {
 }
 
 DateTime arriveSpirit = DateTime.parse('${getZero(arriveSpirit_y)}-${getZero(arriveSpirit_m)}-${getZero(arriveSpirit_d)}');
-DateTime dateSpirit = DateTime.parse('2004-04-05');
+DateTime _dateSpirit = DateTime.parse('2004-04-05');
 DateTime maxSpirit = DateTime.parse('${getZero(lcSpirit_y)}-${getZero(lcSpirit_m)}-${getZero(lcSpirit_d)}');
 
 String operatorSpirit = 'NASA';
@@ -79,7 +79,7 @@ class setSpirit extends StatelessWidget {
                 fontSize: MediaQuery.of(context).size.width * .07,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                letterSpacing: 2.0),
+            ),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
@@ -229,7 +229,7 @@ class setSpirit extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   AppLocalizations.of(context)
-                                      .translate('roverSpecEnd'),
+                                      .translate('roverSpecEndMin'),
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -258,6 +258,16 @@ class setSpirit extends StatelessWidget {
                               style: TextStyle(
                                 fontSize:
                                     MediaQuery.of(context).size.width * .05,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              "** " +
+                                  AppLocalizations.of(context)
+                                      .translate('roverSpecEnd'),
+                              style: TextStyle(
+                                fontSize:
+                                MediaQuery.of(context).size.width * .05,
                                 color: Colors.white,
                               ),
                             ),
@@ -334,7 +344,6 @@ class setSpirit extends StatelessWidget {
                                           AppLocalizations.of(context)
                                               .translate('roverSpecButton'),
                                           style: TextStyle(
-                                            letterSpacing: 7,
                                             fontSize: MediaQuery.of(context)
                                                     .size
                                                     .width *
@@ -390,12 +399,12 @@ class _askSpirit extends State<askSpirit> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: new Text(
-          'Spirit',
+          'MER-A Spirit',
           style: TextStyle(
               fontSize: MediaQuery.of(context).size.width * .07,
               fontWeight: FontWeight.bold,
               color: Colors.white,
-              letterSpacing: 2.0),
+),
         ),
       ),
       floatingActionButton: Tooltip(message: AppLocalizations.of(context).translate('tooltipHome'), child: FloatingActionButton(
@@ -504,7 +513,7 @@ class _askSpirit extends State<askSpirit> {
                           ),
                           ),
                           Text(
-                            '${dateSpirit.month}/${dateSpirit.day}/${dateSpirit.year}',
+                            '${_dateSpirit.month}/${_dateSpirit.day}/${_dateSpirit.year}',
                             style: TextStyle(
                                 fontSize: MediaQuery.of(context).size.width * .1,
                                 color: Spirittimeformat == false
@@ -549,14 +558,14 @@ class _askSpirit extends State<askSpirit> {
                                       final action = SizedBox(
                                           height: 200,
                                           child: CupertinoDatePicker(
-                                            initialDateTime: dateSpirit,
+                                            initialDateTime: _dateSpirit,
                                             mode: CupertinoDatePickerMode.date,
                                             backgroundColor: Colors.white,
                                             minimumDate: arriveSpirit,
                                             maximumDate: maxSpirit,
-                                            onDateTimeChanged: (dateCuriosity) {
+                                            onDateTimeChanged: (dateSpirit) {
                                               setState(() {
-                                                dateCuriosity = dateCuriosity;
+                                                _dateSpirit = dateSpirit;
                                               });
                                             },
                                           ));
@@ -591,9 +600,8 @@ class _askSpirit extends State<askSpirit> {
                                     AppLocalizations.of(context)
                                         .translate('roverImgSearchSetTime'),
                                     style: TextStyle(
-                                      letterSpacing: 10,
                                       fontSize: 15,
-                                      color: Colors.orangeAccent,
+                                      color: Colors.deepOrange,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -623,6 +631,27 @@ class _askSpirit extends State<askSpirit> {
                     borderRadius: BorderRadius.all(Radius.circular((MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .04))),
                 width: MediaQuery.of(context).size.width * .8,
                 child: GestureDetector(
+                  onTap: (){
+                    if(Spirittimeformat == true) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => searchWindow(
+                                url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=$sol&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
+                                date: '$sol sol')
+                        ),
+                      );
+                    } else if(Spirittimeformat == false) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => searchWindow(
+                                url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/photos?earth_date=${_dateSpirit.year}-${_dateSpirit.month}-${_dateSpirit.day}&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
+                                date: '${_dateSpirit.month}/${_dateSpirit.day}/${_dateSpirit.year}')
+                        ),
+                      );
+                    }
+                  },
                   child: Tooltip(
                     message: AppLocalizations.of(context)
                         .translate('searchImage'),
