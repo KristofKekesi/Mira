@@ -98,10 +98,7 @@ class setOpportunity extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
         body: new SafeArea(
           child: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
@@ -140,10 +137,22 @@ class setOpportunity extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: Padding(
                         padding: EdgeInsets.only(
-                            left: MediaQuery.of(context).size.width * .1,
-                            right: MediaQuery.of(context).size.width * .1,
-                            top: MediaQuery.of(context).size.width * .07,
-                            bottom: MediaQuery.of(context).size.width * .07),
+                            left: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                                2 *
+                                .04,
+                            right: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                                2 *
+                                .04,
+                            top: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                                2 *
+                                .02,
+                            bottom: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                                2 *
+                                .02),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -215,7 +224,7 @@ class setOpportunity extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   AppLocalizations.of(context)
-                                      .translate('roverSpecLastMin'),
+                                      .translate('roverSpecLast'),
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -242,7 +251,7 @@ class setOpportunity extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   AppLocalizations.of(context)
-                                      .translate('roverSpecEndMin'),
+                                      .translate('roverSpecEnd'),
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -264,26 +273,26 @@ class setOpportunity extends StatelessWidget {
                                 )
                               ],
                             ),
-                            Text(
-                              "* " +
-                                  AppLocalizations.of(context)
-                                      .translate('roverSpecLast'),
-                              style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .05,
-                                color: Colors.white,
-                              ),
-                            ),
-                        Text(
-                          "** " +
-                              AppLocalizations.of(context)
-                                  .translate('roverSpecEnd'),
-                          style: TextStyle(
-                            fontSize:
-                            MediaQuery.of(context).size.width * .05,
-                            color: Colors.white,
-                          ),
-                        ),
+//                            Text(
+//                              "* " +
+//                                  AppLocalizations.of(context)
+//                                      .translate('roverSpecLast'),
+//                              style: TextStyle(
+//                                fontSize:
+//                                    MediaQuery.of(context).size.width * .05,
+//                                color: Colors.white,
+//                              ),
+//                            ),
+//                        Text(
+//                          "** " +
+//                              AppLocalizations.of(context)
+//                                  .translate('roverSpecEnd'),
+//                          style: TextStyle(
+//                            fontSize:
+//                            MediaQuery.of(context).size.width * .05,
+//                            color: Colors.white,
+//                          ),
+//                        ),
                             Padding(
                               padding: EdgeInsets.only(
                                   top:
@@ -377,8 +386,6 @@ class setOpportunity extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
-            ],
           ),
         ));
   }
@@ -484,10 +491,22 @@ class _askOpportunity extends State<askOpportunity> {
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: Padding(
                       padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width * .1,
-                          right: MediaQuery.of(context).size.width * .1,
-                          top: MediaQuery.of(context).size.width * .05,
-                          bottom: MediaQuery.of(context).size.width * .05),
+                          left: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                              2 *
+                              .04,
+                          right: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                              2 *
+                              .04,
+                          top: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                              2 *
+                              .02,
+                          bottom: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                              2 *
+                              .02),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
