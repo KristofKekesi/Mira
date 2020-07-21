@@ -62,6 +62,7 @@ class setCuriosity extends StatelessWidget {
     return new Scaffold(
         backgroundColor: Colors.white,
         appBar: new AppBar(
+          toolbarHeight: MediaQuery.of(context).size.height * .07,
           leading: Tooltip(
             message: AppLocalizations.of(context).translate('back'),
             child: GestureDetector(
@@ -71,6 +72,7 @@ class setCuriosity extends StatelessWidget {
               child: Icon(
                 Icons.arrow_back_ios,
                 color: Colors.white,
+                size: MediaQuery.of(context).size.width * .06,
               ),
             ),
           ),
@@ -223,10 +225,10 @@ class setCuriosity extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               AppLocalizations.of(context)
-                                  .translate('roverSpecLast'),
+                                  .translate('roverSpecLastMin'),
                               style: TextStyle(
                                 fontSize:
-                                    MediaQuery.of(context).size.width * .05,
+                                MediaQuery.of(context).size.width * .05,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -239,7 +241,7 @@ class setCuriosity extends StatelessWidget {
                                   lcCuriosity_y,
                               style: TextStyle(
                                 fontSize:
-                                    MediaQuery.of(context).size.width * .05,
+                                MediaQuery.of(context).size.width * .05,
                                 color: Colors.white,
                               ),
                             )
@@ -250,10 +252,10 @@ class setCuriosity extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               AppLocalizations.of(context)
-                                  .translate('roverSpecEnd'),
+                                  .translate('roverSpecEndMin'),
                               style: TextStyle(
                                 fontSize:
-                                    MediaQuery.of(context).size.width * .05,
+                                MediaQuery.of(context).size.width * .05,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -266,30 +268,32 @@ class setCuriosity extends StatelessWidget {
                                   endCuriosity_y,
                               style: TextStyle(
                                 fontSize:
-                                    MediaQuery.of(context).size.width * .05,
+                                MediaQuery.of(context).size.width * .05,
                                 color: Colors.white,
                               ),
                             )
                           ],
                         ),
-//                        Text(
-//                          "* " +
-//                              AppLocalizations.of(context)
-//                                  .translate('roverSpecLast'),
-//                          style: TextStyle(
-//                            fontSize: MediaQuery.of(context).size.width * .05,
-//                            color: Colors.white,
-//                          ),
-//                        ),
-//                        Text(
-//                          "** " +
-//                              AppLocalizations.of(context)
-//                                  .translate('roverSpecEnd'),
-//                          style: TextStyle(
-//                            fontSize: MediaQuery.of(context).size.width * .05,
-//                            color: Colors.white,
-//                          ),
-//                        ),
+                        Text(
+                          "* " +
+                              AppLocalizations.of(context)
+                                  .translate('roverSpecLast'),
+                          style: TextStyle(
+                            fontSize:
+                            MediaQuery.of(context).size.width * .045,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          "** " +
+                              AppLocalizations.of(context)
+                                  .translate('roverSpecEnd'),
+                          style: TextStyle(
+                            fontSize:
+                            MediaQuery.of(context).size.width * .045,
+                            color: Colors.white,
+                          ),
+                        ),
                         Padding(
                           padding: EdgeInsets.only(
                               top: MediaQuery.of(context).size.height * .03),
@@ -330,7 +334,14 @@ class setCuriosity extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                              top: MediaQuery.of(context).size.height * .03),
+                              top: (MediaQuery.of(context).size.width +
+                                  MediaQuery.of(context).size.height) /
+                                  2 *
+                                  .02,
+                              bottom: (MediaQuery.of(context).size.width +
+                                  MediaQuery.of(context).size.height) /
+                                  2 *
+                                  .02),
                           child: new Center(
                             child: Tooltip(
                               message: AppLocalizations.of(context)
@@ -349,8 +360,12 @@ class setCuriosity extends StatelessWidget {
                                 },
                                 color: Colors.white,
                                 child: Container(
-                                  width: MediaQuery.of(context).size.width * .6,
-                                  child: Center(
+                                  width: MediaQuery.of(context).size.width * .8,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        top: MediaQuery.of(context).size.height * .01,
+                                        bottom: MediaQuery.of(context).size.height * .01),
+                                    child: Center(
                                     child: Text(
                                       AppLocalizations.of(context)
                                           .translate('roverSpecButton'),
@@ -365,6 +380,7 @@ class setCuriosity extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                            ),
                             ),
                           ),
                         ),
@@ -394,6 +410,7 @@ class _askSpirit extends State<askSpirit> {
     return new Scaffold(
       backgroundColor: Colors.white,
       appBar: new AppBar(
+        toolbarHeight: MediaQuery.of(context).size.height * .07,
         leading: Tooltip(
           message: AppLocalizations.of(context).translate('back'),
           child: GestureDetector(
@@ -403,6 +420,7 @@ class _askSpirit extends State<askSpirit> {
             child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
+              size: MediaQuery.of(context).size.width * .06,
             ),
           ),
         ),
@@ -419,21 +437,26 @@ class _askSpirit extends State<askSpirit> {
         title: new Text(
           'Curiosity',
           style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width * .07,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+              fontSize: MediaQuery.of(context).size.width * .07,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              letterSpacing: 2.0),
         ),
       ),
-      floatingActionButton: Tooltip(
-        message: AppLocalizations.of(context).translate('tooltipHome'),
-        child: FloatingActionButton(
-          backgroundColor: Colors.white,
-          onPressed: () {
-            Navigator.pop(context);
-            Navigator.pop(context);
-          },
-          child: Icon(CupertinoIcons.clear_thick, color: Colors.deepOrange),
+      floatingActionButton: Container(
+        height: MediaQuery.of(context).size.width * .12,
+        width: MediaQuery.of(context).size.width * .12,
+        child: FittedBox(child: Tooltip(
+          message: AppLocalizations.of(context).translate('tooltipHome'),
+          child: FloatingActionButton(
+            backgroundColor: Colors.white,
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+            },
+            child: Icon(CupertinoIcons.clear_thick, color: Colors.deepOrange),
+          ),
+        ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
@@ -517,6 +540,7 @@ class _askSpirit extends State<askSpirit> {
                                 message: AppLocalizations.of(context)
                                     .translate('timePicker'),
                                 child: Switch(
+
                                   value: Curiositytimeformat,
                                   activeTrackColor: Colors.black38,
                                   inactiveTrackColor: Colors.black38,
@@ -557,7 +581,7 @@ class _askSpirit extends State<askSpirit> {
                             ),
                           ),
                           Text(
-                            '${_dateCuriosity.month}/${_dateCuriosity.day}/${_dateCuriosity.year}',
+                            '${getZero(_dateCuriosity.month)}/${getZero(_dateCuriosity.day)}/${_dateCuriosity.year}',
                             style: TextStyle(
                                 fontSize:
                                     MediaQuery.of(context).size.width * .1,
@@ -593,8 +617,14 @@ class _askSpirit extends State<askSpirit> {
                           ),
                           Padding(
                             padding: EdgeInsets.only(
-                              top: MediaQuery.of(context).size.height * .03,
-                            ),
+                                top: (MediaQuery.of(context).size.width +
+                                    MediaQuery.of(context).size.height) /
+                                    2 *
+                                    .02,
+                                bottom: (MediaQuery.of(context).size.width +
+                                    MediaQuery.of(context).size.height) /
+                                    2 *
+                                    .02),
                             child: new Center(
                               child: Tooltip(
                                 message: AppLocalizations.of(context)
@@ -647,13 +677,17 @@ class _askSpirit extends State<askSpirit> {
                                   color: Colors.white,
                                   child: Container(
                                     width:
-                                        MediaQuery.of(context).size.width * .6,
-                                    child: Center(
+                                        MediaQuery.of(context).size.width * .8,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          top: MediaQuery.of(context).size.height * .01,
+                                          bottom: MediaQuery.of(context).size.height * .01),
+                                      child: Center(
                                       child: new Text(
                                         AppLocalizations.of(context)
                                             .translate('roverImgSearchSetTime'),
                                         style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: MediaQuery.of(context).size.width * .05,
                                           color: Colors.deepOrange,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -663,6 +697,7 @@ class _askSpirit extends State<askSpirit> {
                                 ),
                               ),
                             ),
+                          ),
                           ),
                         ],
                       ),
@@ -706,7 +741,7 @@ class _askSpirit extends State<askSpirit> {
                                 url:
                                     'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${_dateCuriosity.year}-${_dateCuriosity.month}-${_dateCuriosity.day}&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
                                 date:
-                                    '${_dateCuriosity.month}/${_dateCuriosity.day}/${_dateCuriosity.year}')),
+                                    '${getZero(_dateCuriosity.month)}/${getZero(_dateCuriosity.day)}/${_dateCuriosity.year}')),
                       );
                     }
                   },

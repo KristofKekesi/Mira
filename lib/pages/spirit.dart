@@ -61,8 +61,21 @@ class setSpirit extends StatelessWidget {
     return new Scaffold(
         backgroundColor: Colors.white,
         appBar: new AppBar(
-          leading: Tooltip(message: AppLocalizations.of(context).translate('back'), child: GestureDetector(onTap: (){Navigator.pop(context);}, child: Icon(Icons.arrow_back_ios, color: Colors.white,),),
-          ), flexibleSpace: Container(
+          toolbarHeight: MediaQuery.of(context).size.height * .07,
+          leading: Tooltip(
+            message: AppLocalizations.of(context).translate('back'),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: MediaQuery.of(context).size.width * .06,
+              ),
+            ),
+          ),
+          flexibleSpace: Container(
             decoration:
             BoxDecoration(
               image: DecorationImage(
@@ -82,7 +95,6 @@ class setSpirit extends StatelessWidget {
             ),
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
         body: new SafeArea(
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -257,7 +269,7 @@ class setSpirit extends StatelessWidget {
                                       .translate('roverSpecLast'),
                               style: TextStyle(
                                 fontSize:
-                                    MediaQuery.of(context).size.width * .05,
+                                    MediaQuery.of(context).size.width * .045,
                                 color: Colors.white,
                               ),
                             ),
@@ -267,7 +279,7 @@ class setSpirit extends StatelessWidget {
                                       .translate('roverSpecEnd'),
                               style: TextStyle(
                                 fontSize:
-                                MediaQuery.of(context).size.width * .05,
+                                MediaQuery.of(context).size.width * .045,
                                 color: Colors.white,
                               ),
                             ),
@@ -338,7 +350,7 @@ class setSpirit extends StatelessWidget {
                                     color: Colors.white,
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
-                                          .6,
+                                          .8,
                                       child: Center(
                                         child: Text(
                                           AppLocalizations.of(context)
@@ -386,8 +398,21 @@ class _askSpirit extends State<askSpirit> {
     return new Scaffold(
       backgroundColor: Colors.white,
       appBar: new AppBar(
-        leading: Tooltip(message: AppLocalizations.of(context).translate('back'), child: GestureDetector(onTap: (){Navigator.pop(context);}, child: Icon(Icons.arrow_back_ios, color: Colors.white,),),
-        ), flexibleSpace: Container(
+        toolbarHeight: MediaQuery.of(context).size.height * .07,
+        leading: Tooltip(
+          message: AppLocalizations.of(context).translate('back'),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+              size: MediaQuery.of(context).size.width * .06,
+            ),
+          ),
+        ),
+        flexibleSpace: Container(
         decoration:
         BoxDecoration(
           image: DecorationImage(
@@ -407,13 +432,20 @@ class _askSpirit extends State<askSpirit> {
 ),
         ),
       ),
-      floatingActionButton: Tooltip(message: AppLocalizations.of(context).translate('tooltipHome'), child: FloatingActionButton(
-        backgroundColor: Colors.white,
-        onPressed: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-          child: Icon(CupertinoIcons.clear_thick, color: Colors.deepOrange),
+      floatingActionButton: Container(
+        height: MediaQuery.of(context).size.width * .12,
+        width: MediaQuery.of(context).size.width * .12,
+        child: FittedBox(child: Tooltip(
+          message: AppLocalizations.of(context).translate('tooltipHome'),
+          child: FloatingActionButton(
+            backgroundColor: Colors.white,
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+            },
+            child: Icon(CupertinoIcons.clear_thick, color: Colors.deepOrange),
+          ),
+        ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
@@ -513,7 +545,7 @@ class _askSpirit extends State<askSpirit> {
                           ),
                           ),
                           Text(
-                            '${_dateSpirit.month}/${_dateSpirit.day}/${_dateSpirit.year}',
+                            '${getZero(_dateSpirit.month)}/${getZero(_dateSpirit.day)}/${_dateSpirit.year}',
                             style: TextStyle(
                                 fontSize: MediaQuery.of(context).size.width * .1,
                                 color: Spirittimeformat == false
@@ -596,11 +628,12 @@ class _askSpirit extends State<askSpirit> {
                                   },
                                   color: Colors.white,
                                   child: Container(width: MediaQuery.of(context).size.width *
-                                      .6,child: Center(child: new Text(
+                                      .8,
+                                    child: Center(child: new Text(
                                     AppLocalizations.of(context)
                                         .translate('roverImgSearchSetTime'),
                                     style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: MediaQuery.of(context).size.width * .05,
                                       color: Colors.deepOrange,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -647,7 +680,7 @@ class _askSpirit extends State<askSpirit> {
                         MaterialPageRoute(
                             builder: (context) => searchWindow(
                                 url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/photos?earth_date=${_dateSpirit.year}-${_dateSpirit.month}-${_dateSpirit.day}&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
-                                date: '${_dateSpirit.month}/${_dateSpirit.day}/${_dateSpirit.year}')
+                                date: '${getZero(_dateSpirit.month)}/${getZero(_dateSpirit.day)}/${_dateSpirit.year}')
                         ),
                       );
                     }

@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gallery_saver/gallery_saver.dart';
 
 import '../models/model.dart';
 import '../controllers/network_helper.dart';
 import '../localization.dart';
 
+// ignore: non_constant_identifier_names
 FutureBuilder _Data(url) {
   return FutureBuilder<List<Data>>(
     future: GetData().getData(url),
@@ -43,7 +43,6 @@ FutureBuilder _Data(url) {
             itemBuilder: (context, index) {
 
               if (index == 0) {
-                //index--;
                 return Container(height: MediaQuery
                     .of(context)
                     .size
@@ -136,7 +135,7 @@ FutureBuilder _Data(url) {
                                   MediaQuery
                                       .of(context)
                                       .size
-                                      .width * .07,
+                                      .width * .05,
                                   color: Colors.white,
                                 ),
                               ),
@@ -146,8 +145,16 @@ FutureBuilder _Data(url) {
                                     context: context,
                                     builder: (_) =>
                                         AlertDialog(
-                                          title: Text('${data[index].name}'),
-                                          content: Column(
+                                          titlePadding: EdgeInsets.all( MediaQuery.of(context).size.height * .05),
+                                          contentPadding: EdgeInsets.only(bottom:  MediaQuery.of(context).size.height * .05, left:  MediaQuery.of(context).size.height * .05, right: MediaQuery.of(context).size.height * .05),
+                                          title: Text('${data[index].name}', style: TextStyle(
+                                              fontSize: MediaQuery
+                                                  .of(context)
+                                                  .size
+                                                  .width * .05),),
+                                          content: Container(
+                                            width: MediaQuery.of(context).size.width * .6,
+                                            child: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -242,38 +249,21 @@ FutureBuilder _Data(url) {
                                                   ),
                                                 ],
                                               ),
-                                              Padding(
-                                                padding: EdgeInsets.only(
-                                                    top: MediaQuery
-                                                        .of(context)
-                                                        .size
-                                                        .height *
-                                                        .02),
-                                                child: GestureDetector(
-                                                  onTap: (){
-                                                    print(data[index].src);
-                                                    GallerySaver.saveImage(data[index].src);
-                                                    },
-                                                  child: Text(
-                                                    AppLocalizations.of(context).translate('imgDown'),
-                                                    style: TextStyle(
-                                                        fontSize:
-                                                        MediaQuery
-                                                            .of(context)
-                                                            .size
-                                                            .width *
-                                                            .06,
-                                                        fontWeight: FontWeight
-                                                            .bold),
-                                                  ),
-                                                ),
-                                              ),
                                             ],
                                           ),
                                         ),
+                                        ),
                                   );
                                 },
-                                child: Text('lol'),
+                                child: Image(image: AssetImage('lib/images/more.png'),
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width * .07,
+                                    height: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width * .07,),
                               )
                             ],
                           ),
@@ -354,6 +344,7 @@ class _searchWindowState extends State<searchWindow> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
+        toolbarHeight: MediaQuery.of(context).size.height * .07,
         leading: Tooltip(
           message: AppLocalizations.of(context).translate('back'),
           child: GestureDetector(
@@ -363,6 +354,7 @@ class _searchWindowState extends State<searchWindow> {
             child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
+              size: MediaQuery.of(context).size.width * .06,
             ),
           ),
         ),
@@ -385,7 +377,10 @@ class _searchWindowState extends State<searchWindow> {
               letterSpacing: 2.0),
         ),
       ),
-      floatingActionButton: Tooltip(
+      floatingActionButton: Container(
+    height: MediaQuery.of(context).size.width * .12,
+    width: MediaQuery.of(context).size.width * .12,
+    child: FittedBox(child: Tooltip(
         message: AppLocalizations.of(context).translate('tooltipHome'),
         child: FloatingActionButton(
           backgroundColor: Colors.white,
@@ -396,6 +391,8 @@ class _searchWindowState extends State<searchWindow> {
           },
           child: Icon(CupertinoIcons.clear_thick, color: Colors.deepOrange),
         ),
+      ),
+      ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       body: SafeArea(

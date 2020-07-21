@@ -165,7 +165,13 @@ class Body extends StatelessWidget {
                           },
                           color: Colors.white,
                           child: Container(
-                            width: MediaQuery.of(context).size.width * .4, child: Center(child: Text(
+                            width: MediaQuery.of(context).size.width * .4,
+                            child: Center(
+                              child: Padding(
+                              padding: EdgeInsets.only(
+                                  top: MediaQuery.of(context).size.height * .01,
+                                  bottom: MediaQuery.of(context).size.height * .01),
+                              child: Text(
                             AppLocalizations.of(context)
                                 .translate('mainCredits'),
                             style: TextStyle(
@@ -176,6 +182,7 @@ class Body extends StatelessWidget {
                           ),
                           ),
                           ),
+    ),
                         ),
                       ),
                       Padding(
@@ -215,16 +222,16 @@ class Body extends StatelessWidget {
                       title: Text(
                         AppLocalizations.of(context)
                             .translate('vehicleMenuTitle'),
-                        style: TextStyle(fontSize: 27),
+                        style: TextStyle(fontSize: MediaQuery.of(context).size.width * .09, color: Colors.black54),
                       ),
                       message: Text(
                         AppLocalizations.of(context)
                             .translate('vehicleMenuSub'),
-                        style: TextStyle(fontSize: 15.0, letterSpacing: 5),
+                        style: TextStyle(fontSize: MediaQuery.of(context).size.width * .07, color: Colors.black54),
                       ),
                       actions: <Widget>[
                         CupertinoActionSheetAction(
-                          child: Text('Curiosity'),
+                          child: Text('Curiosity', style: TextStyle(fontSize: MediaQuery.of(context).size.width * .05, color: Colors.black54),),
                           onPressed: () {
                             Navigator.of(context).pop();
                             Navigator.push(
@@ -236,7 +243,7 @@ class Body extends StatelessWidget {
                           },
                         ),
                         CupertinoActionSheetAction(
-                          child: Text('MER-B Opportunity'),
+                          child: Text('MER-B Opportunity', style: TextStyle(fontSize: MediaQuery.of(context).size.width * .05, color: Colors.black54),),
                           onPressed: () {
                             Navigator.of(context).pop();
                             Navigator.push(
@@ -248,7 +255,7 @@ class Body extends StatelessWidget {
                           },
                         ),
                         CupertinoActionSheetAction(
-                          child: Text('MER-A Spirit'),
+                          child: Text('MER-A Spirit', style: TextStyle(fontSize: MediaQuery.of(context).size.width * .05, color: Colors.black54),),
                           onPressed: () {
                             Navigator.of(context).pop();
                             Navigator.push(
@@ -262,7 +269,7 @@ class Body extends StatelessWidget {
                       ],
                       cancelButton: CupertinoActionSheetAction(
                         child: Text(AppLocalizations.of(context)
-                            .translate('vehicleMenuClose')),
+                            .translate('vehicleMenuClose'), style: TextStyle(fontSize: MediaQuery.of(context).size.width * .05,),),
                         isDestructiveAction: true,
                         isDefaultAction: true,
                         onPressed: () {

@@ -64,6 +64,7 @@ class setOpportunity extends StatelessWidget {
     return new Scaffold(
         backgroundColor: Colors.white,
         appBar: new AppBar(
+          toolbarHeight: MediaQuery.of(context).size.height * .07,
           leading: Tooltip(
             message: AppLocalizations.of(context).translate('back'),
             child: GestureDetector(
@@ -73,6 +74,7 @@ class setOpportunity extends StatelessWidget {
               child: Icon(
                 Icons.arrow_back_ios,
                 color: Colors.white,
+                size: MediaQuery.of(context).size.width * .06,
               ),
             ),
           ),
@@ -95,7 +97,6 @@ class setOpportunity extends StatelessWidget {
 ),
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
         body: new SafeArea(
           child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -224,10 +225,10 @@ class setOpportunity extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   AppLocalizations.of(context)
-                                      .translate('roverSpecLast'),
+                                      .translate('roverSpecLastMin'),
                                   style: TextStyle(
                                     fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                    MediaQuery.of(context).size.width * .05,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -240,7 +241,7 @@ class setOpportunity extends StatelessWidget {
                                       getZero(lcOpportunity_y),
                                   style: TextStyle(
                                     fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                    MediaQuery.of(context).size.width * .05,
                                     color: Colors.white,
                                   ),
                                 )
@@ -251,10 +252,10 @@ class setOpportunity extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   AppLocalizations.of(context)
-                                      .translate('roverSpecEnd'),
+                                      .translate('roverSpecEndMin'),
                                   style: TextStyle(
                                     fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                    MediaQuery.of(context).size.width * .05,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -267,32 +268,32 @@ class setOpportunity extends StatelessWidget {
                                       getZero(endOpportunity_y),
                                   style: TextStyle(
                                     fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                    MediaQuery.of(context).size.width * .05,
                                     color: Colors.white,
                                   ),
                                 )
                               ],
                             ),
-//                            Text(
-//                              "* " +
-//                                  AppLocalizations.of(context)
-//                                      .translate('roverSpecLast'),
-//                              style: TextStyle(
-//                                fontSize:
-//                                    MediaQuery.of(context).size.width * .05,
-//                                color: Colors.white,
-//                              ),
-//                            ),
-//                        Text(
-//                          "** " +
-//                              AppLocalizations.of(context)
-//                                  .translate('roverSpecEnd'),
-//                          style: TextStyle(
-//                            fontSize:
-//                            MediaQuery.of(context).size.width * .05,
-//                            color: Colors.white,
-//                          ),
-//                        ),
+                            Text(
+                              "* " +
+                                  AppLocalizations.of(context)
+                                      .translate('roverSpecLast'),
+                              style: TextStyle(
+                                fontSize:
+                                MediaQuery.of(context).size.width * .045,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              "** " +
+                                  AppLocalizations.of(context)
+                                      .translate('roverSpecEnd'),
+                              style: TextStyle(
+                                fontSize:
+                                MediaQuery.of(context).size.width * .045,
+                                color: Colors.white,
+                              ),
+                            ),
                             Padding(
                               padding: EdgeInsets.only(
                                   top:
@@ -360,8 +361,12 @@ class setOpportunity extends StatelessWidget {
                                     color: Colors.white,
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
-                                          .6,
-                                      child: Center(
+                                          .8,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            top: MediaQuery.of(context).size.height * .01,
+                                            bottom: MediaQuery.of(context).size.height * .01),
+                                        child: Center(
                                         child: Text(
                                           AppLocalizations.of(context)
                                               .translate('roverSpecButton'),
@@ -378,6 +383,7 @@ class setOpportunity extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+                              ),
                               ),
                             ),
                           ],
@@ -406,6 +412,7 @@ class _askOpportunity extends State<askOpportunity> {
     return new Scaffold(
       backgroundColor: Colors.white,
       appBar: new AppBar(
+        toolbarHeight: MediaQuery.of(context).size.height * .07,
         leading: Tooltip(
           message: AppLocalizations.of(context).translate('back'),
           child: GestureDetector(
@@ -415,6 +422,7 @@ class _askOpportunity extends State<askOpportunity> {
             child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
+              size: MediaQuery.of(context).size.width * .06,
             ),
           ),
         ),
@@ -437,15 +445,20 @@ class _askOpportunity extends State<askOpportunity> {
 ),
         ),
       ),
-      floatingActionButton: Tooltip(
-        message: AppLocalizations.of(context).translate('tooltipHome'),
-        child: FloatingActionButton(
-          backgroundColor: Colors.white,
-          onPressed: () {
-            Navigator.pop(context);
-            Navigator.pop(context);
-          },
-          child: Icon(CupertinoIcons.clear_thick, color: Colors.deepOrange),
+      floatingActionButton: Container(
+        height: MediaQuery.of(context).size.width * .12,
+        width: MediaQuery.of(context).size.width * .12,
+        child: FittedBox(child: Tooltip(
+          message: AppLocalizations.of(context).translate('tooltipHome'),
+          child: FloatingActionButton(
+            backgroundColor: Colors.white,
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+            },
+            child: Icon(CupertinoIcons.clear_thick, color: Colors.deepOrange),
+          ),
+        ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
@@ -570,7 +583,7 @@ class _askOpportunity extends State<askOpportunity> {
                             ),
                           ),
                           Text(
-                            '${_dateOpportunity.month}/${_dateOpportunity.day}/${_dateOpportunity.year}',
+                            '${getZero(_dateOpportunity.month)}/${getZero(_dateOpportunity.day)}/${_dateOpportunity.year}',
                             style: TextStyle(
                                 fontSize:
                                     MediaQuery.of(context).size.width * .1,
@@ -660,12 +673,16 @@ class _askOpportunity extends State<askOpportunity> {
                                   color: Colors.white,
                                   child: Container(
                                     width:
-                                        MediaQuery.of(context).size.width * .6,
-                                    child: Center(child: new Text(
+                                        MediaQuery.of(context).size.width * .8,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          top: MediaQuery.of(context).size.height * .01,
+                                          bottom: MediaQuery.of(context).size.height * .01),
+                                      child: Center(child: new Text(
                                       AppLocalizations.of(context)
                                           .translate('roverImgSearchSetTime'),
                                       style: TextStyle(
-                                        fontSize: 15,
+                                        fontSize: MediaQuery.of(context).size.width * .05,
                                         color: Colors.deepOrange,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -675,6 +692,7 @@ class _askOpportunity extends State<askOpportunity> {
                                 ),
                               ),
                             ),
+                          ),
                           ),
                         ],
                       ),
@@ -716,7 +734,7 @@ class _askOpportunity extends State<askOpportunity> {
                         MaterialPageRoute(
                             builder: (context) => searchWindow(
                                 url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?earth_date=${_dateOpportunity.year}-${_dateOpportunity.month}-${_dateOpportunity.day}&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
-                                date: '${_dateOpportunity.month}/${_dateOpportunity.day}/${_dateOpportunity.year}')
+                                date: '${getZero(_dateOpportunity.month)}/${getZero(_dateOpportunity.day)}/${_dateOpportunity.year}')
                         ),
                       );
                     }
