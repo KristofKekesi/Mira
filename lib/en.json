@@ -15,7 +15,7 @@
   "vehicleMenuClose": "Cancel",
   "roverSpecLaunch": "Launch: ",
   "roverSpecArrive": "Arrive: ",
-  "roverSpecLast": "Last Connection",
+  "roverSpecLast": "Lost Connection",
   "roverSpecLastMin": "LC: * ",
   "roverSpecEnd": "Mission's End",
   "roverSpecEndMin": "ME: ** ",
