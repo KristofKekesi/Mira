@@ -5,7 +5,7 @@
   NASA Mira
 </h1>
 
-<img src="https://img.shields.io/badge/Beta%20Program-Open-green.svg" alt=""> <img src="https://img.shields.io/badge/Status-Programming-yellow.svg" alt=""> <img src="https://img.shields.io/badge/Release-2020/07/30-green.svg" alt=""> <img src="https://img.shields.io/badge/Contributors-1-blue.svg" alt=""> <img src="https://img.shields.io/badge/Build-Passed-green.svg" alt=""> [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
+<img src="https://img.shields.io/badge/Beta%20Program-Open-green.svg" alt=""> <img src="https://img.shields.io/badge/Status-Release-green.svg" alt=""> <img src="https://img.shields.io/badge/Release-2020/07/30-green.svg" alt=""> <img src="https://img.shields.io/badge/Contributors-1-blue.svg" alt=""> <img src="https://img.shields.io/badge/Build-Passed-green.svg" alt=""> [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
 
 <span style="text-align: justify;">An app to search for images made by NASA's mars rovers. It's also provide specifications of the rovers.</span>
 
@@ -15,6 +15,23 @@
 ## Beta state
 #### New features
 - Basic app
+
+## Latest Images <img src="https://img.shields.io/badge/Day%2030-brown.svg" alt="">
+<table><tr><td>
+  <img src="playstore/FinalPhoneEn_1.png" height=400px>
+</td></tr>
+ <tr><td>
+  <img src="playstore/FinalPhoneEn_2.png" height=400px>
+ </td><td>
+  <img src="playstore/FinalPhoneEn_3.png" height=400px>
+ </td></tr>
+  <tr><td>
+  <img src="playstore/FinalPhoneEn_4.png" height=400px>
+ </td>
+ <td>
+  <img src="playstore/FinalPhoneEn_5.png" height=400px>
+ </td></tr>
+</table>
 
 ## Beta program <img src="https://img.shields.io/badge/Open-green.svg" alt="">
 #### To aply:
@@ -224,3 +241,7 @@ whether future versions of the GNU Lesser General Public License shall
 apply, that proxy's public statement of acceptance of any version is
 permanent authorization for you to choose that version for the
 Library.
+
+##
+
+Screenshots by [__App Mockup__](https://app-mockup.com/)
