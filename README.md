@@ -16,7 +16,7 @@
 #### New features
 - Basic app
 
-## Latest Images <img src="https://img.shields.io/badge/Day%2030-brown.svg" alt="">
+## Latest Images
 <table><tr><td>
   <img src="playstore/FinalPhoneEn_1.png" height=400px>
 </td></tr>
