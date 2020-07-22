@@ -586,7 +586,7 @@ class _askOpportunity extends State<askOpportunity> {
                             '${getZero(_dateOpportunity.month)}/${getZero(_dateOpportunity.day)}/${_dateOpportunity.year}',
                             style: TextStyle(
                                 fontSize:
-                                    MediaQuery.of(context).size.width * .1,
+                                    MediaQuery.of(context).size.width * .09,
                                 color: Opportunitytimeformat == false
                                     ? Colors.white
                                     : Colors.black38,
@@ -612,7 +612,7 @@ class _askOpportunity extends State<askOpportunity> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize:
-                                    MediaQuery.of(context).size.width * .1,
+                                    MediaQuery.of(context).size.width * .09,
                                 color: Opportunitytimeformat == true
                                     ? Colors.white
                                     : Colors.black38),

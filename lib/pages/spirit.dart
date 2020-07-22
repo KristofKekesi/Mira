@@ -547,7 +547,7 @@ class _askSpirit extends State<askSpirit> {
                           Text(
                             '${getZero(_dateSpirit.month)}/${getZero(_dateSpirit.day)}/${_dateSpirit.year}',
                             style: TextStyle(
-                                fontSize: MediaQuery.of(context).size.width * .1,
+                                fontSize: MediaQuery.of(context).size.width * .09,
                                 color: Spirittimeformat == false
                                     ? Colors.white
                                     : Colors.black38,
@@ -570,7 +570,7 @@ class _askSpirit extends State<askSpirit> {
                             sol.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: MediaQuery.of(context).size.width * .1,
+                                fontSize: MediaQuery.of(context).size.width * .09,
                                 color: Spirittimeformat == true
                                     ? Colors.white
                                     : Colors.black38),

@@ -584,7 +584,7 @@ class _askSpirit extends State<askSpirit> {
                             '${getZero(_dateCuriosity.month)}/${getZero(_dateCuriosity.day)}/${_dateCuriosity.year}',
                             style: TextStyle(
                                 fontSize:
-                                    MediaQuery.of(context).size.width * .1,
+                                    MediaQuery.of(context).size.width * .09,
                                 color: Curiositytimeformat == false
                                     ? Colors.white
                                     : Colors.black38,
@@ -610,7 +610,7 @@ class _askSpirit extends State<askSpirit> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize:
-                                    MediaQuery.of(context).size.width * .1,
+                                    MediaQuery.of(context).size.width * .09,
                                 color: Curiositytimeformat == true
                                     ? Colors.white
                                     : Colors.black38),
