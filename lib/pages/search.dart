@@ -344,7 +344,7 @@ class _searchWindowState extends State<searchWindow> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * .07,
+        //toolbarHeight: MediaQuery.of(context).size.height * .07,
         leading: Tooltip(
           message: AppLocalizations.of(context).translate('back'),
           child: GestureDetector(

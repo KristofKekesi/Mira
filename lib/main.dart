@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:mira/localization.dart';
-import 'package:mira/pages/drawer.dart';
+import 'package:nasamira/localization.dart';
+import 'package:nasamira/pages/drawer.dart';
 
-import 'package:mira/pages/spirit.dart';
-import 'package:mira/pages/curiosity.dart';
-import 'package:mira/pages/opportunity.dart';
+import 'package:nasamira/pages/spirit.dart';
+import 'package:nasamira/pages/curiosity.dart';
+import 'package:nasamira/pages/opportunity.dart';
 
 import 'package:splashscreen/splashscreen.dart';
 

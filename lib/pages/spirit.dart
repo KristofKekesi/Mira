@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mira/localization.dart';
-import 'package:mira/pages/search.dart';
+import 'package:nasamira/localization.dart';
+import 'package:nasamira/pages/search.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 // ignore: non_constant_identifier_names
@@ -61,7 +61,7 @@ class setSpirit extends StatelessWidget {
     return new Scaffold(
         backgroundColor: Colors.white,
         appBar: new AppBar(
-          toolbarHeight: MediaQuery.of(context).size.height * .07,
+          //toolbarHeight: MediaQuery.of(context).size.height * .07,
           leading: Tooltip(
             message: AppLocalizations.of(context).translate('back'),
             child: GestureDetector(
@@ -137,12 +137,24 @@ class setSpirit extends StatelessWidget {
                         ),
                       ),
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child: Padding(
+                      child:  Padding(
                         padding: EdgeInsets.only(
-                            left: MediaQuery.of(context).size.width * .1,
-                            right: MediaQuery.of(context).size.width * .1,
-                            top: MediaQuery.of(context).size.width * .07,
-                            bottom: MediaQuery.of(context).size.width * .07),
+                            left: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                                2 *
+                                .04,
+                            right: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                                2 *
+                                .04,
+                            top: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                                2 *
+                                .02,
+                            bottom: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                                2 *
+                                .02),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -398,7 +410,7 @@ class _askSpirit extends State<askSpirit> {
     return new Scaffold(
       backgroundColor: Colors.white,
       appBar: new AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * .07,
+        //toolbarHeight: MediaQuery.of(context).size.height * .07,
         leading: Tooltip(
           message: AppLocalizations.of(context).translate('back'),
           child: GestureDetector(
@@ -484,10 +496,26 @@ class _askSpirit extends State<askSpirit> {
                                 2 *
                                 .04),),),
                     width: MediaQuery.of(context).size.width * 0.8,
-                    child: Padding(
+                    child:
+                    Padding(
                       padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width * .1, right: MediaQuery.of(context).size.width * .1, top: MediaQuery.of(context).size.width * .05, bottom: MediaQuery.of(context).size.width * .05),
-                      child: Column(
+                          left: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                              2 *
+                              .04,
+                          right: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                              2 *
+                              .04,
+                          top: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                              2 *
+                              .02,
+                          bottom: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                              2 *
+                              .02),
+    child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Row(

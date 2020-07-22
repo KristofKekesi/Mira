@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mira/localization.dart';
-import 'package:mira/pages/search.dart';
+import 'package:nasamira/localization.dart';
+import 'package:nasamira/pages/search.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 // ignore: non_constant_identifier_names
@@ -62,7 +62,7 @@ class setCuriosity extends StatelessWidget {
     return new Scaffold(
         backgroundColor: Colors.white,
         appBar: new AppBar(
-          toolbarHeight: MediaQuery.of(context).size.height * .07,
+          //toolbarHeight: MediaQuery.of(context).size.height * .07,
           leading: Tooltip(
             message: AppLocalizations.of(context).translate('back'),
             child: GestureDetector(
@@ -410,7 +410,7 @@ class _askSpirit extends State<askSpirit> {
     return new Scaffold(
       backgroundColor: Colors.white,
       appBar: new AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * .07,
+        //toolbarHeight: MediaQuery.of(context).size.height * .07,
         leading: Tooltip(
           message: AppLocalizations.of(context).translate('back'),
           child: GestureDetector(

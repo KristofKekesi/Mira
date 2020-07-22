@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:mira/localization.dart';
+import 'package:nasamira/localization.dart';
 
 // ignore: non_constant_identifier_names
 String Capitalizate(input) {

@@ -1,6 +1,7 @@
-name: mira
+name: nasamira
 description: A new Flutter application.
 
+publish_to: 'none'
 version: 0.1.0+1
 
 environment:
@@ -28,5 +29,5 @@ flutter:
   uses-material-design: true
 
   assets:
-  - lib/images/
-  - lib/
+    - lib/images/
+    - lib/
