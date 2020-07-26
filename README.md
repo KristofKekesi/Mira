@@ -5,16 +5,24 @@
   NASA Mira
 </h1>
 
-<img src="https://img.shields.io/badge/Beta%20Program-Open-green.svg" alt=""> <img src="https://img.shields.io/badge/Status-Release-green.svg" alt=""> <img src="https://img.shields.io/badge/Release-2020/07/30-green.svg" alt=""> <img src="https://img.shields.io/badge/Contributors-1-blue.svg" alt=""> <img src="https://img.shields.io/badge/Build-Passed-green.svg" alt=""> [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
+<img src="https://img.shields.io/badge/Beta%20Program-Open-green.svg" alt=""> <img src="https://img.shields.io/badge/Status-Release-green.svg" alt=""> <img src="https://img.shields.io/badge/Release-2020/07/26-green.svg" alt=""> <img src="https://img.shields.io/badge/Contributors-1-blue.svg" alt=""> <img src="https://img.shields.io/badge/Build-Passed-green.svg" alt=""> [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
 
 <span style="text-align: justify;">View the surface of the Mars with images made by NASA's rovers. An app to search for images made by NASA's mars rovers. It's also provide specifications of the rovers.</span>
 
 ## State <img src="https://img.shields.io/badge/Programming-yellow.svg" alt="">
 <img src="images/state.png">
 
+## Download <img src="https://img.shields.io/badge/Play%20Store-green.svg" alt="">
+Latest release: __0.2.0__
+
+<a href='https://play.google.com/store/apps/details?id=com.kristofkekesi.nasamira&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+## State <img src="https://img.shields.io/badge/Release-green.svg" alt="">
+<img src="img/state.png">
+
 ## Beta state
 #### New features
-- Basic app
+- Added Sojourner rover
+- Added Perseverance rover
 
 ## Latest Images
 <table><tr><td>
