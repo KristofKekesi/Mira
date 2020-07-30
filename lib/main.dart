@@ -5,6 +5,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:nasamira/localization.dart';
 import 'package:nasamira/pages/drawer.dart';
+import 'package:nasamira/pages/perseverance.dart';
+import 'package:nasamira/pages/rovers.dart';
+import 'package:nasamira/pages/sojourner.dart';
+import 'package:nasamira/pages/ingenuity.dart';
 
 import 'package:nasamira/pages/spirit.dart';
 import 'package:nasamira/pages/curiosity.dart';
@@ -54,14 +58,13 @@ class Splash extends StatelessWidget {
 void main() => runApp(Mira());
 
 class Mira extends StatefulWidget {
-
   @override
   _MiraState createState() => _MiraState();
 }
 
 class _MiraState extends State<Mira> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,
@@ -117,7 +120,11 @@ class Body extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.width * .05, left: (MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .04),
+                      top: MediaQuery.of(context).size.width * .05,
+                      left: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .04),
                   child: Container(
                     child: Align(
                       alignment: Alignment.topLeft,
@@ -139,14 +146,18 @@ class Body extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.all(
-                      Radius.circular((MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .04),
+                      Radius.circular((MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .04),
                     ),
                   ),
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * .1),
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * .1),
                         child: Image.asset(
                           'lib/images/home_mira_logo.png',
                           width: MediaQuery.of(context).size.width * .5,
@@ -168,21 +179,24 @@ class Body extends StatelessWidget {
                             width: MediaQuery.of(context).size.width * .4,
                             child: Center(
                               child: Padding(
-                              padding: EdgeInsets.only(
-                                  top: MediaQuery.of(context).size.height * .01,
-                                  bottom: MediaQuery.of(context).size.height * .01),
-                              child: Text(
-                            AppLocalizations.of(context)
-                                .translate('mainCredits'),
-                            style: TextStyle(
-                              fontSize: MediaQuery.of(context).size.width * .05,
-                              color: Colors.deepOrange,
-                              fontWeight: FontWeight.bold,
+                                padding: EdgeInsets.only(
+                                    top: MediaQuery.of(context).size.height *
+                                        .01,
+                                    bottom: MediaQuery.of(context).size.height *
+                                        .01),
+                                child: Text(
+                                  AppLocalizations.of(context)
+                                      .translate('mainCredits'),
+                                  style: TextStyle(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width * .05,
+                                    color: Colors.deepOrange,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                          ),
-                          ),
-    ),
                         ),
                       ),
                       Padding(
@@ -214,7 +228,11 @@ class Body extends StatelessWidget {
                       image: AssetImage('lib/images/background.jpg'),
                       fit: BoxFit.cover,
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular((MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .04))),
+                    borderRadius: BorderRadius.all(Radius.circular(
+                        (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                            2 *
+                            .04))),
                 width: MediaQuery.of(context).size.width * .8,
                 child: GestureDetector(
                   onTap: () {
@@ -222,54 +240,255 @@ class Body extends StatelessWidget {
                       title: Text(
                         AppLocalizations.of(context)
                             .translate('vehicleMenuTitle'),
-                        style: TextStyle(fontSize: MediaQuery.of(context).size.width * .09, color: Colors.black54),
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * .09,
+                            color: Colors.black54),
                       ),
                       message: Text(
                         AppLocalizations.of(context)
                             .translate('vehicleMenuSub'),
-                        style: TextStyle(fontSize: MediaQuery.of(context).size.width * .07, color: Colors.black54),
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * .07,
+                            color: Colors.black54),
                       ),
                       actions: <Widget>[
                         CupertinoActionSheetAction(
-                          child: Text('Curiosity', style: TextStyle(fontSize: MediaQuery.of(context).size.width * .05, color: Colors.black54),),
+                          child: Text(
+                            'Mars 2020 Ingenuity',
+                            style: TextStyle(
+                                fontSize:
+                                MediaQuery.of(context).size.width * .05,
+                                color: Colors.black54),
+                          ),
                           onPressed: () {
                             Navigator.of(context).pop();
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => setCuriosity(),
-                              ),
+                                  builder: (context) => basicRoverSpec(
+                                    appbarContentSize: .05,
+                                    full_name: nameIngenuity,
+                                    shrt_name: nickIngenuity,
+                                    type: typeIngenuity,
+                                    launch_y: launchIngenuity_y,
+                                    launch_m: launchIngenuity_m,
+                                    launch_d: launchIngenuity_d,
+                                    arrive_y: arriveIngenuity_y,
+                                    arrive_m: arriveIngenuity_m,
+                                    arrive_d: arriveIngenuity_d,
+                                    lc_y: lcIngenuity_y,
+                                    lc_m: lcIngenuity_m,
+                                    lc_d: lcIngenuity_d,
+                                    end_y: endIngenuity_y,
+                                    end_m: endIngenuity_m,
+                                    end_d: endIngenuity_d,
+                                    operator: operatorIngenuity,
+                                    manufacturer: manufacturerIngenuity,
+                                    isAction: false,
+                                    action: null,
+                                  )),
                             );
                           },
                         ),
                         CupertinoActionSheetAction(
-                          child: Text('MER-B Opportunity', style: TextStyle(fontSize: MediaQuery.of(context).size.width * .05, color: Colors.black54),),
+                          child: Text(
+                            'Mars 2020 Perseverance',
+                            style: TextStyle(
+                                fontSize:
+                                MediaQuery.of(context).size.width * .05,
+                                color: Colors.black54),
+                          ),
                           onPressed: () {
                             Navigator.of(context).pop();
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => setOpportunity(),
-                              ),
+                                  builder: (context) => basicRoverSpec(
+                                    appbarContentSize: .05,
+                                    full_name: namePerseverance,
+                                    shrt_name: nickPerseverance,
+                                    type: typePerseverance,
+                                    launch_y: launchPerseverance_y,
+                                    launch_m: launchPerseverance_m,
+                                    launch_d: launchPerseverance_d,
+                                    arrive_y: arrivePerseverance_y,
+                                    arrive_m: arrivePerseverance_m,
+                                    arrive_d: arrivePerseverance_d,
+                                    lc_y: lcPerseverance_y,
+                                    lc_m: lcPerseverance_m,
+                                    lc_d: lcPerseverance_d,
+                                    end_y: endPerseverance_y,
+                                    end_m: endPerseverance_m,
+                                    end_d: endPerseverance_d,
+                                    operator: operatorPerseverance,
+                                    manufacturer: manufacturerPerseverance,
+                                    isAction: false,
+                                    action: null,
+                                  )),
                             );
                           },
                         ),
                         CupertinoActionSheetAction(
-                          child: Text('MER-A Spirit', style: TextStyle(fontSize: MediaQuery.of(context).size.width * .05, color: Colors.black54),),
+                          child: Text(
+                            'Curiosity',
+                            style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width * .05,
+                                color: Colors.black54),
+                          ),
                           onPressed: () {
                             Navigator.of(context).pop();
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => setSpirit(),
-                              ),
+                                  builder: (context) => basicRoverSpec(
+                                        appbarContentSize: .07,
+                                        full_name: nameCuriosity,
+                                        shrt_name: nickCuriosity,
+                                        type: typeCuriosity,
+                                        launch_y: launchCuriosity_y,
+                                        launch_m: launchCuriosity_m,
+                                        launch_d: launchCuriosity_d,
+                                        arrive_y: arriveCuriosity_y,
+                                        arrive_m: arriveCuriosity_m,
+                                        arrive_d: arriveCuriosity_d,
+                                        lc_y: lcCuriosity_y,
+                                        lc_m: lcCuriosity_m,
+                                        lc_d: lcCuriosity_d,
+                                        end_y: endCuriosity_y,
+                                        end_m: endCuriosity_m,
+                                        end_d: endCuriosity_d,
+                                        operator: operatorCuriosity,
+                                        manufacturer: manufacturerCuriosity,
+                                        isAction: true,
+                                        action: askCuriosity(),
+                                      )),
+                            );
+                          },
+                        ),
+                        CupertinoActionSheetAction(
+                          child: Text(
+                            'MER-B Opportunity',
+                            style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width * .05,
+                                color: Colors.black54),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => basicRoverSpec(
+                                        appbarContentSize: .05,
+                                        full_name: nameOpportunity,
+                                        shrt_name: nickOpportunity,
+                                        type: typeOpportunity,
+                                        launch_y: launchOpportunity_y,
+                                        launch_m: launchOpportunity_m,
+                                        launch_d: launchOpportunity_d,
+                                        arrive_y: arriveOpportunity_y,
+                                        arrive_m: arriveOpportunity_m,
+                                        arrive_d: arriveOpportunity_d,
+                                        lc_y: lcOpportunity_y,
+                                        lc_m: lcOpportunity_m,
+                                        lc_d: lcOpportunity_d,
+                                        end_y: endOpportunity_y,
+                                        end_m: endOpportunity_m,
+                                        end_d: endOpportunity_d,
+                                        operator: operatorOpportunity,
+                                        manufacturer: manufacturerOpportunity,
+                                        isAction: true,
+                                        action: askOpportunity(),
+                                      )),
+                            );
+                          },
+                        ),
+                        CupertinoActionSheetAction(
+                          child: Text(
+                            'MER-A Spirit',
+                            style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width * .05,
+                                color: Colors.black54),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => basicRoverSpec(
+                                        appbarContentSize: .07,
+                                        full_name: nameSpirit,
+                                        shrt_name: nickSpirit,
+                                        type: typeSpirit,
+                                        launch_y: launchSpirit_y,
+                                        launch_m: launchSpirit_m,
+                                        launch_d: launchSpirit_d,
+                                        arrive_y: arriveSpirit_y,
+                                        arrive_m: arriveSpirit_m,
+                                        arrive_d: arriveSpirit_d,
+                                        lc_y: lcSpirit_y,
+                                        lc_m: lcSpirit_m,
+                                        lc_d: lcSpirit_d,
+                                        end_y: endSpirit_y,
+                                        end_m: endSpirit_m,
+                                        end_d: endSpirit_d,
+                                        operator: operatorSpirit,
+                                        manufacturer: manufacturerSpirit,
+                                        isAction: true,
+                                        action: askSpirit(),
+                                      )),
+                            );
+                          },
+                        ),
+                        CupertinoActionSheetAction(
+                          child: Text(
+                            'Sojourner',
+                            style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width * .05,
+                                color: Colors.black54),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => basicRoverSpec(
+                                        appbarContentSize: .07,
+                                        full_name: nameSojourner,
+                                        shrt_name: nickSojourner,
+                                        type: typeSojourner,
+                                        launch_y: launchSojourner_y,
+                                        launch_m: launchSojourner_m,
+                                        launch_d: launchSojourner_d,
+                                        arrive_y: arriveSojourner_y,
+                                        arrive_m: arriveSojourner_m,
+                                        arrive_d: arriveSojourner_d,
+                                        lc_y: lcSojourner_y,
+                                        lc_m: lcSojourner_m,
+                                        lc_d: lcSojourner_d,
+                                        end_y: endSojourner_y,
+                                        end_m: endSojourner_m,
+                                        end_d: endSpirit_d,
+                                        operator: operatorSojourner,
+                                        manufacturer: manufacturerSojourner,
+                                        isAction: false,
+                                        action: null,
+                                      )),
                             );
                           },
                         ),
                       ],
                       cancelButton: CupertinoActionSheetAction(
-                        child: Text(AppLocalizations.of(context)
-                            .translate('vehicleMenuClose'), style: TextStyle(fontSize: MediaQuery.of(context).size.width * .05,),),
+                        child: Text(
+                          AppLocalizations.of(context)
+                              .translate('vehicleMenuClose'),
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * .05,
+                          ),
+                        ),
                         isDestructiveAction: true,
                         isDefaultAction: true,
                         onPressed: () {
@@ -292,8 +511,7 @@ class Body extends StatelessWidget {
                         child: Text(
                           AppLocalizations.of(context).translate('menu'),
                           style: TextStyle(
-                              fontSize:
-                              MediaQuery.of(context).size.width * .1,
+                              fontSize: MediaQuery.of(context).size.width * .1,
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
                         ),
@@ -308,7 +526,6 @@ class Body extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class Home extends StatelessWidget {

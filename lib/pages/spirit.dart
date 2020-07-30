@@ -9,7 +9,10 @@ int sol = 1000;
 // ignore: non_constant_identifier_names
 bool Spirittimeformat = false;
 
-String typeSpirit = 'Rover';
+String nameSpirit = 'MER-A Spirit';
+String nickSpirit = 'Spirit';
+
+String typeSpirit = 'rover';
 
 // ignore: non_constant_identifier_names
 int launchSpirit_y = 2003;
@@ -53,347 +56,6 @@ DateTime maxSpirit = DateTime.parse('${getZero(lcSpirit_y)}-${getZero(lcSpirit_m
 
 String operatorSpirit = 'NASA';
 String manufacturerSpirit = 'JPL';
-
-// ignore: camel_case_types
-class setSpirit extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        backgroundColor: Colors.white,
-        appBar: new AppBar(
-          //toolbarHeight: MediaQuery.of(context).size.height * .07,
-          leading: Tooltip(
-            message: AppLocalizations.of(context).translate('back'),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
-                size: MediaQuery.of(context).size.width * .06,
-              ),
-            ),
-          ),
-          flexibleSpace: Container(
-            decoration:
-            BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('lib/images/background.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          title: new Text(
-            'MER-A Spirit',
-            style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * .07,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-            ),
-          ),
-        ),
-        body: new SafeArea(
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              new Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: (MediaQuery.of(context).size.width +
-                                    MediaQuery.of(context).size.height) /
-                                2 *
-                                .04 +
-                            MediaQuery.of(context).size.width * .1),
-                    child: new Text(
-                      'SPIRIT',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: MediaQuery.of(context).size.width * .1,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * .1,
-                        right: MediaQuery.of(context).size.width * .1),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('lib/images/background.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: new BorderRadius.all(
-                          Radius.circular((MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
-                              2 *
-                              .04),
-                        ),
-                      ),
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child:  Padding(
-                        padding: EdgeInsets.only(
-                            left: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
-                                2 *
-                                .04,
-                            right: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
-                                2 *
-                                .04,
-                            top: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
-                                2 *
-                                .02,
-                            bottom: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
-                                2 *
-                                .02),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              typeSpirit,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .12,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  AppLocalizations.of(context)
-                                      .translate('roverSpecLaunch'),
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  getZero(launchSpirit_m) +
-                                      '/' +
-                                      getZero(launchSpirit_d) +
-                                      '/' +
-                                      getZero(launchSpirit_y),
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  AppLocalizations.of(context)
-                                      .translate('roverSpecArrive'),
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  getZero(arriveSpirit_m) +
-                                      '/' +
-                                      getZero(arriveSpirit_d) +
-                                      '/' +
-                                      getZero(arriveSpirit_y),
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  AppLocalizations.of(context)
-                                      .translate('roverSpecLastMin'),
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  getZero(lcSpirit_m) +
-                                      '/' +
-                                      getZero(lcSpirit_d) +
-                                      '/' +
-                                      getZero(lcSpirit_y),
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  AppLocalizations.of(context)
-                                      .translate('roverSpecEndMin'),
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  getZero(endSpirit_m) +
-                                      '/' +
-                                      getZero(endSpirit_d) +
-                                      '/' +
-                                      getZero(endSpirit_y),
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Text(
-                              "* " +
-                                  AppLocalizations.of(context)
-                                      .translate('roverSpecLast'),
-                              style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .045,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Text(
-                              "** " +
-                                  AppLocalizations.of(context)
-                                      .translate('roverSpecEnd'),
-                              style: TextStyle(
-                                fontSize:
-                                MediaQuery.of(context).size.width * .045,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top:
-                                      MediaQuery.of(context).size.height * .03),
-                              child: new Text(
-                                AppLocalizations.of(context)
-                                    .translate('roverSpecOperator'),
-                                style: TextStyle(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width * .05,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              operatorSpirit,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .1,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Text(
-                              AppLocalizations.of(context)
-                                  .translate('roverSpecManufacturer'),
-                              style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .05,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Text(
-                              manufacturerSpirit,
-                              style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .1,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top:
-                                      MediaQuery.of(context).size.height * .03),
-                              child: new Center(
-                                child: Tooltip(
-                                  message: AppLocalizations.of(context)
-                                      .translate('specButton'),
-                                  child: FlatButton(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(25),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => askSpirit(),
-                                        ),
-                                      );
-                                    },
-                                    color: Colors.white,
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          .8,
-                                      child: Center(
-                                        child: Text(
-                                          AppLocalizations.of(context)
-                                              .translate('roverSpecButton'),
-                                          style: TextStyle(
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                .05,
-                                            color: Colors.deepOrange,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ));
-  }
-}
 
 // ignore: camel_case_types
 class askSpirit extends StatefulWidget {
@@ -572,14 +234,76 @@ class _askSpirit extends State<askSpirit> {
                                     : Colors.black38),
                           ),
                           ),
-                          Text(
-                            '${getZero(_dateSpirit.month)}/${getZero(_dateSpirit.day)}/${_dateSpirit.year}',
-                            style: TextStyle(
-                                fontSize: MediaQuery.of(context).size.width * .09,
-                                color: Spirittimeformat == false
-                                    ? Colors.white
-                                    : Colors.black38,
-                                fontWeight: FontWeight.bold),
+                          Row(
+                            children: <Widget>[
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate('month'),
+                                child: Text(
+                                  '${getZero(_dateSpirit.month)}',
+                                  style: TextStyle(
+                                      fontSize:
+                                      MediaQuery.of(context).size.width *
+                                          .09,
+                                      color: Spirittimeformat == false
+                                          ? Colors.white
+                                          : Colors.black38,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Text(
+                                '/',
+                                style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context).size.width *
+                                        .09,
+                                    color: Spirittimeformat == false
+                                        ? Colors.white
+                                        : Colors.black38,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate('day'),
+                                child: Text(
+                                  '${getZero(_dateSpirit.day)}',
+                                  style: TextStyle(
+                                      fontSize:
+                                      MediaQuery.of(context).size.width *
+                                          .09,
+                                      color: Spirittimeformat == false
+                                          ? Colors.white
+                                          : Colors.black38,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Text(
+                                '/',
+                                style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context).size.width *
+                                        .09,
+                                    color: Spirittimeformat == false
+                                        ? Colors.white
+                                        : Colors.black38,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate('year'),
+                                child: Text(
+                                  '${_dateSpirit.year}',
+                                  style: TextStyle(
+                                      fontSize:
+                                      MediaQuery.of(context).size.width *
+                                          .09,
+                                      color: Spirittimeformat == false
+                                          ? Colors.white
+                                          : Colors.black38,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .03),
