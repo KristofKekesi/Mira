@@ -2,7 +2,7 @@ name: nasamira
 description: View the surface of the Mars with images made by NASA's rovers.
 
 publish_to: 'none'
-version: 1.1.0+5
+version: 1.1.1+6
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

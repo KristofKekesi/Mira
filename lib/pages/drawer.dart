@@ -15,6 +15,20 @@ class customDrawer extends StatelessWidget {
     }
   }
 
+  String coverImg() {
+    String output;
+    var current = new DateTime.now();
+
+    print(current.hour);
+    if (current.hour >= 6 && current.hour < 20 ) {
+      output = 'lib/images/cover_day.jpg';
+    } else {
+      output = 'lib/images/cover_night.jpg';
+    }
+
+    return output;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,9 +36,22 @@ class customDrawer extends StatelessWidget {
       child: Drawer(
         child: ListView(
           children: <Widget>[
+            Container(
+              width: MediaQuery.of(context).size.width * .75,
+              height: (MediaQuery.of(context).size.width * .75) * .40,
+              child: DrawerHeader(
+                child: null,
+                margin: EdgeInsets.zero,
+                padding: EdgeInsets.zero,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(coverImg()),
+                        fit: BoxFit.fitWidth)),
+              ),
+            ),
             Padding(
               padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * .03),
+                  top: MediaQuery.of(context).size.height * .01),
               child: GestureDetector(
                 onTap: () {
                   _launchURL(
@@ -112,7 +139,7 @@ class customDrawer extends StatelessWidget {
 void autoAboutDialog(context) {
   showAboutDialog(
       context: context,
-      applicationVersion: '1.1.0',
+      applicationVersion: '1.1.1',
       applicationName: 'NASA Mira',
       applicationLegalese: 'Kristóf Kékesi',
       applicationIcon: Image.asset(
