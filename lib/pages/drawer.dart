@@ -20,7 +20,7 @@ class customDrawer extends StatelessWidget {
     var current = new DateTime.now();
 
     print(current.hour);
-    if (current.hour >= 6 && current.hour < 20 ) {
+    if (current.hour >= 6 && current.hour < 20) {
       output = 'lib/images/cover_day.jpg';
     } else {
       output = 'lib/images/cover_night.jpg';
@@ -45,8 +45,7 @@ class customDrawer extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(coverImg()),
-                        fit: BoxFit.fitWidth)),
+                        image: AssetImage(coverImg()), fit: BoxFit.fitWidth)),
               ),
             ),
             Padding(
@@ -55,16 +54,34 @@ class customDrawer extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   _launchURL(
-                      'https://github.com/KristofKekesi/NASA-Mira/blob/master/README.md#contributors-');
+                      'https://www.patreon.com/KristofKekesi');
                 },
                 child: ListTile(
                   title: Text(
-                    AppLocalizations.of(context).translate('contributors'),
+                    AppLocalizations.of(context).translate('support'),
                     style: TextStyle(
                         letterSpacing: 2,
                         fontWeight: FontWeight.bold,
                         fontSize: MediaQuery.of(context).size.width * .07),
                   ),
+                ),
+              ),
+            ),
+            Divider(
+              thickness: MediaQuery.of(context).size.height * .005,
+            ),
+            GestureDetector(
+              onTap: () {
+                _launchURL(
+                    'https://github.com/KristofKekesi/NASA-Mira/blob/master/README.md#contributors-');
+              },
+              child: ListTile(
+                title: Text(
+                  AppLocalizations.of(context).translate('contributors'),
+                  style: TextStyle(
+                      letterSpacing: 2,
+                      fontWeight: FontWeight.bold,
+                      fontSize: MediaQuery.of(context).size.width * .07),
                 ),
               ),
             ),
@@ -139,7 +156,7 @@ class customDrawer extends StatelessWidget {
 void autoAboutDialog(context) {
   showAboutDialog(
       context: context,
-      applicationVersion: '1.1.1',
+      applicationVersion: '1.1.2',
       applicationName: 'NASA Mira',
       applicationLegalese: 'Kristóf Kékesi',
       applicationIcon: Image.asset(
