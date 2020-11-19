@@ -19,7 +19,6 @@ class customDrawer extends StatelessWidget {
     String output;
     var current = new DateTime.now();
 
-    print(current.hour);
     if (current.hour >= 6 && current.hour < 20) {
       output = 'lib/images/cover_day.jpg';
     } else {
@@ -34,7 +33,10 @@ class customDrawer extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * .75,
       child: Drawer(
-        child: ListView(
+        child: NotificationListener<OverscrollIndicatorNotification>(
+      onNotification: (OverscrollIndicatorNotification overscroll) {
+      overscroll.disallowGlow();
+      },child: ListView(
           children: <Widget>[
             Container(
               width: MediaQuery.of(context).size.width * .75,
@@ -54,34 +56,16 @@ class customDrawer extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   _launchURL(
-                      'https://www.patreon.com/KristofKekesi');
+                      'https://github.com/KristofKekesi/NASA-Mira/blob/master/README.md#contributors-');
                 },
                 child: ListTile(
                   title: Text(
-                    AppLocalizations.of(context).translate('support'),
+                    AppLocalizations.of(context).translate('contributors'),
                     style: TextStyle(
                         letterSpacing: 2,
                         fontWeight: FontWeight.bold,
                         fontSize: MediaQuery.of(context).size.width * .07),
                   ),
-                ),
-              ),
-            ),
-            Divider(
-              thickness: MediaQuery.of(context).size.height * .005,
-            ),
-            GestureDetector(
-              onTap: () {
-                _launchURL(
-                    'https://github.com/KristofKekesi/NASA-Mira/blob/master/README.md#contributors-');
-              },
-              child: ListTile(
-                title: Text(
-                  AppLocalizations.of(context).translate('contributors'),
-                  style: TextStyle(
-                      letterSpacing: 2,
-                      fontWeight: FontWeight.bold,
-                      fontSize: MediaQuery.of(context).size.width * .07),
                 ),
               ),
             ),
@@ -148,6 +132,7 @@ class customDrawer extends StatelessWidget {
             ),
           ],
         ),
+      ),
       ),
     );
   }

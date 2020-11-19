@@ -116,6 +116,7 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
+            Container(),
             Column(
               children: <Widget>[
                 Padding(

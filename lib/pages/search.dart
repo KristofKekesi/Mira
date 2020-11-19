@@ -38,7 +38,10 @@ FutureBuilder _Data(url) {
             ],
           );
         } else {
-          return ListView.builder(
+          return NotificationListener<OverscrollIndicatorNotification>(
+              onNotification: (OverscrollIndicatorNotification overscroll) {
+                overscroll.disallowGlow();
+              },child:ListView.builder(
             itemCount: data.length,
             itemBuilder: (context, index) {
 
@@ -274,7 +277,7 @@ FutureBuilder _Data(url) {
                 ),
               );
             },
-
+          ),
           );
         }
       } else if (snapshot.hasError) {
