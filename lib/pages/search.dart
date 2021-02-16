@@ -258,7 +258,7 @@ FutureBuilder _Data(url) {
                                         ),
                                   );
                                 },
-                                child: Image(image: AssetImage('lib/images/more.png'),
+                                child: Tooltip(message: AppLocalizations.of(context).translate("more"), child: Image(image: AssetImage('lib/images/more.png'),
                                 width: MediaQuery
                                     .of(context)
                                     .size
@@ -267,7 +267,7 @@ FutureBuilder _Data(url) {
                                         .of(context)
                                         .size
                                         .width * .07,),
-                              )
+                              ),),
                             ],
                           ),
                         ),
