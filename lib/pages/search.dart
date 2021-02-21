@@ -139,7 +139,7 @@ FutureBuilder _Data(url) {
                               Text(
                                 data[index]["rover"]["name"] +
                                     ' - ' +
-                                    data[index]["rover"]["id"].toString(),
+                                    data[index]["id"].toString(),
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize:
@@ -180,7 +180,7 @@ FutureBuilder _Data(url) {
                                                           .size
                                                           .width * .05),),
                                                   Text(
-                                                    data[index].id.toString(),
+                                                    data[index]["id"].toString(),
                                                     style: TextStyle(
                                                         fontSize: MediaQuery
                                                             .of(context)
@@ -199,7 +199,7 @@ FutureBuilder _Data(url) {
                                                             .size
                                                             .width * .05),),
                                                   Tooltip(
-                                                    message: data[index].camera,
+                                                    message: data[index]["camera"]["name"],
                                                     child: Text(data[index]["camera"]["name"],
                                                       style: TextStyle(
                                                           fontSize: MediaQuery
