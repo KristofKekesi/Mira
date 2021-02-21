@@ -1,17 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
-import '../models/model.dart';
-import '../controllers/network_helper.dart';
 import '../localization.dart';
+
+_fetchAPI(url) async {
+  Dio dio = new Dio();
+  dio.options.connectTimeout = 5000;
+  dio.options.receiveTimeout = 30000;
+  Response response = await dio.get(url);
+
+  return response;
+}
 
 // ignore: non_constant_identifier_names
 FutureBuilder _Data(url) {
-  return FutureBuilder<List<Data>>(
-    future: GetData().getData(url),
-    builder: (BuildContext context, AsyncSnapshot<List<Data>> snapshot) {
+  return FutureBuilder(
+    future: _fetchAPI(url),
+    builder: (context, snapshot) {
       if (snapshot.hasData) {
-        List<Data> data = snapshot.data;
+        List data = snapshot.data.data["photos"];
         if (data.length == 0) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -77,7 +85,7 @@ FutureBuilder _Data(url) {
                         decoration: BoxDecoration(
                             color: Colors.black,
                             image: DecorationImage(
-                              image: NetworkImage(data[index].src),
+                              image: NetworkImage(data[index]["img_src"]),
                             ),
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(16),
@@ -129,9 +137,9 @@ FutureBuilder _Data(url) {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Text(
-                                data[index].name +
+                                data[index]["rover"]["name"] +
                                     ' - ' +
-                                    data[index].id.toString(),
+                                    data[index]["rover"]["id"].toString(),
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize:
@@ -150,7 +158,7 @@ FutureBuilder _Data(url) {
                                         AlertDialog(
                                           titlePadding: EdgeInsets.all( MediaQuery.of(context).size.height * .05),
                                           contentPadding: EdgeInsets.only(bottom:  MediaQuery.of(context).size.height * .05, left:  MediaQuery.of(context).size.height * .05, right: MediaQuery.of(context).size.height * .05),
-                                          title: Text('${data[index].name}', style: TextStyle(
+                                          title: Text('${data[index]["rover"]["name"]}', style: TextStyle(
                                               fontSize: MediaQuery
                                                   .of(context)
                                                   .size
@@ -192,7 +200,7 @@ FutureBuilder _Data(url) {
                                                             .width * .05),),
                                                   Tooltip(
                                                     message: data[index].camera,
-                                                    child: Text(data[index].cam,
+                                                    child: Text(data[index]["camera"]["name"],
                                                       style: TextStyle(
                                                           fontSize: MediaQuery
                                                               .of(context)
@@ -215,7 +223,7 @@ FutureBuilder _Data(url) {
                                                             .05),
                                                   ),
                                                   Text(
-                                                    data[index].date,
+                                                    data[index]["earth_date"],
                                                     style: TextStyle(
                                                         fontSize:
                                                         MediaQuery
@@ -241,7 +249,7 @@ FutureBuilder _Data(url) {
                                                             .05),
                                                   ),
                                                   Text(
-                                                    data[index].sol.toString(),
+                                                    data[index]["sol"].toString(),
                                                     style: TextStyle(
                                                         fontSize:
                                                         MediaQuery

@@ -17,11 +17,11 @@ int launchIngenuity_m = 7;
 int launchIngenuity_d = 30;
 
 // ignore: non_constant_identifier_names
-int arriveIngenuity_y = 0;
+int arriveIngenuity_y = 2021;
 // ignore: non_constant_identifier_names
-int arriveIngenuity_m = 0;
+int arriveIngenuity_m = 2;
 // ignore: non_constant_identifier_names
-int arriveIngenuity_d = 0;
+int arriveIngenuity_d = 18;
 
 // ignore: non_constant_identifier_names
 int lcIngenuity_y = 0;
