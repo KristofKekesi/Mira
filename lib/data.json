@@ -1,0 +1,99 @@
+[
+	{
+		"mission": "Mars 2020",
+		"nick": "Ingenuity",
+		"type": "helicopter",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+		
+		"launch": {"year": "2020", "month": "7", "day": "30"},
+		"arrive": {"year": "2021", "month": "2", "day": "18"},
+		"connectionlost": null,
+		"end": null,
+		
+		"api-enabled": false,
+		"url": null
+	},
+	{
+		"mission": "Mars 2020",
+		"nick": "Perseverance",
+		"type": "rover",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+		
+		"launch": {"year": "2020", "month": "7", "day": "30"},
+		"arrive": {"year": "2021", "month": "2", "day": "18"},
+		"connectionlost": null,
+		"end": null,
+		
+		"api-enabled": false,
+		"url": null
+	},
+	{
+		"mission": null,
+		"nick": "Curiosity",
+		"type": "rover",
+		"operator": [{"name": "NASA"}],
+		"manufacturer": [{"name": "JPL"}, {"name": "Boeing"}, {"name": "Lockheeed Martin"}],
+		
+		"launch": {"year": "2011", "month": "11", "day": "26"},
+		"arrive": {"year": "2012", "month": "8", "day": "6"},
+		"connectionlost": null,
+		"end": null,
+		
+		"default": {"year": "2019", "month": "6", "day": "13"},
+		
+		"api-enabled": true,
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/"
+	},
+	{
+		"mission": "MER-B",
+		"nick": "Opportunity",
+		"type": "rover",
+		"operator": [{"name": "NASA"}],
+		"manufacturer": [{"name": "JPL"}],
+		
+		"launch": {"year": "2003", "month": "7", "day": "7"},
+		"arrive": {"year": "2004", "month": "1", "day": "25"},
+		"connectionlost": {"year": "2018", "month": "6", "day": "10"},
+		"end": {"year": "2019", "month": "2", "day": "13"},
+		
+		"default": {"year": "2017", "month": "3", "day": "13"},
+		
+		"api-enabled": true,
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/"
+	},
+	{
+		"mission": "MER-A",
+		"nick": "Spirit",
+		"type": "rover",
+		"operator": [{"name": "NASA"}],
+		"manufacturer": [{"name": "JPL"}],
+		
+		"launch": {"year": "2003", "month": "6", "day": "10"},
+		"arrive": {"year": "2004", "month": "1", "day": "4"},
+		"connectionlost": {"year": "2010", "month": "3", "day": "22"},
+		"end": {"year": "2011", "month": "5", "day": "25"},
+		
+		"default": {"year": "2004", "month": "4", "day": "5"},
+		
+		"api-enabled": true,
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/"
+	}
+	,
+	{
+		"mission": null,
+		"nick": "Sojourner",
+		"type": "helicopter",
+		"operator": [{"name": "NASA"}],
+		"manufacturer": "JPL",
+		
+		"launch": {"year": "1996", "month": "12", "day": "6"},
+		"arrive": {"year": "1997", "month": "7", "day": "4"},
+		"connectionlost": {"year": "1997", "month": "9", "day": "27"},
+		"end": {"year": "1997", "month": "9", "day": "27"},
+		
+		"api-enabled": false,
+		"url": null
+	}
+]
