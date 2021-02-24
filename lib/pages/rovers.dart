@@ -5,7 +5,7 @@ import 'package:nasamira/localization.dart';
 
 String getZero(input, length) {
   if (input == 0) {
-    return '-' * length;
+    return '─' * (length ~/ 2);
   } else if (input < 10) {
     return '0' + input.toString();
   } else {
@@ -59,24 +59,42 @@ class basicRoverSpec extends StatelessWidget {
   final action;
 
   // ignore: non_constant_identifier_names
-  const basicRoverSpec({Key key, this.type, this.launch_y, this.launch_m, this.launch_d, this.arrive_y, this.arrive_m, this.arrive_d, this.lc_y, this.lc_m, this.lc_d, this.end_y, this.end_m, this.end_d, this.operator, this.manufacturer, this.action, this.full_name, this.shrt_name, this.appbarContentSize, this.isAction}) : super(key: key);
+  const basicRoverSpec(
+      {Key key,
+      this.type,
+      this.launch_y,
+      this.launch_m,
+      this.launch_d,
+      this.arrive_y,
+      this.arrive_m,
+      this.arrive_d,
+      this.lc_y,
+      this.lc_m,
+      this.lc_d,
+      this.end_y,
+      this.end_m,
+      this.end_d,
+      this.operator,
+      this.manufacturer,
+      this.action,
+      this.full_name,
+      this.shrt_name,
+      this.appbarContentSize,
+      this.isAction})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Widget actionWidget;
     if (isAction == true) {
       actionWidget = Padding(
-        padding: EdgeInsets.only(
-            top:
-            MediaQuery.of(context).size.height * .03),
+        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .03),
         child: new Center(
           child: Tooltip(
-            message: AppLocalizations.of(context)
-                .translate('specButton'),
+            message: AppLocalizations.of(context).translate('specButton'),
             child: FlatButton(
               shape: RoundedRectangleBorder(
-                borderRadius:
-                new BorderRadius.circular(25),
+                borderRadius: new BorderRadius.circular(25),
               ),
               onPressed: () {
                 Navigator.push(
@@ -88,17 +106,12 @@ class basicRoverSpec extends StatelessWidget {
               },
               color: Colors.white,
               child: Container(
-                width: MediaQuery.of(context).size.width *
-                    .8,
+                width: MediaQuery.of(context).size.width * .8,
                 child: Center(
                   child: Text(
-                    AppLocalizations.of(context)
-                        .translate('roverSpecButton'),
+                    AppLocalizations.of(context).translate('roverSpecButton'),
                     style: TextStyle(
-                      fontSize: MediaQuery.of(context)
-                          .size
-                          .width *
-                          .05,
+                      fontSize: MediaQuery.of(context).size.width * .05,
                       color: Colors.deepOrange,
                       fontWeight: FontWeight.bold,
                     ),
@@ -131,8 +144,7 @@ class basicRoverSpec extends StatelessWidget {
             ),
           ),
           flexibleSpace: Container(
-            decoration:
-            BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('lib/images/background.jpg'),
                 fit: BoxFit.cover,
@@ -161,9 +173,9 @@ class basicRoverSpec extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(
                         left: (MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
-                            2 *
-                            .04 +
+                                    MediaQuery.of(context).size.height) /
+                                2 *
+                                .04 +
                             MediaQuery.of(context).size.width * .1),
                     child: new Text(
                       shrt_name,
@@ -186,28 +198,28 @@ class basicRoverSpec extends StatelessWidget {
                         ),
                         borderRadius: new BorderRadius.all(
                           Radius.circular((MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
+                                  MediaQuery.of(context).size.height) /
                               2 *
                               .04),
                         ),
                       ),
                       width: MediaQuery.of(context).size.width * 0.8,
-                      child:  Padding(
+                      child: Padding(
                         padding: EdgeInsets.only(
                             left: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
+                                    MediaQuery.of(context).size.height) /
                                 2 *
                                 .04,
                             right: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
+                                    MediaQuery.of(context).size.height) /
                                 2 *
                                 .04,
                             top: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
+                                    MediaQuery.of(context).size.height) /
                                 2 *
                                 .02,
                             bottom: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
+                                    MediaQuery.of(context).size.height) /
                                 2 *
                                 .02),
                         child: Column(
@@ -218,7 +230,7 @@ class basicRoverSpec extends StatelessWidget {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize:
-                                MediaQuery.of(context).size.width * .12,
+                                    MediaQuery.of(context).size.width * .12,
                                 color: Colors.white,
                               ),
                             ),
@@ -230,8 +242,8 @@ class basicRoverSpec extends StatelessWidget {
                                       .translate('roverSpecLaunch'),
                                   style: TextStyle(
                                     fontSize:
-                                    MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
+                                        MediaQuery.of(context).size.width * .05,
+                                    color: Colors.white70,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -243,8 +255,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(launch_m, 2)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -253,7 +267,8 @@ class basicRoverSpec extends StatelessWidget {
                                       '/',
                                       style: TextStyle(
                                         fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                            MediaQuery.of(context).size.width *
+                                                .05,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -263,8 +278,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(launch_d, 2)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -273,7 +290,8 @@ class basicRoverSpec extends StatelessWidget {
                                       '/',
                                       style: TextStyle(
                                         fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                            MediaQuery.of(context).size.width *
+                                                .05,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -283,8 +301,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(launch_y, 4)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -301,11 +321,12 @@ class basicRoverSpec extends StatelessWidget {
                                       .translate('roverSpecArrive'),
                                   style: TextStyle(
                                     fontSize:
-                                    MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
+                                        MediaQuery.of(context).size.width * .05,
+                                    color: Colors.white70,
                                     fontWeight: FontWeight.bold,
                                   ),
-                                ),Row(
+                                ),
+                                Row(
                                   children: <Widget>[
                                     Tooltip(
                                       message: AppLocalizations.of(context)
@@ -313,8 +334,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(arrive_m, 2)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -323,7 +346,8 @@ class basicRoverSpec extends StatelessWidget {
                                       '/',
                                       style: TextStyle(
                                         fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                            MediaQuery.of(context).size.width *
+                                                .05,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -333,8 +357,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(arrive_d, 2)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -343,7 +369,8 @@ class basicRoverSpec extends StatelessWidget {
                                       '/',
                                       style: TextStyle(
                                         fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                            MediaQuery.of(context).size.width *
+                                                .05,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -353,8 +380,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(arrive_y, 4)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -371,8 +400,8 @@ class basicRoverSpec extends StatelessWidget {
                                       .translate('roverSpecLastMin'),
                                   style: TextStyle(
                                     fontSize:
-                                    MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
+                                        MediaQuery.of(context).size.width * .05,
+                                    color: Colors.white70,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -384,8 +413,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(lc_m, 2)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -394,7 +425,8 @@ class basicRoverSpec extends StatelessWidget {
                                       '/',
                                       style: TextStyle(
                                         fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                            MediaQuery.of(context).size.width *
+                                                .05,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -404,8 +436,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(lc_d, 2)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -414,7 +448,8 @@ class basicRoverSpec extends StatelessWidget {
                                       '/',
                                       style: TextStyle(
                                         fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                            MediaQuery.of(context).size.width *
+                                                .05,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -424,8 +459,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(lc_y, 4)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -442,8 +479,8 @@ class basicRoverSpec extends StatelessWidget {
                                       .translate('roverSpecEndMin'),
                                   style: TextStyle(
                                     fontSize:
-                                    MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
+                                        MediaQuery.of(context).size.width * .05,
+                                    color: Colors.white70,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -455,8 +492,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(end_m, 2)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -465,7 +504,8 @@ class basicRoverSpec extends StatelessWidget {
                                       '/',
                                       style: TextStyle(
                                         fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                            MediaQuery.of(context).size.width *
+                                                .05,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -475,8 +515,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(end_d, 2)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -485,7 +527,8 @@ class basicRoverSpec extends StatelessWidget {
                                       '/',
                                       style: TextStyle(
                                         fontSize:
-                                        MediaQuery.of(context).size.width * .05,
+                                            MediaQuery.of(context).size.width *
+                                                .05,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -495,8 +538,10 @@ class basicRoverSpec extends StatelessWidget {
                                       child: Text(
                                         '${getZero(end_y, 4)}',
                                         style: TextStyle(
-                                          fontSize:
-                                          MediaQuery.of(context).size.width * .05,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -511,8 +556,8 @@ class basicRoverSpec extends StatelessWidget {
                                       .translate('roverSpecLast'),
                               style: TextStyle(
                                 fontSize:
-                                MediaQuery.of(context).size.width * .045,
-                                color: Colors.white,
+                                    MediaQuery.of(context).size.width * .045,
+                                color: Colors.white70,
                               ),
                             ),
                             Text(
@@ -521,22 +566,22 @@ class basicRoverSpec extends StatelessWidget {
                                       .translate('roverSpecEnd'),
                               style: TextStyle(
                                 fontSize:
-                                MediaQuery.of(context).size.width * .045,
-                                color: Colors.white,
+                                    MediaQuery.of(context).size.width * .045,
+                                color: Colors.white70,
                               ),
                             ),
                             Padding(
                               padding: EdgeInsets.only(
                                   top:
-                                  MediaQuery.of(context).size.height * .03),
+                                      MediaQuery.of(context).size.height * .03),
                               child: new Text(
                                 AppLocalizations.of(context)
                                     .translate('roverSpecOperator'),
                                 style: TextStyle(
                                   fontSize:
-                                  MediaQuery.of(context).size.width * .05,
+                                      MediaQuery.of(context).size.width * .05,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                                  color: Colors.white70,
                                 ),
                               ),
                             ),
@@ -545,7 +590,7 @@ class basicRoverSpec extends StatelessWidget {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize:
-                                MediaQuery.of(context).size.width * .1,
+                                    MediaQuery.of(context).size.width * .1,
                                 color: Colors.white,
                               ),
                             ),
@@ -554,16 +599,16 @@ class basicRoverSpec extends StatelessWidget {
                                   .translate('roverSpecManufacturer'),
                               style: TextStyle(
                                 fontSize:
-                                MediaQuery.of(context).size.width * .05,
+                                    MediaQuery.of(context).size.width * .05,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: Colors.white70,
                               ),
                             ),
                             Text(
                               manufacturer,
                               style: TextStyle(
                                 fontSize:
-                                MediaQuery.of(context).size.width * .1,
+                                    MediaQuery.of(context).size.width * .1,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
