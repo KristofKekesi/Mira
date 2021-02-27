@@ -338,19 +338,19 @@ FutureBuilder _Data(url) {
 }
 
 // ignore: camel_case_types
-class searchWindow extends StatefulWidget {
+class SearchWindow extends StatefulWidget {
   final String url;
   final String date;
 
-  const searchWindow({Key key, this.url, this.date})
+  const SearchWindow({Key key, this.url, this.date})
       : super(key: key);
 
   @override
-  _searchWindowState createState() => _searchWindowState();
+  _SearchWindowState createState() => _SearchWindowState();
 }
 
 // ignore: camel_case_types
-class _searchWindowState extends State<searchWindow> {
+class _SearchWindowState extends State<SearchWindow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

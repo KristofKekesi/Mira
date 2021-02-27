@@ -14,7 +14,7 @@
   "vehicleMenuSub": "Select a vehicle!",
   "vehicleMenuClose": "Cancel",
   "rover": "Rover",
-  "copter": "Helicopter",
+  "helicopter": "Helicopter",
   "roverSpecLaunch": "Launch: ",
   "roverSpecArrive": "Arrive: ",
   "roverSpecLast": "Lost Connection",

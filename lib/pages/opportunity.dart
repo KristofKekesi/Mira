@@ -447,7 +447,7 @@ class _askOpportunity extends State<askOpportunity> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => searchWindow(
+                            builder: (context) => SearchWindow(
                                 url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=$sol&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
                                 date: '$sol sol')
                         ),
@@ -456,7 +456,7 @@ class _askOpportunity extends State<askOpportunity> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => searchWindow(
+                            builder: (context) => SearchWindow(
                                 url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?earth_date=${_dateOpportunity.year}-${_dateOpportunity.month}-${_dateOpportunity.day}&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
                                 date: '${getZero(_dateOpportunity.month)}/${getZero(_dateOpportunity.day)}/${_dateOpportunity.year}')
                         ),

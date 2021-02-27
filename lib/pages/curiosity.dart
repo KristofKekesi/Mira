@@ -462,7 +462,7 @@ class _askCuriosity extends State<askCuriosity> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => searchWindow(
+                            builder: (context) => SearchWindow(
                                 url:
                                     'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=$sol&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
                                 date: '$sol sol')),
@@ -471,7 +471,7 @@ class _askCuriosity extends State<askCuriosity> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => searchWindow(
+                            builder: (context) => SearchWindow(
                                 url:
                                     'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${_dateCuriosity.year}-${_dateCuriosity.month}-${_dateCuriosity.day}&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
                                 date:

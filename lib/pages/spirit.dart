@@ -421,7 +421,7 @@ class _askSpirit extends State<askSpirit> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => searchWindow(
+                            builder: (context) => SearchWindow(
                                 url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=$sol&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
                                 date: '$sol sol')
                         ),
@@ -430,7 +430,7 @@ class _askSpirit extends State<askSpirit> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => searchWindow(
+                            builder: (context) => SearchWindow(
                                 url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/photos?earth_date=${_dateSpirit.year}-${_dateSpirit.month}-${_dateSpirit.day}&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
                                 date: '${getZero(_dateSpirit.month)}/${getZero(_dateSpirit.day)}/${_dateSpirit.year}')
                         ),
