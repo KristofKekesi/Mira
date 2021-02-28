@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
+import 'package:nasamira/pass.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 _fetchAPI(url) async {
-  Dio dio = new Dio();
+  Dio dio = Dio();
   dio.options.connectTimeout = 5000;
   dio.options.receiveTimeout = 30000;
   Response response = await dio.get(url);
@@ -83,7 +84,7 @@ class _ApodWidgetState extends State<ApodWidget> {
 
     return FutureBuilder(
         future: _fetchAPI(
-            "https://api.nasa.gov/planetary/apod?api_key=hehe=true"),
+            "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true"),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             String media_type = snapshot.data.data["media_type"];
@@ -108,7 +109,7 @@ class _ApodWidgetState extends State<ApodWidget> {
                   color: Colors.black,
                   image: DecorationImage(
                     image: NetworkImage(displayUrl()),
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
                   borderRadius: BorderRadius.all(
                     Radius.circular((MediaQuery.of(context).size.width +

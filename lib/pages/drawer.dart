@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nasamira/widgets/localization.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:nasamira/localization.dart';
 
 // ignore: non_constant_identifier_names
 String Capitalizate(input) {
@@ -17,7 +17,7 @@ class customDrawer extends StatelessWidget {
 
   String coverImg() {
     String output;
-    var current = new DateTime.now();
+    var current = DateTime.now();
 
     if (current.hour >= 6 && current.hour < 20) {
       output = 'lib/images/cover_day.jpg';
@@ -109,7 +109,7 @@ class customDrawer extends StatelessWidget {
                 },
                 child: ListTile(
                     title: Text(
-                        AppLocalizations.of(context).translate('credits'),
+                        AppLocalizations.of(context).translate('moreinfo'),
                         style: TextStyle(
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold,
@@ -141,7 +141,7 @@ class customDrawer extends StatelessWidget {
 void autoAboutDialog(context) {
   showAboutDialog(
       context: context,
-      applicationVersion: '1.1.3',
+      applicationVersion: '2.0',
       applicationName: 'NASA Mira',
       applicationLegalese: 'Kristóf Kékesi',
       applicationIcon: Image.asset(

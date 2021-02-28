@@ -1,11 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:nasamira/datePicker.dart';
+import 'package:nasamira/widgets/localization.dart';
 
-import '../localization.dart';
+import 'datePicker.dart';
 
 class RoverSpecPage extends StatelessWidget {
-  final bool api_enabled;
+  final bool apiEnabled;
+  final String url;
   final String mission;
   final String nick;
   final String type;
@@ -14,10 +15,12 @@ class RoverSpecPage extends StatelessWidget {
 
   final launch;
   final arrive;
-  final connection_lost;
+  final connectionLost;
   final end;
 
-  const RoverSpecPage({Key key, this.api_enabled, this.mission, this.nick, this.type, this.launch, this.arrive, this.connection_lost, this.end, this.operator, this.manufacturer}) : super(key: key);
+  final defaultPosition;
+
+  const RoverSpecPage({Key key, this.apiEnabled, this.mission, this.nick, this.type, this.launch, this.arrive, this.connectionLost, this.end, this.operator, this.manufacturer, this.defaultPosition, this.url}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +42,9 @@ class RoverSpecPage extends StatelessWidget {
         launchM = "─";
         launchD = "─";
       } else {
-        launchY = launch["year"];
-        launchM = checkNull(int.parse(launch["month"]));
-        launchD = checkNull(int.parse(launch["day"]));
+        launchY = launch["year"].toString();
+        launchM = checkNull(launch["month"]);
+        launchD = checkNull(launch["day"]);
       }
     }
 
@@ -55,9 +58,9 @@ class RoverSpecPage extends StatelessWidget {
         arriveM = "─";
         arriveD = "─";
       } else {
-        arriveY = arrive["year"];
-        arriveM = checkNull(int.parse(arrive["month"]));
-        arriveD = checkNull(int.parse(arrive["day"]));
+        arriveY = arrive["year"].toString();
+        arriveM = checkNull(arrive["month"]);
+        arriveD = checkNull(arrive["day"]);
       }
     }
 
@@ -66,14 +69,14 @@ class RoverSpecPage extends StatelessWidget {
     String lcD;
 
     void getConnectionLostDate(){
-      if (connection_lost == null) {
+      if (connectionLost == null) {
         lcY = "──";
         lcM = "─";
         lcD = "─";
       } else {
-        lcY = connection_lost["year"];
-        lcM = checkNull(int.parse(connection_lost["month"]));
-        lcD = checkNull(int.parse(connection_lost["day"]));
+        lcY = connectionLost["year"].toString();
+        lcM = checkNull(connectionLost["month"]);
+        lcD = checkNull(connectionLost["day"]);
       }
     }
 
@@ -87,11 +90,9 @@ class RoverSpecPage extends StatelessWidget {
         endM = "─";
         endD = "─";
       } else {
-        endY = end["year"];
-        endM = end["month"];
-        endD = end["day"];
-        endM = checkNull(int.parse(end["month"]));
-        endD = checkNull(int.parse(end["day"]));
+        endY = end["year"].toString();
+        endM = checkNull(end["month"]);
+        endD = checkNull(end["day"]);
       }
     }
 
@@ -109,10 +110,10 @@ class RoverSpecPage extends StatelessWidget {
     }
 
     Widget actionWidget;
-    if (api_enabled  == true) {
+    if (apiEnabled  == true) {
       actionWidget = Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .03),
-        child: new Center(
+        child: Center(
           child: Tooltip(
             message: AppLocalizations.of(context).translate('specButton'),
             child: GestureDetector(
@@ -120,7 +121,14 @@ class RoverSpecPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DatePickerPage(),
+                    builder: (context) => DatePickerPage(
+                      url: url,
+                      arrive: arrive,
+                      connectionLost: connectionLost,
+                      defaultPosition: defaultPosition,
+                      mission: mission,
+                      nick: nick,
+                    ),
                   ),
                 );
               },
@@ -150,9 +158,9 @@ class RoverSpecPage extends StatelessWidget {
       actionWidget = Container();
     }
 
-    return new Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
-        appBar: new AppBar(
+        appBar: AppBar(
           //toolbarHeight: MediaQuery.of(context).size.height * .07,
           leading: Tooltip(
             message: AppLocalizations.of(context).translate('back'),
@@ -177,7 +185,7 @@ class RoverSpecPage extends StatelessWidget {
           ),
           backgroundColor: Colors.transparent,
           centerTitle: true,
-          title: new AutoSizeText(
+          title: AutoSizeText(
             _headerText(),
             minFontSize: 1,
             maxLines: 1,
@@ -188,12 +196,12 @@ class RoverSpecPage extends StatelessWidget {
             ),
           ),
         ),
-        body: new SafeArea(
-          child: new Column(
+        body: SafeArea(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              new Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
@@ -203,7 +211,7 @@ class RoverSpecPage extends StatelessWidget {
                             2 *
                             .04 +
                             MediaQuery.of(context).size.width * .1),
-                    child: new Text(
+                    child: Text(
                       nick,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -222,7 +230,7 @@ class RoverSpecPage extends StatelessWidget {
                           image: AssetImage('lib/images/background.jpg'),
                           fit: BoxFit.cover,
                         ),
-                        borderRadius: new BorderRadius.all(
+                        borderRadius: BorderRadius.all(
                           Radius.circular((MediaQuery.of(context).size.width +
                               MediaQuery.of(context).size.height) /
                               2 *
@@ -620,7 +628,7 @@ class RoverSpecPage extends StatelessWidget {
                               padding: EdgeInsets.only(
                                   top:
                                   MediaQuery.of(context).size.height * .03),
-                              child: new Text(
+                              child: Text(
                                 AppLocalizations.of(context)
                                     .translate('roverSpecOperator'),
                                 style: TextStyle(

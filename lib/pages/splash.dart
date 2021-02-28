@@ -1,11 +1,12 @@
 import 'dart:async';
-import 'main.dart';
 
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class Splash extends StatefulWidget {
   @override
-  _SplashState createState() => new _SplashState();
+  _SplashState createState() => _SplashState();
 }
 
 class _SplashState extends State<Splash> {
@@ -24,7 +25,7 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       body: Stack(fit: StackFit.expand, children: <Widget>[
         Container(
             decoration:  BoxDecoration( image: DecorationImage( image: AssetImage('lib/images/background.jpg'), fit: BoxFit.fill)),//color: Colors.deepOrangeAccent),

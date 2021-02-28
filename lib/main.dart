@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:nasamira/widgets/apod.dart';
+import 'package:nasamira/widgets/localization.dart';
+import 'package:nasamira/widgets/roverGrid.dart';
+import 'package:splashscreen/splashscreen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:nasamira/localization.dart';
-import 'package:nasamira/pages/drawer.dart';
-import 'package:nasamira/pages/perseverance.dart';
-import 'package:nasamira/pages/roverGrid.dart';
-import 'package:nasamira/pages/rovers.dart';
-import 'package:nasamira/pages/sojourner.dart';
-import 'package:nasamira/pages/ingenuity.dart';
-import 'package:nasamira/pages/spirit.dart';
-import 'package:nasamira/pages/curiosity.dart';
-import 'package:nasamira/pages/opportunity.dart';
-
-import 'package:splashscreen/splashscreen.dart';
-
-import 'apod.dart';
+import 'pages/drawer.dart';
 
 double getGrid(context) {
   return MediaQuery.of(context).size.width * .4 -
@@ -95,7 +86,7 @@ class _MiraState extends State<Mira> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.deepOrange,
       ),
       home: Splash(), //Home(),
     );

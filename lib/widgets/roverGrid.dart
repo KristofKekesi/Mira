@@ -11,7 +11,7 @@ double getGrid(context) {
 class RoverGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new FutureBuilder(
+    return FutureBuilder(
         future: DefaultAssetBundle.of(context).loadString('lib/data.json'),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -24,13 +24,16 @@ class RoverGrid extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => RoverSpecPage(
-                                api_enabled: data[index]["api-enabled"],
+                                apiEnabled: data[index]["api-enabled"],
+                                url: data[index]["url"],
                                 mission: data[index]["mission"],
                                 nick: data[index]["nick"],
                                 type: data[index]["type"],
                                 launch: data[index]["launch"],
                                 arrive: data[index]["arrive"],
-                                connection_lost: data[index]["connection-lost"],
+                                connectionLost: data[index]["connection-lost"],
+                                end: data[index]["end"],
+                                defaultPosition: data[index]["default"],
                                 operator: data[index]["operator"],
                                 manufacturer: data[index]["manufacturer"],
                               )),

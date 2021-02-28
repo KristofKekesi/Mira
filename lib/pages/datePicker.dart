@@ -1,80 +1,89 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nasamira/localization.dart';
 import 'package:nasamira/pages/search.dart';
-
+import 'package:nasamira/widgets/localization.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-// ignore: non_constant_identifier_names
-int sol = 1000;
-// ignore: non_constant_identifier_names
-bool Opportunitytimeformat = false;
+import '../pass.dart';
 
-String nameOpportunity = 'MER-B Opportunity';
-String nickOpportunity = 'Opportunity';
+class DatePickerPage extends StatefulWidget {
+  final String url;
+  final arrive;
+  final connectionLost;
+  final defaultPosition;
+  final String mission;
+  final String nick;
 
-String typeOpportunity = 'rover';
-
-// ignore: non_constant_identifier_names
-int launchOpportunity_y = 2003;
-// ignore: non_constant_identifier_names
-int launchOpportunity_m = 7;
-// ignore: non_constant_identifier_names
-int launchOpportunity_d = 7;
-
-// ignore: non_constant_identifier_names
-int arriveOpportunity_y = 2004;
-// ignore: non_constant_identifier_names
-int arriveOpportunity_m = 1;
-// ignore: non_constant_identifier_names
-int arriveOpportunity_d = 25;
-
-// ignore: non_constant_identifier_names
-int lcOpportunity_y = 2018;
-// ignore: non_constant_identifier_names
-int lcOpportunity_m = 6;
-// ignore: non_constant_identifier_names
-int lcOpportunity_d = 10;
-
-// ignore: non_constant_identifier_names
-int endOpportunity_y = 2019;
-// ignore: non_constant_identifier_names
-int endOpportunity_m = 2;
-// ignore: non_constant_identifier_names
-int endOpportunity_d = 13;
-
-String getZero(input) {
-  if (input < 10) {
-    return '0' + input.toString();
-  } else {
-    return input.toString();
-  }
-}
-
-DateTime arriveOpportunity = DateTime.parse(
-    '${getZero(arriveOpportunity_y)}-${getZero(arriveOpportunity_m)}-${getZero(arriveOpportunity_d)}');
-DateTime _dateOpportunity = DateTime.parse('2017-03-13');
-DateTime maxOpportunity = DateTime.parse(
-    '${getZero(lcOpportunity_y)}-${getZero(lcOpportunity_m)}-${getZero(lcOpportunity_d)}');
-
-String operatorOpportunity = 'NASA';
-String manufacturerOpportunity = 'JPL';
-
-// ignore: camel_case_types
-class askOpportunity extends StatefulWidget {
-  const askOpportunity({Key key}) : super(key: key);
+  const DatePickerPage({Key key, this.arrive, this.connectionLost, this.defaultPosition, this.mission, this.nick, this.url, }) : super(key: key);
 
   @override
-  _askOpportunity createState() => _askOpportunity();
+  _DatePickerPage createState() => _DatePickerPage(url, arrive, connectionLost, defaultPosition, mission, nick);
 }
 
 // ignore: camel_case_types
-class _askOpportunity extends State<askOpportunity> {
+class _DatePickerPage extends State<DatePickerPage> {
+  final String url;
+  final arrive;
+  final connectionLost;
+  final defaultPosition;
+  final String mission;
+  final String nick;
+
+  _DatePickerPage(this.url, this.arrive, this.connectionLost, this.defaultPosition, this.mission, this.nick);
+
+  String checkNull(int num) {
+    if (num < 10) {
+      return "0" + num.toString();
+    } else {
+      return num.toString();
+    }
+  }
+
+  bool timeFormat;
+  DateTime minDate;
+  DateTime date;
+  DateTime maxDate;
+  int sol;
+
+  @override
+  void initState() {
+    timeFormat = false;
+
+    minDate = DateTime.utc(
+        arrive["year"], arrive["month"], arrive["day"]);
+    date = DateTime.utc(
+        defaultPosition["year"], defaultPosition["month"],
+        defaultPosition["day"]);
+    if (connectionLost == null) {
+      maxDate = DateTime.now();
+    } else {
+      maxDate = DateTime.utc(
+          connectionLost["year"], connectionLost["month"],
+          connectionLost["day"]);
+    }
+    sol = 1000;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    void _changeValue(value) {
+      setState(
+              () => timeFormat = value);
+    }
+
+    String _headerText() {
+      if (mission != null) {
+        return mission + " " + nick;
+      } else {
+        return nick;
+      }
+    }
+
+    return Scaffold(
       backgroundColor: Colors.white,
-      appBar: new AppBar(
+      appBar: AppBar(
         //toolbarHeight: MediaQuery.of(context).size.height * .07,
         leading: Tooltip(
           message: AppLocalizations.of(context).translate('back'),
@@ -99,13 +108,15 @@ class _askOpportunity extends State<askOpportunity> {
         ),
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: new Text(
-          'MER-B Opportunity',
+        title: AutoSizeText(
+          _headerText(),
+          minFontSize: 1,
+          maxLines: 1,
           style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * .05,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-),
+            fontSize: MediaQuery.of(context).size.width * .07,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
       ),
       floatingActionButton: Container(
@@ -125,12 +136,12 @@ class _askOpportunity extends State<askOpportunity> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-      body: new SafeArea(
-        child: new Column(
+      body: SafeArea(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            new Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
@@ -138,11 +149,11 @@ class _askOpportunity extends State<askOpportunity> {
                       top: MediaQuery.of(context).size.height * .05,
                       left: MediaQuery.of(context).size.width * .1 +
                           (MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
+                              MediaQuery.of(context).size.height) /
                               2 *
                               .04),
-                  child: new Text(
-                    'OPPORTUNITY',
+                  child: Text(
+                    nick,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: MediaQuery.of(context).size.width * .1,
@@ -150,16 +161,16 @@ class _askOpportunity extends State<askOpportunity> {
                     ),
                   ),
                 ),
-                new Center(
-                  child: new Container(
-                    decoration: new BoxDecoration(
+                Center(
+                  child: Container(
+                    decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('lib/images/background.jpg'),
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: new BorderRadius.all(
+                      borderRadius: BorderRadius.all(
                         Radius.circular((MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
+                            MediaQuery.of(context).size.height) /
                             2 *
                             .04),
                       ),
@@ -196,8 +207,8 @@ class _askOpportunity extends State<askOpportunity> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Opportunitytimeformat == false
+                                    MediaQuery.of(context).size.width * .05,
+                                    color: timeFormat == false
                                         ? Colors.white
                                         : Colors.black38),
                               ),
@@ -205,25 +216,25 @@ class _askOpportunity extends State<askOpportunity> {
                                 message: AppLocalizations.of(context)
                                     .translate('timePicker'),
                                 child: Switch(
-                                  value: Opportunitytimeformat,
+                                  value: timeFormat,
                                   activeTrackColor: Colors.black38,
                                   inactiveTrackColor: Colors.black38,
                                   inactiveThumbColor: Colors.white,
                                   activeColor: Colors.white,
+                                  splashRadius: 0,
                                   onChanged: (bool value) {
-                                    setState(
-                                        () => Opportunitytimeformat = value);
+                                    _changeValue(value);
                                   },
                                 ),
-                              ),
+                                ),
                               Text(
                                 AppLocalizations.of(context)
                                     .translate('roverImgSearchSol'),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Opportunitytimeformat == true
+                                    MediaQuery.of(context).size.width * .05,
+                                    color: timeFormat == true
                                         ? Colors.white
                                         : Colors.black38),
                               ),
@@ -239,8 +250,8 @@ class _askOpportunity extends State<askOpportunity> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize:
-                                      MediaQuery.of(context).size.width * .05,
-                                  color: Opportunitytimeformat == false
+                                  MediaQuery.of(context).size.width * .05,
+                                  color: timeFormat == false
                                       ? Colors.white
                                       : Colors.black38),
                             ),
@@ -251,12 +262,12 @@ class _askOpportunity extends State<askOpportunity> {
                                 message: AppLocalizations.of(context)
                                     .translate('month'),
                                 child: Text(
-                                  '${getZero(_dateOpportunity.month)}',
+                                  '${checkNull(date.month)}',
                                   style: TextStyle(
                                       fontSize:
                                       MediaQuery.of(context).size.width *
                                           .09,
-                                      color: Opportunitytimeformat == false
+                                      color: timeFormat == false
                                           ? Colors.white
                                           : Colors.black38,
                                       fontWeight: FontWeight.bold),
@@ -268,7 +279,7 @@ class _askOpportunity extends State<askOpportunity> {
                                     fontSize:
                                     MediaQuery.of(context).size.width *
                                         .09,
-                                    color: Opportunitytimeformat == false
+                                    color: timeFormat == false
                                         ? Colors.white
                                         : Colors.black38,
                                     fontWeight: FontWeight.bold),
@@ -277,12 +288,12 @@ class _askOpportunity extends State<askOpportunity> {
                                 message: AppLocalizations.of(context)
                                     .translate('day'),
                                 child: Text(
-                                  '${getZero(_dateOpportunity.day)}',
+                                  '${checkNull(date.day)}',
                                   style: TextStyle(
                                       fontSize:
                                       MediaQuery.of(context).size.width *
                                           .09,
-                                      color: Opportunitytimeformat == false
+                                      color: timeFormat == false
                                           ? Colors.white
                                           : Colors.black38,
                                       fontWeight: FontWeight.bold),
@@ -294,7 +305,7 @@ class _askOpportunity extends State<askOpportunity> {
                                     fontSize:
                                     MediaQuery.of(context).size.width *
                                         .09,
-                                    color: Opportunitytimeformat == false
+                                    color: timeFormat == false
                                         ? Colors.white
                                         : Colors.black38,
                                     fontWeight: FontWeight.bold),
@@ -303,12 +314,12 @@ class _askOpportunity extends State<askOpportunity> {
                                 message: AppLocalizations.of(context)
                                     .translate('year'),
                                 child: Text(
-                                  '${_dateOpportunity.year}',
+                                  '${date.year}',
                                   style: TextStyle(
                                       fontSize:
                                       MediaQuery.of(context).size.width *
                                           .09,
-                                      color: Opportunitytimeformat == false
+                                      color: timeFormat == false
                                           ? Colors.white
                                           : Colors.black38,
                                       fontWeight: FontWeight.bold),
@@ -319,14 +330,14 @@ class _askOpportunity extends State<askOpportunity> {
                           Padding(
                             padding: EdgeInsets.only(
                                 top: MediaQuery.of(context).size.height * .03),
-                            child: new Text(
+                            child: Text(
                               AppLocalizations.of(context)
                                   .translate('roverImgSearchSolDotted'),
                               style: TextStyle(
                                   fontSize:
-                                      MediaQuery.of(context).size.width * .05,
+                                  MediaQuery.of(context).size.width * .05,
                                   fontWeight: FontWeight.bold,
-                                  color: Opportunitytimeformat == true
+                                  color: timeFormat == true
                                       ? Colors.white
                                       : Colors.black38),
                             ),
@@ -336,8 +347,8 @@ class _askOpportunity extends State<askOpportunity> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize:
-                                    MediaQuery.of(context).size.width * .09,
-                                color: Opportunitytimeformat == true
+                                MediaQuery.of(context).size.width * .09,
+                                color: timeFormat == true
                                     ? Colors.white
                                     : Colors.black38),
                           ),
@@ -345,27 +356,27 @@ class _askOpportunity extends State<askOpportunity> {
                             padding: EdgeInsets.only(
                               top: MediaQuery.of(context).size.height * .03,
                             ),
-                            child: new Center(
+                            child: Center(
                               child: Tooltip(
                                 message: AppLocalizations.of(context)
                                     .translate('setDate'),
                                 child: FlatButton(
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: new BorderRadius.circular(25),
+                                    borderRadius: BorderRadius.circular(25),
                                   ),
                                   onPressed: () {
-                                    if (Opportunitytimeformat == false) {
+                                    if (timeFormat == false) {
                                       final action = SizedBox(
                                           height: 200,
                                           child: CupertinoDatePicker(
-                                            initialDateTime: _dateOpportunity,
+                                            initialDateTime: date,
                                             mode: CupertinoDatePickerMode.date,
                                             backgroundColor: Colors.white,
-                                            minimumDate: arriveOpportunity,
-                                            maximumDate: maxOpportunity,
-                                            onDateTimeChanged: (dateOpportunity) {
+                                            minimumDate: minDate,
+                                            maximumDate: maxDate,
+                                            onDateTimeChanged: (newDate) {
                                               setState(() {
-                                                _dateOpportunity = dateOpportunity;
+                                                date = newDate;
                                               });
                                             },
                                           ));
@@ -397,26 +408,26 @@ class _askOpportunity extends State<askOpportunity> {
                                   color: Colors.white,
                                   child: Container(
                                     width:
-                                        MediaQuery.of(context).size.width * .8,
+                                    MediaQuery.of(context).size.width * .8,
                                     child: Padding(
                                       padding: EdgeInsets.only(
                                           top: MediaQuery.of(context).size.height * .01,
                                           bottom: MediaQuery.of(context).size.height * .01),
-                                      child: Center(child: new Text(
-                                      AppLocalizations.of(context)
-                                          .translate('roverImgSearchSetTime'),
-                                      style: TextStyle(
-                                        fontSize: MediaQuery.of(context).size.width * .05,
-                                        color: Colors.deepOrange,
-                                        fontWeight: FontWeight.bold,
+                                      child: Center(child: Text(
+                                        AppLocalizations.of(context)
+                                            .translate('roverImgSearchSetTime'),
+                                        style: TextStyle(
+                                          fontSize: MediaQuery.of(context).size.width * .05,
+                                          color: Colors.deepOrange,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                       ),
                                     ),
-    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
                           ),
                         ],
                       ),
@@ -437,35 +448,43 @@ class _askOpportunity extends State<askOpportunity> {
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(
                         (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
+                            MediaQuery.of(context).size.height) /
                             2 *
                             .04))),
                 width: MediaQuery.of(context).size.width * .8,
                 child: GestureDetector(
-                  onTap: (){
-                    if(Opportunitytimeformat == true) {
+                  onTap: () {
+                    if (timeFormat == true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SearchWindow(
-                                url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=$sol&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
-                                date: '$sol sol')
+                            builder: (context) =>
+                                SearchWindow(
+                                    url: '$url?sol=$sol&api_key=$apiKey',
+                                    date: '$sol sol')
                         ),
                       );
-                    } else if(Opportunitytimeformat == false) {
+                    } else if (timeFormat == false) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SearchWindow(
-                                url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?earth_date=${_dateOpportunity.year}-${_dateOpportunity.month}-${_dateOpportunity.day}&api_key=Auy5Y3JzRVdcidYPuytq5KI7Mxfqnm1IPdEQoeYz',
-                                date: '${getZero(_dateOpportunity.month)}/${getZero(_dateOpportunity.day)}/${_dateOpportunity.year}')
+                            builder: (context) =>
+                                SearchWindow(
+                                    url: '$url?earth_date=${date
+                                        .year}-${date
+                                        .month}-${date
+                                        .day}&api_key=$apiKey',
+                                    date: '${checkNull(
+                                        date.month)}/${checkNull(
+                                        date
+                                            .day)}/${date.year}')
                         ),
                       );
                     }
                   },
                   child: Tooltip(
                     message:
-                        AppLocalizations.of(context).translate('searchImage'),
+                    AppLocalizations.of(context).translate('searchImage'),
                     child: Padding(
                       padding: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height * .02,
