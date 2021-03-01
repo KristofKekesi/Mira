@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:nasamira/pass.dart';
+import 'package:nasamira/widgets/localization.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 _fetchAPI(url) async {
@@ -87,17 +88,17 @@ class _ApodWidgetState extends State<ApodWidget> {
             "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true"),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            String media_type = snapshot.data.data["media_type"];
+            String mediaType = snapshot.data.data["media_type"];
             String copyright = snapshot.data.data["copyright"];
             String url = snapshot.data.data["url"];
-            String thumbnail_url = snapshot.data.data["thumbnail_url"];
+            String thumbnailUrl = snapshot.data.data["thumbnail_url"];
             String title = snapshot.data.data["title"];
 
             String displayUrl() {
-              if (media_type == "image") {
+              if (mediaType == "image") {
                 return url;
               } else {
-                return thumbnail_url;
+                return thumbnailUrl;
               }
             }
 
@@ -122,7 +123,9 @@ class _ApodWidgetState extends State<ApodWidget> {
                 height: MediaQuery.of(context).size.height * .2,
                 child: Align(
                   alignment: Alignment.bottomRight,
-                  child: GestureDetector(
+                  child: Tooltip(
+          message: AppLocalizations.of(context).translate("more"),
+          child: GestureDetector(
                     onTap: () {
                       _popup(context, title, copyright, url);
                     },
@@ -152,7 +155,7 @@ class _ApodWidgetState extends State<ApodWidget> {
                     ),
                   ),
                 ),
-              ),
+              ),),
             );
           } else {
             return Container();

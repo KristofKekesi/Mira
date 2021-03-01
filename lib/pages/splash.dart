@@ -68,11 +68,6 @@ class _SplashState extends State<Splash> {
                       Padding(
                         padding: EdgeInsets.only(top: 20),
                       ),
-                      Text(
-                        'Rover Photos',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      )
                     ],
                   ),
                 )
