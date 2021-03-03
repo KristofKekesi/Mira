@@ -185,7 +185,9 @@ class RoverSpecPage extends StatelessWidget {
           ),
           backgroundColor: Colors.transparent,
           centerTitle: true,
-          title: AutoSizeText(
+          title: Padding(
+    padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * .12,),
+    child: AutoSizeText(
             _headerText(),
             minFontSize: 1,
             maxLines: 1,
@@ -194,7 +196,7 @@ class RoverSpecPage extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
-          ),
+          ),),
         ),
         body: SafeArea(
           child: Column(

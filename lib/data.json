@@ -25,9 +25,11 @@
 		"arrive": {"year": 2021, "month": 2, "day": 18},
 		"connection-lost": null,
 		"end": null,
-		
-		"api-enabled": false,
-		"url": null
+
+		"default": {"year": 2021, "month": 2, "day": 18},
+
+		"api-enabled": true,
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/"
 	},
 	{
 		"mission": null,
@@ -44,7 +46,7 @@
 		"default": {"year": 2019, "month": 6, "day": 13},
 		
 		"api-enabled": true,
-		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos"
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/"
 	},
 	{
 		"mission": "MER-B",
@@ -61,7 +63,7 @@
 		"default": {"year": 2017, "month": 3, "day": 13},
 		
 		"api-enabled": true,
-		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos"
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/"
 	},
 	{
 		"mission": "MER-A",
@@ -78,7 +80,7 @@
 		"default": {"year": 2004, "month": 4, "day": 5},
 		
 		"api-enabled": true,
-		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/photos"
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/"
 	}
 	,
 	{

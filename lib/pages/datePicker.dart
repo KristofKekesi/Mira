@@ -51,6 +51,19 @@ class _DatePickerPage extends State<DatePickerPage> {
     }
   }
 
+  String getTh(int num) {
+    String last =  num.toString()[num.toString().length-1];
+    if (last == "1") {
+      return "st";
+    } else if (last == "2") {
+      return "nd";
+    } else if (last == "3") {
+      return "rd";
+    } else {
+      return "th";
+    }
+  }
+
   bool timeFormat;
   DateTime minDate;
   DateTime date;
@@ -70,7 +83,7 @@ class _DatePickerPage extends State<DatePickerPage> {
       maxDate = DateTime.utc(connectionLost["year"], connectionLost["month"],
           connectionLost["day"]);
     }
-    sol = 1000;
+    sol = 10;
     super.initState();
   }
 
@@ -297,7 +310,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * .05,
                                 color: timeFormat == false
-                                    ? Colors.white
+                                    ? Colors.white70
                                     : Colors.black38),
                           ),
                         ),
@@ -378,7 +391,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                                     MediaQuery.of(context).size.width * .05,
                                 fontWeight: FontWeight.bold,
                                 color: timeFormat == true
-                                    ? Colors.white
+                                    ? Colors.white70
                                     : Colors.black38),
                           ),
                         ),
@@ -495,8 +508,8 @@ class _DatePickerPage extends State<DatePickerPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => SearchWindow(
-                              url: '$url?sol=$sol&api_key=$apiKey',
-                              date: '$sol sol')),
+                              url: '${url}photos?sol=$sol&api_key=$apiKey',
+                              date: '$sol${getTh(sol)} sol')),
                     );
                   } else if (timeFormat == false) {
                     Navigator.push(
@@ -504,7 +517,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                       MaterialPageRoute(
                           builder: (context) => SearchWindow(
                               url:
-                                  '$url?earth_date=${date.year}-${date.month}-${date.day}&api_key=$apiKey',
+                                  '${url}photos?earth_date=${date.year}-${date.month}-${date.day}&api_key=$apiKey',
                               date:
                                   '${checkNull(date.month)}/${checkNull(date.day)}/${date.year}')),
                     );
@@ -540,7 +553,6 @@ class _DatePickerPage extends State<DatePickerPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        //toolbarHeight: MediaQuery.of(context).size.height * .07,
         leading: Tooltip(
           message: AppLocalizations.of(context).translate('back'),
           child: GestureDetector(
@@ -564,7 +576,9 @@ class _DatePickerPage extends State<DatePickerPage> {
         ),
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: AutoSizeText(
+        title: Padding(
+          padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * .12,),
+          child: AutoSizeText(
           _headerText(),
           minFontSize: 1,
           maxLines: 1,
@@ -574,7 +588,7 @@ class _DatePickerPage extends State<DatePickerPage> {
             color: Colors.white,
           ),
         ),
-      ),
+      ),),
       floatingActionButton: Container(
         height: MediaQuery.of(context).size.width * .12,
         width: MediaQuery.of(context).size.width * .12,

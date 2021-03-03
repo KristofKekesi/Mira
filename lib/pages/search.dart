@@ -150,11 +150,6 @@ FutureBuilder _Data(url) {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: <Widget>[
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: <Widget>[
                                                   Text(
                                                     AppLocalizations.of(context)
                                                         .translate('popId'),
@@ -165,7 +160,8 @@ FutureBuilder _Data(url) {
                                                                 .width *
                                                             .05),
                                                   ),
-                                                  Text(
+                                                  Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height *
+                                                      .015),child: Text(
                                                     data[index]["id"]
                                                         .toString(),
                                                     style: TextStyle(
@@ -174,14 +170,7 @@ FutureBuilder _Data(url) {
                                                                 .size
                                                                 .width *
                                                             .05),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: <Widget>[
+                                                  ),),
                                                   Text(
                                                     AppLocalizations.of(context)
                                                         .translate('popCamera'),
@@ -192,12 +181,13 @@ FutureBuilder _Data(url) {
                                                                 .width *
                                                             .05),
                                                   ),
-                                                  Tooltip(
+                                        Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height *
+                                            .015),child: Tooltip(
                                                     message: data[index]
-                                                        ["camera"]["name"],
+                                                        ["camera"]["full_name"],
                                                     child: Text(
                                                       data[index]["camera"]
-                                                          ["name"],
+                                                          ["full_name"],
                                                       style: TextStyle(
                                                           fontSize: MediaQuery.of(
                                                                       context)
@@ -205,14 +195,7 @@ FutureBuilder _Data(url) {
                                                                   .width *
                                                               .05),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: <Widget>[
+                                              ),),
                                                   Text(
                                                     AppLocalizations.of(context)
                                                         .translate('popDate'),
@@ -223,6 +206,8 @@ FutureBuilder _Data(url) {
                                                                 .width *
                                                             .05),
                                                   ),
+                                        Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height *
+                                            .015),child:
                                                   Text(
                                                     data[index]["earth_date"]
                                                         .replaceAll("-", "/"),
@@ -232,14 +217,7 @@ FutureBuilder _Data(url) {
                                                                 .size
                                                                 .width *
                                                             .05),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: <Widget>[
+                                                  ),),
                                                   Text(
                                                     AppLocalizations.of(context)
                                                         .translate('popSol'),
@@ -261,8 +239,6 @@ FutureBuilder _Data(url) {
                                                             .05),
                                                   ),
                                                 ],
-                                              ),
-                                            ],
                                           ),
                                         ),
                                       ),
@@ -383,7 +359,9 @@ class _SearchWindowState extends State<SearchWindow> {
         ),
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text(
+        title: Padding(
+    padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * .12,),
+    child: Text(
           widget.date,
           style: TextStyle(
               fontSize: MediaQuery.of(context).size.width * .07,
@@ -391,7 +369,7 @@ class _SearchWindowState extends State<SearchWindow> {
               color: Colors.white,
               letterSpacing: 2.0),
         ),
-      ),
+      ),),
       floatingActionButton: Container(
         height: MediaQuery.of(context).size.width * .12,
         width: MediaQuery.of(context).size.width * .12,

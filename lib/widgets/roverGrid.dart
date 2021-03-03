@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:nasamira/pages/roverSpecPage.dart';
 import 'package:nasamira/widgets/localization.dart';
+import 'package:nasamira/widgets/update.dart';
 
 double getGrid(context) {
   return MediaQuery.of(context).size.width * .4 -
@@ -17,6 +18,7 @@ class RoverGrid extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             var data = json.decode(snapshot.data.toString());
+            update(data);
             final roverList = <Widget>[];
             for (var index = 0; index < data.length; index++) {
               roverList.add(
