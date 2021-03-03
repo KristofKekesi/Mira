@@ -48,6 +48,7 @@ FutureBuilder _Data(url) {
           return NotificationListener<OverscrollIndicatorNotification>(
             onNotification: (OverscrollIndicatorNotification overscroll) {
               overscroll.disallowGlow();
+              return null;
             },
             child: ListView.builder(
               itemCount: data.length,

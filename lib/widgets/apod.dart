@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:nasamira/pass.dart';
 import 'package:nasamira/widgets/localization.dart';
@@ -39,6 +38,7 @@ void _popup(context, title, copyright, url) {
         child: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (OverscrollIndicatorNotification overscroll) {
             overscroll.disallowGlow();
+            return null;
           },
           child: SingleChildScrollView(
             child: Column(

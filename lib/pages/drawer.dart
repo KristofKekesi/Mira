@@ -36,6 +36,7 @@ class customDrawer extends StatelessWidget {
         child: NotificationListener<OverscrollIndicatorNotification>(
       onNotification: (OverscrollIndicatorNotification overscroll) {
       overscroll.disallowGlow();
+      return null;
       },child: ListView(
           children: <Widget>[
             Container(

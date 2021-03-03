@@ -104,6 +104,7 @@ class Body extends StatelessWidget {
         child: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (OverscrollIndicatorNotification overscroll) {
             overscroll.disallowGlow();
+            return null;
           },
           child: SingleChildScrollView(
             child: Column(
