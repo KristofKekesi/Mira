@@ -43,6 +43,14 @@ class Splash extends StatelessWidget {
   }
 }
 
+class NoScrollGlow extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
+}
+
 void main() => runApp(Mira());
 
 class Mira extends StatefulWidget {
@@ -63,6 +71,11 @@ class _MiraState extends State<Mira> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (context, child) {
+        return ScrollConfiguration(
+            behavior: NoScrollGlow(),
+        child: child,);
+      },
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -101,12 +114,7 @@ class Body extends StatelessWidget {
         padding: EdgeInsets.only(
             left: MediaQuery.of(context).size.width * .05,
             right: MediaQuery.of(context).size.width * .05),
-        child: NotificationListener<OverscrollIndicatorNotification>(
-          onNotification: (OverscrollIndicatorNotification overscroll) {
-            overscroll.disallowGlow();
-            return null;
-          },
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -149,7 +157,6 @@ class Body extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

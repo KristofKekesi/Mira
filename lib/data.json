@@ -1,5 +1,7 @@
 [
 	{
+		"status": "active",
+
 		"mission": "Mars 2020",
 		"nick": "Ingenuity",
 		"type": "helicopter",
@@ -12,9 +14,12 @@
 		"end": null,
 		
 		"api-enabled": false,
-		"url": null
+		"url": null,
+		"manifest": null
 	},
 	{
+		"status": "active",
+
 		"mission": "Mars 2020",
 		"nick": "Perseverance",
 		"type": "rover",
@@ -29,9 +34,12 @@
 		"default": {"year": 2021, "month": 2, "day": 18},
 
 		"api-enabled": true,
-		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/"
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/",
+		"manifest": "https://api.nasa.gov/mars-photos/api/v1/manifests/perseverance"
 	},
 	{
+		"status": "active",
+
 		"mission": null,
 		"nick": "Curiosity",
 		"type": "rover",
@@ -46,9 +54,12 @@
 		"default": {"year": 2019, "month": 6, "day": 13},
 		
 		"api-enabled": true,
-		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/"
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/",
+		"manifest": "https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity"
 	},
 	{
+		"status": "inactive",
+
 		"mission": "MER-B",
 		"nick": "Opportunity",
 		"type": "rover",
@@ -63,9 +74,12 @@
 		"default": {"year": 2017, "month": 3, "day": 13},
 		
 		"api-enabled": true,
-		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/"
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/",
+		"manifest": "https://api.nasa.gov/mars-photos/api/v1/manifests/opportunity"
 	},
 	{
+		"status": null,
+
 		"mission": "MER-A",
 		"nick": "Spirit",
 		"type": "rover",
@@ -78,12 +92,17 @@
 		"end": {"year": 2011, "month": 5, "day": 25},
 		
 		"default": {"year": 2004, "month": 4, "day": 5},
-		
+		"last-date": null,
+		"last-sol": null,
+
 		"api-enabled": true,
-		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/"
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/",
+		"manifest": "https://api.nasa.gov/mars-photos/api/v1/manifests/spirit"
 	}
 	,
 	{
+		"status": null,
+
 		"mission": null,
 		"nick": "Sojourner",
 		"type": "helicopter",
@@ -96,6 +115,7 @@
 		"end": {"year": 1997, "month": 9, "day": 27},
 		
 		"api-enabled": false,
-		"url": null
+		"url": null,
+		"manifest": null
 	}
 ]

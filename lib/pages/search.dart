@@ -45,12 +45,7 @@ FutureBuilder _Data(url) {
             ],
           );
         } else {
-          return NotificationListener<OverscrollIndicatorNotification>(
-            onNotification: (OverscrollIndicatorNotification overscroll) {
-              overscroll.disallowGlow();
-              return null;
-            },
-            child: ListView.builder(
+          return ListView.builder(
               itemCount: data.length,
               itemBuilder: (context, index) {
                 if (index == 0) {
@@ -267,7 +262,6 @@ FutureBuilder _Data(url) {
                   ),
                 );
               },
-            ),
           );
         }
       } else if (snapshot.hasError) {

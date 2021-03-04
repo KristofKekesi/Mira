@@ -35,12 +35,7 @@ void _popup(context, title, copyright, url) {
       ),
       content: Container(
         width: MediaQuery.of(context).size.width * .6,
-        child: NotificationListener<OverscrollIndicatorNotification>(
-          onNotification: (OverscrollIndicatorNotification overscroll) {
-            overscroll.disallowGlow();
-            return null;
-          },
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +64,6 @@ void _popup(context, title, copyright, url) {
           ),
         ),
       ),
-    ),
   );
 }
 

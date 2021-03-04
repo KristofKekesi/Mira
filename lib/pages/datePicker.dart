@@ -52,15 +52,27 @@ class _DatePickerPage extends State<DatePickerPage> {
   }
 
   String getTh(int num) {
-    String last =  num.toString()[num.toString().length-1];
-    if (last == "1") {
-      return "st";
+    String last = num.toString()[num.toString().length - 1];
+    if (last == "0") {
+      return AppLocalizations.of(context).translate("serial0");
+    } else if (last == "1") {
+      return AppLocalizations.of(context).translate("serial1");
     } else if (last == "2") {
-      return "nd";
+      return AppLocalizations.of(context).translate("serial2");
     } else if (last == "3") {
-      return "rd";
-    } else {
-      return "th";
+      return AppLocalizations.of(context).translate("serial3");
+    } else if (last == "4") {
+      return AppLocalizations.of(context).translate("serial4");
+    } else if (last == "5") {
+      return AppLocalizations.of(context).translate("serial5");
+    } else if (last == "6") {
+      return AppLocalizations.of(context).translate("serial6");
+    } else if (last == "7") {
+      return AppLocalizations.of(context).translate("serial7");
+    } else if (last == "8") {
+      return AppLocalizations.of(context).translate("serial8");
+    } else if (last == "9") {
+      return AppLocalizations.of(context).translate("serial9");
     }
   }
 
@@ -167,7 +179,8 @@ class _DatePickerPage extends State<DatePickerPage> {
                             top: MediaQuery.of(context).size.width * .03,
                           ),
                           child: Text(
-                            AppLocalizations.of(context).translate("invalidDateTitle"),
+                            AppLocalizations.of(context)
+                                .translate("invalidDateTitle"),
                             style: TextStyle(
                               fontSize: MediaQuery.of(context).size.width * .05,
                               fontWeight: FontWeight.bold,
@@ -176,7 +189,8 @@ class _DatePickerPage extends State<DatePickerPage> {
                           ),
                         ),
                         AutoSizeText(
-                          AppLocalizations.of(context).translate("invalidDateContent"),
+                          AppLocalizations.of(context)
+                              .translate("invalidDateContent"),
                           maxLines: 2,
                           style: TextStyle(
                               fontSize: MediaQuery.of(context).size.width * .1,
@@ -436,20 +450,21 @@ class _DatePickerPage extends State<DatePickerPage> {
                                     showCupertinoModalPopup(
                                       context: context,
                                       builder: (context) => Container(
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: NumberPicker.integer(
-                                              initialValue: sol,
-                                              minValue: 1,
-                                              maxValue: 100000,
-                                              onChanged: (val) {
-                                                setState(() {
-                                                  sol = val;
-                                                });
-                                              })),
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                        ),
+                                        child: NumberPicker.integer(
+                                            initialValue: sol,
+                                            minValue: 0,
+                                            maxValue: 100000,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                sol = val;
+                                              });
+                                            }),
+                                      ),
                                     );
                                   }
                                 },
@@ -577,18 +592,21 @@ class _DatePickerPage extends State<DatePickerPage> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: Padding(
-          padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * .12,),
+          padding: EdgeInsets.only(
+            right: MediaQuery.of(context).size.width * .12,
+          ),
           child: AutoSizeText(
-          _headerText(),
-          minFontSize: 1,
-          maxLines: 1,
-          style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width * .07,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+            _headerText(),
+            minFontSize: 1,
+            maxLines: 1,
+            style: TextStyle(
+              fontSize: MediaQuery.of(context).size.width * .07,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
-      ),),
+      ),
       floatingActionButton: Container(
         height: MediaQuery.of(context).size.width * .12,
         width: MediaQuery.of(context).size.width * .12,
@@ -610,7 +628,8 @@ class _DatePickerPage extends State<DatePickerPage> {
       body: SafeArea(
           child: Conditional.single(
         context: context,
-        conditionBuilder: (BuildContext context) => connectionLost == null && minDate.compareTo(maxDate) > 0,
+        conditionBuilder: (BuildContext context) =>
+            connectionLost == null && minDate.compareTo(maxDate) > 0,
         widgetBuilder: (BuildContext context) => invalidDateContainer(),
         fallbackBuilder: (BuildContext context) => datePickerContainer(),
       )),
