@@ -4,44 +4,67 @@ import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:nasamira/pages/search.dart';
 import 'package:nasamira/widgets/localization.dart';
+import 'package:nasamira/widgets/roverGrid.dart';
+import 'package:nasamira/widgets/update.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 import '../pass.dart';
 
+var arrive;
+var defaultDatePosition;
+int defaultSolPosition;
+var maxDateRaw;
+int maxSol;
+String mission;
+String nick;
+String url;
+
+void define(dataSector) {
+//selecting source
+  var source;
+  if (updated == true) {
+    source = localUpdate[dataSector];
+  } else {
+    source = hardCodeData[dataSector];
+  }
+
+  arrive = source["arrive"];
+  defaultDatePosition = source["default-date"];
+  defaultSolPosition = source["default-sol"];
+  maxDateRaw = source["last-date"];
+  if (source["last-sol"] != null) {
+    maxSol = source["last-sol"];
+  } else {
+    maxSol = 10000;
+  }
+
+  mission = source["mission"];
+  nick = source["nick"];
+
+  url = source["url"];
+}
+
 class DatePickerPage extends StatefulWidget {
+  final int dataSector;
   final String url;
-  final arrive;
-  final connectionLost;
-  final defaultPosition;
-  final String mission;
-  final String nick;
+
 
   const DatePickerPage({
     Key key,
-    this.arrive,
-    this.connectionLost,
-    this.defaultPosition,
-    this.mission,
-    this.nick,
+    this.dataSector,
     this.url,
   }) : super(key: key);
 
   @override
   _DatePickerPage createState() => _DatePickerPage(
-      url, arrive, connectionLost, defaultPosition, mission, nick);
+      dataSector);
 }
 
 // ignore: camel_case_types
 class _DatePickerPage extends State<DatePickerPage> {
-  final String url;
-  final arrive;
-  final connectionLost;
-  final defaultPosition;
-  final String mission;
-  final String nick;
+  final int dataSector;
 
-  _DatePickerPage(this.url, this.arrive, this.connectionLost,
-      this.defaultPosition, this.mission, this.nick);
+  _DatePickerPage(this.dataSector);
 
   String checkNull(int num) {
     if (num < 10) {
@@ -85,17 +108,18 @@ class _DatePickerPage extends State<DatePickerPage> {
   @override
   void initState() {
     timeFormat = false;
+    define(dataSector);
 
     minDate = DateTime.utc(arrive["year"], arrive["month"], arrive["day"]);
-    date = DateTime.utc(defaultPosition["year"], defaultPosition["month"],
-        defaultPosition["day"]);
-    if (connectionLost == null) {
+    date = DateTime.utc(defaultDatePosition["year"], defaultDatePosition["month"],
+        defaultDatePosition["day"]);
+    if (maxDateRaw["year"] == null) {
       maxDate = DateTime.now();
     } else {
-      maxDate = DateTime.utc(connectionLost["year"], connectionLost["month"],
-          connectionLost["day"]);
+      maxDate = DateTime.utc(maxDateRaw["year"], maxDateRaw["month"],
+          maxDateRaw["day"]);
     }
-    sol = 10;
+    sol = defaultSolPosition;
     super.initState();
   }
 
@@ -428,6 +452,9 @@ class _DatePickerPage extends State<DatePickerPage> {
                                   .translate('setDate'),
                               child: GestureDetector(
                                 onTap: () {
+                                  setState(() {
+
+                                  });
                                   if (timeFormat == false) {
                                     final action = SizedBox(
                                         height: 200,
@@ -458,7 +485,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                                         child: NumberPicker.integer(
                                             initialValue: sol,
                                             minValue: 0,
-                                            maxValue: 100000,
+                                            maxValue: maxSol,
                                             onChanged: (val) {
                                               setState(() {
                                                 sol = val;
@@ -518,6 +545,7 @@ class _DatePickerPage extends State<DatePickerPage> {
               width: MediaQuery.of(context).size.width * .8,
               child: GestureDetector(
                 onTap: () {
+                  print(url);
                   if (timeFormat == true) {
                     Navigator.push(
                       context,
@@ -629,7 +657,7 @@ class _DatePickerPage extends State<DatePickerPage> {
           child: Conditional.single(
         context: context,
         conditionBuilder: (BuildContext context) =>
-            connectionLost == null && minDate.compareTo(maxDate) > 0,
+            maxDateRaw["year"] == null && minDate.compareTo(maxDate) > 0,
         widgetBuilder: (BuildContext context) => invalidDateContainer(),
         fallbackBuilder: (BuildContext context) => datePickerContainer(),
       )),

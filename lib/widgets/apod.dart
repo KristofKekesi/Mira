@@ -136,18 +136,24 @@ class _ApodWidgetState extends State<ApodWidget> {
                           bottom: (MediaQuery.of(context).size.width +
                                   MediaQuery.of(context).size.height) /
                               2 *
-                              .015,
+                              .03,
                           top: (MediaQuery.of(context).size.width +
                                   MediaQuery.of(context).size.height) /
                               2 *
-                              .015),
-                      child: Icon(
-                        Icons.more_horiz_rounded,
-                        size: MediaQuery.of(context).size.width * .1,
-                        color: Colors.white,
+                              .03),
+                      child: RotationTransition(
+          turns: AlwaysStoppedAnimation(90 / 360),
+          child: Image(
+                        image: AssetImage('lib/images/more.png'),
+                        width: MediaQuery.of(context).size.width *
+                            .07,
+                        height:
+                        MediaQuery.of(context).size.width *
+                            .07,
                       ),
                     ),
                   ),
+          ),
                 ),
               ),),
             );

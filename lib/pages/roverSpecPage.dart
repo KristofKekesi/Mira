@@ -1,10 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:nasamira/widgets/localization.dart';
+import 'package:nasamira/widgets/roverGrid.dart';
+import 'package:nasamira/widgets/update.dart';
 
 import 'datePicker.dart';
 
 class RoverSpecPage extends StatelessWidget {
+  final int dataSector;
+
   final bool apiEnabled;
   final String url;
   final String mission;
@@ -20,10 +24,11 @@ class RoverSpecPage extends StatelessWidget {
 
   final defaultPosition;
 
-  const RoverSpecPage({Key key, this.apiEnabled, this.mission, this.nick, this.type, this.launch, this.arrive, this.connectionLost, this.end, this.operator, this.manufacturer, this.defaultPosition, this.url}) : super(key: key);
+  const RoverSpecPage({Key key, this.dataSector, this.apiEnabled, this.mission, this.nick, this.type, this.launch, this.arrive, this.connectionLost, this.end, this.operator, this.manufacturer, this.defaultPosition, this.url}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     String launchY;
     String launchM;
     String launchD;
@@ -122,12 +127,7 @@ class RoverSpecPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => DatePickerPage(
-                      url: url,
-                      arrive: arrive,
-                      connectionLost: connectionLost,
-                      defaultPosition: defaultPosition,
-                      mission: mission,
-                      nick: nick,
+                      dataSector: dataSector
                     ),
                   ),
                 );

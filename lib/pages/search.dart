@@ -5,7 +5,7 @@ import 'package:nasamira/widgets/localization.dart';
 
 _fetchAPI(url) async {
   Dio dio = Dio();
-  dio.options.connectTimeout = 5000;
+  dio.options.connectTimeout = 30000;
   dio.options.receiveTimeout = 30000;
   Response response = await dio.get(url);
 
