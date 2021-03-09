@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:nasamira/pages/roverSpecPage.dart';
@@ -6,6 +7,7 @@ import 'package:nasamira/widgets/localization.dart';
 import 'package:nasamira/widgets/update.dart';
 
 List<dynamic> hardCodeData = [];
+var roverGridTitle = AutoSizeGroup();
 int counter = 0;
 
 double getGrid(context) {
@@ -93,8 +95,10 @@ class _RoverGridInner extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text(
+                          AutoSizeText(
                             data[index]["nick"],
+                            group: roverGridTitle,
+                            maxLines: 1,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

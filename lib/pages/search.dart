@@ -12,6 +12,14 @@ _fetchAPI(url) async {
   return response;
 }
 
+String imageCounter(context, int num) {
+  if (num < 1) {
+    return AppLocalizations.of(context).translate("imageCounterSingular").replaceAll("{0}", num.toString());
+  } else {
+    return AppLocalizations.of(context).translate("imageCounterPlural").replaceAll("{0}", num.toString());
+  }
+}
+
 // ignore: non_constant_identifier_names
 FutureBuilder _Data(url) {
   return FutureBuilder(
@@ -49,8 +57,20 @@ FutureBuilder _Data(url) {
               itemCount: data.length,
               itemBuilder: (context, index) {
                 if (index == 0) {
-                  return Container(
-                      height: MediaQuery.of(context).size.height * .05);
+                  return Padding(
+                      padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width * .05 + (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                              2 *
+                              .04,
+                          top: MediaQuery.of(context).size.width * .1,
+                          bottom: MediaQuery.of(context).size.width * .02,
+                      ), child: Text(imageCounter(context, data.length), style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize:
+                    MediaQuery.of(context).size.width * .05,
+                    color: Colors.black,
+                  ),),);
                 }
 
                 return Padding(
@@ -69,8 +89,14 @@ FutureBuilder _Data(url) {
                                 image: NetworkImage(data[index]["img_src"]),
                               ),
                               borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(16),
-                                topRight: Radius.circular(16),
+                                topLeft: Radius.circular((MediaQuery.of(context).size.width +
+                                    MediaQuery.of(context).size.height) /
+                                    2 *
+                                    .04),
+                                topRight: Radius.circular((MediaQuery.of(context).size.width +
+                                    MediaQuery.of(context).size.height) /
+                                    2 *
+                                    .04),
                               )),
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * .4,
@@ -79,8 +105,14 @@ FutureBuilder _Data(url) {
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(16),
-                              bottomRight: Radius.circular(16),
+                              bottomLeft: Radius.circular((MediaQuery.of(context).size.width +
+                                  MediaQuery.of(context).size.height) /
+                                  2 *
+                                  .04),
+                              bottomRight: Radius.circular((MediaQuery.of(context).size.width +
+                                  MediaQuery.of(context).size.height) /
+                                  2 *
+                                  .04),
                             ),
                             image: DecorationImage(
                                 image: AssetImage('lib/images/background.jpg'),

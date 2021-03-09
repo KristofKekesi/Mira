@@ -81,7 +81,7 @@ class _ApodWidgetState extends State<ApodWidget> {
         future: _fetchAPI(
             "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true"),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.hasData && snapshot.data.data["media_type"] != "image" && snapshot.data.data["thumbnail_url"] != "") {
             String mediaType = snapshot.data.data["media_type"];
             String copyright = snapshot.data.data["copyright"];
             String url = snapshot.data.data["url"];
@@ -92,71 +92,115 @@ class _ApodWidgetState extends State<ApodWidget> {
               if (mediaType == "image") {
                 return url;
               } else {
-                return thumbnailUrl;
+                  return thumbnailUrl;
               }
             }
-
-            return Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.width * .0125),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  image: DecorationImage(
-                    image: NetworkImage(displayUrl()),
-                    fit: BoxFit.contain,
-                  ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular((MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
-                        2 *
-                        .04),
-                  ),
-                ),
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * .2,
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: Tooltip(
-          message: AppLocalizations.of(context).translate("more"),
-          child: GestureDetector(
-                    onTap: () {
-                      _popup(context, title, copyright, url);
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          right: (MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
-                              2 *
-                              .03,
-                          left: (MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
-                              2 *
-                              .03,
-                          bottom: (MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
-                              2 *
-                              .03,
-                          top: (MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
-                              2 *
-                              .03),
-                      child: RotationTransition(
-          turns: AlwaysStoppedAnimation(90 / 360),
-          child: Image(
-                        image: AssetImage('lib/images/more.png'),
-                        width: MediaQuery.of(context).size.width *
-                            .07,
-                        height:
-                        MediaQuery.of(context).size.width *
-                            .07,
-                      ),
+              return Padding(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery
+                        .of(context)
+                        .size
+                        .width * .0125),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    image: DecorationImage(
+                      image: NetworkImage(displayUrl()),
+                      fit: BoxFit.contain,
+                    ),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular((MediaQuery
+                          .of(context)
+                          .size
+                          .width +
+                          MediaQuery
+                              .of(context)
+                              .size
+                              .height) /
+                          2 *
+                          .04),
                     ),
                   ),
-          ),
-                ),
-              ),),
-            );
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width * 0.8,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height * .2,
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: Tooltip(
+                      message: AppLocalizations.of(context).translate("more"),
+                      child: GestureDetector(
+                        onTap: () {
+                          _popup(context, title, copyright, url);
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              right: (MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width +
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .height) /
+                                  2 *
+                                  .03,
+                              left: (MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width +
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .height) /
+                                  2 *
+                                  .03,
+                              bottom: (MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width +
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .height) /
+                                  2 *
+                                  .03,
+                              top: (MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width +
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .height) /
+                                  2 *
+                                  .03),
+                          child: RotationTransition(
+                            turns: AlwaysStoppedAnimation(90 / 360),
+                            child: Image(
+                              image: AssetImage('lib/images/more.png'),
+                              width: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width *
+                                  .07,
+                              height:
+                              MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width *
+                                  .07,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),),
+              );
           } else {
             return Container();
           }

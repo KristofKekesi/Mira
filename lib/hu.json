@@ -39,6 +39,8 @@
   "serial7": ".",
   "serial8": ".",
   "serial9": ".",
+  "imageCounterSingular": "{0} kép aznap.",
+  "imageCounterPlural": "{0} kép aznap.",
   "imgError": "Hiba",
   "imgNoRes": "Nincs találat",
   "imgNoResCon": "Próbálja módosítani a dátumot vagy a SOL-t.",

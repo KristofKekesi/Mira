@@ -38,7 +38,7 @@
 
 		"api-enabled": true,
 		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/",
-		"manifest": null
+		"manifest": "https://api.nasa.gov/mars-photos/api/v1/manifests/perseverance"
 	},
 	{
 		"status": "active",
@@ -61,7 +61,7 @@
 		
 		"api-enabled": true,
 		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/",
-		"manifest": null
+		"manifest": "https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity"
 	},
 	{
 		"status": "inactive",
@@ -115,7 +115,7 @@
 
 		"mission": null,
 		"nick": "Sojourner",
-		"type": "helicopter",
+		"type": "rover",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 		

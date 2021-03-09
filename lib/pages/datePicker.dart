@@ -545,7 +545,6 @@ class _DatePickerPage extends State<DatePickerPage> {
               width: MediaQuery.of(context).size.width * .8,
               child: GestureDetector(
                 onTap: () {
-                  print(url);
                   if (timeFormat == true) {
                     Navigator.push(
                       context,

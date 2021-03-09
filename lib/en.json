@@ -39,6 +39,8 @@
   "serial7": "th",
   "serial8": "th",
   "serial9": "th",
+  "imageCounterSingular": "{0} image that day.",
+  "imageCounterPlural": "{0} images that day.",
   "imgError": "Error",
   "imgNoRes": "No result",
   "imgNoResCon": "Consider modifying date or sol.",
