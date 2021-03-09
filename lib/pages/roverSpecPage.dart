@@ -120,7 +120,7 @@ class RoverSpecPage extends StatelessWidget {
         padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .03),
         child: Center(
           child: Tooltip(
-            message: AppLocalizations.of(context).translate('specButton'),
+            message: AppLocalizations.of(context).translate('specButton').replaceAll("{0}", type),
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
