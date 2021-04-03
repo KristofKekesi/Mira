@@ -31,12 +31,12 @@ class customDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * .75,
+    return Container(,
+      width: MediaQuery.of(context).size.width * .75
       child: Drawer(
         child:
         Container(
-      color: Color(0xfff5f5f5),
+      color: Colors.white,
       child: ListView(
           children: <Widget>[
             Container(
