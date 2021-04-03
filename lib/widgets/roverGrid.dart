@@ -155,7 +155,7 @@ class _RoverGridInner extends StatelessWidget {
                           ),
                           Icon(
                             Icons.arrow_forward_rounded,
-                            size: MediaQuery.of(context).size.width * .1,
+                            size: MediaQuery.of(context).size.width * .075,
                             color: Colors.white,
                           ),
                         ],

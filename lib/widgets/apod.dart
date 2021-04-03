@@ -81,7 +81,7 @@ class _ApodWidgetState extends State<ApodWidget> {
         future: _fetchAPI(
             "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true"),
         builder: (context, snapshot) {
-          if (snapshot.hasData && snapshot.data.data["media_type"] != "image" && snapshot.data.data["thumbnail_url"] != "") {
+          if (snapshot.hasData && snapshot.data.data["media_type"] == "image" && snapshot.data.data["thumbnail_url"] != "") {
             String mediaType = snapshot.data.data["media_type"];
             String copyright = snapshot.data.data["copyright"];
             String url = snapshot.data.data["url"];

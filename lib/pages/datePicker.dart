@@ -94,7 +94,7 @@ class _DatePickerPage extends State<DatePickerPage> {
       return AppLocalizations.of(context).translate("serial7");
     } else if (last == "8") {
       return AppLocalizations.of(context).translate("serial8");
-    } else if (last == "9") {
+    } else {
       return AppLocalizations.of(context).translate("serial9");
     }
   }
@@ -595,18 +595,21 @@ class _DatePickerPage extends State<DatePickerPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        toolbarHeight: MediaQuery.of(context).size.height * .08,
         leading: Tooltip(
           message: AppLocalizations.of(context).translate('back'),
           child: GestureDetector(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(
+            child: Padding(
+    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * .04),
+    child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
               size: MediaQuery.of(context).size.width * .06,
             ),
-          ),
+          ),),
         ),
         flexibleSpace: Container(
           decoration: BoxDecoration(

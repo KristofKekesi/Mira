@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nasamira/widgets/localization.dart';
+import 'package:nasamira/widgets/promo.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // ignore: non_constant_identifier_names
@@ -33,7 +34,10 @@ class customDrawer extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * .75,
       child: Drawer(
-        child: ListView(
+        child:
+        Container(
+      color: Color(0xfff5f5f5),
+      child: ListView(
           children: <Widget>[
             Container(
               width: MediaQuery.of(context).size.width * .75,
@@ -84,6 +88,10 @@ class customDrawer extends StatelessWidget {
             Divider(
               thickness: MediaQuery.of(context).size.height * .005,
             ),
+            PromoWidget(),
+            Divider(
+              thickness: MediaQuery.of(context).size.height * .005,
+            ),
             GestureDetector(
               onTap: () {
                 _launchURL(
@@ -129,7 +137,7 @@ class customDrawer extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      ),),
     );
   }
 }

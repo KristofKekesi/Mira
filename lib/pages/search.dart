@@ -27,52 +27,25 @@ FutureBuilder _Data(url) {
     builder: (context, snapshot) {
       if (snapshot.hasData) {
         List data = snapshot.data.data["photos"];
-        if (data.length == 0) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width * .8,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      AppLocalizations.of(context).translate('imgNoRes'),
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * .1),
-                    ),
-                    Text(
-                      AppLocalizations.of(context).translate('imgNoResCon'),
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * .05),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          );
-        } else {
-          return ListView.builder(
-              itemCount: data.length,
+        return ListView.builder(
+              itemCount: data.length + 1,
               itemBuilder: (context, index) {
                 if (index == 0) {
                   return Padding(
-                      padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width * .05 + (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                              2 *
-                              .04,
-                          top: MediaQuery.of(context).size.width * .1,
-                          bottom: MediaQuery.of(context).size.width * .02,
-                      ), child: Text(imageCounter(context, data.length), style: TextStyle(
+                    padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * .05 + (MediaQuery.of(context).size.width +
+                          MediaQuery.of(context).size.height) /
+                          2 *
+                          .04,
+                      top: MediaQuery.of(context).size.width * .1,
+                      bottom: MediaQuery.of(context).size.width * .02,
+                    ), child: Text(imageCounter(context, data.length), style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize:
                     MediaQuery.of(context).size.width * .05,
                     color: Colors.black,
                   ),),);
                 }
-
                 return Padding(
                   padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).size.height * .05,
@@ -86,7 +59,7 @@ FutureBuilder _Data(url) {
                           decoration: BoxDecoration(
                               color: Colors.black,
                               image: DecorationImage(
-                                image: NetworkImage(data[index]["img_src"]),
+                                image: NetworkImage(data[index - 1]["img_src"]),
                               ),
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular((MediaQuery.of(context).size.width +
@@ -129,9 +102,9 @@ FutureBuilder _Data(url) {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Text(
-                                  data[index]["rover"]["name"] +
+                                  data[index - 1]["rover"]["name"] +
                                       ' - ' +
-                                      data[index]["id"].toString(),
+                                      data[index - 1]["id"].toString(),
                                   style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize:
@@ -161,7 +134,7 @@ FutureBuilder _Data(url) {
                                                     .height *
                                                 .05),
                                         title: Text(
-                                          '${data[index]["rover"]["name"]}',
+                                          '${data[index - 1]["rover"]["name"]}',
                                           style: TextStyle(
                                               fontSize: MediaQuery.of(context)
                                                       .size
@@ -190,7 +163,7 @@ FutureBuilder _Data(url) {
                                                   ),
                                                   Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height *
                                                       .015),child: Text(
-                                                    data[index]["id"]
+                                                    data[index - 1]["id"]
                                                         .toString(),
                                                     style: TextStyle(
                                                         fontSize: MediaQuery.of(
@@ -211,10 +184,10 @@ FutureBuilder _Data(url) {
                                                   ),
                                         Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height *
                                             .015),child: Tooltip(
-                                                    message: data[index]
+                                                    message: data[index - 1]
                                                         ["camera"]["full_name"],
                                                     child: Text(
-                                                      data[index]["camera"]
+                                                      data[index - 1]["camera"]
                                                           ["full_name"],
                                                       style: TextStyle(
                                                           fontSize: MediaQuery.of(
@@ -237,7 +210,7 @@ FutureBuilder _Data(url) {
                                         Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height *
                                             .015),child:
                                                   Text(
-                                                    data[index]["earth_date"]
+                                                    data[index - 1]["earth_date"]
                                                         .replaceAll("-", "/"),
                                                     style: TextStyle(
                                                         fontSize: MediaQuery.of(
@@ -257,7 +230,7 @@ FutureBuilder _Data(url) {
                                                             .05),
                                                   ),
                                                   Text(
-                                                    data[index]["sol"]
+                                                    data[index - 1]["sol"]
                                                         .toString(),
                                                     style: TextStyle(
                                                         fontSize: MediaQuery.of(
@@ -295,7 +268,6 @@ FutureBuilder _Data(url) {
                 );
               },
           );
-        }
       } else if (snapshot.hasError) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -362,19 +334,21 @@ class _SearchWindowState extends State<SearchWindow> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //toolbarHeight: MediaQuery.of(context).size.height * .07,
+        toolbarHeight: MediaQuery.of(context).size.height * .08,
         leading: Tooltip(
           message: AppLocalizations.of(context).translate('back'),
           child: GestureDetector(
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(
+            child: Padding(
+    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * .04),
+    child: Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
               size: MediaQuery.of(context).size.width * .06,
             ),
-          ),
+          ),),
         ),
         flexibleSpace: Container(
           decoration: BoxDecoration(

@@ -85,6 +85,7 @@ class _MiraState extends State<Mira> {
       supportedLocales: [
         const Locale('hu', ''),
         const Locale('en', ''),
+        const Locale('de', ''),
       ],
       localeResolutionCallback: (locale, supportedLocales) {
         for (var supportedLocale in supportedLocales) {
@@ -142,10 +143,7 @@ class Body extends StatelessWidget {
                         ),
                       ),
                     ),
-                    AnimatedContainer(
-                      duration: Duration(milliseconds: 500),
-                      child:
-                    ApodWidget()),
+                    ApodWidget(),
                     RoverGrid(),
         Padding(
           padding: EdgeInsets.only(
