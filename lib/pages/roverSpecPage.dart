@@ -144,7 +144,7 @@ class RoverSpecPage extends StatelessWidget {
                     AppLocalizations.of(context).translate('roverSpecButton'),
                     style: TextStyle(
                       fontSize: MediaQuery.of(context).size.width * .05,
-                      color: Colors.deepOrange,
+                      color: Color(0xffE8672D),
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -510,7 +510,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                                         fontSize:
                                             MediaQuery.of(context).size.width *
                                                 .05,
-                                        color: Colors.deepOrange,
+                                        color: Color(0xffE8672D),
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -649,7 +649,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
-              child: Icon(CupertinoIcons.clear_thick, color: Colors.deepOrange),
+              child: Icon(CupertinoIcons.clear_thick, color: Color(0xffE8672D)),
             ),
           ),
         ),

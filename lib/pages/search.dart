@@ -384,7 +384,7 @@ class _SearchWindowState extends State<SearchWindow> {
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
-              child: Icon(CupertinoIcons.clear_thick, color: Colors.deepOrange),
+              child: Icon(CupertinoIcons.clear_thick, color: Color(0xffE8672D)),
             ),
           ),
         ),
