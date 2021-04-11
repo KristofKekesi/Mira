@@ -32,4 +32,5 @@ flutter:
 
   assets:
     - lib/images/
+    - lib/trans/
     - lib/

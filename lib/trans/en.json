@@ -28,7 +28,7 @@
   "roverImgSearchSetTime": "SET TIME",
   "roverImgSearchButton": "SEARCH",
   "invalidDateTitle": "Invalid date",
-  "invalidDateContent": "Please open the settings and set the current date!",
+  "invalidDateContent": "Please open the settings and set the correct date!",
   "serial0": "th",
   "serial1": "st",
   "serial2": "nd",

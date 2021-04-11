@@ -83,9 +83,10 @@ class _MiraState extends State<Mira> {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
-        const Locale('hu', ''),
         const Locale('en', ''),
         const Locale('de', ''),
+        const Locale('da', ''),
+        const Locale('hu', ''),
       ],
       localeResolutionCallback: (locale, supportedLocales) {
         for (var supportedLocale in supportedLocales) {

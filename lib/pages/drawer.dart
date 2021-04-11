@@ -31,8 +31,8 @@ class customDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(,
-      width: MediaQuery.of(context).size.width * .75
+    return Container(
+      width: MediaQuery.of(context).size.width * .75,
       child: Drawer(
         child:
         Container(
