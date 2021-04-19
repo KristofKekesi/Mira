@@ -138,9 +138,7 @@ class _DatePickerPage extends State<DatePickerPage> {
     }
 
     Widget invalidDateContainer() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      return ListView(
         children: <Widget>[
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,7 +146,7 @@ class _DatePickerPage extends State<DatePickerPage> {
               Padding(
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * .05,
-                    left: MediaQuery.of(context).size.width * .1 +
+                    left: MediaQuery.of(context).size.width * .05 +
                         (MediaQuery.of(context).size.width +
                                 MediaQuery.of(context).size.height) /
                             2 *
@@ -157,7 +155,10 @@ class _DatePickerPage extends State<DatePickerPage> {
                   nick,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: MediaQuery.of(context).size.width * .1,
+                    fontSize: (MediaQuery.of(context).size.width +
+                        MediaQuery.of(context).size.height) /
+                        2 *
+                        .06,
                     color: Colors.black,
                   ),
                 ),
@@ -176,7 +177,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                           .04),
                     ),
                   ),
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: MediaQuery.of(context).size.width * .9,
                   child: Padding(
                     padding: EdgeInsets.only(
                         left: (MediaQuery.of(context).size.width +
@@ -217,7 +218,10 @@ class _DatePickerPage extends State<DatePickerPage> {
                               .translate("invalidDateContent"),
                           maxLines: 2,
                           style: TextStyle(
-                              fontSize: MediaQuery.of(context).size.width * .1,
+                              fontSize: (MediaQuery.of(context).size.width +
+                                  MediaQuery.of(context).size.height) /
+                                  2 *
+                                  .06,
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         ),
@@ -233,9 +237,7 @@ class _DatePickerPage extends State<DatePickerPage> {
     }
 
     Widget datePickerContainer() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      return ListView(
         children: <Widget>[
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -243,7 +245,7 @@ class _DatePickerPage extends State<DatePickerPage> {
               Padding(
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * .05,
-                    left: MediaQuery.of(context).size.width * .1 +
+                    left: MediaQuery.of(context).size.width * .05 +
                         (MediaQuery.of(context).size.width +
                                 MediaQuery.of(context).size.height) /
                             2 *
@@ -252,7 +254,10 @@ class _DatePickerPage extends State<DatePickerPage> {
                   nick,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: MediaQuery.of(context).size.width * .1,
+                    fontSize: (MediaQuery.of(context).size.width +
+                        MediaQuery.of(context).size.height) /
+                        2 *
+                        .06,
                     color: Colors.black,
                   ),
                 ),
@@ -271,7 +276,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                           .04),
                     ),
                   ),
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: MediaQuery.of(context).size.width * .9,
                   child: Padding(
                     padding: EdgeInsets.only(
                         left: (MediaQuery.of(context).size.width +
@@ -530,6 +535,8 @@ class _DatePickerPage extends State<DatePickerPage> {
           Padding(
             padding: EdgeInsets.only(
                 top: MediaQuery.of(context).size.width * .05,
+                left: MediaQuery.of(context).size.width * .05,
+                right: MediaQuery.of(context).size.width * .05,
                 bottom: MediaQuery.of(context).size.width * .1),
             child: Container(
               decoration: BoxDecoration(
@@ -578,7 +585,10 @@ class _DatePickerPage extends State<DatePickerPage> {
                         AppLocalizations.of(context)
                             .translate('roverImgSearchButton'),
                         style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * .1,
+                            fontSize: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                                2 *
+                                .06,
                             fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),

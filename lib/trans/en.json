@@ -12,6 +12,7 @@
   "inactive": "Inactive",
   "rover": "Rover",
   "helicopter": "Helicopter",
+  "orbiter": "Orbiter",
   "roverSpecLaunch": "Launch: ",
   "roverSpecArrive": "Arrive: ",
   "roverSpecLast": "Connection Lost",

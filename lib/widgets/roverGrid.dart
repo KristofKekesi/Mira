@@ -11,8 +11,7 @@ var roverGridTitle = AutoSizeGroup();
 int counter = 0;
 
 double getGrid(context) {
-  return MediaQuery.of(context).size.width * .4 -
-      MediaQuery.of(context).size.width * .0125;
+  return MediaQuery.of(context).size.width * .38749;
 }
 
 class _RoverGridInner extends StatelessWidget {

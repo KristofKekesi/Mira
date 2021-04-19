@@ -149,7 +149,7 @@ class Body extends StatelessWidget {
                           left: (MediaQuery.of(context).size.width +
                                   MediaQuery.of(context).size.height) /
                               2 *
-                              .04),
+                              .04,),
                       child: Container(
                         child: Align(
                           alignment: Alignment.topLeft,
@@ -157,7 +157,7 @@ class Body extends StatelessWidget {
                             AppLocalizations.of(context).translate('title'),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: MediaQuery.of(context).size.width * .12,
+                              fontSize: (MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .06,
                               color: Colors.black,
                             ),
                           ),

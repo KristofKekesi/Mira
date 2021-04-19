@@ -65,7 +65,7 @@ class customDrawer extends StatelessWidget {
                     style: TextStyle(
                         letterSpacing: 2,
                         fontWeight: FontWeight.bold,
-                        fontSize: MediaQuery.of(context).size.width * .07),
+                        fontSize: (MediaQuery.of(context).size.height +MediaQuery.of(context).size.width) / 2  * .04),
                   ),
                 ),
               ),
@@ -81,7 +81,7 @@ class customDrawer extends StatelessWidget {
                   style: TextStyle(
                       letterSpacing: 2,
                       fontWeight: FontWeight.bold,
-                      fontSize: MediaQuery.of(context).size.width * .07),
+                      fontSize: (MediaQuery.of(context).size.height +MediaQuery.of(context).size.width) / 2  * .04),
                 ),
               ),
             ),
@@ -103,7 +103,7 @@ class customDrawer extends StatelessWidget {
                   style: TextStyle(
                       letterSpacing: 2,
                       fontWeight: FontWeight.bold,
-                      fontSize: MediaQuery.of(context).size.width * .07),
+                      fontSize: (MediaQuery.of(context).size.height +MediaQuery.of(context).size.width) / 2  * .04),
                 ),
               ),
             ),
@@ -118,8 +118,7 @@ class customDrawer extends StatelessWidget {
                         style: TextStyle(
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold,
-                            fontSize:
-                                MediaQuery.of(context).size.width * .07)))),
+                            fontSize: (MediaQuery.of(context).size.height +MediaQuery.of(context).size.width) / 2  * .04),),),),
             Divider(
               thickness: MediaQuery.of(context).size.height * .005,
             ),
@@ -132,7 +131,7 @@ class customDrawer extends StatelessWidget {
                 style: TextStyle(
                     letterSpacing: 2,
                     fontWeight: FontWeight.bold,
-                    fontSize: MediaQuery.of(context).size.width * .05),
+                    fontSize: (MediaQuery.of(context).size.height +MediaQuery.of(context).size.width) / 2  * .04,),
               ),
             ),
           ],
@@ -145,7 +144,7 @@ class customDrawer extends StatelessWidget {
 void autoAboutDialog(context) {
   showAboutDialog(
       context: context,
-      applicationVersion: '2.0',
+      applicationVersion: '2.0.1',
       applicationName: 'NASA Mira',
       applicationLegalese: 'Kristóf Kékesi',
       );
