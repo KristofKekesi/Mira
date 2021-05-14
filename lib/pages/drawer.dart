@@ -144,7 +144,7 @@ class customDrawer extends StatelessWidget {
 void autoAboutDialog(context) {
   showAboutDialog(
       context: context,
-      applicationVersion: '2.0.1',
+      applicationVersion: '3.0.0',
       applicationName: 'NASA Mira',
       applicationLegalese: 'Kristóf Kékesi',
       );

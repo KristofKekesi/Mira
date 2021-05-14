@@ -93,8 +93,9 @@ class _MiraState extends State<Mira> {
     return MaterialApp(
       builder: (context, child) {
         return ScrollConfiguration(
-            behavior: NoScrollGlow(),
-        child: child,);
+          behavior: NoScrollGlow(),
+          child: child,
+        );
       },
       localizationsDelegates: [
         AppLocalizations.delegate,
@@ -128,7 +129,218 @@ class _MiraState extends State<Mira> {
   }
 }
 
-class Body extends StatelessWidget {
+bool selectorHelicopters = true;
+bool selectorRovers = true;
+bool selectorOrbiters = true;
+bool selectorLanders = true;
+bool selectorFlybys = true;
+
+bool sortIsReverse = false;
+
+ValueNotifier<bool> selectorFinalHelicopters = ValueNotifier<bool>(selectorHelicopters);
+ValueNotifier<bool> selectorFinalRovers = ValueNotifier<bool>(selectorHelicopters);
+ValueNotifier<bool> selectorFinalOrbiters = ValueNotifier<bool>(selectorHelicopters);
+ValueNotifier<bool> selectorFinalLanders = ValueNotifier<bool>(selectorHelicopters);
+ValueNotifier<bool> selectorFinalFlybys = ValueNotifier<bool>(selectorHelicopters);
+
+ValueNotifier<bool> sortFinalIsReverse = ValueNotifier<bool>(sortIsReverse);
+
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  void showSelectors(context) {
+    showDialog(
+      context: context,
+      builder: (_) => StatefulBuilder(
+        // You need this, notice the parameters below:
+        builder: (BuildContext context, StateSetter setState) {
+          return AlertDialog(
+            contentPadding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height * .025,
+            ),
+            content: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+              ),
+              width: MediaQuery.of(context).size.width,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.height * .025,
+                    right: MediaQuery.of(context).size.height * .025,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * .025,
+                        ),
+                        child: Text(
+                          // TODO localize
+                          "Selectors & Sort",
+                          style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.width * .05,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * .025,
+                        ),
+                        child: Text(
+                          // TODO localize
+                          "Types",
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * .05,
+                          ),
+                        ),
+                      ),
+                      CheckboxListTile(
+                        value: selectorHelicopters,
+                        onChanged: (value) {
+                          setState(() {
+                            selectorHelicopters = value;
+                          });
+                        },
+                        title: Text("Helicopters"),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        contentPadding: EdgeInsets.all(0),
+                      ),
+                      CheckboxListTile(
+                        value: selectorRovers,
+                        onChanged: (value) {
+                          setState(() {
+                            selectorRovers = value;
+                          });
+                        },
+                        title: Text("Rovers"),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        contentPadding: EdgeInsets.all(0),
+                      ),
+                      CheckboxListTile(
+                        value: selectorOrbiters,
+                        onChanged: (value) {
+                          setState(() {
+                            selectorOrbiters = value;
+                          });
+                        },
+                        title: Text("Orbiters"),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        contentPadding: EdgeInsets.all(0),
+                      ),
+                      CheckboxListTile(
+                        value: selectorLanders,
+                        onChanged: (value) {
+                          setState(() {
+                            selectorLanders = value;
+                          });
+                        },
+                        title: Text("Landers"),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        contentPadding: EdgeInsets.all(0),
+                      ),
+                      CheckboxListTile(
+                        value: selectorFlybys,
+                        onChanged: (value) {
+                          setState(() {
+                            selectorFlybys = value;
+                          });
+                        },
+                        title: Text("Flyby satelites"),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        contentPadding: EdgeInsets.all(0),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * .025,
+                        ),
+                        child: Text(
+                          // TODO localize
+                          "Sort by dates",
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * .05,
+                          ),
+                        ),
+                      ),
+                      CheckboxListTile(
+                        value: sortIsReverse,
+                        onChanged: (value) {
+                          setState(() {
+                              sortIsReverse = true;
+                          });
+                        },
+                        title: Text("Ascending"),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        contentPadding: EdgeInsets.all(0),
+                      ),
+                      CheckboxListTile(
+                        value: !sortIsReverse,
+                        onChanged: (value) {
+                          setState(() {
+                              sortIsReverse = false;
+                          });
+                        },
+                        title: Text("Descending"),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        contentPadding: EdgeInsets.all(0),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            actionsPadding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height * .025,
+              right: MediaQuery.of(context).size.height * .025,
+            ),
+            actions: [
+              GestureDetector(
+                onTap: (){Navigator.pop(context);},
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    right: MediaQuery.of(context).size.height * .025,
+                  ),
+                  child: Text(
+                    AppLocalizations.of(context).translate("back"),
+                    style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * .05,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  setState((){
+                    selectorFinalHelicopters.value = selectorHelicopters;
+                    selectorFinalRovers.value = selectorRovers;
+                    selectorFinalOrbiters.value = selectorOrbiters;
+                    selectorFinalLanders.value = selectorLanders;
+                    selectorFinalFlybys.value = selectorFlybys;
+
+                    sortFinalIsReverse.value = sortIsReverse;
+
+                  });
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Search",
+                  style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.width * .05,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -137,45 +349,73 @@ class Body extends StatelessWidget {
             left: MediaQuery.of(context).size.width * .05,
             right: MediaQuery.of(context).size.width * .05),
         child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Container(),
-                Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.width * .05,
-                          left: (MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
-                              2 *
-                              .04,),
-                      child: Container(
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            AppLocalizations.of(context).translate('title'),
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: (MediaQuery.of(context).size.width + MediaQuery.of(context).size.height) / 2 * .06,
-                              color: Colors.black,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(),
+              Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.width * .05,
+                      left: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .04,
+                      right: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .04,
+                    ),
+                    child: Container(
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              AppLocalizations.of(context).translate('title'),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: (MediaQuery.of(context).size.width +
+                                        MediaQuery.of(context).size.height) /
+                                    2 *
+                                    .06,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
+                            GestureDetector(
+                              onTap: () {
+                                showSelectors(context);
+                              },
+                              child: Icon(
+                                Icons.menu,
+                                size: MediaQuery.of(context).size.width * .075,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    ApodWidget(),
-                    RoverGrid(),
-        Padding(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).size.width * .05,),
-          child: Container()),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  ApodWidget(),
+                  RoverGrid(sortFinalIsReverse, selectorFinalHelicopters, "helicopter"),
+                  RoverGrid(sortFinalIsReverse, selectorFinalRovers, "rover"),
+                  RoverGrid(sortFinalIsReverse, selectorFinalOrbiters, "orbiter"),
+                  RoverGrid(sortFinalIsReverse, selectorFinalLanders, "lander"),
+                  RoverGrid(sortFinalIsReverse, selectorFinalFlybys, "flyby"),
+                  Padding(
+                      padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).size.width * .05,
+                      ),
+                      child: Container()),
+                ],
+              ),
+            ],
           ),
         ),
+      ),
     );
   }
 }
