@@ -3,7 +3,7 @@
 		"status": "active",
 
 		"mission": "Mars 2020",
-		"nick": "Ingenuity",
+		"name": "Ingenuity",
 		"type": ["helicopter"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -23,7 +23,7 @@
 		"status": "active",
 
 		"mission": "Mars 2020",
-		"nick": "Perseverance",
+		"name": "Perseverance",
 		"type": ["rover"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -46,7 +46,7 @@
 		"status": "active",
 
 		"mission": "Discovery",
-		"nick": "InSight",
+		"name": "InSight",
 		"type": ["lander"],
 		"operator": "NASA",
 		"manufacturer": "Lockheed Martin",
@@ -69,7 +69,7 @@
 		"status": "inactive",
 
 		"mission": "Mars Scout",
-		"nick": "Maven",
+		"name": "Maven",
 		"type": ["orbiter"],
 		"operator": "NASA",
 		"manufacturer": "Lockheed Martin",
@@ -89,7 +89,7 @@
 		"status": "active",
 
 		"mission": null,
-		"nick": "Curiosity",
+		"name": "Curiosity",
 		"type": ["rover"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -112,7 +112,7 @@
 		"status": "inactive",
 
 		"mission": "Mars Scout",
-		"nick": "Phoenix",
+		"name": "Phoenix",
 		"type": ["lander"],
 		"operator": "NASA",
 		"manufacturer": "Lockheed Martin",
@@ -130,6 +130,7 @@
 		"status": "active",
 
 		"mission": null,
+		"name": "Mars Reconnaissance Orbiter",
 		"nick": "MRO",
 		"type": ["orbiter"],
 		"operator": "NASA",
@@ -148,7 +149,7 @@
 		"status": "inactive",
 
 		"mission": "MER-B",
-		"nick": "Opportunity",
+		"name": "Opportunity",
 		"type": ["rover"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -171,7 +172,7 @@
 		"status": "inactive",
 
 		"mission": "MER-A",
-		"nick": "Spirit",
+		"name": "Spirit",
 		"type": ["rover"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -194,7 +195,7 @@
 		"status": "active",
 
 		"mission": null,
-		"nick": "Mars Odyssey",
+		"name": "Mars Odyssey",
 		"type": ["orbiter"],
 		"operator": "NASA",
 		"manufacturer": "Lockheed Martin",
@@ -212,7 +213,7 @@
 		"status": "inactive",
 
 		"mission": "Surveyor",
-		"nick": "MPL",
+		"name": "MPL",
 		"type": ["lander"],
 		"operator": "NASA",
 		"manufacturer": "Martin Marietta",
@@ -230,6 +231,7 @@
 		"status": "inactive",
 
 		"mission": null,
+		"name": "Mars Climate Oribter",
 		"nick": "MCO",
 		"type": ["orbiter"],
 		"operator": "NASA",
@@ -248,7 +250,7 @@
 		"status": "inactive",
 
 		"mission": "Discovery",
-		"nick": "Pathfinder",
+		"name": "Pathfinder",
 		"type": ["lander"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -266,6 +268,7 @@
 		"status": "inactive",
 
 		"mission": "Surveyor",
+		"name": "Mars Global Surveyor",
 		"nick": "MGS",
 		"type": ["orbiter"],
 		"operator": "NASA",
@@ -284,7 +287,7 @@
 		"status": "inactive",
 
 		"mission": "Discovery",
-		"nick": "Sojourner",
+		"name": "Sojourner",
 		"type": ["rover"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -301,8 +304,44 @@
 	{
 		"status": "inactive",
 
+		"mission": "Viking Program",
+		"name": "Viking 2",
+		"type": ["orbiter", "lander"],
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1975, "month": 9, "day": 9},
+		"arrive": {"year": 1976, "month": 8, "day": 31},
+		"connection-lost": {"year": 1980, "month": 4, "day": 11},
+		"end": {"year": 1980, "month": 4, "day": 11},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Viking Program",
+		"name": "Viking 1",
+		"type": ["orbiter", "lander"],
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1975, "month": 8, "day": 20},
+		"arrive": {"year": 1976, "month": 6, "day": 19},
+		"connection-lost": {"year": 1982, "month": 11, "day": 13},
+		"end": {"year": 1982, "month": 11, "day": 13},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
 		"mission": "Mariner Program",
-		"nick": "Mariner 9",
+		"name": "Mariner 9",
 		"type": ["flyby"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -321,7 +360,7 @@
 		"status": "inactive",
 
 		"mission": "Mariner Program",
-		"nick": "Mariner 8",
+		"name": "Mariner 8",
 		"type": ["flyby"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -339,7 +378,7 @@
 		"status": "inactive",
 
 		"mission": "Mariner Program",
-		"nick": "Mariner 7",
+		"name": "Mariner 7",
 		"type": ["flyby"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -358,7 +397,7 @@
 		"status": "inactive",
 
 		"mission": "Mariner Program",
-		"nick": "Mariner 6",
+		"name": "Mariner 6",
 		"type": ["flyby"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -377,7 +416,7 @@
 		"status": "inactive",
 
 		"mission": "Mariner Program",
-		"nick": "Mariner 4",
+		"name": "Mariner 4",
 		"type": ["flyby"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
@@ -395,7 +434,7 @@
 		"status": "inactive",
 
 		"mission": "Mariner Program",
-		"nick": "Mariner 3",
+		"name": "Mariner 3",
 		"type": ["flyby"],
 		"operator": "NASA",
 		"manufacturer": "JPL",
