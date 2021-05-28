@@ -16,19 +16,6 @@ class customDrawer extends StatelessWidget {
     }
   }
 
-  String coverImg() {
-    String output;
-    var current = DateTime.now();
-
-    if (current.hour >= 6 && current.hour < 20) {
-      output = 'lib/images/cover_day.jpg';
-    } else {
-      output = 'lib/images/cover_night.jpg';
-    }
-
-    return output;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,18 +26,6 @@ class customDrawer extends StatelessWidget {
       color: Colors.white,
       child: ListView(
           children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width * .75,
-              height: (MediaQuery.of(context).size.width * .75) * .40,
-              child: DrawerHeader(
-                child: null,
-                margin: EdgeInsets.zero,
-                padding: EdgeInsets.zero,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(coverImg()), fit: BoxFit.fitWidth)),
-              ),
-            ),
             Padding(
               padding: EdgeInsets.only(
                   top: MediaQuery.of(context).size.height * .01),

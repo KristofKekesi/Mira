@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
@@ -82,6 +83,7 @@ void _popup(context, title, copyright, url) {
                   right: MediaQuery.of(context).size.height * .025,
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(

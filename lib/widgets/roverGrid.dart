@@ -12,15 +12,19 @@ var roverGridMission = AutoSizeGroup();
 var roverGridTitle = AutoSizeGroup();
 int counter = 0;
 
-double getGrid(context) {
-  return MediaQuery.of(context).size.width * .38749;
-}
-
 class _RoverGridInner extends StatelessWidget {
   final type;
   final data;
 
   const _RoverGridInner({Key key, this.type, this.data}) : super(key: key);
+
+  String displayedName(name, nick) {
+    if (nick != null) {
+      return nick;
+    } else {
+      return name;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +47,7 @@ class _RoverGridInner extends StatelessWidget {
                               apiEnabled: data[index]["api-enabled"],
                               url: data[index]["url"],
                               mission: data[index]["mission"],
+                              name: data[index]["name"],
                               nick: data[index]["nick"],
                               type: data[index]["type"],
                               launch: data[index]["launch"],
@@ -72,7 +77,7 @@ class _RoverGridInner extends StatelessWidget {
                             .04),
                       ),
                     ),
-                    width: getGrid(context),
+                    width: MediaQuery.of(context).size.width * .38749,
                     height: MediaQuery.of(context).size.height * .2,
                     child: Padding(
                       padding: EdgeInsets.all(
@@ -109,7 +114,7 @@ class _RoverGridInner extends StatelessWidget {
                                 ),
                               ),
                               AutoSizeText(
-                                data[index]["nick"],
+                                displayedName(data[index]["name"], data[index]["nick"]),
                                 group: roverGridTitle,
                                 maxLines: 2,
                                 overflow: TextOverflow.fade,

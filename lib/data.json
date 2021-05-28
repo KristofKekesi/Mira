@@ -304,6 +304,24 @@
 	{
 		"status": "inactive",
 
+		"mission": null,
+		"name": "Mars Observer",
+		"type": ["orbiter"],
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1992, "month": 9, "day": 25},
+		"arrive": null,
+		"connection-lost": {"year": 1993, "month": 8, "day": 22},
+		"end": {"year": 1993, "month": 8, "day": 22},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
 		"mission": "Viking Program",
 		"name": "Viking 2",
 		"type": ["orbiter", "lander"],

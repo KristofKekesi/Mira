@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:nasamira/pages/searchVehicle.dart';
+import 'package:nasamira/widgets/declarationalButton.dart';
 import 'package:nasamira/widgets/localization.dart';
 
 import 'datePicker.dart';
@@ -13,6 +15,7 @@ class RoverSpecPage extends StatelessWidget {
 
   final String url;
   final String mission;
+  final String name;
   final String nick;
   final List type;
   final String operator;
@@ -31,6 +34,7 @@ class RoverSpecPage extends StatelessWidget {
       this.dataSector,
       this.apiEnabled,
       this.mission,
+      this.name,
       this.nick,
       this.type,
       this.launch,
@@ -49,6 +53,14 @@ class RoverSpecPage extends StatelessWidget {
     String launchY;
     String launchM;
     String launchD;
+
+    String displayedName(name, nick) {
+      if (nick != null) {
+        return nick;
+      } else {
+        return name;
+      }
+    }
 
     String checkNull(int num) {
       if (num < 10) {
@@ -99,23 +111,26 @@ class RoverSpecPage extends StatelessWidget {
         endM = checkNull(deactivated["month"]);
         endD = checkNull(deactivated["day"]);
 
-        endPrefix = AppLocalizations.of(context).translate("roverSpecDeactivated");
-        endPrefixMin = AppLocalizations.of(context).translate("roverSpecDeactivatedMin");
+        endPrefix =
+            AppLocalizations.of(context).translate("roverSpecDeactivated");
+        endPrefixMin =
+            AppLocalizations.of(context).translate("roverSpecDeactivatedMin");
       } else if (connectionLost != null) {
         endY = connectionLost["year"].toString();
         endM = checkNull(connectionLost["month"]);
         endD = checkNull(connectionLost["day"]);
 
-
         endPrefix = AppLocalizations.of(context).translate("roverSpecLast");
-        endPrefixMin = AppLocalizations.of(context).translate("roverSpecLastMin");
+        endPrefixMin =
+            AppLocalizations.of(context).translate("roverSpecLastMin");
       } else {
         endY = "──";
         endM = "─";
         endD = "─";
 
         endPrefix = AppLocalizations.of(context).translate("roverSpecLast");
-        endPrefixMin = AppLocalizations.of(context).translate("roverSpecLastMin");
+        endPrefixMin =
+            AppLocalizations.of(context).translate("roverSpecLastMin");
       }
     }
 
@@ -150,72 +165,46 @@ class RoverSpecPage extends StatelessWidget {
                       MediaQuery.of(context).size.height) /
                   2 *
                   .02),
-          child: Container(
-            width: MediaQuery.of(context).size.width * .9 -
-                (MediaQuery.of(context).size.width +
-                        MediaQuery.of(context).size.height) /
-                    2 *
-                    .02,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular((MediaQuery.of(context).size.width +
-                        MediaQuery.of(context).size.height) /
-                    2 *
-                    .02),
-              ),
-              color: Colors.white12,
-            ),
-            child: Padding(
-              padding: EdgeInsets.all((MediaQuery.of(context).size.width +
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => VehicleSearch(
+                    mission: null,
+                    type: ["orbiter"],
+                  ),
+                ),
+              );
+            },
+            child: DeclarationalButton(title: AppLocalizations.of(context)
+                .translate("roverSpecMission"), value: mission, valueSizeGroup: specPageBigText,),),);
+      }
+    }
+
+Widget nicknameWidget(nick) {
+      if (nick == null) {
+        return Container();
+      } else {
+        return Padding(
+          padding: EdgeInsets.only(
+              bottom: (MediaQuery.of(context).size.width +
                       MediaQuery.of(context).size.height) /
                   2 *
                   .02),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    // TODO
-                    "Mission: ",
-                    // AppLocalizations.of(context)
-                    //     .translate('roverSpecOperator'),
-                    style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * .05,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white70,
-                    ),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => VehicleSearch(
+                    mission: null,
+                    type: ["orbiter"],
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        width: MediaQuery.of(context).size.width * .9 -
-                            (MediaQuery.of(context).size.width +
-                                    MediaQuery.of(context).size.height) /
-                                2 *
-                                .04 -
-                            MediaQuery.of(context).size.width * .175,
-                        child: AutoSizeText(
-                          mission ?? "",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: MediaQuery.of(context).size.width * .08,
-                            color: Colors.white,
-                          ),
-                          maxLines: 1,
-                          group: specPageBigText,
-                        ),
-                      ),
-                      Icon(
-                        Icons.arrow_forward_rounded,
-                        size: MediaQuery.of(context).size.width * .075,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
+            child: DeclarationalButton(title: name, value: "\"" + nick + "\"", valueSizeGroup: specPageBigText,)
           ),
         );
       }
@@ -318,7 +307,7 @@ class RoverSpecPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         centerTitle: false,
         title: AutoSizeText(
-          nick,
+          displayedName(name, nick),
           minFontSize: 1,
           maxLines: 1,
           style: TextStyle(
@@ -344,7 +333,6 @@ class RoverSpecPage extends StatelessWidget {
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                //crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -357,7 +345,7 @@ class RoverSpecPage extends StatelessWidget {
                                     .04 +
                                 MediaQuery.of(context).size.width * .05),
                         child: AutoSizeText(
-                          nick,
+                          displayedName(name, nick),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: MediaQuery.of(context).size.width * .08,
@@ -397,126 +385,14 @@ class RoverSpecPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 missionWidget(mission),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                              .9 -
-                                          (MediaQuery.of(context).size.width +
-                                                  MediaQuery.of(context)
-                                                      .size
-                                                      .height) /
-                                              2 *
-                                              .02,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(
-                                              (MediaQuery.of(context)
-                                                          .size
-                                                          .width +
-                                                      MediaQuery.of(context)
-                                                          .size
-                                                          .height) /
-                                                  2 *
-                                                  .02),
-                                        ),
-                                        color: Colors.white12,
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(
-                                            (MediaQuery.of(context).size.width +
-                                                    MediaQuery.of(context)
-                                                        .size
-                                                        .height) /
-                                                2 *
-                                                .02),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              // TODO
-                                              "Type: ",
-                                              // AppLocalizations.of(context)
-                                              //     .translate('roverSpecOperator'),
-                                              style: TextStyle(
-                                                fontSize: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    .05,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white70,
-                                              ),
-                                            ),
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.end,
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: <Widget>[
-                                                Container(
-                                                  width: MediaQuery.of(context)
-                                                              .size
-                                                              .width *
-                                                          .9 -
-                                                      (MediaQuery.of(context)
-                                                                  .size
-                                                                  .width +
-                                                              MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height) /
-                                                          2 *
-                                                          .04 -
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .width *
-                                                          .175,
-                                                  child: AutoSizeText(
-                                                    typeText(type),
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .08,
-                                                      color: Colors.white,
-                                                    ),
-                                                    maxLines: 3,
-                                                    group: specPageBigText,
-                                                  ),
-                                                ),
-                                                Icon(
-                                                  Icons.arrow_forward_rounded,
-                                                  size: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      .075,
-                                                  color: Colors.white,
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      top: (MediaQuery.of(context).size.width +
-                                              MediaQuery.of(context)
-                                                  .size
-                                                  .height) /
-                                          2 *
-                                          .02),
-                                  child: Container(),
-                                ),
+                                nicknameWidget(nick),
+                                DeclarationalButton(title: AppLocalizations.of(context).translate("roverSpecType"), value: typeText(type), valueSizeGroup: specPageBigText,),
+                                Container(height: (MediaQuery.of(context).size.width +
+                                    MediaQuery.of(context)
+                                        .size
+                                        .height) /
+                                    2 *
+                                    .02,),
                                 Padding(
                                   padding: EdgeInsets.all(
                                       (MediaQuery.of(context).size.width +
@@ -917,8 +793,7 @@ class RoverSpecPage extends StatelessWidget {
                                         ],
                                       ),
                                       Text(
-                                        "* " +
-                                            endPrefix,
+                                        "* " + endPrefix,
                                         style: TextStyle(
                                           fontSize: MediaQuery.of(context)
                                                   .size
@@ -939,71 +814,23 @@ class RoverSpecPage extends StatelessWidget {
                                           color: Colors.white70,
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                            top: (MediaQuery.of(context)
-                                                        .size
-                                                        .width +
-                                                    MediaQuery.of(context)
-                                                        .size
-                                                        .height) /
-                                                2 *
-                                                .04),
-                                        child: Text(
-                                          AppLocalizations.of(context)
-                                              .translate('roverSpecOperator'),
-                                          style: TextStyle(
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                .05,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white70,
-                                          ),
-                                        ),
-                                      ),
-                                      AutoSizeText(
-                                        operator,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .8,
-                                          color: Colors.white,
-                                        ),
-                                        maxLines: 1,
-                                        group: specPageBigText,
-                                      ),
-                                      Text(
-                                        AppLocalizations.of(context)
-                                            .translate('roverSpecManufacturer'),
-                                        style: TextStyle(
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .05,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white70,
-                                        ),
-                                      ),
-                                      AutoSizeText(
-                                        manufacturer,
-                                        style: TextStyle(
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .08,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                        maxLines: 1,
-                                        group: specPageBigText,
-                                      ),
-                                      Column(children: actionWidget),
                                     ],
                                   ),
                                 ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    DeclarationalButton(title: AppLocalizations.of(context).translate('roverSpecOperator'), value: operator, valueSizeGroup: specPageBigText,),
+                                    Container(height: (MediaQuery.of(context).size.width +
+                                        MediaQuery.of(context)
+                                            .size
+                                            .height) /
+                                        2 *
+                                        .02,),
+                                    DeclarationalButton(title: AppLocalizations.of(context).translate('roverSpecManufacturer'), value: manufacturer, valueSizeGroup: specPageBigText,),
+                                  ],
+                                ),
+                                Column(children: actionWidget),
                               ],
                             ),
                           ),

@@ -68,6 +68,11 @@ class PromoWidget extends StatelessWidget {
                       image:
                           "https://play-lh.googleusercontent.com/v-HoxSuPTB4XxQ_1Z8UGJV3eUjUqJ7D9bnNol8FaO-zZQ1jm04vBVxF_Ns5HDA7kg7E=s180-rw",
                     ),
+                    Application(
+                      name: "Clean Earth",
+                      image:
+                      "https://play-lh.googleusercontent.com/FC2hG2B5SSCWhmSmzBUIZ05wzwIS12gjX3IIfojIKGBxpGQBoRdG8NzyETWTCSok6Vf4=s180-rw",
+                    ),
                     // Application(
                     //   name: "NASA Mira",
                     //   redirect:

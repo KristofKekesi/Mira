@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
-import 'package:nasamira/pages/search.dart';
+import 'package:nasamira/pages/searchImage.dart';
 import 'package:nasamira/widgets/localization.dart';
 import 'package:nasamira/widgets/roverGrid.dart';
 import 'package:nasamira/widgets/update.dart';
@@ -16,7 +16,7 @@ int defaultSolPosition;
 var maxDateRaw;
 int maxSol;
 String mission;
-String nick;
+String name;
 String url;
 
 void define(dataSector) {
@@ -39,7 +39,7 @@ void define(dataSector) {
   }
 
   mission = source["mission"];
-  nick = source["nick"];
+  name = source["name"];
 
   url = source["url"];
 }
@@ -129,14 +129,6 @@ class _DatePickerPage extends State<DatePickerPage> {
       setState(() => timeFormat = value);
     }
 
-    String _headerText() {
-      if (mission != null) {
-        return mission + " " + nick;
-      } else {
-        return nick;
-      }
-    }
-
     Widget invalidDateContainer() {
       return ListView(
         children: <Widget>[
@@ -151,16 +143,14 @@ class _DatePickerPage extends State<DatePickerPage> {
                                 MediaQuery.of(context).size.height) /
                             2 *
                             .04),
-                child: Text(
-                  nick,
+                child: AutoSizeText(
+                  name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: (MediaQuery.of(context).size.width +
-                        MediaQuery.of(context).size.height) /
-                        2 *
-                        .06,
+                    fontSize: MediaQuery.of(context).size.width * .08,
                     color: Colors.black,
                   ),
+                  maxLines: 1,
                 ),
               ),
               Center(
@@ -221,7 +211,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                               fontSize: (MediaQuery.of(context).size.width +
                                   MediaQuery.of(context).size.height) /
                                   2 *
-                                  .06,
+                                  .05,
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         ),
@@ -250,14 +240,12 @@ class _DatePickerPage extends State<DatePickerPage> {
                                 MediaQuery.of(context).size.height) /
                             2 *
                             .04),
-                child: Text(
-                  nick,
+                child: AutoSizeText(
+                  name,
+                  maxLines: 1,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: (MediaQuery.of(context).size.width +
-                        MediaQuery.of(context).size.height) /
-                        2 *
-                        .06,
+                    fontSize: MediaQuery.of(context).size.width * .08,
                     color: Colors.black,
                   ),
                 ),
@@ -362,22 +350,24 @@ class _DatePickerPage extends State<DatePickerPage> {
                             Tooltip(
                               message: AppLocalizations.of(context)
                                   .translate('month'),
-                              child: Text(
+                              child: AutoSizeText(
                                 '${checkNull(date.month)}',
+                                maxLines: 1,
                                 style: TextStyle(
                                     fontSize:
-                                        MediaQuery.of(context).size.width * .09,
+                                        MediaQuery.of(context).size.width * .08,
                                     color: timeFormat == false
                                         ? Colors.white
                                         : Colors.black38,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Text(
+                            AutoSizeText(
                               '/',
+                              maxLines: 1,
                               style: TextStyle(
                                   fontSize:
-                                      MediaQuery.of(context).size.width * .09,
+                                      MediaQuery.of(context).size.width * .08,
                                   color: timeFormat == false
                                       ? Colors.white
                                       : Colors.black38,
@@ -386,22 +376,24 @@ class _DatePickerPage extends State<DatePickerPage> {
                             Tooltip(
                               message:
                                   AppLocalizations.of(context).translate('day'),
-                              child: Text(
+                              child: AutoSizeText(
                                 '${checkNull(date.day)}',
+                                maxLines: 1,
                                 style: TextStyle(
                                     fontSize:
-                                        MediaQuery.of(context).size.width * .09,
+                                        MediaQuery.of(context).size.width * .08,
                                     color: timeFormat == false
                                         ? Colors.white
                                         : Colors.black38,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Text(
+                            AutoSizeText(
                               '/',
+                              maxLines: 1,
                               style: TextStyle(
                                   fontSize:
-                                      MediaQuery.of(context).size.width * .09,
+                                      MediaQuery.of(context).size.width * .08,
                                   color: timeFormat == false
                                       ? Colors.white
                                       : Colors.black38,
@@ -410,11 +402,12 @@ class _DatePickerPage extends State<DatePickerPage> {
                             Tooltip(
                               message: AppLocalizations.of(context)
                                   .translate('year'),
-                              child: Text(
+                              child: AutoSizeText(
                                 '${date.year}',
+                                maxLines: 1,
                                 style: TextStyle(
                                     fontSize:
-                                        MediaQuery.of(context).size.width * .09,
+                                        MediaQuery.of(context).size.width * .08,
                                     color: timeFormat == false
                                         ? Colors.white
                                         : Colors.black38,
@@ -438,11 +431,12 @@ class _DatePickerPage extends State<DatePickerPage> {
                                     : Colors.black38),
                           ),
                         ),
-                        Text(
+                        AutoSizeText(
                           sol.toString(),
+                          maxLines: 1,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: MediaQuery.of(context).size.width * .09,
+                              fontSize: MediaQuery.of(context).size.width * .08,
                               color: timeFormat == true
                                   ? Colors.white
                                   : Colors.black38),
@@ -581,14 +575,11 @@ class _DatePickerPage extends State<DatePickerPage> {
                       bottom: MediaQuery.of(context).size.height * .02,
                     ),
                     child: Center(
-                      child: Text(
+                      child: AutoSizeText(
                         AppLocalizations.of(context)
                             .translate('roverImgSearchButton'),
                         style: TextStyle(
-                            fontSize: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
-                                2 *
-                                .06,
+                            fontSize: MediaQuery.of(context).size.width * .08,
                             fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
@@ -631,12 +622,8 @@ class _DatePickerPage extends State<DatePickerPage> {
         ),
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Padding(
-          padding: EdgeInsets.only(
-            right: MediaQuery.of(context).size.width * .12,
-          ),
-          child: AutoSizeText(
-            _headerText(),
+        title: AutoSizeText(
+            name,
             minFontSize: 1,
             maxLines: 1,
             style: TextStyle(
@@ -645,7 +632,6 @@ class _DatePickerPage extends State<DatePickerPage> {
               color: Colors.white,
             ),
           ),
-        ),
       ),
       floatingActionButton: Container(
         height: MediaQuery.of(context).size.width * .12,

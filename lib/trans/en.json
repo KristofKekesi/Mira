@@ -20,6 +20,14 @@
   "orbiters": "Orbiters",
   "landers": "Landers",
   "flybys": "Flyby satelites",
+  "settings": "Settings",
+  "selectorsandsort": "Selectors & Sort",
+  "types": "Types",
+  "sort": "Sort by date",
+  "ascending": "Ascending",
+  "descending": "Descending",
+  "roverSpecMission": "Mission: ",
+  "roverSpecType": "Type: ",
   "roverSpecLaunch": "Launch: ",
   "roverSpecArrive": "Arrive: ",
   "roverSpecDeactivated": "Deactivated",
@@ -61,10 +69,10 @@
   "popSol": "SOL: ",
   "imgDown": "Download",
 
-  "back": "Vissza",
+  "back": "Back",
   "search": "Search",
   "ok": "OK",
-  
+
   "year": "Year",
   "month": "Month",
   "day": "Day",
