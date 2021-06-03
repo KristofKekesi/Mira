@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="887dbce3-01ba-49c0-bfcd-71d8fb53d882" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/NASA-Mira" />
+  </component>
+  <component name="ProjectId" id="1f2iAjikCEZQvHwR4YApk910fHf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="settings.editor.selected.configurable" value="dart.settings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Kristof\Documents\GitHub\NASA-Mira\lib" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="887dbce3-01ba-49c0-bfcd-71d8fb53d882" name="Default Changelist" comment="" />
+      <created>1595422447061</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595422447061</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="275" y="21" key="#Notifications" timestamp="1620383615585">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="21" key="#Notifications/0.0.1366.728/1366.0.1366.768@0.0.1366.728" timestamp="1620383615585" />
+    <state x="538" y="128" key="AndroidProcessChooserDialog" timestamp="1617453017199">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="538" y="128" key="AndroidProcessChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1617453017199" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1615542351425">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1615542351425" />
+    <state width="1306" height="126" key="GridCell.Tab.0.bottom" timestamp="1621264117294">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="126" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.768@0.0.1366.728" timestamp="1621264117294" />
+    <state width="1322" height="217" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1614554137962" />
+    <state width="1306" height="126" key="GridCell.Tab.0.center" timestamp="1621264117294">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="126" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.768@0.0.1366.728" timestamp="1621264117294" />
+    <state width="1322" height="217" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1614554137962" />
+    <state width="1306" height="126" key="GridCell.Tab.0.left" timestamp="1621264117294">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="126" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.768@0.0.1366.728" timestamp="1621264117294" />
+    <state width="1322" height="217" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1614554137962" />
+    <state width="1306" height="126" key="GridCell.Tab.0.right" timestamp="1621264117294">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1306" height="126" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.768@0.0.1366.728" timestamp="1621264117294" />
+    <state width="1322" height="217" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1614554137962" />
+    <state x="184" y="0" key="SettingsEditor" timestamp="1620384183075">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728/1366.0.1366.768@0.0.1366.728" timestamp="1620384183075" />
+    <state x="329" y="38" width="902" height="544" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1621347385284">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="329" y="38" width="902" height="544" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1366.728/1366.0.1366.768@0.0.1366.728" timestamp="1621347385284" />
+    <state x="94" y="54" width="902" height="544" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1366.728@0.0.1366.728" timestamp="1617471326613" />
+    <state x="324" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1620937711823">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="324" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728/1366.0.1366.768@0.0.1366.728" timestamp="1620937711823" />
+    <state x="324" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1614961669609" />
+    <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1614520511534">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1614520511534" />
+    <state x="102" y="81" width="736" height="606" key="find.popup" timestamp="1621432712265">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="102" y="81" width="736" height="606" key="find.popup/0.0.1366.728/1366.0.1366.768@0.0.1366.728" timestamp="1621432712265" />
+    <state x="102" y="81" width="606" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1615332251049" />
+    <state x="324" y="79" width="700" height="530" key="recent.locations.popup" timestamp="1618772015144">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="324" y="79" width="700" height="530" key="recent.locations.popup/0.0.1366.728/1366.0.1366.768@0.0.1366.728" timestamp="1618772015144" />
+    <state x="339" y="157" width="672" height="677" key="run.anything.popup" timestamp="1620661092746">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="157" width="672" height="677" key="run.anything.popup/0.0.1366.728/1366.0.1366.768@0.0.1366.728" timestamp="1620661092746" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1614961653572">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1614961653572" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/datePicker.dart</url>
+          <line>145</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/datePicker.dart</url>
+          <line>242</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/datePicker.dart</url>
+          <line>352</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/datePicker.dart</url>
+          <line>364</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/datePicker.dart</url>
+          <line>378</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/datePicker.dart</url>
+          <line>390</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/datePicker.dart</url>
+          <line>404</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/datePicker.dart</url>
+          <line>433</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/datePicker.dart</url>
+          <line>577</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

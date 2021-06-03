@@ -111,6 +111,24 @@
 	{
 		"status": "inactive",
 
+		"mission": "Discovery",
+		"name": "Dawn",
+		"type": ["flyby"],
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 2007, "month": 9, "day": 27},
+		"arrive": {"year": 2009, "month": 2, "day": 18},
+		"connection-lost": {"year": 2009, "month": 10, "day": 30},
+		"end": {"year": 2009, "month": 10, "day": 30},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
 		"mission": "Mars Scout",
 		"name": "Phoenix",
 		"type": ["lander"],
@@ -213,7 +231,8 @@
 		"status": "inactive",
 
 		"mission": "Surveyor",
-		"name": "MPL",
+		"name": "MMars Polar Lander",
+		"nick": "MPL",
 		"type": ["lander"],
 		"operator": "NASA",
 		"manufacturer": "Martin Marietta",
@@ -267,6 +286,24 @@
 	{
 		"status": "inactive",
 
+		"mission": "Discovery",
+		"name": "Sojourner",
+		"type": ["rover"],
+		"operator": "NASA",
+		"manufacturer": "JPL",
+		
+		"launch": {"year": 1996, "month": 12, "day": 6},
+		"arrive": {"year": 1997, "month": 7, "day": 4},
+		"connection-lost": {"year": 1997, "month": 9, "day": 27},
+		"end": {"year": 1997, "month": 9, "day": 27},
+		
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
 		"mission": "Surveyor",
 		"name": "Mars Global Surveyor",
 		"nick": "MGS",
@@ -279,24 +316,6 @@
 		"connection-lost": {"year": 2006, "month": 11, "day": 14},
 		"end": {"year": 2006, "month": 11, "day": 14},
 
-		"api-enabled": false,
-		"url": null,
-		"manifest": null
-	},
-	{
-		"status": "inactive",
-
-		"mission": "Discovery",
-		"name": "Sojourner",
-		"type": ["rover"],
-		"operator": "NASA",
-		"manufacturer": "JPL",
-		
-		"launch": {"year": 1996, "month": 12, "day": 6},
-		"arrive": {"year": 1997, "month": 7, "day": 4},
-		"connection-lost": {"year": 1997, "month": 9, "day": 27},
-		"end": {"year": 1997, "month": 9, "day": 27},
-		
 		"api-enabled": false,
 		"url": null,
 		"manifest": null

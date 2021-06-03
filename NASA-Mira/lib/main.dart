@@ -206,11 +206,17 @@ class _BodyState extends State<Body> {
                           sortFinalIsReverse, selectorFinalLanders, "lander"),
                       RoverGrid(
                           sortFinalIsReverse, selectorFinalFlybys, "flyby"),
-                      Padding(
-                          padding: EdgeInsets.only(
-                            bottom: MediaQuery.of(context).size.width * .05,
-                          ),
-                          child: Container()),
+                      RichText(
+                        text: TextSpan(
+                          text: 'Hello ',
+                          style: DefaultTextStyle.of(context).style,
+                          children: const <TextSpan>[
+                            TextSpan(text: 'bold', style: TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: ' world!'),
+                          ],
+                        ),
+                      ),
+                      Container(width: MediaQuery.of(context).size.width * .05,),
                     ],
                   ),
                 ],
