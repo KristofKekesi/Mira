@@ -4,7 +4,7 @@
 
 		"mission": "Mars 2020",
 		"name": "Ingenuity",
-		"type": ["helicopter"],
+		"type": "helicopter",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 		
@@ -24,7 +24,7 @@
 
 		"mission": "Mars 2020",
 		"name": "Perseverance",
-		"type": ["rover"],
+		"type": "rover",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 		
@@ -47,7 +47,7 @@
 
 		"mission": "Discovery",
 		"name": "InSight",
-		"type": ["lander"],
+		"type": "lander",
 		"operator": "NASA",
 		"manufacturer": "Lockheed Martin",
 
@@ -70,7 +70,7 @@
 
 		"mission": "Mars Scout",
 		"name": "Maven",
-		"type": ["orbiter"],
+		"type": "orbiter",
 		"operator": "NASA",
 		"manufacturer": "Lockheed Martin",
 
@@ -90,7 +90,7 @@
 
 		"mission": null,
 		"name": "Curiosity",
-		"type": ["rover"],
+		"type": "rover",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 		
@@ -113,7 +113,7 @@
 
 		"mission": "Discovery",
 		"name": "Dawn",
-		"type": ["flyby"],
+		"type": "flyby",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 
@@ -131,7 +131,7 @@
 
 		"mission": "Mars Scout",
 		"name": "Phoenix",
-		"type": ["lander"],
+		"type": "lander",
 		"operator": "NASA",
 		"manufacturer": "Lockheed Martin",
 
@@ -150,7 +150,7 @@
 		"mission": null,
 		"name": "Mars Reconnaissance Orbiter",
 		"nick": "MRO",
-		"type": ["orbiter"],
+		"type": "orbiter",
 		"operator": "NASA",
 		"manufacturer": "Lockheed Martin",
 
@@ -168,7 +168,7 @@
 
 		"mission": "MER-B",
 		"name": "Opportunity",
-		"type": ["rover"],
+		"type": "rover",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 		
@@ -191,7 +191,7 @@
 
 		"mission": "MER-A",
 		"name": "Spirit",
-		"type": ["rover"],
+		"type": "rover",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 		
@@ -214,7 +214,7 @@
 
 		"mission": null,
 		"name": "Mars Odyssey",
-		"type": ["orbiter"],
+		"type": "orbiter",
 		"operator": "NASA",
 		"manufacturer": "Lockheed Martin",
 
@@ -231,9 +231,9 @@
 		"status": "inactive",
 
 		"mission": "Surveyor",
-		"name": "MMars Polar Lander",
+		"name": "Mars Polar Lander",
 		"nick": "MPL",
-		"type": ["lander"],
+		"type": "lander",
 		"operator": "NASA",
 		"manufacturer": "Martin Marietta",
 
@@ -252,7 +252,7 @@
 		"mission": null,
 		"name": "Mars Climate Oribter",
 		"nick": "MCO",
-		"type": ["orbiter"],
+		"type": "orbiter",
 		"operator": "NASA",
 		"manufacturer": "Lockheed Martin",
 
@@ -270,7 +270,7 @@
 
 		"mission": "Discovery",
 		"name": "Pathfinder",
-		"type": ["lander"],
+		"type": "lander",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 
@@ -288,7 +288,7 @@
 
 		"mission": "Discovery",
 		"name": "Sojourner",
-		"type": ["rover"],
+		"type": "rover",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 		
@@ -307,7 +307,7 @@
 		"mission": "Surveyor",
 		"name": "Mars Global Surveyor",
 		"nick": "MGS",
-		"type": ["orbiter"],
+		"type": "orbiter",
 		"operator": "NASA",
 		"manufacturer": "Lockheed Martin",
 
@@ -325,7 +325,7 @@
 
 		"mission": null,
 		"name": "Mars Observer",
-		"type": ["orbiter"],
+		"type": "orbiter",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 
