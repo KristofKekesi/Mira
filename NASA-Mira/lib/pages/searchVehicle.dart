@@ -3,8 +3,8 @@ import 'package:nasamira/widgets/appbars.dart';
 import 'package:nasamira/widgets/localization.dart';
 
 class VehicleSearch extends StatelessWidget {
-  final mission;
-  final type;
+  final String mission;
+  final String type;
 
   const VehicleSearch({Key key, this.mission, this.type}) : super(key: key);
 

@@ -343,12 +343,30 @@
 
 		"mission": "Viking Program",
 		"name": "Viking 2",
-		"type": ["orbiter", "lander"],
+		"type": "orbiter",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1975, "month": 9, "day": 9},
-		"arrive": {"year": 1976, "month": 8, "day": 31},
+		"arrive": {"year": 1976, "month": 8, "day": 7},
+		"connection-lost": {"year": 1978, "month": 7, "day": 25},
+		"end": {"year": 1978, "month": 7, "day": 25},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Viking Program",
+		"name": "Viking 2",
+		"type":  "lander",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1975, "month": 9, "day": 9},
+		"arrive": {"year": 1976, "month": 9, "day": 3},
 		"connection-lost": {"year": 1980, "month": 4, "day": 11},
 		"end": {"year": 1980, "month": 4, "day": 11},
 
@@ -361,12 +379,30 @@
 
 		"mission": "Viking Program",
 		"name": "Viking 1",
-		"type": ["orbiter", "lander"],
+		"type": "orbiter",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1975, "month": 8, "day": 20},
 		"arrive": {"year": 1976, "month": 6, "day": 19},
+		"connection-lost": {"year": 1980, "month": 8, "day": 17},
+		"end": {"year": 1980, "month": 8, "day": 17},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Viking Program",
+		"name": "Viking 1",
+		"type": "lander",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1975, "month": 8, "day": 20},
+		"arrive": {"year": 1976, "month": 7, "day": 20},
 		"connection-lost": {"year": 1982, "month": 11, "day": 13},
 		"end": {"year": 1982, "month": 11, "day": 13},
 
@@ -379,7 +415,7 @@
 
 		"mission": "Mariner Program",
 		"name": "Mariner 9",
-		"type": ["flyby"],
+		"type": "flyby",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 
@@ -398,7 +434,7 @@
 
 		"mission": "Mariner Program",
 		"name": "Mariner 8",
-		"type": ["flyby"],
+		"type": "flyby",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 
@@ -416,7 +452,7 @@
 
 		"mission": "Mariner Program",
 		"name": "Mariner 7",
-		"type": ["flyby"],
+		"type": "flyby",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 
@@ -435,7 +471,7 @@
 
 		"mission": "Mariner Program",
 		"name": "Mariner 6",
-		"type": ["flyby"],
+		"type": "flyby",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 
@@ -454,7 +490,7 @@
 
 		"mission": "Mariner Program",
 		"name": "Mariner 4",
-		"type": ["flyby"],
+		"type": "flyby",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 
@@ -472,7 +508,7 @@
 
 		"mission": "Mariner Program",
 		"name": "Mariner 3",
-		"type": ["flyby"],
+		"type": "flyby",
 		"operator": "NASA",
 		"manufacturer": "JPL",
 

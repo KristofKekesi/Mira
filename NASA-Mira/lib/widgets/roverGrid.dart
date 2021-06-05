@@ -30,10 +30,7 @@ class _RoverGridInner extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> roverList = [];
     for (var index = 0; index < data.length; index++) {
-      for (var innerIndex = 0;
-          innerIndex < data[index]["type"].length;
-          innerIndex++) {
-        if (data[index]["type"][innerIndex] == type) {
+        if (data[index]["type"] == type) {
           roverList.add(
             Tooltip(
               message: AppLocalizations.of(context).translate("more"),
@@ -193,11 +190,9 @@ class _RoverGridInner extends StatelessWidget {
               ),
             ),
           );
-          // safety if one type is present more than once
-          break;
         }
       }
-    }
+
     return Container(
       width: MediaQuery.of(context).size.width * .825,
       child: Wrap(

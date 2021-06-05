@@ -17,7 +17,7 @@ class RoverSpecPage extends StatelessWidget {
   final String mission;
   final String name;
   final String nick;
-  final List type;
+  final String type;
   final String operator;
   final String manufacturer;
 
@@ -172,7 +172,7 @@ class RoverSpecPage extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => VehicleSearch(
                     mission: null,
-                    type: ["orbiter"],
+                    type: "orbiter",
                   ),
                 ),
               );
@@ -199,7 +199,7 @@ Widget nicknameWidget(nick) {
                 MaterialPageRoute(
                   builder: (context) => VehicleSearch(
                     mission: null,
-                    type: ["orbiter"],
+                    type: "orbiter",
                   ),
                 ),
               );
@@ -208,20 +208,6 @@ Widget nicknameWidget(nick) {
           ),
         );
       }
-    }
-
-    String typeText(List type) {
-      String returnment = "";
-      for (int index = 0; index < type.length; index++) {
-        if (index == 0) {
-          returnment = AppLocalizations.of(context).translate(type[index]);
-        } else {
-          returnment = returnment +
-              ", " +
-              AppLocalizations.of(context).translate(type[index]);
-        }
-      }
-      return returnment;
     }
 
     List<Widget> actionWidget = [];
@@ -237,7 +223,7 @@ Widget nicknameWidget(nick) {
             child: Tooltip(
               message: AppLocalizations.of(context)
                   .translate('specButton')
-                  .replaceAll("{0}", type.last),
+                  .replaceAll("{0}", type),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -386,7 +372,7 @@ Widget nicknameWidget(nick) {
                               children: <Widget>[
                                 missionWidget(mission),
                                 nicknameWidget(nick),
-                                DeclarationalButton(title: AppLocalizations.of(context).translate("roverSpecType"), value: typeText(type), valueSizeGroup: specPageBigText,),
+                                DeclarationalButton(title: AppLocalizations.of(context).translate("roverSpecType"), value: type, valueSizeGroup: specPageBigText,),
                                 Container(height: (MediaQuery.of(context).size.width +
                                     MediaQuery.of(context)
                                         .size
