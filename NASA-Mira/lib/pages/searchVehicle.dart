@@ -35,7 +35,6 @@ class VehicleSearch extends StatelessWidget {
                         // TODO localize
                         title: "Search for",
                         subtitle: "Orbiters",
-                        leftAction: Container(),
                         rightAction: Tooltip(
                           message: AppLocalizations.of(context)
                               .translate("settings"),

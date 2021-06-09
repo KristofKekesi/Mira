@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 class Appbar extends StatelessWidget {
   final String title;
-  final String subtitle;
-  final Widget leftAction;
-  final Widget rightAction;
+  String subtitle;
+  Widget leftAction;
+  Widget rightAction;
 
-  const Appbar(
+  Appbar(
       {Key key, this.title, this.subtitle, this.leftAction, this.rightAction})
       : super(key: key);
 
@@ -21,20 +21,21 @@ class Appbar extends StatelessWidget {
         return Text(
           subtitle,
           style: TextStyle(
-            fontSize: (MediaQuery
-                .of(context)
-                .size
-                .width +
-                MediaQuery
-                    .of(context)
-                    .size
-                    .height) /
+            fontSize: (MediaQuery.of(context).size.width +
+                    MediaQuery.of(context).size.height) /
                 2 *
                 .04,
             color: Colors.black,
           ),
         );
       }
+    }
+
+    if (leftAction == null) {
+      leftAction = Container(width: 0, height: 0,);
+    }
+    if (rightAction == null) {
+      rightAction = Container(width: 0, height: 0,);
     }
 
     return Container(
@@ -68,21 +69,28 @@ class Appbar extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        title,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                              2 *
-                              .06,
-                          color: Colors.black,
-                        ),),
-                      subtitleWidget(),
+                      leftAction,
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            title,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: (MediaQuery.of(context).size.width +
+                                      MediaQuery.of(context).size.height) /
+                                  2 *
+                                  .06,
+                              color: Colors.black,
+                            ),
+                          ),
+                          subtitleWidget(),
+                        ],
+                      ),
                     ],
                   ),
                   rightAction,

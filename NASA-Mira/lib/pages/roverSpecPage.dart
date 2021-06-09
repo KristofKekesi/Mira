@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:nasamira/pages/searchVehicle.dart';
+import 'package:nasamira/widgets/appbars.dart';
 import 'package:nasamira/widgets/declarationalButton.dart';
 import 'package:nasamira/widgets/localization.dart';
 
@@ -261,51 +262,50 @@ Widget nicknameWidget(nick) {
       actionWidget.add(Container());
     }
 
+    String appbarTitle() {
+      if(nick == null || nick == "") {
+        return name;
+      } else {
+        return nick;
+      }
+    }
+
+    String appbarSubtitle() {
+      if(nick == null || nick == "") {
+        return null;
+      } else {
+        return name;
+      }
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * .08,
-        leading: Tooltip(
-          message: AppLocalizations.of(context).translate('back'),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Padding(
-              padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * .04),
-              child: Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
-                size: MediaQuery.of(context).size.width * .06,
-              ),
-            ),
-          ),
-        ),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('lib/images/background.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        centerTitle: false,
-        title: AutoSizeText(
-          displayedName(name, nick),
-          minFontSize: 1,
-          maxLines: 1,
-          style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width * .07,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-      ),
       body: SafeArea(
-        child: ListView(
+        child: Stack(children: <Widget>[
+          ListView(
           children: <Widget>[
+            Opacity(
+        opacity: 0,
+        child: Appbar(
+              title: appbarTitle(),
+              subtitle: appbarSubtitle(),
+              leftAction: Padding(
+                padding: EdgeInsets.only(right: (MediaQuery.of(context).size.width +
+                    MediaQuery.of(context).size.height) /
+                    2 *
+                    .02),
+                child: Tooltip(
+            message: AppLocalizations.of(context)
+            .translate("back"),
+                child: GestureDetector(
+          onTap: () {Navigator.pop(context);},
+          child: Icon(
+            Icons.arrow_back,
+            size: MediaQuery.of(context).size.width * .075,
+            color: Colors.black,
+          ),
+        ),
+      ),),),),
             Padding(
               padding: EdgeInsets.only(
                 top: (MediaQuery.of(context).size.width +
@@ -829,7 +829,27 @@ Widget nicknameWidget(nick) {
             ),
           ],
         ),
-      ),
+         Appbar(
+              title: appbarTitle(),
+              subtitle: appbarSubtitle(),
+              leftAction: Padding(
+                padding: EdgeInsets.only(right: (MediaQuery.of(context).size.width +
+                    MediaQuery.of(context).size.height) /
+                    2 *
+                    .02),
+                child: Tooltip(
+                  message: AppLocalizations.of(context)
+                      .translate("back"),
+                  child: GestureDetector(
+                    onTap: () {Navigator.pop(context);},
+                    child: Icon(
+                      Icons.arrow_back,
+                      size: MediaQuery.of(context).size.width * .075,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),),),
+      ],),),
     );
   }
 }

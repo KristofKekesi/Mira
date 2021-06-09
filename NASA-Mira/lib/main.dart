@@ -206,7 +206,7 @@ class _BodyState extends State<Body> {
                           sortFinalIsReverse, selectorFinalLanders, "lander"),
                       RoverGrid(
                           sortFinalIsReverse, selectorFinalFlybys, "flyby"),
-                      Container(width: MediaQuery.of(context).size.width * .05,),
+                      Container(height: MediaQuery.of(context).size.width * .05,),
                     ],
                   ),
                 ],
@@ -219,7 +219,6 @@ class _BodyState extends State<Body> {
                 right: MediaQuery.of(context).size.width * .05),
             child: Appbar(
               title: AppLocalizations.of(context).translate("title"),
-              leftAction: Container(),
               rightAction: Tooltip(
                 message: AppLocalizations.of(context).translate("settings"),
                 child: GestureDetector(
