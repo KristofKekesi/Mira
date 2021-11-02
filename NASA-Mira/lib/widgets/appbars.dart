@@ -54,14 +54,18 @@ class Appbar extends StatelessWidget {
           child: Container(
             color: Color.fromRGBO(255, 255, 255, .4),
             child: Padding(
+    padding: EdgeInsets.only(
+    left: MediaQuery.of(context).size.width * .05,
+    right: MediaQuery.of(context).size.width * .05),
+    child: SafeArea(
+              bottom: false,
+              left: false,
+              right: false,
+              child: Padding(
               padding: EdgeInsets.only(
                 top: MediaQuery.of(context).size.width * .05,
                 bottom: MediaQuery.of(context).size.width * .05,
                 left: (MediaQuery.of(context).size.width +
-                        MediaQuery.of(context).size.height) /
-                    2 *
-                    .04,
-                right: (MediaQuery.of(context).size.width +
                         MediaQuery.of(context).size.height) /
                     2 *
                     .04,
@@ -97,8 +101,9 @@ class Appbar extends StatelessWidget {
                 ],
               ),
             ),
-          ),
+          ),),
         ),
+      ),
       ),
     );
   }

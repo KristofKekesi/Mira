@@ -51,17 +51,20 @@ void showSelectors(context) {
                       ),
                     ),
                     CheckboxListTile(
+                      activeColor: Color(0xffE8672D),
                       value: selectorHelicopters,
                       onChanged: (value) {
                         setState(() {
                           selectorHelicopters = value;
                         });
                       },
+                      // todo localize all strings in this function
                       title: Text("Helicopters"),
                       controlAffinity: ListTileControlAffinity.leading,
                       contentPadding: EdgeInsets.all(0),
                     ),
                     CheckboxListTile(
+                      activeColor: Color(0xffE8672D),
                       value: selectorRovers,
                       onChanged: (value) {
                         setState(() {
@@ -73,6 +76,7 @@ void showSelectors(context) {
                       contentPadding: EdgeInsets.all(0),
                     ),
                     CheckboxListTile(
+                      activeColor: Color(0xffE8672D),
                       value: selectorOrbiters,
                       onChanged: (value) {
                         setState(() {
@@ -84,6 +88,7 @@ void showSelectors(context) {
                       contentPadding: EdgeInsets.all(0),
                     ),
                     CheckboxListTile(
+                      activeColor: Color(0xffE8672D),
                       value: selectorLanders,
                       onChanged: (value) {
                         setState(() {
@@ -95,6 +100,7 @@ void showSelectors(context) {
                       contentPadding: EdgeInsets.all(0),
                     ),
                     CheckboxListTile(
+                      activeColor: Color(0xffE8672D),
                       value: selectorFlybys,
                       onChanged: (value) {
                         setState(() {
@@ -117,6 +123,7 @@ void showSelectors(context) {
                       ),
                     ),
                     CheckboxListTile(
+                      activeColor: Color(0xffE8672D),
                       value: sortIsReverse,
                       onChanged: (value) {
                         setState(() {
@@ -128,6 +135,7 @@ void showSelectors(context) {
                       contentPadding: EdgeInsets.all(0),
                     ),
                     CheckboxListTile(
+                      activeColor: Color(0xffE8672D),
                       value: !sortIsReverse,
                       onChanged: (value) {
                         setState(() {
@@ -158,7 +166,7 @@ void showSelectors(context) {
                   AppLocalizations.of(context).translate("back"),
                   style: TextStyle(
                       fontSize: MediaQuery.of(context).size.width * .05,
-                      fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
@@ -180,6 +188,7 @@ void showSelectors(context) {
                 "Search",
                 style: TextStyle(
                     fontSize: MediaQuery.of(context).size.width * .05,
+                    color: Color(0xffE8672D),
                     fontWeight: FontWeight.bold),
               ),
             ),

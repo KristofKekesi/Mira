@@ -2,6 +2,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class DeclarationalButton extends StatelessWidget {
+  final background;
+  final foreground;
+  final secondary;
+
+  // todo add tooltip
+  final String tooltip;
   final String title;
   final String value;
 
@@ -9,32 +15,32 @@ class DeclarationalButton extends StatelessWidget {
 
   final AutoSizeGroup valueSizeGroup;
 
-  const DeclarationalButton({Key key, this.title, this.value, this.action, this.valueSizeGroup}) : super(key: key);
+  const DeclarationalButton(
+      {Key key, this.background, this.title, this.value, this.action, this.valueSizeGroup, this.foreground, this.secondary, this.tooltip})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        action;
-      },
+      onTap: action,
       child: Container(
         width: MediaQuery.of(context).size.width * .9 -
             (MediaQuery.of(context).size.width +
-                MediaQuery.of(context).size.height) /
+                    MediaQuery.of(context).size.height) /
                 2 *
                 .02,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular((MediaQuery.of(context).size.width +
-                MediaQuery.of(context).size.height) /
+                    MediaQuery.of(context).size.height) /
                 2 *
                 .02),
           ),
-          color: Colors.white12,
+          color: background != null ? background : Colors.white12,
         ),
         child: Padding(
           padding: EdgeInsets.all((MediaQuery.of(context).size.width +
-              MediaQuery.of(context).size.height) /
+                  MediaQuery.of(context).size.height) /
               2 *
               .02),
           child: Column(
@@ -45,7 +51,7 @@ class DeclarationalButton extends StatelessWidget {
                 style: TextStyle(
                   fontSize: MediaQuery.of(context).size.width * .05,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white70,
+                  color: secondary != null ? secondary : Colors.white70,
                 ),
               ),
               Row(
@@ -55,7 +61,7 @@ class DeclarationalButton extends StatelessWidget {
                   Container(
                     width: MediaQuery.of(context).size.width * .9 -
                         (MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
+                                MediaQuery.of(context).size.height) /
                             2 *
                             .04 -
                         MediaQuery.of(context).size.width * .175,
@@ -64,7 +70,7 @@ class DeclarationalButton extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: MediaQuery.of(context).size.width * .08,
-                        color: Colors.white,
+                        color: foreground != null ? foreground : Colors.white,
                       ),
                       maxLines: 1,
                       group: valueSizeGroup,
@@ -73,7 +79,7 @@ class DeclarationalButton extends StatelessWidget {
                   Icon(
                     Icons.arrow_forward_rounded,
                     size: MediaQuery.of(context).size.width * .075,
-                    color: Colors.white,
+                    color: foreground != null ? foreground : Colors.white,
                   ),
                 ],
               ),
@@ -83,5 +89,4 @@ class DeclarationalButton extends StatelessWidget {
       ),
     );
   }
-
 }
