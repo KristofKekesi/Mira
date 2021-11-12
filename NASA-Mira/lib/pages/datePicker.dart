@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:nasamira/pages/searchImage.dart';
+import 'package:nasamira/widgets/appbars.dart';
 import 'package:nasamira/widgets/localization.dart';
 import 'package:nasamira/widgets/roverGrid.dart';
 import 'package:nasamira/widgets/update.dart';
@@ -48,7 +49,6 @@ class DatePickerPage extends StatefulWidget {
   final int dataSector;
   final String url;
 
-
   const DatePickerPage({
     Key key,
     this.dataSector,
@@ -56,8 +56,7 @@ class DatePickerPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _DatePickerPage createState() => _DatePickerPage(
-      dataSector);
+  _DatePickerPage createState() => _DatePickerPage(dataSector);
 }
 
 // ignore: camel_case_types
@@ -111,13 +110,13 @@ class _DatePickerPage extends State<DatePickerPage> {
     define(dataSector);
 
     minDate = DateTime.utc(arrive["year"], arrive["month"], arrive["day"]);
-    date = DateTime.utc(defaultDatePosition["year"], defaultDatePosition["month"],
-        defaultDatePosition["day"]);
+    date = DateTime.utc(defaultDatePosition["year"],
+        defaultDatePosition["month"], defaultDatePosition["day"]);
     if (maxDateRaw["year"] == null) {
       maxDate = DateTime.now();
     } else {
-      maxDate = DateTime.utc(maxDateRaw["year"], maxDateRaw["month"],
-          maxDateRaw["day"]);
+      maxDate = DateTime.utc(
+          maxDateRaw["year"], maxDateRaw["month"], maxDateRaw["day"]);
     }
     sol = defaultSolPosition;
     super.initState();
@@ -130,9 +129,7 @@ class _DatePickerPage extends State<DatePickerPage> {
     }
 
     Widget invalidDateContainer() {
-      return ListView(
-        children: <Widget>[
-          Column(
+      return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
@@ -209,7 +206,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                           maxLines: 2,
                           style: TextStyle(
                               fontSize: (MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
+                                      MediaQuery.of(context).size.height) /
                                   2 *
                                   .05,
                               color: Colors.white,
@@ -221,15 +218,11 @@ class _DatePickerPage extends State<DatePickerPage> {
                 ),
               ),
             ],
-          ),
-        ],
       );
     }
 
     Widget datePickerContainer() {
-      return ListView(
-        children: <Widget>[
-          Column(
+      return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
@@ -451,9 +444,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                                   .translate('setDate'),
                               child: GestureDetector(
                                 onTap: () {
-                                  setState(() {
-
-                                  });
+                                  setState(() {});
                                   if (timeFormat == false) {
                                     final action = SizedBox(
                                         height: 200,
@@ -523,8 +514,6 @@ class _DatePickerPage extends State<DatePickerPage> {
                     ),
                   ),
                 ),
-              ),
-            ],
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -543,7 +532,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                               MediaQuery.of(context).size.height) /
                           2 *
                           .04))),
-              width: MediaQuery.of(context).size.width * .8,
+              width: MediaQuery.of(context).size.width * .9,
               child: GestureDetector(
                 onTap: () {
                   if (timeFormat == true) {
@@ -595,70 +584,75 @@ class _DatePickerPage extends State<DatePickerPage> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * .08,
-        leading: Tooltip(
-          message: AppLocalizations.of(context).translate('back'),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Padding(
-    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * .04),
-    child: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.white,
-              size: MediaQuery.of(context).size.width * .06,
-            ),
-          ),),
-        ),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('lib/images/background.jpg'),
-              fit: BoxFit.cover,
+      body: Stack(
+        children: <Widget>[
+          ListView(
+            children: <Widget>[
+              Opacity(
+                opacity: 0,
+                child: Appbar(
+                  title: name,
+                  leftAction: Padding(
+                    padding: EdgeInsets.only(
+                        right: (MediaQuery.of(context).size.width +
+                            MediaQuery.of(context).size.height) /
+                            2 *
+                            .02),
+                    child: Tooltip(
+                      message: AppLocalizations.of(context).translate("back"),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.arrow_back,
+                          size: MediaQuery.of(context).size.width * .075,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                child: Conditional.single(
+                  context: context,
+                  conditionBuilder: (BuildContext context) =>
+                      maxDateRaw["year"] == null &&
+                      minDate.compareTo(maxDate) > 0,
+                  widgetBuilder: (BuildContext context) =>
+                      invalidDateContainer(),
+                  fallbackBuilder: (BuildContext context) =>
+                      datePickerContainer(),
+                ),
+              ),
+            ],
+          ),
+          Appbar(
+            title: name,
+            leftAction: Padding(
+              padding: EdgeInsets.only(
+                  right: (MediaQuery.of(context).size.width +
+                      MediaQuery.of(context).size.height) /
+                      2 *
+                      .02),
+              child: Tooltip(
+                message: AppLocalizations.of(context).translate("back"),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back,
+                    size: MediaQuery.of(context).size.width * .075,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
             ),
           ),
-        ),
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: AutoSizeText(
-            name,
-            minFontSize: 1,
-            maxLines: 1,
-            style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * .07,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
+        ],
       ),
-      floatingActionButton: Container(
-        height: MediaQuery.of(context).size.width * .12,
-        width: MediaQuery.of(context).size.width * .12,
-        child: FittedBox(
-          child: Tooltip(
-            message: AppLocalizations.of(context).translate('tooltipHome'),
-            child: FloatingActionButton(
-              backgroundColor: Colors.white,
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.pop(context);
-              },
-              child: Icon(CupertinoIcons.clear_thick, color: Color(0xffE8672D)),
-            ),
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-      body: SafeArea(
-          child: Conditional.single(
-        context: context,
-        conditionBuilder: (BuildContext context) =>
-            maxDateRaw["year"] == null && minDate.compareTo(maxDate) > 0,
-        widgetBuilder: (BuildContext context) => invalidDateContainer(),
-        fallbackBuilder: (BuildContext context) => datePickerContainer(),
-      )),
     );
   }
 }

@@ -32,10 +32,16 @@ class Appbar extends StatelessWidget {
     }
 
     if (leftAction == null) {
-      leftAction = Container(width: 0, height: 0,);
+      leftAction = Container(
+        width: 0,
+        height: 0,
+      );
     }
     if (rightAction == null) {
-      rightAction = Container(width: 0, height: 0,);
+      rightAction = Container(
+        width: 0,
+        height: 0,
+      );
     }
 
     return Container(
@@ -54,56 +60,56 @@ class Appbar extends StatelessWidget {
           child: Container(
             color: Color.fromRGBO(255, 255, 255, .4),
             child: Padding(
-    padding: EdgeInsets.only(
-    left: MediaQuery.of(context).size.width * .05,
-    right: MediaQuery.of(context).size.width * .05),
-    child: SafeArea(
-              bottom: false,
-              left: false,
-              right: false,
-              child: Padding(
               padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.width * .05,
-                bottom: MediaQuery.of(context).size.width * .05,
-                left: (MediaQuery.of(context).size.width +
-                        MediaQuery.of(context).size.height) /
-                    2 *
-                    .04,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  left: MediaQuery.of(context).size.width * .05,
+                  right: MediaQuery.of(context).size.width * .05),
+              child: SafeArea(
+                bottom: false,
+                left: false,
+                right: false,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).size.width * .05,
+                    left: (MediaQuery.of(context).size.width +
+                            MediaQuery.of(context).size.height) /
+                        2 *
+                        .04,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      leftAction,
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          Text(
-                            title,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: (MediaQuery.of(context).size.width +
-                                      MediaQuery.of(context).size.height) /
-                                  2 *
-                                  .06,
-                              color: Colors.black,
-                            ),
+                          leftAction,
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                title,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: (MediaQuery.of(context).size.width +
+                                          MediaQuery.of(context).size.height) /
+                                      2 *
+                                      .06,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              subtitleWidget(),
+                            ],
                           ),
-                          subtitleWidget(),
                         ],
                       ),
+                      rightAction,
                     ],
                   ),
-                  rightAction,
-                ],
+                ),
               ),
             ),
-          ),),
+          ),
         ),
-      ),
       ),
     );
   }

@@ -1,11 +1,12 @@
 import 'dart:convert';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_conditional_rendering/conditional.dart';
 
-import 'package:nasamira/pages/roverSpecPage.dart';
-import 'package:nasamira/widgets/localization.dart';
-import 'package:nasamira/widgets/update.dart';
+import '../pages/roverSpecPage.dart';
+import '../widgets/localization.dart';
+import '../widgets/update.dart';
 
 List<dynamic> hardCodeData = [];
 var roverGridMission = AutoSizeGroup();
@@ -234,7 +235,7 @@ class _RoverGridState extends State<RoverGrid> {
                 type: widget.type
             );
           }
-        };
+        }
 
         // for visibility
         return ValueListenableBuilder(

@@ -166,23 +166,21 @@ class RoverSpecPage extends StatelessWidget {
                       MediaQuery.of(context).size.height) /
                   2 *
                   .02),
-          child: GestureDetector(
-            onTap: () {
+          child: DeclarationalButton(
+            title: AppLocalizations.of(context).translate("roverSpecMission"),
+            value: mission,
+            valueSizeGroup: specPageBigText,
+            action: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => VehicleSearch(
-                    mission: null,
-                    type: "orbiter",
+                    type: "mission",
+                    value: mission,
                   ),
                 ),
               );
             },
-            child: DeclarationalButton(
-              title: AppLocalizations.of(context).translate("roverSpecMission"),
-              value: mission,
-              valueSizeGroup: specPageBigText,
-            ),
           ),
         );
       }
@@ -198,23 +196,10 @@ class RoverSpecPage extends StatelessWidget {
                       MediaQuery.of(context).size.height) /
                   2 *
                   .02),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => VehicleSearch(
-                    mission: null,
-                    type: "orbiter",
-                  ),
-                ),
-              );
-            },
-            child: DeclarationalButton(
-              title: name,
-              value: "\"" + nick + "\"",
-              valueSizeGroup: specPageBigText,
-            ),
+          child: DeclarationalButton(
+            title: name,
+            value: "\"" + nick + "\"",
+            valueSizeGroup: specPageBigText,
           ),
         );
       }
@@ -231,25 +216,24 @@ class RoverSpecPage extends StatelessWidget {
                   .02),
           child: Center(
             child: DeclarationalButton(
-                background: Colors.white,
-                foreground: Colors.black,
-                secondary: Colors.black54,
-                tooltip: AppLocalizations.of(context)
-                    .translate('specButton')
-                    .replaceAll("{0}", type),
-                title: "Search for",
-                value:
-                    AppLocalizations.of(context).translate('roverSpecButton'),
-                valueSizeGroup: specPageBigText,
-                action: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          DatePickerPage(dataSector: dataSector),
-                    ),
-                  );
-                },
+              background: Colors.white,
+              foreground: Colors.black,
+              secondary: Colors.black54,
+              tooltip: AppLocalizations.of(context)
+                  .translate('specButton')
+                  .replaceAll("{0}", type),
+              title: "Search for",
+              value: AppLocalizations.of(context).translate('roverSpecButton'),
+              valueSizeGroup: specPageBigText,
+              action: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        DatePickerPage(dataSector: dataSector),
+                  ),
+                );
+              },
             ),
           ),
         ),
@@ -379,6 +363,17 @@ class RoverSpecPage extends StatelessWidget {
                                         .translate("roverSpecType"),
                                     value: type,
                                     valueSizeGroup: specPageBigText,
+                                    action: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => VehicleSearch(
+                                            type: "type",
+                                            value: type,
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                   Container(
                                     height: (MediaQuery.of(context).size.width +
@@ -833,6 +828,18 @@ class RoverSpecPage extends StatelessWidget {
                                             .translate('roverSpecOperator'),
                                         value: operator,
                                         valueSizeGroup: specPageBigText,
+                                        action: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  VehicleSearch(
+                                                type: "operator",
+                                                value: operator,
+                                              ),
+                                            ),
+                                          );
+                                        },
                                       ),
                                       Container(
                                         height:
@@ -848,6 +855,18 @@ class RoverSpecPage extends StatelessWidget {
                                             .translate('roverSpecManufacturer'),
                                         value: manufacturer,
                                         valueSizeGroup: specPageBigText,
+                                        action: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  VehicleSearch(
+                                                    type: "manufacturer",
+                                                    value: manufacturer,
+                                                  ),
+                                            ),
+                                          );
+                                        },
                                       ),
                                     ],
                                   ),

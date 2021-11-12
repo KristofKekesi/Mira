@@ -143,6 +143,7 @@ void _popup(context, title, copyright, url) {
             AppLocalizations.of(context).translate("back"),
             style: TextStyle(
                   fontSize: MediaQuery.of(context).size.width * .05,
+                  color: Color(0xffE8672D),
                   fontWeight: FontWeight.bold),
           ),
         ),

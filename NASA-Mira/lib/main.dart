@@ -3,15 +3,16 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:nasamira/widgets/apod.dart';
-import 'package:nasamira/widgets/appbars.dart';
-import 'package:nasamira/widgets/localization.dart';
-import 'package:nasamira/widgets/roverGrid.dart';
+
 import 'package:splashscreen/splashscreen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'pages/drawer.dart';
 import 'widgets/selector.dart';
+import 'widgets/apod.dart';
+import 'widgets/appbars.dart';
+import 'widgets/localization.dart';
+import 'widgets/roverGrid.dart';
 
 double getGrid(context) {
   return MediaQuery.of(context).size.width * .4 -
@@ -77,9 +78,7 @@ class NoScrollGlow extends ScrollBehavior {
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: Colors.black,
-      statusBarBrightness: Brightness.light
-  ));
+      statusBarColor: Colors.black, statusBarBrightness: Brightness.light));
   runApp(Mira());
 }
 
@@ -202,16 +201,11 @@ class _BodyState extends State<Body> {
                           height: MediaQuery.of(context).size.width * .03,
                         ),
                         ApodWidget(),
-                        RoverGrid(sortFinalIsReverse, selectorFinalHelicopters,
-                            "helicopter"),
-                        RoverGrid(
-                            sortFinalIsReverse, selectorFinalRovers, "rover"),
-                        RoverGrid(sortFinalIsReverse, selectorFinalOrbiters,
-                            "orbiter"),
-                        RoverGrid(
-                            sortFinalIsReverse, selectorFinalLanders, "lander"),
-                        RoverGrid(
-                            sortFinalIsReverse, selectorFinalFlybys, "flyby"),
+                        RoverGrid(sortFinalIsReverse, selectorFinalHelicopters, "helicopter"),
+                        RoverGrid(sortFinalIsReverse, selectorFinalRovers, "rover"),
+                        RoverGrid(sortFinalIsReverse, selectorFinalOrbiters, "orbiter"),
+                        RoverGrid(sortFinalIsReverse, selectorFinalLanders, "lander"),
+                        RoverGrid(sortFinalIsReverse, selectorFinalFlybys, "flyby"),
                         Container(
                           height: MediaQuery.of(context).size.width * .05,
                         ),
