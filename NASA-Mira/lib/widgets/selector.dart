@@ -1,9 +1,27 @@
 import 'package:flutter/material.dart';
 
-import '../main.dart';
-import 'localization.dart';
+import '../utils/localization.dart';
 
-void showSelectors(context) {
+bool boolIsReverse = false;
+bool boolAreHelicoptersVisible = true;
+bool boolAreRoversVisible = true;
+bool boolAreOrbitersVisible = true;
+bool boolAreLandersVisible = true;
+bool boolAreFlybysVisible = true;
+
+ValueNotifier<bool> notifierIsReverse = ValueNotifier(boolIsReverse);
+ValueNotifier<bool> notifierAreHelicoptersVisible =
+    ValueNotifier(boolAreHelicoptersVisible);
+ValueNotifier<bool> notifierAreRoversVisible =
+    ValueNotifier(boolAreRoversVisible);
+ValueNotifier<bool> notifierAreOrbitersVisible =
+    ValueNotifier(boolAreOrbitersVisible);
+ValueNotifier<bool> notifierAreLandersVisible =
+    ValueNotifier(boolAreLandersVisible);
+ValueNotifier<bool> notifierAreFlybysVisible =
+    ValueNotifier(boolAreFlybysVisible);
+
+void showSelectors(context, page, areTypesDisabled) {
   showDialog(
     context: context,
     builder: (_) => StatefulBuilder(
@@ -33,7 +51,8 @@ void showSelectors(context) {
                         top: MediaQuery.of(context).size.height * .025,
                       ),
                       child: Text(
-                        AppLocalizations.of(context).translate("selectorsandsort"),
+                        AppLocalizations.of(context)
+                            .translate("selectorsandsort"),
                         style: TextStyle(
                             fontSize: MediaQuery.of(context).size.width * .05,
                             fontWeight: FontWeight.bold),
@@ -52,12 +71,15 @@ void showSelectors(context) {
                     ),
                     CheckboxListTile(
                       activeColor: Color(0xffE8672D),
-                      value: selectorHelicopters,
-                      onChanged: (value) {
-                        setState(() {
-                          selectorHelicopters = value;
-                        });
-                      },
+                      value:
+                          areTypesDisabled ? true : boolAreHelicoptersVisible,
+                      onChanged: areTypesDisabled
+                          ? null
+                          : (value) {
+                              setState(() {
+                                boolAreHelicoptersVisible = value;
+                              });
+                            },
                       // todo localize all strings in this function
                       title: Text("Helicopters"),
                       controlAffinity: ListTileControlAffinity.leading,
@@ -65,48 +87,56 @@ void showSelectors(context) {
                     ),
                     CheckboxListTile(
                       activeColor: Color(0xffE8672D),
-                      value: selectorRovers,
-                      onChanged: (value) {
-                        setState(() {
-                          selectorRovers = value;
-                        });
-                      },
+                      value: areTypesDisabled ? true : boolAreRoversVisible,
+                      onChanged: areTypesDisabled
+                          ? null
+                          : (value) {
+                              setState(() {
+                                boolAreRoversVisible = value;
+                              });
+                            },
                       title: Text("Rovers"),
                       controlAffinity: ListTileControlAffinity.leading,
                       contentPadding: EdgeInsets.all(0),
                     ),
                     CheckboxListTile(
                       activeColor: Color(0xffE8672D),
-                      value: selectorOrbiters,
-                      onChanged: (value) {
-                        setState(() {
-                          selectorOrbiters = value;
-                        });
-                      },
+                      value: areTypesDisabled ? true : boolAreOrbitersVisible,
+                      onChanged: areTypesDisabled
+                          ? null
+                          : (value) {
+                              setState(() {
+                                boolAreOrbitersVisible = value;
+                              });
+                            },
                       title: Text("Orbiters"),
                       controlAffinity: ListTileControlAffinity.leading,
                       contentPadding: EdgeInsets.all(0),
                     ),
                     CheckboxListTile(
                       activeColor: Color(0xffE8672D),
-                      value: selectorLanders,
-                      onChanged: (value) {
-                        setState(() {
-                          selectorLanders = value;
-                        });
-                      },
+                      value: areTypesDisabled ? true : boolAreLandersVisible,
+                      onChanged: areTypesDisabled
+                          ? null
+                          : (value) {
+                              setState(() {
+                                boolAreLandersVisible = value;
+                              });
+                            },
                       title: Text("Landers"),
                       controlAffinity: ListTileControlAffinity.leading,
                       contentPadding: EdgeInsets.all(0),
                     ),
                     CheckboxListTile(
                       activeColor: Color(0xffE8672D),
-                      value: selectorFlybys,
-                      onChanged: (value) {
-                        setState(() {
-                          selectorFlybys = value;
-                        });
-                      },
+                      value: areTypesDisabled ? true : boolAreFlybysVisible,
+                      onChanged: areTypesDisabled
+                          ? null
+                          : (value) {
+                              setState(() {
+                                boolAreFlybysVisible = value;
+                              });
+                            },
                       title: Text("Flyby satelites"),
                       controlAffinity: ListTileControlAffinity.leading,
                       contentPadding: EdgeInsets.all(0),
@@ -124,25 +154,29 @@ void showSelectors(context) {
                     ),
                     CheckboxListTile(
                       activeColor: Color(0xffE8672D),
-                      value: sortIsReverse,
+                      value: boolIsReverse,
                       onChanged: (value) {
                         setState(() {
-                          sortIsReverse = true;
+                          boolIsReverse = true;
                         });
                       },
-                      title: Text(AppLocalizations.of(context).translate("ascending"),),
+                      title: Text(
+                        AppLocalizations.of(context).translate("ascending"),
+                      ),
                       controlAffinity: ListTileControlAffinity.leading,
                       contentPadding: EdgeInsets.all(0),
                     ),
                     CheckboxListTile(
                       activeColor: Color(0xffE8672D),
-                      value: !sortIsReverse,
+                      value: !boolIsReverse,
                       onChanged: (value) {
                         setState(() {
-                          sortIsReverse = false;
+                          boolIsReverse = false;
                         });
                       },
-                      title: Text(AppLocalizations.of(context).translate("descending"),),
+                      title: Text(
+                        AppLocalizations.of(context).translate("descending"),
+                      ),
                       controlAffinity: ListTileControlAffinity.leading,
                       contentPadding: EdgeInsets.all(0),
                     ),
@@ -157,7 +191,9 @@ void showSelectors(context) {
           ),
           actions: [
             GestureDetector(
-              onTap: (){Navigator.pop(context);},
+              onTap: () {
+                Navigator.pop(context);
+              },
               child: Padding(
                 padding: EdgeInsets.only(
                   right: MediaQuery.of(context).size.height * .025,
@@ -165,22 +201,22 @@ void showSelectors(context) {
                 child: Text(
                   AppLocalizations.of(context).translate("back"),
                   style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * .05,
+                    fontSize: MediaQuery.of(context).size.width * .05,
                   ),
                 ),
               ),
             ),
             GestureDetector(
-              onTap: (){
-                setState((){
-                  selectorFinalHelicopters.value = selectorHelicopters;
-                  selectorFinalRovers.value = selectorRovers;
-                  selectorFinalOrbiters.value = selectorOrbiters;
-                  selectorFinalLanders.value = selectorLanders;
-                  selectorFinalFlybys.value = selectorFlybys;
+              onTap: () {
+                setState(() {
+                  notifierAreHelicoptersVisible.value =
+                      boolAreHelicoptersVisible;
+                  notifierAreRoversVisible.value = boolAreRoversVisible;
+                  notifierAreOrbitersVisible.value = boolAreOrbitersVisible;
+                  notifierAreLandersVisible.value = boolAreLandersVisible;
+                  notifierAreFlybysVisible.value = boolAreFlybysVisible;
 
-                  sortFinalIsReverse.value = sortIsReverse;
-
+                  notifierIsReverse.value = boolIsReverse;
                 });
                 Navigator.pop(context);
               },

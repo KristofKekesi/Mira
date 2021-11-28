@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/selector.dart';
 import '../widgets/appbars.dart';
-import '../widgets/localization.dart';
+import '../utils/localization.dart';
 import '../widgets/roverGrid.dart';
+
+bool isReverse = false;
+ValueNotifier<bool> sortIsReverse = ValueNotifier<bool>(isReverse);
 
 class VehicleSearch extends StatelessWidget {
   final String type;
@@ -14,25 +18,69 @@ class VehicleSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     String searchContent() {
       switch (type) {
-        case "mission": {
-          return value;
-        }
-        break;
+        case "mission":
+          {
+            return value;
+          }
+          break;
 
-        case "type": {
-          return AppLocalizations.of(context).translate(value + "s");
-        }
-        break;
+        case "type":
+          {
+            return AppLocalizations.of(context).translate(value + "s");
+          }
+          break;
 
-        case "operator": {
-          return value;
-        }
-        break;
+        case "operator":
+          {
+            return value;
+          }
+          break;
 
-        case "manufacturer": {
-          return value;
-        }
-        break;
+        case "manufacturer":
+          {
+            return value;
+          }
+          break;
+
+        default:
+          {
+            return "";
+          }
+          break;
+      }
+    }
+
+    String outputType() {
+      switch (type) {
+        case "mission":
+          {
+            return "type";
+          }
+          break;
+
+        case "type":
+          {
+            return "mission";
+          }
+          break;
+
+        case "operator":
+          {
+            return "manufacturer";
+          }
+          break;
+
+        case "manufacturer":
+          {
+            return "operator";
+          }
+          break;
+
+        default:
+          {
+            return "";
+          }
+          break;
       }
     }
 
@@ -89,8 +137,8 @@ class VehicleSearch extends StatelessWidget {
                       Container(
                         height: MediaQuery.of(context).size.width * .03,
                       ),
-                      RoverGrid(
-                          ValueNotifier(true), ValueNotifier(true), "orbiter"),
+                      RoverGrid(ValueNotifier(true), type, value,
+                          outputType(), searchContent()),
                       Container(
                         height: MediaQuery.of(context).size.width * .05,
                       ),
@@ -131,7 +179,9 @@ class VehicleSearch extends StatelessWidget {
               child: Tooltip(
                 message: AppLocalizations.of(context).translate("settings"),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    showSelectors(context, "search", true);
+                  },
                   child: Icon(
                     Icons.menu,
                     size: MediaQuery.of(context).size.width * .075,

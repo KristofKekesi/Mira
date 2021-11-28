@@ -6,18 +6,15 @@ class DeclarationalButton extends StatelessWidget {
   final foreground;
   final secondary;
 
-  // todo add tooltip
   final String tooltip;
   final String title;
-  final String value;
+  final dynamic value;
 
   final action;
 
   final AutoSizeGroup valueSizeGroup;
 
-  const DeclarationalButton(
-      {Key key, this.background, this.title, this.value, this.action, this.valueSizeGroup, this.foreground, this.secondary, this.tooltip})
-      : super(key: key);
+  const DeclarationalButton({Key key, this.background, this.foreground, this.secondary, this.tooltip, this.title, this.action, this.valueSizeGroup, this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +23,13 @@ class DeclarationalButton extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width * .9 -
             (MediaQuery.of(context).size.width +
-                    MediaQuery.of(context).size.height) /
+                MediaQuery.of(context).size.height) /
                 2 *
                 .02,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular((MediaQuery.of(context).size.width +
-                    MediaQuery.of(context).size.height) /
+                MediaQuery.of(context).size.height) /
                 2 *
                 .02),
           ),
@@ -40,7 +37,7 @@ class DeclarationalButton extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.all((MediaQuery.of(context).size.width +
-                  MediaQuery.of(context).size.height) /
+              MediaQuery.of(context).size.height) /
               2 *
               .02),
           child: Column(
@@ -61,11 +58,11 @@ class DeclarationalButton extends StatelessWidget {
                   Container(
                     width: MediaQuery.of(context).size.width * .9 -
                         (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
+                            MediaQuery.of(context).size.height) /
                             2 *
                             .04 -
                         MediaQuery.of(context).size.width * .175,
-                    child: AutoSizeText(
+                    child: value is String ? AutoSizeText(
                       value,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -74,13 +71,19 @@ class DeclarationalButton extends StatelessWidget {
                       ),
                       maxLines: 1,
                       group: valueSizeGroup,
+                    ) : value,
+                  ),
+                  action != null
+                      ? Tooltip(
+                    message: tooltip ?? "",
+                    child: Icon(
+                      Icons.arrow_forward_rounded,
+                      size: MediaQuery.of(context).size.width * .075,
+                      color:
+                      foreground != null ? foreground : Colors.white,
                     ),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_rounded,
-                    size: MediaQuery.of(context).size.width * .075,
-                    color: foreground != null ? foreground : Colors.white,
-                  ),
+                  )
+                      : Container(),
                 ],
               ),
             ],

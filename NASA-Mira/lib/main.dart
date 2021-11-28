@@ -1,23 +1,19 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/cupertino.dart';
 
 import 'package:splashscreen/splashscreen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'utils/MaterialColor.dart';
+import 'utils/noMaterialGlow.dart';
+import 'utils/darkTitlebar.dart';
+import 'utils/orientationLock.dart';
 
 import 'pages/drawer.dart';
 import 'widgets/selector.dart';
 import 'widgets/apod.dart';
 import 'widgets/appbars.dart';
-import 'widgets/localization.dart';
+import 'utils/localization.dart';
 import 'widgets/roverGrid.dart';
-
-double getGrid(context) {
-  return MediaQuery.of(context).size.width * .4 -
-      MediaQuery.of(context).size.width * .0125;
-}
 
 class Splash extends StatelessWidget {
   @override
@@ -43,42 +39,13 @@ class Splash extends StatelessWidget {
       ),
       photoSize: 50,
       loaderColor: Colors.white,
-      navigateAfterSeconds: Home(),
+      navigateAfterSeconds: HomeScreen(),
     );
-  }
-}
-
-MaterialColor createMaterialColor(Color color) {
-  List strengths = <double>[.05];
-  Map swatch = <int, Color>{};
-  final int r = color.red, g = color.green, b = color.blue;
-
-  for (int i = 1; i < 10; i++) {
-    strengths.add(0.1 * i);
-  }
-  strengths.forEach((strength) {
-    final double ds = 0.5 - strength;
-    swatch[(strength * 1000).round()] = Color.fromRGBO(
-      r + ((ds < 0 ? r : (255 - r)) * ds).round(),
-      g + ((ds < 0 ? g : (255 - g)) * ds).round(),
-      b + ((ds < 0 ? b : (255 - b)) * ds).round(),
-      1,
-    );
-  });
-  return MaterialColor(color.value, swatch);
-}
-
-class NoScrollGlow extends ScrollBehavior {
-  @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
-    return child;
   }
 }
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: Colors.black, statusBarBrightness: Brightness.light));
+  darkTitlebar();
   runApp(Mira());
 }
 
@@ -91,10 +58,7 @@ class _MiraState extends State<Mira> {
   @override
   void initState() {
     super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitDown,
-      DeviceOrientation.portraitUp,
-    ]);
+    orientationLock();
   }
 
   @override
@@ -138,27 +102,6 @@ class _MiraState extends State<Mira> {
   }
 }
 
-bool selectorHelicopters = true;
-bool selectorRovers = true;
-bool selectorOrbiters = true;
-bool selectorLanders = true;
-bool selectorFlybys = true;
-
-bool sortIsReverse = false;
-
-ValueNotifier<bool> selectorFinalHelicopters =
-    ValueNotifier<bool>(selectorHelicopters);
-ValueNotifier<bool> selectorFinalRovers =
-    ValueNotifier<bool>(selectorHelicopters);
-ValueNotifier<bool> selectorFinalOrbiters =
-    ValueNotifier<bool>(selectorHelicopters);
-ValueNotifier<bool> selectorFinalLanders =
-    ValueNotifier<bool>(selectorHelicopters);
-ValueNotifier<bool> selectorFinalFlybys =
-    ValueNotifier<bool>(selectorHelicopters);
-
-ValueNotifier<bool> sortFinalIsReverse = ValueNotifier<bool>(sortIsReverse);
-
 class Body extends StatefulWidget {
   @override
   _BodyState createState() => _BodyState();
@@ -201,11 +144,16 @@ class _BodyState extends State<Body> {
                           height: MediaQuery.of(context).size.width * .03,
                         ),
                         ApodWidget(),
-                        RoverGrid(sortFinalIsReverse, selectorFinalHelicopters, "helicopter"),
-                        RoverGrid(sortFinalIsReverse, selectorFinalRovers, "rover"),
-                        RoverGrid(sortFinalIsReverse, selectorFinalOrbiters, "orbiter"),
-                        RoverGrid(sortFinalIsReverse, selectorFinalLanders, "lander"),
-                        RoverGrid(sortFinalIsReverse, selectorFinalFlybys, "flyby"),
+                        RoverGrid(notifierAreHelicoptersVisible, "type",
+                            "helicopter", "type", ""),
+                        RoverGrid(notifierAreRoversVisible, "type", "rover",
+                            "type", ""),
+                        RoverGrid(notifierAreOrbitersVisible, "type", "orbiter",
+                            "type", ""),
+                        RoverGrid(notifierAreLandersVisible, "type", "lander",
+                            "type", ""),
+                        RoverGrid(notifierAreFlybysVisible, "type", "flyby",
+                            "type", ""),
                         Container(
                           height: MediaQuery.of(context).size.width * .05,
                         ),
@@ -223,7 +171,7 @@ class _BodyState extends State<Body> {
             message: AppLocalizations.of(context).translate("settings"),
             child: GestureDetector(
               onTap: () {
-                showSelectors(context);
+                showSelectors(context, "main", false);
               },
               child: Icon(
                 Icons.menu,
@@ -238,13 +186,13 @@ class _BodyState extends State<Body> {
   }
 }
 
-class Home extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Body(),
-      drawer: customDrawer(),
+      drawer: SidebarDrawer(),
     );
   }
 }

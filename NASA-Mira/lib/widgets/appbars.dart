@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 class Appbar extends StatelessWidget {
   final String title;
-  String subtitle;
-  Widget leftAction;
-  Widget rightAction;
+  final String subtitle;
+  final Widget leftAction;
+  final Widget rightAction;
 
   Appbar(
       {Key key, this.title, this.subtitle, this.leftAction, this.rightAction})
@@ -29,19 +29,6 @@ class Appbar extends StatelessWidget {
           ),
         );
       }
-    }
-
-    if (leftAction == null) {
-      leftAction = Container(
-        width: 0,
-        height: 0,
-      );
-    }
-    if (rightAction == null) {
-      rightAction = Container(
-        width: 0,
-        height: 0,
-      );
     }
 
     return Container(
@@ -81,7 +68,12 @@ class Appbar extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          leftAction,
+                          leftAction == null
+                              ? Container(
+                                  width: 0,
+                                  height: 0,
+                                )
+                              : leftAction,
                           Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,7 +94,12 @@ class Appbar extends StatelessWidget {
                           ),
                         ],
                       ),
-                      rightAction,
+                      rightAction == null
+                          ? Container(
+                              width: 0,
+                              height: 0,
+                            )
+                          : rightAction,
                     ],
                   ),
                 ),

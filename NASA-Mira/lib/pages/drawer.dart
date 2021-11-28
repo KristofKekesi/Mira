@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nasamira/widgets/localization.dart';
+import 'package:nasamira/utils/localization.dart';
 import 'package:nasamira/widgets/promo.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,7 +9,7 @@ String Capitalizate(input) {
 }
 
 // ignore: camel_case_types
-class customDrawer extends StatelessWidget {
+class SidebarDrawer extends StatelessWidget {
   _launchURL(url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -106,7 +106,7 @@ class customDrawer extends StatelessWidget {
                 style: TextStyle(
                     letterSpacing: 2,
                     fontWeight: FontWeight.bold,
-                    fontSize: (MediaQuery.of(context).size.height +MediaQuery.of(context).size.width) / 2  * .04,),
+                    fontSize: (MediaQuery.of(context).size.height +MediaQuery.of(context).size.width) / 2  * .03,),
               ),
             ),
           ],

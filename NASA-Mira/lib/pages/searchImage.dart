@@ -1,9 +1,11 @@
 import 'dart:io';
+import 'package:dio/dio.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-import 'package:nasamira/widgets/localization.dart';
+import 'package:nasamira/widgets/appbars.dart';
+
+import '../utils/localization.dart';
 
 void _popup(context, name, id, cameraFullName, date, sol, url) {
   // ignore: missing_return
@@ -381,74 +383,19 @@ class _SearchWindowState extends State<SearchWindow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * .08,
-        leading: Tooltip(
-          message: AppLocalizations.of(context).translate('back'),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Padding(
-              padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * .04),
-              child: Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
-                size: MediaQuery.of(context).size.width * .06,
-              ),
-            ),
-          ),
-        ),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('lib/images/background.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: Padding(
-          padding: EdgeInsets.only(
-            right: MediaQuery.of(context).size.width * .12,
-          ),
-          child: Text(
-            widget.date,
-            style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * .07,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                letterSpacing: 2.0),
-          ),
-        ),
-      ),
-      floatingActionButton: Container(
-        height: MediaQuery.of(context).size.width * .12,
-        width: MediaQuery.of(context).size.width * .12,
-        child: FittedBox(
-          child: Tooltip(
-            message: AppLocalizations.of(context).translate('tooltipHome'),
-            child: FloatingActionButton(
-              backgroundColor: Colors.white,
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.pop(context);
-                Navigator.pop(context);
-              },
-              child: Icon(CupertinoIcons.clear_thick, color: Color(0xffE8672D)),
-            ),
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-      body: SafeArea(
-        child: Container(
+      body:  Stack(
+          children: <Widget> [
+      SingleChildScrollView(
+        child:
+      Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: _Data(widget.url),
-        ),
+          child:
+          _Data(widget.url),
+        ),),
+            // todo localize and finish appbar
+            Appbar(title: "Perseverance", subtitle: widget.date,),
+      ],
       ),
     );
   }

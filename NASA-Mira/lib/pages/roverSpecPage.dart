@@ -1,11 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:nasamira/pages/searchVehicle.dart';
-import 'package:nasamira/widgets/appbars.dart';
-import 'package:nasamira/widgets/declarationalButton.dart';
-import 'package:nasamira/widgets/localization.dart';
+import 'package:nasamira/widgets/content.dart';
 
+import 'searchVehicle.dart';
 import 'datePicker.dart';
+import '../widgets/appbars.dart';
+import '../widgets/declarationalButton.dart';
+import '../utils/localization.dart';
 
 AutoSizeGroup specPageBigText = AutoSizeGroup();
 
@@ -54,14 +55,6 @@ class RoverSpecPage extends StatelessWidget {
     String launchY;
     String launchM;
     String launchD;
-
-    String displayedName(name, nick) {
-      if (nick != null) {
-        return nick;
-      } else {
-        return name;
-      }
-    }
 
     String checkNull(int num) {
       if (num < 10) {
@@ -291,597 +284,525 @@ class RoverSpecPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: (MediaQuery.of(context).size.width +
-                          MediaQuery.of(context).size.height) /
-                      2 *
-                      .04,
-                  bottom: (MediaQuery.of(context).size.width +
-                          MediaQuery.of(context).size.height) /
-                      2 *
-                      .04,
+              Content(name: name, nick: nick, children: [
+                missionWidget(mission),
+                nicknameWidget(nick),
+                DeclarationalButton(
+                  title: AppLocalizations.of(context)
+                      .translate("roverSpecType"),
+                  value: AppLocalizations.of(context)
+                      .translate(type),
+                  valueSizeGroup: specPageBigText,
+                  action: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VehicleSearch(
+                          type: "type",
+                          value: type,
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: (MediaQuery.of(context).size.width +
-                                          MediaQuery.of(context).size.height) /
-                                      2 *
-                                      .04 +
-                                  MediaQuery.of(context).size.width * .05),
-                          child: AutoSizeText(
-                            displayedName(name, nick),
+                Container(
+                  height: (MediaQuery.of(context).size.width +
+                      MediaQuery.of(context)
+                          .size
+                          .height) /
+                      2 *
+                      .02,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(
+                      (MediaQuery.of(context).size.width +
+                          MediaQuery.of(context)
+                              .size
+                              .height) /
+                          2 *
+                          .02),
+                  child: Column(
+                    crossAxisAlignment:
+                    CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            AppLocalizations.of(context)
+                                .translate('roverSpecLaunch'),
                             style: TextStyle(
+                              fontSize: MediaQuery.of(context)
+                                  .size
+                                  .width *
+                                  .05,
+                              color: Colors.white70,
                               fontWeight: FontWeight.bold,
-                              fontSize: MediaQuery.of(context).size.width * .08,
-                              color: Colors.black,
                             ),
-                            maxLines: 1,
-                            group: specPageBigText,
                           ),
+                          Row(
+                            children: <Widget>[
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('month'),
+                                child: Text(
+                                  launchM,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                '/',
+                                style: TextStyle(
+                                  fontSize:
+                                  MediaQuery.of(context)
+                                      .size
+                                      .width *
+                                      .05,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('day'),
+                                child: Text(
+                                  launchD,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                '/',
+                                style: TextStyle(
+                                  fontSize:
+                                  MediaQuery.of(context)
+                                      .size
+                                      .width *
+                                      .05,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('year'),
+                                child: Text(
+                                  launchY,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            AppLocalizations.of(context)
+                                .translate('roverSpecArrive'),
+                            style: TextStyle(
+                              fontSize: MediaQuery.of(context)
+                                  .size
+                                  .width *
+                                  .05,
+                              color: Colors.white70,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('month'),
+                                child: Text(
+                                  arriveM,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                '/',
+                                style: TextStyle(
+                                  fontSize:
+                                  MediaQuery.of(context)
+                                      .size
+                                      .width *
+                                      .05,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('day'),
+                                child: Text(
+                                  arriveD,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                '/',
+                                style: TextStyle(
+                                  fontSize:
+                                  MediaQuery.of(context)
+                                      .size
+                                      .width *
+                                      .05,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('year'),
+                                child: Text(
+                                  arriveY,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            endPrefixMin,
+                            style: TextStyle(
+                              fontSize: MediaQuery.of(context)
+                                  .size
+                                  .width *
+                                  .05,
+                              color: Colors.white70,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('month'),
+                                child: Text(
+                                  endM,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                '/',
+                                style: TextStyle(
+                                  fontSize:
+                                  MediaQuery.of(context)
+                                      .size
+                                      .width *
+                                      .05,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('day'),
+                                child: Text(
+                                  endD,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                '/',
+                                style: TextStyle(
+                                  fontSize:
+                                  MediaQuery.of(context)
+                                      .size
+                                      .width *
+                                      .05,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('year'),
+                                child: Text(
+                                  endY,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            AppLocalizations.of(context)
+                                .translate('roverSpecEndMin'),
+                            style: TextStyle(
+                              fontSize: MediaQuery.of(context)
+                                  .size
+                                  .width *
+                                  .05,
+                              color: Colors.white70,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('month'),
+                                child: Text(
+                                  missionEndM,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                '/',
+                                style: TextStyle(
+                                  fontSize:
+                                  MediaQuery.of(context)
+                                      .size
+                                      .width *
+                                      .05,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('day'),
+                                child: Text(
+                                  missionEndD,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                '/',
+                                style: TextStyle(
+                                  fontSize:
+                                  MediaQuery.of(context)
+                                      .size
+                                      .width *
+                                      .05,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(
+                                    context)
+                                    .translate('year'),
+                                child: Text(
+                                  missionEndY,
+                                  style: TextStyle(
+                                    fontSize:
+                                    MediaQuery.of(context)
+                                        .size
+                                        .width *
+                                        .05,
+                                    color: Colors.white,
+                                    fontWeight:
+                                    FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Text(
+                        "* " + endPrefix,
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context)
+                              .size
+                              .width *
+                              .045,
+                          color: Colors.white70,
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: MediaQuery.of(context).size.width * .05,
-                            right: MediaQuery.of(context).size.width * .05,
-                          ),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage('lib/images/background.jpg'),
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular((MediaQuery.of(context)
-                                            .size
-                                            .width +
-                                        MediaQuery.of(context).size.height) /
-                                    2 *
-                                    .04),
-                              ),
-                            ),
-                            width: MediaQuery.of(context).size.width * .9,
-                            child: Padding(
-                              padding: EdgeInsets.all(
-                                  (MediaQuery.of(context).size.width +
-                                          MediaQuery.of(context).size.height) /
-                                      2 *
-                                      .02),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  missionWidget(mission),
-                                  nicknameWidget(nick),
-                                  DeclarationalButton(
-                                    title: AppLocalizations.of(context)
-                                        .translate("roverSpecType"),
-                                    value: type,
-                                    valueSizeGroup: specPageBigText,
-                                    action: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => VehicleSearch(
-                                            type: "type",
-                                            value: type,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  Container(
-                                    height: (MediaQuery.of(context).size.width +
-                                            MediaQuery.of(context)
-                                                .size
-                                                .height) /
-                                        2 *
-                                        .02,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.all(
-                                        (MediaQuery.of(context).size.width +
-                                                MediaQuery.of(context)
-                                                    .size
-                                                    .height) /
-                                            2 *
-                                            .02),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            Text(
-                                              AppLocalizations.of(context)
-                                                  .translate('roverSpecLaunch'),
-                                              style: TextStyle(
-                                                fontSize: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    .05,
-                                                color: Colors.white70,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            Row(
-                                              children: <Widget>[
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('month'),
-                                                  child: Text(
-                                                    launchM,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '/',
-                                                  style: TextStyle(
-                                                    fontSize:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            .05,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('day'),
-                                                  child: Text(
-                                                    launchD,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '/',
-                                                  style: TextStyle(
-                                                    fontSize:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            .05,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('year'),
-                                                  child: Text(
-                                                    launchY,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            Text(
-                                              AppLocalizations.of(context)
-                                                  .translate('roverSpecArrive'),
-                                              style: TextStyle(
-                                                fontSize: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    .05,
-                                                color: Colors.white70,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            Row(
-                                              children: <Widget>[
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('month'),
-                                                  child: Text(
-                                                    arriveM,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '/',
-                                                  style: TextStyle(
-                                                    fontSize:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            .05,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('day'),
-                                                  child: Text(
-                                                    arriveD,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '/',
-                                                  style: TextStyle(
-                                                    fontSize:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            .05,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('year'),
-                                                  child: Text(
-                                                    arriveY,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            Text(
-                                              endPrefixMin,
-                                              style: TextStyle(
-                                                fontSize: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    .05,
-                                                color: Colors.white70,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            Row(
-                                              children: <Widget>[
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('month'),
-                                                  child: Text(
-                                                    endM,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '/',
-                                                  style: TextStyle(
-                                                    fontSize:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            .05,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('day'),
-                                                  child: Text(
-                                                    endD,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '/',
-                                                  style: TextStyle(
-                                                    fontSize:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            .05,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('year'),
-                                                  child: Text(
-                                                    endY,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            Text(
-                                              AppLocalizations.of(context)
-                                                  .translate('roverSpecEndMin'),
-                                              style: TextStyle(
-                                                fontSize: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    .05,
-                                                color: Colors.white70,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            Row(
-                                              children: <Widget>[
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('month'),
-                                                  child: Text(
-                                                    missionEndM,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '/',
-                                                  style: TextStyle(
-                                                    fontSize:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            .05,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('day'),
-                                                  child: Text(
-                                                    missionEndD,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '/',
-                                                  style: TextStyle(
-                                                    fontSize:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            .05,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                Tooltip(
-                                                  message: AppLocalizations.of(
-                                                          context)
-                                                      .translate('year'),
-                                                  child: Text(
-                                                    missionEndY,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              .05,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        Text(
-                                          "* " + endPrefix,
-                                          style: TextStyle(
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                .045,
-                                            color: Colors.white70,
-                                          ),
-                                        ),
-                                        Text(
-                                          "** " +
-                                              AppLocalizations.of(context)
-                                                  .translate('roverSpecEnd'),
-                                          style: TextStyle(
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                .045,
-                                            color: Colors.white70,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      DeclarationalButton(
-                                        title: AppLocalizations.of(context)
-                                            .translate('roverSpecOperator'),
-                                        value: operator,
-                                        valueSizeGroup: specPageBigText,
-                                        action: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  VehicleSearch(
-                                                type: "operator",
-                                                value: operator,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                      Container(
-                                        height:
-                                            (MediaQuery.of(context).size.width +
-                                                    MediaQuery.of(context)
-                                                        .size
-                                                        .height) /
-                                                2 *
-                                                .02,
-                                      ),
-                                      DeclarationalButton(
-                                        title: AppLocalizations.of(context)
-                                            .translate('roverSpecManufacturer'),
-                                        value: manufacturer,
-                                        valueSizeGroup: specPageBigText,
-                                        action: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  VehicleSearch(
-                                                    type: "manufacturer",
-                                                    value: manufacturer,
-                                                  ),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                  Column(children: actionWidget),
-                                ],
-                              ),
-                            ),
-                          ),
+                      ),
+                      Text(
+                        "** " +
+                            AppLocalizations.of(context)
+                                .translate('roverSpecEnd'),
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context)
+                              .size
+                              .width *
+                              .045,
+                          color: Colors.white70,
                         ),
-                      ],
-                    )
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment:
+                  CrossAxisAlignment.start,
+                  children: <Widget>[
+                    DeclarationalButton(
+                      title: AppLocalizations.of(context)
+                          .translate('roverSpecOperator'),
+                      value: operator,
+                      valueSizeGroup: specPageBigText,
+                      action: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                VehicleSearch(
+                                  type: "operator",
+                                  value: operator,
+                                ),
+                          ),
+                        );
+                      },
+                    ),
+                    Container(
+                      height:
+                      (MediaQuery.of(context).size.width +
+                          MediaQuery.of(context)
+                              .size
+                              .height) /
+                          2 *
+                          .02,
+                    ),
+                    DeclarationalButton(
+                      title: AppLocalizations.of(context)
+                          .translate('roverSpecManufacturer'),
+                      value: manufacturer,
+                      valueSizeGroup: specPageBigText,
+                      action: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                VehicleSearch(
+                                  type: "manufacturer",
+                                  value: manufacturer,
+                                ),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
-              ),
-            ],
+                Column(children: actionWidget),
+              ],),
+],
           ),
           Appbar(
             title: appbarTitle(),

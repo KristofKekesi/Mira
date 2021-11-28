@@ -26,25 +26,24 @@ class Application extends StatelessWidget {
   }
 }
 
+// todo make promo extension
 class PromoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // ignore: missing_return
+    // ignore:missing_return
     Future<bool> _widgetOpacity() async {
       try {
         final result = await InternetAddress.lookup('google.com');
         if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
           return true;
         }
-      } on SocketException catch (_) {
+      } catch (_) {
         return false;
       }
     }
 
     return FutureBuilder<bool>(
         future: _widgetOpacity(),
-        // a previously-obtained Future<String> or null
-        // ignore: missing_return
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data == true) {

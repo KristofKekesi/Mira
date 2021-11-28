@@ -44,6 +44,8 @@
   "roverImgSearchDateDotted": "DATE: ",
   "roverImgSearchSolDotted": "SOL: ",
   "roverImgSearchSetTime": "SET TIME",
+  "roverImgSearchSetDate": "Set Date",
+  "roverImgSearchSetSOL": "Set SOL",
   "roverImgSearchButton": "SEARCH",
   "invalidDateTitle": "Invalid date",
   "invalidDateContent": "Please open the settings and set the correct date!",

@@ -1,12 +1,13 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_conditional_rendering/conditional.dart';
-import 'package:nasamira/pass.dart';
-import 'package:nasamira/widgets/localization.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_conditional_rendering/conditional.dart';
+
+import '../pass.dart';
+import '../utils/localization.dart';
 
 _fetchAPI(url) async {
   Dio dio = Dio();
