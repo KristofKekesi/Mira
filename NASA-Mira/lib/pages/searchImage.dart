@@ -369,10 +369,11 @@ FutureBuilder _Data(url) {
 
 // ignore: camel_case_types
 class SearchWindow extends StatefulWidget {
+  final String name;
   final String url;
   final String date;
 
-  const SearchWindow({Key key, this.url, this.date}) : super(key: key);
+  const SearchWindow({Key key, this.name, this.url, this.date}) : super(key: key);
 
   @override
   _SearchWindowState createState() => _SearchWindowState();
@@ -393,8 +394,27 @@ class _SearchWindowState extends State<SearchWindow> {
           child:
           _Data(widget.url),
         ),),
-            // todo localize and finish appbar
-            Appbar(title: "Perseverance", subtitle: widget.date,),
+            Appbar(title: widget.name, subtitle: widget.date,
+              leftAction: Padding(
+                padding: EdgeInsets.only(
+                    right: (MediaQuery.of(context).size.width +
+                        MediaQuery.of(context).size.height) /
+                        2 *
+                        .02),
+                child: Tooltip(
+                  message: AppLocalizations.of(context).translate("back"),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                      size: MediaQuery.of(context).size.width * .075,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),),
       ],
       ),
     );

@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_conditional_rendering/conditional.dart';
 
 import '../pass.dart';
 import '../utils/localization.dart';
@@ -102,19 +101,15 @@ void _popup(context, title, copyright, url) {
                       padding: EdgeInsets.only(
                           left: MediaQuery.of(context).size.height * .025,
                           right: MediaQuery.of(context).size.height * .025),
-                      child: Conditional.single(
-                          context: context,
-                          conditionBuilder: (BuildContext context) =>
-                              copyright = null,
-                          widgetBuilder: (BuildContext context) => Text(
-                                copyright,
-                                style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                          fallbackBuilder: (BuildContext context) =>
-                              Container()),
+                      child: copyright != null
+                          ? Text(
+                              copyright,
+                              style: TextStyle(
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * .05,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          : Container(),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -139,13 +134,15 @@ void _popup(context, title, copyright, url) {
       ),
       actions: [
         GestureDetector(
-          onTap: (){Navigator.pop(context);},
+          onTap: () {
+            Navigator.pop(context);
+          },
           child: Text(
             AppLocalizations.of(context).translate("back"),
             style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * .05,
-                  color: Color(0xffE8672D),
-                  fontWeight: FontWeight.bold),
+                fontSize: MediaQuery.of(context).size.width * .05,
+                color: Color(0xffE8672D),
+                fontWeight: FontWeight.bold),
           ),
         ),
       ],

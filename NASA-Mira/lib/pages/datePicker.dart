@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_conditional_rendering/conditional.dart'; // todo remove
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -441,6 +440,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => SearchWindow(
+                          name: name,
                           url:
                           '${url}photos?earth_date=${date.year}-${date.month}-${date.day}&api_key=$apiKey',
                           date:
@@ -486,16 +486,10 @@ class _DatePickerPage extends State<DatePickerPage> {
                 ),
               ),
               Container(
-                child: Conditional.single(
-                  context: context,
-                  conditionBuilder: (BuildContext context) =>
-                      maxDateRaw["year"] == null &&
-                      minDate.compareTo(maxDate) > 0,
-                  widgetBuilder: (BuildContext context) =>
-                      invalidDateContainer(),
-                  fallbackBuilder: (BuildContext context) =>
+                child: maxDateRaw["year"] == null &&
+                      minDate.compareTo(maxDate) > 0 ?
+                      invalidDateContainer() :
                       datePickerContainer(),
-                ),
               ),
             ],
           ),

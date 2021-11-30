@@ -123,13 +123,20 @@ class _BodyState extends State<Body> {
                     child: Appbar(
                       title: AppLocalizations.of(context).translate("title"),
                       leftAction: Container(),
-                      rightAction: Tooltip(
-                        message:
-                            AppLocalizations.of(context).translate("settings"),
-                        child: Icon(
-                          Icons.menu,
-                          size: MediaQuery.of(context).size.width * .075,
-                          color: Colors.black,
+                      rightAction: Padding(
+                        padding: EdgeInsets.only(
+                            right: (MediaQuery.of(context).size.width +
+                                    MediaQuery.of(context).size.height) /
+                                2 *
+                                .04),
+                        child: Tooltip(
+                          message: AppLocalizations.of(context)
+                              .translate("settings"),
+                          child: Icon(
+                            Icons.menu,
+                            size: MediaQuery.of(context).size.width * .075,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ),
@@ -167,16 +174,23 @@ class _BodyState extends State<Body> {
         ),
         Appbar(
           title: AppLocalizations.of(context).translate("title"),
-          rightAction: Tooltip(
-            message: AppLocalizations.of(context).translate("settings"),
-            child: GestureDetector(
-              onTap: () {
-                showSelectors(context, "main", false);
-              },
-              child: Icon(
-                Icons.menu,
-                size: MediaQuery.of(context).size.width * .075,
-                color: Colors.black,
+          rightAction: Padding(
+            padding: EdgeInsets.only(
+                right: (MediaQuery.of(context).size.width +
+                        MediaQuery.of(context).size.height) /
+                    2 *
+                    .04),
+            child: Tooltip(
+              message: AppLocalizations.of(context).translate("settings"),
+              child: GestureDetector(
+                onTap: () {
+                  showSelectors(context, "main", false);
+                },
+                child: Icon(
+                  Icons.menu,
+                  size: MediaQuery.of(context).size.width * .075,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),

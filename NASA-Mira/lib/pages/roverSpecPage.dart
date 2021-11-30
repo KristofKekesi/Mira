@@ -199,9 +199,8 @@ class RoverSpecPage extends StatelessWidget {
     }
 
     List<Widget> actionWidget = [];
-    if (apiEnabled == true) {
       actionWidget.add(
-        Padding(
+        apiEnabled ? Padding(
           padding: EdgeInsets.only(
               top: (MediaQuery.of(context).size.width +
                       MediaQuery.of(context).size.height) /
@@ -229,11 +228,8 @@ class RoverSpecPage extends StatelessWidget {
               },
             ),
           ),
-        ),
+        ) : Container(),
       );
-    } else {
-      actionWidget.add(Container());
-    }
 
     String appbarTitle() {
       if (nick == null || nick == "") {

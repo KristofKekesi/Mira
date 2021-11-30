@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:nasamira/widgets/selector.dart';
 
 import '../pages/roverSpecPage.dart';
@@ -25,7 +24,12 @@ class _RoverGridInner extends StatelessWidget {
   final String errorString;
 
   const _RoverGridInner(
-      {Key key, this.inputType, this.filter, this.outputType, this.data, this.errorString})
+      {Key key,
+      this.inputType,
+      this.filter,
+      this.outputType,
+      this.data,
+      this.errorString})
       : super(key: key);
 
   String displayedName(name, nick) {
@@ -138,27 +142,21 @@ class _RoverGridInner extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Conditional.single(
-                              context: context,
-                              conditionBuilder: (BuildContext context) =>
-                                  data[index]["mission"] == null,
-                              widgetBuilder: (BuildContext context) =>
-                                  Container(),
-                              fallbackBuilder: (BuildContext context) =>
-                                  AutoSizeText(
-                                data[index]["mission"],
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize:
-                                      (MediaQuery.of(context).size.height *
-                                          .02),
-                                ),
-                                group: roverGridMission,
-                                maxLines: 1,
-                                minFontSize: 1,
-                              ),
-                            ),
+                            data[index]["mission"] != null
+                                ? AutoSizeText(
+                                    data[index]["mission"],
+                                    style: TextStyle(
+                                      color: Colors.white70,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize:
+                                          (MediaQuery.of(context).size.height *
+                                              .02),
+                                    ),
+                                    group: roverGridMission,
+                                    maxLines: 1,
+                                    minFontSize: 1,
+                                  )
+                                : Container(),
                             AutoSizeText(
                               displayedName(
                                   data[index]["name"], data[index]["nick"]),
@@ -192,34 +190,31 @@ class _RoverGridInner extends StatelessWidget {
                                             .02),
                                   ),
                                 ),
-                                Conditional.single(
-                                  context: context,
-                                  conditionBuilder: (BuildContext context) =>
-                                      data[index]["status"] == "active",
-                                  widgetBuilder: (BuildContext context) => Text(
-                                    AppLocalizations.of(context)
-                                        .translate("active"),
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize:
-                                          (MediaQuery.of(context).size.height *
+                                data[index]["status"] == "active"
+                                    ? Text(
+                                        AppLocalizations.of(context)
+                                            .translate("active"),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: (MediaQuery.of(context)
+                                                  .size
+                                                  .height *
                                               .025),
-                                    ),
-                                  ),
-                                  fallbackBuilder: (BuildContext context) =>
-                                      Text(
-                                    AppLocalizations.of(context)
-                                        .translate("inactive"),
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize:
-                                          (MediaQuery.of(context).size.height *
+                                        ),
+                                      )
+                                    : Text(
+                                        AppLocalizations.of(context)
+                                            .translate("inactive"),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: (MediaQuery.of(context)
+                                                  .size
+                                                  .height *
                                               .025),
-                                    ),
-                                  ),
-                                ),
+                                        ),
+                                      ),
                               ],
                             ),
                             Icon(
@@ -262,8 +257,8 @@ class RoverGrid extends StatefulWidget {
   // todo not final
   final String errorString;
 
-  RoverGrid(this.isVisible, this.inputType, this.filter,
-      this.outputType, this.errorString);
+  RoverGrid(this.isVisible, this.inputType, this.filter, this.outputType,
+      this.errorString);
 
   @override
   _RoverGridState createState() => _RoverGridState();
@@ -328,7 +323,8 @@ class _RoverGridState extends State<RoverGrid> {
                                 alignment: Alignment.topLeft,
                                 child: Text(
                                   AppLocalizations.of(context).translate(
-                                      widget.filter + "s" ?? widget.errorString),
+                                      widget.filter + "s" ??
+                                          widget.errorString),
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize:
