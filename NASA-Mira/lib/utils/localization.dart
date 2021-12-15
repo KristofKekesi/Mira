@@ -1,3 +1,5 @@
+// @dart=2.9
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -32,7 +34,8 @@ class AppLocalizations {
 
   // This method will be called from every widget which needs a localized text
   String translate(String key) {
-    return _localizedStrings[key];
+    if (_localizedStrings[key] == null) { print(key); }
+    return _localizedStrings[key] ?? key;
   }
 }
 

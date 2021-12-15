@@ -1,3 +1,5 @@
+// @dart=2.9
+
 import 'package:flutter/material.dart';
 
 import '../widgets/selector.dart';
@@ -106,7 +108,7 @@ class VehicleSearch extends StatelessWidget {
                       child: Tooltip(
                         message: AppLocalizations.of(context).translate("back"),
                         child: Icon(
-                          Icons.arrow_back,
+                          Icons.arrow_back_rounded,
                           size: MediaQuery.of(context).size.width * .075,
                           color: Colors.black,
                         ),
@@ -137,8 +139,8 @@ class VehicleSearch extends StatelessWidget {
                       Container(
                         height: MediaQuery.of(context).size.width * .03,
                       ),
-                      RoverGrid(ValueNotifier(true), type, value,
-                          outputType(), searchContent()),
+                      RoverGrid(isVisible: ValueNotifier(true), inputType: type, filter: value,
+                          outputType: outputType(), errorString: searchContent()),
                       Container(
                         height: MediaQuery.of(context).size.width * .05,
                       ),
@@ -165,7 +167,7 @@ class VehicleSearch extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   child: Icon(
-                    Icons.arrow_back,
+                    Icons.arrow_back_rounded,
                     size: MediaQuery.of(context).size.width * .075,
                     color: Colors.black,
                   ),

@@ -1,173 +1,25 @@
-import 'dart:io';
+// @dart=2.9
+
 import 'package:dio/dio.dart';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nasamira/widgets/appbars.dart';
 
+import '../widgets/appbars.dart';
+import '../widgets/content.dart';
+import '../widgets/declarationalButton.dart';
+
+import 'fullscreen.dart';
+
+import '../utils/getTh.dart';
 import '../utils/localization.dart';
 
-void _popup(context, name, id, cameraFullName, date, sol, url) {
-  // ignore: missing_return
-  Future<bool> _widgetOpacity() async {
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        return true;
-      }
-    } on SocketException catch (_) {
-      return false;
-    }
-  }
-
-  showDialog(
-    context: context,
-    builder: (_) => AlertDialog(
-      contentPadding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).size.height * .025,
-      ),
-      content: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-        ),
-        width: MediaQuery.of(context).size.width,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              FutureBuilder<bool>(
-                  future: _widgetOpacity(),
-                  // a previously-obtained Future<String> or null
-                  // ignore: missing_return
-                  builder:
-                      (BuildContext context, AsyncSnapshot<bool> snapshot) {
-                    if (snapshot.hasData) {
-                      if (snapshot.data == true) {
-                        return ClipRRect(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(4),
-                            topRight: Radius.circular(4),
-                          ),
-                          child: Image(
-                            image: NetworkImage(url),
-                            width: MediaQuery.of(context).size.width,
-                          ),
-                        );
-                      } else {
-                        return Container();
-                      }
-                    } else {
-                      return Container();
-                    }
-                  }),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.height * .025,
-                  right: MediaQuery.of(context).size.height * .025,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * .025,
-                        bottom: MediaQuery.of(context).size.height * .025,
-                      ),
-                      child: Text(
-                        name,
-                        style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * .05,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context).translate('popId'),
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * .05),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).size.height * .015),
-                      child: Text(
-                        id.toString(),
-                        style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * .05),
-                      ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context).translate('popCamera'),
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * .05),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).size.height * .015),
-                      child: Tooltip(
-                        message: cameraFullName,
-                        child: Text(
-                          cameraFullName,
-                          style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.width * .05),
-                        ),
-                      ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context).translate('popDate'),
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * .05),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).size.height * .015),
-                      child: Text(
-                        date.replaceAll("-", "/"),
-                        style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * .05),
-                      ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context).translate('popSol'),
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * .05),
-                    ),
-                    Text(
-                      sol.toString(),
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * .05),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      actionsPadding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).size.height * .025,
-        right: MediaQuery.of(context).size.height * .025,
-      ),
-      actions: [
-        GestureDetector(
-          onTap: (){Navigator.pop(context);},
-          child: Text(
-            AppLocalizations.of(context).translate("back"),
-            style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * .05,
-                fontWeight: FontWeight.bold),
-          ),
-        ),
-      ],
-    ),
-  );
-}
 
 _fetchAPI(url) async {
   Dio dio = Dio();
   dio.options.connectTimeout = 30000;
   dio.options.receiveTimeout = 30000;
   Response response = await dio.get(url);
+  print(response.statusCode);
 
   return response;
 }
@@ -184,127 +36,198 @@ String imageCounter(context, int num) {
   }
 }
 
-// ignore: non_constant_identifier_names
-FutureBuilder _Data(url) {
+FutureBuilder _data(url) {
   return FutureBuilder(
     future: _fetchAPI(url),
     builder: (context, snapshot) {
       if (snapshot.hasData) {
         List data = snapshot.data.data["photos"];
-        return ListView.builder(
-          itemCount: data.length + 1,
-          itemBuilder: (context, index) {
-            if (index == 0) {
-              return Padding(
+
+        List<Widget> serializedImages = [];
+        for (var index = 0; index < data.length; index++) {
+          if (index == 0) {
+            serializedImages.add(
+              Padding(
                 padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * .05 +
-                      (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                          2 *
-                          .04,
-                  top: MediaQuery.of(context).size.width * .1,
-                  bottom: MediaQuery.of(context).size.width * .02,
+                  top: (MediaQuery.of(context).size.width +
+                          MediaQuery.of(context).size.height) /
+                      2 *
+                      .04,
+                  bottom: (MediaQuery.of(context).size.width +
+                          MediaQuery.of(context).size.height) /
+                      2 *
+                      .0,
                 ),
-                child: Text(
-                  imageCounter(context, data.length),
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: MediaQuery.of(context).size.width * .05,
-                    color: Colors.black,
-                  ),
-                ),
-              );
-            }
-            return Padding(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height * .05,
-                  left: MediaQuery.of(context).size.width * .05,
-                  right: MediaQuery.of(context).size.width * .05),
-              child: Container(
-                width: MediaQuery.of(context).size.width * .8,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          image: DecorationImage(
-                            image: NetworkImage(data[index - 1]["img_src"]),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * .05,
+                            right: MediaQuery.of(context).size.width * .05,
                           ),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(
-                                (MediaQuery.of(context).size.width +
-                                        MediaQuery.of(context).size.height) /
-                                    2 *
-                                    .04),
-                            topRight: Radius.circular(
-                                (MediaQuery.of(context).size.width +
-                                        MediaQuery.of(context).size.height) /
-                                    2 *
-                                    .04),
-                          )),
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * .4,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(
-                              (MediaQuery.of(context).size.width +
-                                      MediaQuery.of(context).size.height) /
-                                  2 *
-                                  .04),
-                          bottomRight: Radius.circular(
-                              (MediaQuery.of(context).size.width +
-                                      MediaQuery.of(context).size.height) /
-                                  2 *
-                                  .04),
-                        ),
-                        image: DecorationImage(
-                            image: AssetImage('lib/images/background.jpg'),
-                            fit: BoxFit.cover),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * .02,
-                          bottom: MediaQuery.of(context).size.height * .02,
-                          left: MediaQuery.of(context).size.width * .05,
-                          right: MediaQuery.of(context).size.width * .05,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              data[index - 1]["rover"]["name"] +
-                                  ' - ' +
-                                  data[index - 1]["id"].toString(),
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .05,
-                                color: Colors.white,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('lib/images/background.jpg'),
+                                fit: BoxFit.cover,
                               ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular((MediaQuery.of(context)
+                                            .size
+                                            .width +
+                                        MediaQuery.of(context).size.height) /
+                                    2 *
+                                    .04),
+                              ),
+                            ),
+                            width: MediaQuery.of(context).size.width * .9,
+                            child: Padding(
+                              padding: EdgeInsets.all(
+                                  (MediaQuery.of(context).size.width +
+                                          MediaQuery.of(context).size.height) /
+                                      2 *
+                                      .02),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white12,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                        (MediaQuery.of(context).size.width +
+                                                MediaQuery.of(context)
+                                                    .size
+                                                    .height) /
+                                            2 *
+                                            .02),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(
+                                      (MediaQuery.of(context).size.width +
+                                              MediaQuery.of(context)
+                                                  .size
+                                                  .height) /
+                                          2 *
+                                          .02),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            right: (MediaQuery.of(context)
+                                                        .size
+                                                        .width +
+                                                    MediaQuery.of(context)
+                                                        .size
+                                                        .height) /
+                                                2 *
+                                                .02),
+                                        child: Icon(
+                                          Icons.info,
+                                          color: Colors.white70,
+                                          size: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
+                                        ),
+                                      ),
+                                      Text(
+                                        imageCounter(context, data.length),
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .05,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
+          serializedImages.add(
+            Content(
+              title: data[index]["id"].toString(),
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    bottom: (MediaQuery.of(context).size.width +
+                            MediaQuery.of(context).size.height) /
+                        2 *
+                        .02,
+                  ),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * .9,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular((MediaQuery.of(context).size.width +
+                                  MediaQuery.of(context).size.height) /
+                              2 *
+                              .02),
+                        ),
+                        color: Colors.black,
+                      ),
+                      width: MediaQuery.of(context).size.width * .9 -
+                          (MediaQuery.of(context).size.width +
+                                  MediaQuery.of(context).size.height) /
+                              2 *
+                              .02,
+                      //height: MediaQuery.of(context).size.height * .4,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular((MediaQuery.of(context).size.width +
+                                  MediaQuery.of(context).size.height) /
+                              2 *
+                              .02),
+                        ),
+                        child: Stack(
+                          alignment: Alignment.bottomRight,
+                          children: [
+                            Image.network(
+                              data[index]["img_src"],
                             ),
                             GestureDetector(
                               onTap: () {
-                                _popup(
-                                    context,
-                                    data[index - 1]["rover"]["name"],
-                                    data[index - 1]["id"],
-                                    data[index - 1]["camera"]["full_name"],
-                                    data[index - 1]["earth_date"],
-                                    data[index - 1]["sol"],
-                                    data[index - 1]["img_src"]);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => FullScreen(data[index]["img_src"],),
+                                  ),
+                                );
                               },
                               child: Tooltip(
-                                message: AppLocalizations.of(context)
-                                    .translate("more"),
-                                child: Image(
-                                  image: AssetImage('lib/images/more.png'),
-                                  width:
-                                      MediaQuery.of(context).size.width * .07,
-                                  height:
-                                      MediaQuery.of(context).size.width * .07,
+                                // todo localize
+                                message: "Fullscreen",
+                                child: Padding(
+                                  padding: EdgeInsets.all(
+                                      (MediaQuery.of(context).size.width +
+                                              MediaQuery.of(context)
+                                                  .size
+                                                  .height) /
+                                          2 *
+                                          .02),
+                                  child: Icon(
+                                    Icons.fullscreen,
+                                    color: Colors.white,
+                                    size: MediaQuery.of(context).size.width *
+                                        .075,
+                                  ),
                                 ),
                               ),
                             ),
@@ -312,11 +235,38 @@ FutureBuilder _Data(url) {
                         ),
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            );
-          },
+                Padding(
+                  padding: EdgeInsets.only(
+                      bottom: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .02),
+                  child: DeclarationalButton(
+                    // todo localize
+                    title: "Captured",
+                    value: data[index]["earth_date"].replaceAll("-", "/") +
+                        " (" +
+                        data[index]["sol"].toString() +
+                        getTh(context, data[index]["sol"]) +
+                        " sol)",
+                  ),
+                ),
+                DeclarationalButton(
+                  // todo localize
+                  title: "Camera",
+                  value: data[index]["camera"]["name"],
+                )
+              ],
+            ),
+          );
+        }
+
+        return SingleChildScrollView(
+          child: Column(
+            children: serializedImages,
+          ),
         );
       } else if (snapshot.hasError) {
         return Column(
@@ -343,26 +293,38 @@ FutureBuilder _Data(url) {
             ),
           ],
         );
-      }
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+      } else {
+        return Padding(
+          padding: EdgeInsets.only(
+            top: (MediaQuery.of(context).size.width +
+                MediaQuery.of(context).size.height) /
+                2 *
+                .04,
           ),
-          Padding(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * .05),
-              child: Text(
-                AppLocalizations.of(context).translate('loading'),
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              )),
-        ],
-      );
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+            ),
+            Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery
+                        .of(context)
+                        .size
+                        .height * .05),
+                child: Text(
+                  AppLocalizations.of(context).translate('loading'),
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),),
+          ],
+        ),);
+      }
     },
   );
 }
@@ -373,7 +335,8 @@ class SearchWindow extends StatefulWidget {
   final String url;
   final String date;
 
-  const SearchWindow({Key key, this.name, this.url, this.date}) : super(key: key);
+  const SearchWindow({Key key, this.name, this.url, this.date})
+      : super(key: key);
 
   @override
   _SearchWindowState createState() => _SearchWindowState();
@@ -384,38 +347,58 @@ class _SearchWindowState extends State<SearchWindow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  Stack(
-          children: <Widget> [
-      SingleChildScrollView(
-        child:
-      Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child:
-          _Data(widget.url),
-        ),),
-            Appbar(title: widget.name, subtitle: widget.date,
-              leftAction: Padding(
-                padding: EdgeInsets.only(
-                    right: (MediaQuery.of(context).size.width +
-                        MediaQuery.of(context).size.height) /
-                        2 *
-                        .02),
-                child: Tooltip(
-                  message: AppLocalizations.of(context).translate("back"),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: <Widget>[
+          ListView(
+            children: <Widget>[
+              Opacity(
+                opacity: 0,
+                child: Appbar(
+                  title: widget.name,
+                  subtitle: widget.date,
+                  leftAction: Padding(
+                    padding: EdgeInsets.only(
+                        right: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                            2 *
+                            .02),
                     child: Icon(
-                      Icons.arrow_back,
+                      Icons.arrow_back_rounded,
                       size: MediaQuery.of(context).size.width * .075,
                       color: Colors.black,
                     ),
                   ),
                 ),
-              ),),
-      ],
+              ),
+              _data(widget.url),
+            ],
+          ),
+          Appbar(
+            title: widget.name,
+            subtitle: widget.date,
+            leftAction: Tooltip(
+              message: AppLocalizations.of(context).translate("back"),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      right: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .02),
+                  child: Icon(
+                    Icons.arrow_back_rounded,
+                    size: MediaQuery.of(context).size.width * .075,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

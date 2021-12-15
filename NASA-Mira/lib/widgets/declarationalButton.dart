@@ -1,10 +1,12 @@
+// @dart=2.9
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class DeclarationalButton extends StatelessWidget {
-  final background;
-  final foreground;
-  final secondary;
+  final Color background;
+  final Color foreground;
+  final Color secondary;
 
   final String tooltip;
   final String title;
@@ -14,7 +16,7 @@ class DeclarationalButton extends StatelessWidget {
 
   final AutoSizeGroup valueSizeGroup;
 
-  const DeclarationalButton({Key key, this.background, this.foreground, this.secondary, this.tooltip, this.title, this.action, this.valueSizeGroup, this.value}) : super(key: key);
+  const DeclarationalButton({Key key, this.background = Colors.white12, this.foreground = Colors.white, this.secondary = Colors.white70, this.tooltip, this.title, this.action, this.valueSizeGroup, this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class DeclarationalButton extends StatelessWidget {
                 2 *
                 .02),
           ),
-          color: background != null ? background : Colors.white12,
+          color: background,
         ),
         child: Padding(
           padding: EdgeInsets.all((MediaQuery.of(context).size.width +
@@ -48,7 +50,7 @@ class DeclarationalButton extends StatelessWidget {
                 style: TextStyle(
                   fontSize: MediaQuery.of(context).size.width * .05,
                   fontWeight: FontWeight.bold,
-                  color: secondary != null ? secondary : Colors.white70,
+                  color: secondary,
                 ),
               ),
               Row(
@@ -67,7 +69,7 @@ class DeclarationalButton extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: MediaQuery.of(context).size.width * .08,
-                        color: foreground != null ? foreground : Colors.white,
+                        color: foreground,
                       ),
                       maxLines: 1,
                       group: valueSizeGroup,
@@ -80,7 +82,7 @@ class DeclarationalButton extends StatelessWidget {
                       Icons.arrow_forward_rounded,
                       size: MediaQuery.of(context).size.width * .075,
                       color:
-                      foreground != null ? foreground : Colors.white,
+                      foreground,
                     ),
                   )
                       : Container(),

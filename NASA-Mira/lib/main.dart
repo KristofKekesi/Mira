@@ -1,48 +1,23 @@
+// @dart=2.9
+
 import 'package:flutter/material.dart';
 
-import 'package:splashscreen/splashscreen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'utils/MaterialColor.dart';
-import 'utils/noMaterialGlow.dart';
-import 'utils/darkTitlebar.dart';
 import 'utils/orientationLock.dart';
-
-import 'pages/drawer.dart';
-import 'widgets/selector.dart';
-import 'widgets/apod.dart';
-import 'widgets/appbars.dart';
+import 'utils/noMaterialGlow.dart';
+import 'utils/MaterialColor.dart';
+import 'utils/darkTitlebar.dart';
 import 'utils/localization.dart';
-import 'widgets/roverGrid.dart';
 
-class Splash extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: 2,
-      title: Text(
-        'NASA Mira',
-        style: TextStyle(
-          fontSize: 25,
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      loadingText: Text(
-        AppLocalizations.of(context).translate('loading'),
-        style: TextStyle(
-            fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
-      ),
-      imageBackground: AssetImage('lib/images/background.jpg'),
-      image: Image(
-        image: AssetImage('lib/images/home_mira_logo.png'),
-      ),
-      photoSize: 50,
-      loaderColor: Colors.white,
-      navigateAfterSeconds: HomeScreen(),
-    );
-  }
-}
+import 'pages/splashScreen.dart';
+import 'pages/drawer.dart';
+
+import 'widgets/roverGrid.dart';
+import 'widgets/selector.dart';
+import 'widgets/appbars.dart';
+import 'widgets/apod.dart';
+
 
 void main() {
   darkTitlebar();
@@ -97,7 +72,7 @@ class _MiraState extends State<Mira> {
         brightness: Brightness.light,
         primarySwatch: createMaterialColor(Color(0xffE8672D)),
       ),
-      home: Splash(), //Home(),
+      home: SplashScreenPage(child: HomeScreen(),), //Home(),
     );
   }
 }
@@ -151,16 +126,16 @@ class _BodyState extends State<Body> {
                           height: MediaQuery.of(context).size.width * .03,
                         ),
                         ApodWidget(),
-                        RoverGrid(notifierAreHelicoptersVisible, "type",
-                            "helicopter", "type", ""),
-                        RoverGrid(notifierAreRoversVisible, "type", "rover",
-                            "type", ""),
-                        RoverGrid(notifierAreOrbitersVisible, "type", "orbiter",
-                            "type", ""),
-                        RoverGrid(notifierAreLandersVisible, "type", "lander",
-                            "type", ""),
-                        RoverGrid(notifierAreFlybysVisible, "type", "flyby",
-                            "type", ""),
+                        RoverGrid(isVisible: notifierAreHelicoptersVisible, inputType: "type",
+                            filter: "helicopter", outputType: "type"),
+                        RoverGrid(isVisible: notifierAreRoversVisible, inputType: "type", filter: "rover",
+                            outputType: "type"),
+                        RoverGrid(isVisible: notifierAreOrbitersVisible, inputType: "type", filter: "orbiter",
+                            outputType: "type"),
+                        RoverGrid(isVisible: notifierAreLandersVisible, inputType: "type", filter: "lander",
+                            outputType: "type"),
+                        RoverGrid(isVisible: notifierAreFlybysVisible, inputType: "type", filter: "flyby",
+                            outputType: "type"),
                         Container(
                           height: MediaQuery.of(context).size.width * .05,
                         ),

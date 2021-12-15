@@ -1,5 +1,8 @@
+// @dart=2.9
+
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class Application extends StatelessWidget {
@@ -17,7 +20,7 @@ class Application extends StatelessWidget {
       child: Tooltip(
         message: name,
         child: Image(
-          image: NetworkImage(image),
+          image: CachedNetworkImageProvider(image),
           width: MediaQuery.of(context).size.width * .15,
           height: MediaQuery.of(context).size.width * .15,
         ),
@@ -30,16 +33,14 @@ class Application extends StatelessWidget {
 class PromoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // ignore:missing_return
     Future<bool> _widgetOpacity() async {
       try {
         final result = await InternetAddress.lookup('google.com');
         if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
           return true;
         }
-      } catch (_) {
-        return false;
-      }
+      } catch (_) {}
+      return false;
     }
 
     return FutureBuilder<bool>(

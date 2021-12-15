@@ -5,21 +5,27 @@ publish_to: 'none'
 version: 2.0.1+12
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  colorful_safe_area:
+    path: packages/colorful_safe_area/
+  splashscreen:
+    git:
+      url: https://github.com/DPLYR-dev/SplashScreenFlutterPackage.git
+      ref: master
 
-  splashscreen: 1.2.0
-  cupertino_icons: ^0.1.2
+  cupertino_icons: ^1.0.4
   characters: ^1.0.0
-  numberpicker: ^1.2.0
-  url_launcher: ^5.4.2
-  dio: ^3.0.10
-  auto_size_text: ^2.1.0
+  numberpicker: ^2.1.1
+  url_launcher: ^6.0.17
+  dio: ^4.0.4
+  auto_size_text: ^3.0.0
+  cached_network_image: ^3.2.0
 
 
 dev_dependencies:

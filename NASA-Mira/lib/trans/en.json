@@ -43,7 +43,6 @@
   "roverImgSearchSol": "SOL",
   "roverImgSearchDateDotted": "DATE: ",
   "roverImgSearchSolDotted": "SOL: ",
-  "roverImgSearchSetTime": "SET TIME",
   "roverImgSearchSetDate": "Set Date",
   "roverImgSearchSetSOL": "Set SOL",
   "roverImgSearchButton": "SEARCH",
@@ -65,14 +64,8 @@
   "imgNoRes": "No result",
   "imgNoResCon": "Consider modifying date or SOL.",
   "more": "More Info",
-  "popId": "ID: ",
-  "popCamera": "Camera: ",
-  "popDate": "Date: ",
-  "popSol": "SOL: ",
-  "imgDown": "Download",
 
   "back": "Back",
-  "search": "Search",
   "ok": "OK",
 
   "year": "Year",

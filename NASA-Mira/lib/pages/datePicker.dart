@@ -1,51 +1,27 @@
+// @dart=2.9
+
+// flutter
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-import 'searchImage.dart';
-import '../widgets/content.dart';
+// widgets
 import '../widgets/declarationalButton.dart';
-import '../widgets/appbars.dart';
-import '../utils/localization.dart';
 import '../widgets/roverGrid.dart';
+import '../widgets/content.dart';
+import '../widgets/appbars.dart';
+
+// pages
+import 'searchImage.dart';
+
+// utils
+import '../utils/localization.dart';
 import '../utils/update.dart';
+import '../utils/getTh.dart';
 import '../pass.dart';
 
-var arrive; // todo get type
-var defaultDatePosition; // todo get type
-int defaultSolPosition;
-var maxDateRaw; // todo get type
-int maxSol;
-String mission;
-String name;
-String url;
-
-void define(dataSector) {
-//selecting source
-  var source;
-  if (updated == true) {
-    source = localUpdate[dataSector];
-  } else {
-    source = hardCodeData[dataSector];
-  }
-
-  arrive = source["arrive"];
-  defaultDatePosition = source["default-date"];
-  defaultSolPosition = source["default-sol"];
-  maxDateRaw = source["last-date"];
-  if (source["last-sol"] != null) {
-    maxSol = source["last-sol"];
-  } else {
-    maxSol = 10000;
-  }
-
-  mission = source["mission"];
-  name = source["name"];
-
-  url = source["url"];
-}
 
 class DatePickerPage extends StatefulWidget {
   final int dataSector;
@@ -61,55 +37,54 @@ class DatePickerPage extends StatefulWidget {
   _DatePickerPage createState() => _DatePickerPage(dataSector);
 }
 
-// ignore: camel_case_types
 class _DatePickerPage extends State<DatePickerPage> {
   final int dataSector;
 
   _DatePickerPage(this.dataSector);
 
   String checkNull(int num) {
-    if (num < 10) {
-      return "0" + num.toString();
-    } else {
-      return num.toString();
-    }
+      return num < 10 ? "0" + num.toString() : num.toString();
   }
 
-  String getTh(int num) {
-    String last = num.toString()[num.toString().length - 1];
-    if (last == "0") {
-      return AppLocalizations.of(context).translate("serial0");
-    } else if (last == "1") {
-      return AppLocalizations.of(context).translate("serial1");
-    } else if (last == "2") {
-      return AppLocalizations.of(context).translate("serial2");
-    } else if (last == "3") {
-      return AppLocalizations.of(context).translate("serial3");
-    } else if (last == "4") {
-      return AppLocalizations.of(context).translate("serial4");
-    } else if (last == "5") {
-      return AppLocalizations.of(context).translate("serial5");
-    } else if (last == "6") {
-      return AppLocalizations.of(context).translate("serial6");
-    } else if (last == "7") {
-      return AppLocalizations.of(context).translate("serial7");
-    } else if (last == "8") {
-      return AppLocalizations.of(context).translate("serial8");
-    } else {
-      return AppLocalizations.of(context).translate("serial9");
-    }
-  }
-
-  bool timeFormat;
   DateTime minDate;
   DateTime date;
   DateTime maxDate;
+
   int sol;
+
+  bool timeFormat = false;
+
+  var arrive;
+  var defaultDatePosition;
+  int defaultSolPosition;
+  var maxDateRaw;
+  int maxSol;
+
+  String mission;
+  String name;
+  String url;
 
   @override
   void initState() {
-    timeFormat = false;
-    define(dataSector);
+    //selecting source
+    var source;
+    if (updated == true) {
+      source = localUpdate[dataSector];
+    } else {
+      source = hardCodeData[dataSector];
+    }
+
+    print(dataSector);
+
+    arrive = source["arrive"];                    // todo get type
+    defaultDatePosition = source["default-date"]; // todo get type
+    defaultSolPosition = source["default-sol"];
+    maxDateRaw = source["last-date"];             // todo get type
+    maxSol = source["last-sol"] != null ? source["last-sol"] : 10000;
+
+    mission = source["mission"];
+    name = source["name"];
+    url = source["url"];
 
     minDate = DateTime.utc(arrive["year"], arrive["month"], arrive["day"]);
     date = DateTime.utc(defaultDatePosition["year"],
@@ -228,7 +203,7 @@ class _DatePickerPage extends State<DatePickerPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Content(
-            name: name,
+            title: name,
             children: [
               Padding(
                 padding: EdgeInsets.only(
@@ -243,7 +218,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                   secondary: timeFormat == false
                       ? Colors.white
                       : Colors.black38,
-                  // todo localize and setup variable
+                  // todo localize
                   title: "Date",
                   value: Row(
                     children: <Widget>[
@@ -358,8 +333,8 @@ class _DatePickerPage extends State<DatePickerPage> {
                       decoration: BoxDecoration(
                         color: Colors.white,
                       ),
-                      child: NumberPicker.integer(
-                          initialValue: sol,
+                      child: NumberPicker(
+                          value: sol,
                           minValue: 0,
                           maxValue: maxSol,
                           onChanged: (val) {
@@ -432,8 +407,9 @@ class _DatePickerPage extends State<DatePickerPage> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => SearchWindow(
+                        name: name,
                           url: '${url}photos?sol=$sol&api_key=$apiKey',
-                          date: '$sol${getTh(sol)} sol')),
+                          date: '$sol${getTh(context, sol)} sol')),
                 );
               } else if (timeFormat == false) {
                 Navigator.push(
@@ -476,7 +452,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                           Navigator.pop(context);
                         },
                         child: Icon(
-                          Icons.arrow_back,
+                          Icons.arrow_back_rounded,
                           size: MediaQuery.of(context).size.width * .075,
                           color: Colors.black,
                         ),
@@ -508,7 +484,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                     Navigator.pop(context);
                   },
                   child: Icon(
-                    Icons.arrow_back,
+                    Icons.arrow_back_rounded,
                     size: MediaQuery.of(context).size.width * .075,
                     color: Colors.black,
                   ),

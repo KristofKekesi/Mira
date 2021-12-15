@@ -1,13 +1,16 @@
+// @dart=2.9
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class Content extends StatelessWidget {
-  final String name;
+  final String title;
   final String nick;
 
+  final Widget child;
   final List<Widget> children;
 
-  const Content({Key key, this.name, this.nick, this.children})
+  const Content({Key key, this.title = "", this.nick, this.child, this.children})
       : super(key: key);
 
   @override
@@ -39,7 +42,7 @@ class Content extends StatelessWidget {
                             .04 +
                         MediaQuery.of(context).size.width * .05),
                 child: AutoSizeText(
-                  nick == null ? name : nick,
+                  nick == null ? title : nick,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: MediaQuery.of(context).size.width * .08,
@@ -75,7 +78,7 @@ class Content extends StatelessWidget {
                         .02),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: children,
+                      children: child != null ? [child] : children != null ? children : [ErrorWidget("Child / Children property is not provided")],
                     ),
                   ),
                 ),

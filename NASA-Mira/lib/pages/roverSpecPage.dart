@@ -1,12 +1,14 @@
+// @dart=2.9
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:nasamira/widgets/content.dart';
 
+import '../widgets/content.dart';
 import 'searchVehicle.dart';
 import 'datePicker.dart';
 import '../widgets/appbars.dart';
 import '../widgets/declarationalButton.dart';
 import '../utils/localization.dart';
+
 
 AutoSizeGroup specPageBigText = AutoSizeGroup();
 
@@ -271,7 +273,7 @@ class RoverSpecPage extends StatelessWidget {
                           Navigator.pop(context);
                         },
                         child: Icon(
-                          Icons.arrow_back,
+                          Icons.arrow_back_rounded,
                           size: MediaQuery.of(context).size.width * .075,
                           color: Colors.black,
                         ),
@@ -280,7 +282,7 @@ class RoverSpecPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Content(name: name, nick: nick, children: [
+              Content(title: name, nick: nick, children: [
                 missionWidget(mission),
                 nicknameWidget(nick),
                 DeclarationalButton(
@@ -816,7 +818,7 @@ class RoverSpecPage extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   child: Icon(
-                    Icons.arrow_back,
+                    Icons.arrow_back_rounded,
                     size: MediaQuery.of(context).size.width * .075,
                     color: Colors.black,
                   ),

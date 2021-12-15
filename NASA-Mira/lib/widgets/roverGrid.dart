@@ -1,3 +1,5 @@
+// @dart=2.9
+
 import 'dart:convert';
 
 import 'package:auto_size_text/auto_size_text.dart';
@@ -20,7 +22,6 @@ class _RoverGridInner extends StatelessWidget {
 
   final data;
 
-  // todo not final
   final String errorString;
 
   const _RoverGridInner(
@@ -29,7 +30,7 @@ class _RoverGridInner extends StatelessWidget {
       this.filter,
       this.outputType,
       this.data,
-      this.errorString})
+      this.errorString = ""})
       : super(key: key);
 
   String displayedName(name, nick) {
@@ -42,10 +43,6 @@ class _RoverGridInner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("---------------------");
-    print("input: " + inputType);
-    print("filter: " + filter);
-    print("output: " + outputType);
 
     List<Widget> roverList = [];
     for (var index = 0; index < data.length; index++) {
@@ -254,11 +251,10 @@ class RoverGrid extends StatefulWidget {
   final String filter;
   final String outputType;
 
-  // todo not final
   final String errorString;
 
-  RoverGrid(this.isVisible, this.inputType, this.filter, this.outputType,
-      this.errorString);
+  RoverGrid({this.isVisible, this.inputType, this.filter, this.outputType,
+      this.errorString = ""});
 
   @override
   _RoverGridState createState() => _RoverGridState();

@@ -1,25 +1,16 @@
+// @dart=2.9
+
 import 'package:flutter/material.dart';
 
 import '../utils/localization.dart';
 
-bool boolIsReverse = false;
-bool boolAreHelicoptersVisible = true;
-bool boolAreRoversVisible = true;
-bool boolAreOrbitersVisible = true;
-bool boolAreLandersVisible = true;
-bool boolAreFlybysVisible = true;
 
-ValueNotifier<bool> notifierIsReverse = ValueNotifier(boolIsReverse);
-ValueNotifier<bool> notifierAreHelicoptersVisible =
-    ValueNotifier(boolAreHelicoptersVisible);
-ValueNotifier<bool> notifierAreRoversVisible =
-    ValueNotifier(boolAreRoversVisible);
-ValueNotifier<bool> notifierAreOrbitersVisible =
-    ValueNotifier(boolAreOrbitersVisible);
-ValueNotifier<bool> notifierAreLandersVisible =
-    ValueNotifier(boolAreLandersVisible);
-ValueNotifier<bool> notifierAreFlybysVisible =
-    ValueNotifier(boolAreFlybysVisible);
+ValueNotifier<bool> notifierIsReverse = ValueNotifier(false);
+ValueNotifier<bool> notifierAreHelicoptersVisible = ValueNotifier(true);
+ValueNotifier<bool> notifierAreRoversVisible = ValueNotifier(true);
+ValueNotifier<bool> notifierAreOrbitersVisible = ValueNotifier(true);
+ValueNotifier<bool> notifierAreLandersVisible = ValueNotifier(true);
+ValueNotifier<bool> notifierAreFlybysVisible = ValueNotifier(true);
 
 void showSelectors(context, page, areTypesDisabled) {
   showDialog(
@@ -61,6 +52,7 @@ void showSelectors(context, page, areTypesDisabled) {
                     Padding(
                       padding: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height * .025,
+                        bottom: MediaQuery.of(context).size.height * .01,
                       ),
                       child: Text(
                         AppLocalizations.of(context).translate("types"),
@@ -69,81 +61,151 @@ void showSelectors(context, page, areTypesDisabled) {
                         ),
                       ),
                     ),
-                    CheckboxListTile(
-                      activeColor: Color(0xffE8672D),
-                      value:
-                          areTypesDisabled ? true : boolAreHelicoptersVisible,
-                      onChanged: areTypesDisabled
-                          ? null
-                          : (value) {
-                              setState(() {
-                                boolAreHelicoptersVisible = value;
-                              });
-                            },
-                      // todo localize all strings in this function
-                      title: Text("Helicopters"),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      contentPadding: EdgeInsets.all(0),
-                    ),
-                    CheckboxListTile(
-                      activeColor: Color(0xffE8672D),
-                      value: areTypesDisabled ? true : boolAreRoversVisible,
-                      onChanged: areTypesDisabled
-                          ? null
-                          : (value) {
-                              setState(() {
-                                boolAreRoversVisible = value;
-                              });
-                            },
-                      title: Text("Rovers"),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      contentPadding: EdgeInsets.all(0),
-                    ),
-                    CheckboxListTile(
-                      activeColor: Color(0xffE8672D),
-                      value: areTypesDisabled ? true : boolAreOrbitersVisible,
-                      onChanged: areTypesDisabled
-                          ? null
-                          : (value) {
-                              setState(() {
-                                boolAreOrbitersVisible = value;
-                              });
-                            },
-                      title: Text("Orbiters"),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      contentPadding: EdgeInsets.all(0),
-                    ),
-                    CheckboxListTile(
-                      activeColor: Color(0xffE8672D),
-                      value: areTypesDisabled ? true : boolAreLandersVisible,
-                      onChanged: areTypesDisabled
-                          ? null
-                          : (value) {
-                              setState(() {
-                                boolAreLandersVisible = value;
-                              });
-                            },
-                      title: Text("Landers"),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      contentPadding: EdgeInsets.all(0),
-                    ),
-                    CheckboxListTile(
-                      activeColor: Color(0xffE8672D),
-                      value: areTypesDisabled ? true : boolAreFlybysVisible,
-                      onChanged: areTypesDisabled
-                          ? null
-                          : (value) {
-                              setState(() {
-                                boolAreFlybysVisible = value;
-                              });
-                            },
-                      title: Text("Flyby satelites"),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      contentPadding: EdgeInsets.all(0),
+                    Wrap(
+                      spacing: 16,
+                      children: [
+                        InputChip(
+                          tooltip: AppLocalizations.of(context)
+                              .translate("helicopters"),
+                          label: Text(
+                            AppLocalizations.of(context)
+                                .translate("helicopters"),
+                            style: TextStyle(
+                              color: notifierAreHelicoptersVisible.value && !areTypesDisabled
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                          ),
+                          showCheckmark: false,
+                          backgroundColor: Color.fromRGBO(232, 103, 45, .3),
+                          selectedColor: Color.fromRGBO(232, 103, 45, .75),
+                          disabledColor: Color(0xffcccccc),
+                          shadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          selectedShadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          isEnabled: !areTypesDisabled,
+                          selected: areTypesDisabled
+                              ? false
+                              : notifierAreHelicoptersVisible.value,
+                          onSelected: (value) {
+                            setState(() {
+                              notifierAreHelicoptersVisible.value = value;
+                            });
+                          },
+                        ),
+                        InputChip(
+                          tooltip:
+                              AppLocalizations.of(context).translate("rovers"),
+                          label: Text(
+                            AppLocalizations.of(context).translate("rovers"),
+                            style: TextStyle(
+                              color: notifierAreRoversVisible.value && !areTypesDisabled
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                          ),
+                          showCheckmark: false,
+                          backgroundColor: Color.fromRGBO(232, 103, 45, .3),
+                          selectedColor: Color.fromRGBO(232, 103, 45, .75),
+                          disabledColor: Color(0xffcccccc),
+                          shadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          selectedShadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          isEnabled: !areTypesDisabled,
+                          selected: areTypesDisabled
+                              ? false
+                              : notifierAreRoversVisible.value,
+                          onSelected: (value) {
+                            setState(() {
+                              notifierAreRoversVisible.value = value;
+                            });
+                          },
+                        ),
+                        InputChip(
+                          tooltip: AppLocalizations.of(context)
+                              .translate("orbiters"),
+                          label: Text(
+                            AppLocalizations.of(context).translate("orbiters"),
+                            style: TextStyle(
+                              color: notifierAreOrbitersVisible.value && !areTypesDisabled
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                          ),
+                          showCheckmark: false,
+                          backgroundColor: Color.fromRGBO(232, 103, 45, .3),
+                          selectedColor: Color.fromRGBO(232, 103, 45, .75),
+                          disabledColor: Color(0xffcccccc),
+                          shadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          selectedShadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          isEnabled: !areTypesDisabled,
+                          selected: areTypesDisabled
+                              ? false
+                              : notifierAreOrbitersVisible.value,
+                          onSelected: (value) {
+                            setState(() {
+                              notifierAreOrbitersVisible.value = value;
+                            });
+                          },
+                        ),
+                        InputChip(
+                          tooltip:
+                              AppLocalizations.of(context).translate("landers"),
+                          label: Text(
+                            AppLocalizations.of(context).translate("landers"),
+                            style: TextStyle(
+                              color: notifierAreLandersVisible.value && !areTypesDisabled
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                          ),
+                          showCheckmark: false,
+                          backgroundColor: Color.fromRGBO(232, 103, 45, .3),
+                          selectedColor: Color.fromRGBO(232, 103, 45, .75),
+                          disabledColor: Color(0xffcccccc),
+                          shadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          selectedShadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          isEnabled: !areTypesDisabled,
+                          selected: areTypesDisabled
+                              ? false
+                              : notifierAreLandersVisible.value,
+                          onSelected: (value) {
+                            setState(() {
+                              notifierAreLandersVisible.value = value;
+                            });
+                          },
+                        ),
+                        InputChip(
+                          tooltip:
+                              AppLocalizations.of(context).translate("flybys"),
+                          label: Text(
+                            AppLocalizations.of(context).translate("flybys"),
+                            style: TextStyle(
+                              color: notifierAreFlybysVisible.value && !areTypesDisabled
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                          ),
+                          showCheckmark: false,
+                          backgroundColor: Color.fromRGBO(232, 103, 45, .3),
+                          selectedColor: Color.fromRGBO(232, 103, 45, .75),
+                          disabledColor: Color(0xffcccccc),
+                          shadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          selectedShadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          isEnabled: !areTypesDisabled,
+                          selected: areTypesDisabled
+                              ? false
+                              : notifierAreFlybysVisible.value,
+                          onSelected: (value) {
+                            setState(() {
+                              notifierAreFlybysVisible.value = value;
+                            });
+                          },
+                        ),
+                      ],
                     ),
                     Padding(
                       padding: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height * .025,
+                        bottom: MediaQuery.of(context).size.height * .01,
                       ),
                       child: Text(
                         AppLocalizations.of(context).translate("sort"),
@@ -152,33 +214,59 @@ void showSelectors(context, page, areTypesDisabled) {
                         ),
                       ),
                     ),
-                    CheckboxListTile(
-                      activeColor: Color(0xffE8672D),
-                      value: boolIsReverse,
-                      onChanged: (value) {
-                        setState(() {
-                          boolIsReverse = true;
-                        });
-                      },
-                      title: Text(
-                        AppLocalizations.of(context).translate("ascending"),
-                      ),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      contentPadding: EdgeInsets.all(0),
-                    ),
-                    CheckboxListTile(
-                      activeColor: Color(0xffE8672D),
-                      value: !boolIsReverse,
-                      onChanged: (value) {
-                        setState(() {
-                          boolIsReverse = false;
-                        });
-                      },
-                      title: Text(
-                        AppLocalizations.of(context).translate("descending"),
-                      ),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      contentPadding: EdgeInsets.all(0),
+                    Wrap(
+                      spacing: 16,
+                      children: [
+                        InputChip(
+                          tooltip: AppLocalizations.of(context)
+                              .translate("ascending"),
+                          label: Text(
+                            AppLocalizations.of(context).translate("ascending"),
+                            style: TextStyle(
+                              color: notifierIsReverse.value
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                          ),
+                          showCheckmark: false,
+                          backgroundColor: Color.fromRGBO(232, 103, 45, .3),
+                          selectedColor: Color.fromRGBO(232, 103, 45, .75),
+                          disabledColor: Color(0xffcccccc),
+                          shadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          selectedShadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          selected: notifierIsReverse.value,
+                          onSelected: (value) {
+                            setState(() {
+                              notifierIsReverse.value = true;
+                            });
+                          },
+                        ),
+                        InputChip(
+                          tooltip: AppLocalizations.of(context)
+                              .translate("descending"),
+                          label: Text(
+                            AppLocalizations.of(context)
+                                .translate("descending"),
+                            style: TextStyle(
+                              color: !notifierIsReverse.value
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                          ),
+                          showCheckmark: false,
+                          backgroundColor: Color.fromRGBO(232, 103, 45, .3),
+                          selectedColor: Color.fromRGBO(232, 103, 45, .75),
+                          disabledColor: Color(0xffcccccc),
+                          shadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          selectedShadowColor: Color.fromRGBO(0, 0, 0, 0),
+                          selected: !notifierIsReverse.value,
+                          onSelected: (value) {
+                            setState(() {
+                              notifierIsReverse.value = false;
+                            });
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -199,33 +287,11 @@ void showSelectors(context, page, areTypesDisabled) {
                   right: MediaQuery.of(context).size.height * .025,
                 ),
                 child: Text(
-                  AppLocalizations.of(context).translate("back"),
+                  AppLocalizations.of(context).translate("ok"),
                   style: TextStyle(
                     fontSize: MediaQuery.of(context).size.width * .05,
                   ),
                 ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  notifierAreHelicoptersVisible.value =
-                      boolAreHelicoptersVisible;
-                  notifierAreRoversVisible.value = boolAreRoversVisible;
-                  notifierAreOrbitersVisible.value = boolAreOrbitersVisible;
-                  notifierAreLandersVisible.value = boolAreLandersVisible;
-                  notifierAreFlybysVisible.value = boolAreFlybysVisible;
-
-                  notifierIsReverse.value = boolIsReverse;
-                });
-                Navigator.pop(context);
-              },
-              child: Text(
-                "Search",
-                style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * .05,
-                    color: Color(0xffE8672D),
-                    fontWeight: FontWeight.bold),
               ),
             ),
           ],
