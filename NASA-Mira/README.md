@@ -9,35 +9,11 @@
 
 <span style="text-align: justify;">View the surface of the Mars with images made by NASA's rovers. An app to search for images made by NASA's mars rovers. It's also provide specifications of the rovers.</span>
 
-## State <img src="https://img.shields.io/badge/Release-green.svg" alt="">
-<img src="images/state.png">
 
 ## Download <img src="https://img.shields.io/badge/Play%20Store-green.svg" alt="">
-Latest release: __1.1.1__
+Latest release: __2.0.1__
 
 <a href='https://play.google.com/store/apps/details?id=com.kristofkekesi.nasamira&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
-
-## Beta state
-#### New features
-- Added Sojourner rover
-- Added Perseverance rover
-
-## Latest Images
-<table><tr><td>
-  <img src="playstore/FinalPhoneEn_1.png" height=400px>
-</td></tr>
- <tr><td>
-  <img src="playstore/FinalPhoneEn_2.png" height=400px>
- </td><td>
-  <img src="playstore/FinalPhoneEn_3.png" height=400px>
- </td></tr>
-  <tr><td>
-  <img src="playstore/FinalPhoneEn_4.png" height=400px>
- </td>
- <td>
-  <img src="playstore/FinalPhoneEn_5.png" height=400px>
- </td></tr>
-</table>
 
 ## Beta program <img src="https://img.shields.io/badge/Open-green.svg" alt="">
 #### To aply:
