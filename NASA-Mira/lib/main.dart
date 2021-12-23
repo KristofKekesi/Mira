@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 // utils
-import 'utils/orientationLock.dart';
-import 'utils/noMaterialGlow.dart';
-import 'utils/MaterialColor.dart';
-import 'utils/darkTitlebar.dart';
+import 'utils/orientation_lock.dart';
+import 'utils/no_material_glow.dart';
+import 'utils/material_color.dart';
+import 'utils/dark_titlebar.dart';
 import 'utils/localization.dart';
 
 // pages
-import 'pages/splashScreen.dart';
-import 'pages/homePage.dart';
+import 'pages/splash_screen.dart';
+import 'pages/home_page.dart';
 
 void main() {
   darkTitlebar();

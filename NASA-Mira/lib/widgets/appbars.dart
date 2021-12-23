@@ -50,7 +50,7 @@ class Appbar extends StatelessWidget {
                   2 *
                   .02),
           child: Container(
-            color: Color.fromRGBO(255, 255, 255, .4),
+            color: const Color.fromRGBO(255, 255, 255, .4),
             child: Padding(
               padding: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width * .05,
@@ -74,7 +74,7 @@ class Appbar extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           leftAction != null ?
-                              leftAction! : Min(),
+                              leftAction! : const Min(),
                           Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +97,7 @@ class Appbar extends StatelessWidget {
                       ),
                       rightAction != null
                           ? rightAction! :
-                      Min(),
+                      const Min(),
                     ],
                   ),
                 ),
