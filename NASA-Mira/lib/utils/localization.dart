@@ -8,10 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppLocalizations {
-
-  final Locale locale;
-
   AppLocalizations(this.locale);
+  final Locale locale;
 
   static AppLocalizations of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
@@ -22,7 +20,7 @@ class AppLocalizations {
 
   late Map<String, String> _localizedStrings;
 
-  Future<bool> load() async {
+  Future<Map<String, dynamic>> load() async {
     String jsonString =
     await rootBundle.loadString('lib/trans/${locale.languageCode}.json');
     Map<String, dynamic> jsonMap = json.decode(jsonString);
@@ -31,23 +29,22 @@ class AppLocalizations {
       return MapEntry(key, value.toString());
     });
 
-    return true;
+    return Future.error("error loading translation");
   }
 
-  // todo better error printing
   // These methods will be called from every widget which needs a localized text
   String translate(String key) {
     if (_localizedStrings[key] == null) { if (kDebugMode) {
-      print(key);
+      print("Key wasn't found when trying $key as key");
     } }
     return _localizedStrings[key] ?? key ;
   }
 
   String? translateWithoutNullSafety(String key) {
     if (_localizedStrings[key] == null) { if (kDebugMode) {
-      print(key);
+      print("Key wasn't found when trying $key as key");
     } }
-    return _localizedStrings[key] ;
+    return _localizedStrings[key];
   }
 }
 

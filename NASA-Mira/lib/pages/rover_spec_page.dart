@@ -1,3 +1,4 @@
+// todo rename file to vehicle_spec_page.dart
 // Flutter
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -303,7 +304,6 @@ class RoverSpecPage extends StatelessWidget {
                             MediaQuery.of(context).size.height) /
                         2 *
                         .02),
-                    // todo is the new rich text capable to make it simpler?
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
