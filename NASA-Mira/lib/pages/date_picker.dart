@@ -5,19 +5,19 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 // widgets
-import '../widgets/declarationalButton.dart';
-import '../widgets/roverGrid.dart';
+import '../widgets/declarational_button.dart';
+import '../widgets/rover_grid.dart';
 import '../widgets/content.dart';
 import '../widgets/appbars.dart';
 
 // pages
-import 'searchImage.dart';
+import 'image_search.dart';
 
 // utils
 import '../utils/localization.dart';
 import '../utils/update.dart';
 import '../utils/extensions.dart';
-import '../utils/getTh.dart';
+import '../utils/get_th.dart';
 import '../pass.dart';
 
 class DatePickerPage extends StatefulWidget {
@@ -243,7 +243,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                       Tooltip(
                         message: AppLocalizations.of(context).translate('day'),
                         child: AutoSizeText(
-                          '${checkNull(date.day)}',
+                          checkNull(date.day),
                           maxLines: 1,
                           style: TextStyle(
                               fontSize: MediaQuery.of(context).size.width * .08,

@@ -57,7 +57,7 @@ class Content extends StatelessWidget {
                 ),
                 child: Container(
                   decoration: BoxDecoration(
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('lib/images/background.jpg'),
                       fit: BoxFit.cover,
                     ),

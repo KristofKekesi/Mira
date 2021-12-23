@@ -5,4 +5,4 @@ extension CapitalizeStringExtension on String {
   }
 }
 
-String spacerZeros(int) =>  int < 10 ? "0$int": int.toString();
+String spacerZeros(number) =>  number < 10 ? "0$number": number.toString();

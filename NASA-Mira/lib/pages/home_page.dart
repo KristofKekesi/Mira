@@ -10,7 +10,7 @@ import '../utils/localization.dart';
 // widgets
 import '../widgets/apod.dart';
 import '../widgets/appbars.dart';
-import '../widgets/roverGrid.dart';
+import '../widgets/rover_grid.dart';
 import '../widgets/selector.dart';
 
 class HomePage extends StatelessWidget {
@@ -107,7 +107,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      drawer: SidebarDrawer(),
+      drawer: const SidebarDrawer(),
     );
   }
 }

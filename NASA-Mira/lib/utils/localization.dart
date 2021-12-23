@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 
 // Flutter
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -35,12 +36,16 @@ class AppLocalizations {
 
   // This method will be called from every widget which needs a localized text
   String translate(String key) {
-    if (_localizedStrings[key] == null) { print(key); }
+    if (_localizedStrings[key] == null) { if (kDebugMode) {
+      print(key);
+    } }
     return _localizedStrings[key] ?? key ;
   }
 
   String? translateWithoutNullSafety(String key) {
-    if (_localizedStrings[key] == null) { print(key); }
+    if (_localizedStrings[key] == null) { if (kDebugMode) {
+      print(key);
+    } }
     return _localizedStrings[key] ;
   }
 }

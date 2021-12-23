@@ -81,7 +81,7 @@ class SidebarDrawer extends StatelessWidget {
       Divider(
                     thickness: MediaQuery.of(context).size.height * .005,
                   ),
-                  PromoWidget(),
+                  const PromoWidget(),
                   Divider(
                     thickness: MediaQuery.of(context).size.height * .005,
                   ),

@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 // widgets
 import '../widgets/appbars.dart';
 import '../widgets/content.dart';
-import '../widgets/declarationalButton.dart';
+import '../widgets/declarational_button.dart';
 
 // pages
 import 'fullscreen.dart';
 
 // utils
-import '../utils/getTh.dart';
+import '../utils/get_th.dart';
 import '../utils/localization.dart';
 
 

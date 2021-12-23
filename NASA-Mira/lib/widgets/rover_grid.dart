@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'selector.dart';
 
 // pages
-import '../pages/roverSpecPage.dart';
+import '../pages/rover_spec_page.dart';
 
 // utils
 import '../utils/localization.dart';
@@ -25,6 +25,7 @@ class _RoverGridInner extends StatelessWidget {
   final String filter;
   final String outputType;
 
+  // todo get type
   final data;
 
   final String errorString;
@@ -118,7 +119,7 @@ class _RoverGridInner extends StatelessWidget {
                     EdgeInsets.all(MediaQuery.of(context).size.width * .0125),
                 child: Container(
                   decoration: BoxDecoration(
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('lib/images/background.jpg'),
                       fit: BoxFit.cover,
                     ),

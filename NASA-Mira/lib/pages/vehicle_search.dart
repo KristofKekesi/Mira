@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // widgets
-import '../widgets/roverGrid.dart';
+import '../widgets/rover_grid.dart';
 import '../widgets/selector.dart';
 import '../widgets/appbars.dart';
 

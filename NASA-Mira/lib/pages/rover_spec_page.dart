@@ -3,14 +3,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 // widgets
-import '../widgets/declarationalButton.dart';
+import '../widgets/declarational_button.dart';
 import '../widgets/content.dart';
 import '../widgets/appbars.dart';
 
 // pages
 import '../widgets/min.dart';
-import 'searchVehicle.dart';
-import 'datePicker.dart';
+import 'vehicle_search.dart';
+import 'date_picker.dart';
 
 // utils
 import '../utils/localization.dart';
@@ -36,6 +36,7 @@ class RoverSpecPage extends StatelessWidget {
   final Map<String, dynamic>? connectionLost;
   final Map<String, dynamic>? end;
 
+  // todo get type
   final defaultPosition;
 
   const RoverSpecPage({
@@ -180,7 +181,7 @@ class RoverSpecPage extends StatelessWidget {
 
     Widget nicknameWidget(nick) {
       return nick == null
-          ? Min()
+          ? const Min()
           : Padding(
               padding: EdgeInsets.only(
                   bottom: (MediaQuery.of(context).size.width +

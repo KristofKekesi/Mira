@@ -58,17 +58,17 @@ class PromoWidget extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width * .025,
                     ),
-                    Application(
+                    const Application(
                       name: "Elements",
                       image:
                           "https://play-lh.googleusercontent.com/uLZHtNEMYGNJrNiQ5vku85fX2dLS85Qnfhl3jEKluN5m5vLxR-1G4r6gQoC9W5gP-0g=s180-rw",
                     ),
-                    Application(
+                    const Application(
                       name: "Preacher",
                       image:
                           "https://play-lh.googleusercontent.com/v-HoxSuPTB4XxQ_1Z8UGJV3eUjUqJ7D9bnNol8FaO-zZQ1jm04vBVxF_Ns5HDA7kg7E=s180-rw",
                     ),
-                    Application(
+                    const Application(
                       name: "Clean Earth",
                       image:
                       "https://play-lh.googleusercontent.com/FC2hG2B5SSCWhmSmzBUIZ05wzwIS12gjX3IIfojIKGBxpGQBoRdG8NzyETWTCSok6Vf4=s180-rw",
