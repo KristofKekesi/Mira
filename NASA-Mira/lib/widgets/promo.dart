@@ -48,8 +48,7 @@ class PromoWidget extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data == true) {
-              return Container(
-                //color: Color(0xffDCDCDC),
+              return SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.width * .2,
                 child: ListView(

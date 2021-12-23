@@ -25,8 +25,7 @@ class _RoverGridInner extends StatelessWidget {
   final String filter;
   final String outputType;
 
-  // todo get type
-  final data;
+  final List<dynamic> data;
 
   final String errorString;
 
@@ -108,7 +107,6 @@ class _RoverGridInner extends StatelessWidget {
                             deactivated: data[index]["deactivated"],
                             connectionLost: data[index]["connection-lost"],
                             end: data[index]["end"],
-                            defaultPosition: data[index]["default"],
                             operator: data[index]["operator"],
                             manufacturer: data[index]["manufacturer"],
                           )),
@@ -237,7 +235,7 @@ class _RoverGridInner extends StatelessWidget {
       }
     }
 
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * .825,
       child: Wrap(
         direction: Axis.horizontal,

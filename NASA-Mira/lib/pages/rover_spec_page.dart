@@ -36,9 +36,6 @@ class RoverSpecPage extends StatelessWidget {
   final Map<String, dynamic>? connectionLost;
   final Map<String, dynamic>? end;
 
-  // todo get type
-  final defaultPosition;
-
   const RoverSpecPage({
     Key? key,
     required this.dataSector,
@@ -54,7 +51,6 @@ class RoverSpecPage extends StatelessWidget {
     this.end,
     required this.operator,
     required this.manufacturer,
-    this.defaultPosition,
   }) : super(key: key);
 
   @override

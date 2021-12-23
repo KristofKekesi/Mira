@@ -34,7 +34,8 @@ class AppLocalizations {
     return true;
   }
 
-  // This method will be called from every widget which needs a localized text
+  // todo better error printing
+  // These methods will be called from every widget which needs a localized text
   String translate(String key) {
     if (_localizedStrings[key] == null) { if (kDebugMode) {
       print(key);

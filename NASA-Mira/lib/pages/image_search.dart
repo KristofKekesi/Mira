@@ -173,7 +173,7 @@ FutureBuilder<dynamic> _data(String url) {
                         2 *
                         .02,
                   ),
-                  child: Container(
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width * .9,
                     child: Container(
                       decoration: BoxDecoration(
@@ -209,7 +209,7 @@ FutureBuilder<dynamic> _data(String url) {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => FullScreen(data[index]["img_src"],),
+                                    builder: (context) => FullScreen(imageURL: data[index]["img_src"],),
                                   ),
                                 );
                               },
@@ -277,7 +277,7 @@ FutureBuilder<dynamic> _data(String url) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * .8,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

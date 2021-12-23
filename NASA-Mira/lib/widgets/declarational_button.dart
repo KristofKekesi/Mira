@@ -39,7 +39,8 @@ class DeclarationalButton extends StatelessWidget {
   final AutoSizeGroup? valueSizeGroup;
 
   final String tooltip;
-  final action;
+
+  final VoidCallback? action;
 
   const DeclarationalButton(
       {Key? key,
@@ -103,7 +104,7 @@ class DeclarationalButton extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width * .9 -
                         (MediaQuery.of(context).size.width +
                                 MediaQuery.of(context).size.height) /

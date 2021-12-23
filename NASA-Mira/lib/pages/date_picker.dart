@@ -29,14 +29,10 @@ class DatePickerPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _DatePickerPage createState() => _DatePickerPage(dataSector);
+  _DatePickerPage createState() => _DatePickerPage();
 }
 
 class _DatePickerPage extends State<DatePickerPage> {
-  final int dataSector;
-
-  _DatePickerPage(this.dataSector);
-
   late DateTime minDate;
   late DateTime date;
   late DateTime maxDate;
@@ -60,9 +56,9 @@ class _DatePickerPage extends State<DatePickerPage> {
     //selecting source
     Map<String, dynamic> source;
     if (updated == true) {
-      source = localUpdate[dataSector];
+      source = localUpdate[widget.dataSector];
     } else {
-      source = hardCodeData[dataSector];
+      source = hardCodeData[widget.dataSector];
     }
 
     arrive = source["arrive"];

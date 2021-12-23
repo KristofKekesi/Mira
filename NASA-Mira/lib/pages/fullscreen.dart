@@ -8,7 +8,7 @@ import '../utils/localization.dart';
 class FullScreen extends StatefulWidget {
   final String imageURL;
 
-  const FullScreen(this.imageURL);
+  const FullScreen({Key? key, required this.imageURL}) : super(key: key);
 
   @override
   _FullScreenState createState() => _FullScreenState();

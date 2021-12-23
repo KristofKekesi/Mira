@@ -77,7 +77,7 @@ class _ApodWidgetState extends State<ApodWidget> {
                           context,
                           MaterialPageRoute(
                             builder: (BuildContext context) {
-                              return FullScreen(displayURL());
+                              return FullScreen(imageURL: displayURL());
                             },
                           ),
                         );
