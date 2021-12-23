@@ -1,0 +1,19 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude: [
+      build/**,
+      packages/**
+  ]
+  language:
+    strict-raw-types: true
+
+linter:
+  rules:
+    - camel_case_types
+    - camel_case_extensions
+    - avoid_empty_else
+    - empty_statements
+    - empty_catches
+    - use_key_in_widget_constructors
+    - prefer_const_constructors_in_immutables
