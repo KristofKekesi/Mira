@@ -1,35 +1,38 @@
-// @dart=2.9
-
+// Dart
 import 'dart:ui';
 
+// Flutter
 import 'package:flutter/material.dart';
+
+// widgets
+import 'min.dart';
 
 class Appbar extends StatelessWidget {
   final String title;
-  final String subtitle;
-  final Widget leftAction;
-  final Widget rightAction;
+  final String? subtitle;
+  final Widget? leftAction;
+  final Widget? rightAction;
 
-  Appbar(
-      {Key key, this.title, this.subtitle, this.leftAction, this.rightAction})
+  const Appbar(
+      {Key? key, required this.title, this.subtitle, this.leftAction, this.rightAction})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Widget subtitleWidget() {
-      if (subtitle == null || subtitle == "") {
-        return Container();
-      } else {
+      if (subtitle != null) {
         return Text(
-          subtitle,
+          subtitle!,
           style: TextStyle(
             fontSize: (MediaQuery.of(context).size.width +
-                    MediaQuery.of(context).size.height) /
+                MediaQuery.of(context).size.height) /
                 2 *
                 .04,
             color: Colors.black,
           ),
         );
+      } else {
+        return const Min();
       }
     }
 
@@ -70,12 +73,8 @@ class Appbar extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          leftAction == null
-                              ? Container(
-                                  width: 0,
-                                  height: 0,
-                                )
-                              : leftAction,
+                          leftAction != null ?
+                              leftAction! : Min(),
                           Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,12 +95,9 @@ class Appbar extends StatelessWidget {
                           ),
                         ],
                       ),
-                      rightAction == null
-                          ? Container(
-                              width: 0,
-                              height: 0,
-                            )
-                          : rightAction,
+                      rightAction != null
+                          ? rightAction! :
+                      Min(),
                     ],
                   ),
                 ),

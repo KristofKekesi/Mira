@@ -1,24 +1,25 @@
-// @dart=2.9
-
+// Dart
 import 'dart:async';
 import 'dart:convert';
 
+// Flutter
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppLocalizations {
+
   final Locale locale;
 
   AppLocalizations(this.locale);
 
   static AppLocalizations of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate =
   _AppLocalizationsDelegate();
 
-  Map<String, String> _localizedStrings;
+  late Map<String, String> _localizedStrings;
 
   Future<bool> load() async {
     String jsonString =
@@ -35,7 +36,12 @@ class AppLocalizations {
   // This method will be called from every widget which needs a localized text
   String translate(String key) {
     if (_localizedStrings[key] == null) { print(key); }
-    return _localizedStrings[key] ?? key;
+    return _localizedStrings[key] ?? key ;
+  }
+
+  String? translateWithoutNullSafety(String key) {
+    if (_localizedStrings[key] == null) { print(key); }
+    return _localizedStrings[key] ;
   }
 }
 

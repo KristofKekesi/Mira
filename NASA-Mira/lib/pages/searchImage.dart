@@ -1,25 +1,27 @@
-// @dart=2.9
-
+// Dart
 import 'package:dio/dio.dart';
 
+// Flutter
 import 'package:flutter/material.dart';
 
+// widgets
 import '../widgets/appbars.dart';
 import '../widgets/content.dart';
 import '../widgets/declarationalButton.dart';
 
+// pages
 import 'fullscreen.dart';
 
+// utils
 import '../utils/getTh.dart';
 import '../utils/localization.dart';
 
 
-_fetchAPI(url) async {
+_fetchAPI(String url) async {
   Dio dio = Dio();
   dio.options.connectTimeout = 30000;
   dio.options.receiveTimeout = 30000;
-  Response response = await dio.get(url);
-  print(response.statusCode);
+  Response<dynamic> response = await dio.get(url);
 
   return response;
 }
@@ -36,12 +38,12 @@ String imageCounter(context, int num) {
   }
 }
 
-FutureBuilder _data(url) {
+FutureBuilder<dynamic> _data(String url) {
   return FutureBuilder(
     future: _fetchAPI(url),
     builder: (context, snapshot) {
       if (snapshot.hasData) {
-        List data = snapshot.data.data["photos"];
+        List<dynamic> data = snapshot.data.data["photos"];
 
         List<Widget> serializedImages = [];
         for (var index = 0; index < data.length; index++) {
@@ -71,7 +73,7 @@ FutureBuilder _data(url) {
                           ),
                           child: Container(
                             decoration: BoxDecoration(
-                              image: DecorationImage(
+                              image: const DecorationImage(
                                 image: AssetImage('lib/images/background.jpg'),
                                 fit: BoxFit.cover,
                               ),
@@ -212,8 +214,7 @@ FutureBuilder _data(url) {
                                 );
                               },
                               child: Tooltip(
-                                // todo localize
-                                message: "Fullscreen",
+                                message: AppLocalizations.of(context).translate("fullscreen"),
                                 child: Padding(
                                   padding: EdgeInsets.all(
                                       (MediaQuery.of(context).size.width +
@@ -244,19 +245,23 @@ FutureBuilder _data(url) {
                           2 *
                           .02),
                   child: DeclarationalButton(
-                    // todo localize
-                    title: "Captured",
+                    title: AppLocalizations.of(context).translate("captured"),
                     value: data[index]["earth_date"].replaceAll("-", "/") +
                         " (" +
                         data[index]["sol"].toString() +
                         getTh(context, data[index]["sol"]) +
                         " sol)",
+
+                    valueFontSize: MediaQuery.of(context).size.width * .08,
+                    titleFontSize: MediaQuery.of(context).size.width * .05,
                   ),
                 ),
                 DeclarationalButton(
-                  // todo localize
-                  title: "Camera",
+                  title: AppLocalizations.of(context).translate("camera"),
                   value: data[index]["camera"]["name"],
+
+                  valueFontSize: MediaQuery.of(context).size.width * .08,
+                  titleFontSize: MediaQuery.of(context).size.width * .05,
                 )
               ],
             ),
@@ -306,7 +311,7 @@ FutureBuilder _data(url) {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            CircularProgressIndicator(
+            const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
             ),
             Padding(
@@ -317,7 +322,7 @@ FutureBuilder _data(url) {
                         .height * .05),
                 child: Text(
                   AppLocalizations.of(context).translate('loading'),
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 25,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
@@ -329,13 +334,12 @@ FutureBuilder _data(url) {
   );
 }
 
-// ignore: camel_case_types
 class SearchWindow extends StatefulWidget {
   final String name;
   final String url;
-  final String date;
+  final String time;
 
-  const SearchWindow({Key key, this.name, this.url, this.date})
+  const SearchWindow({Key? key, required this.name, required this.url, required this.time})
       : super(key: key);
 
   @override
@@ -356,7 +360,7 @@ class _SearchWindowState extends State<SearchWindow> {
                 opacity: 0,
                 child: Appbar(
                   title: widget.name,
-                  subtitle: widget.date,
+                  subtitle: widget.time,
                   leftAction: Padding(
                     padding: EdgeInsets.only(
                         right: (MediaQuery.of(context).size.width +
@@ -376,7 +380,7 @@ class _SearchWindowState extends State<SearchWindow> {
           ),
           Appbar(
             title: widget.name,
-            subtitle: widget.date,
+            subtitle: widget.time,
             leftAction: Tooltip(
               message: AppLocalizations.of(context).translate("back"),
               child: GestureDetector(

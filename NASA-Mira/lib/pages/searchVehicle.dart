@@ -1,11 +1,13 @@
-// @dart=2.9
-
+// Flutter
 import 'package:flutter/material.dart';
 
+// widgets
+import '../widgets/roverGrid.dart';
 import '../widgets/selector.dart';
 import '../widgets/appbars.dart';
+
+// utils
 import '../utils/localization.dart';
-import '../widgets/roverGrid.dart';
 
 bool isReverse = false;
 ValueNotifier<bool> sortIsReverse = ValueNotifier<bool>(isReverse);
@@ -14,7 +16,7 @@ class VehicleSearch extends StatelessWidget {
   final String type;
   final String value;
 
-  const VehicleSearch({Key key, this.type, this.value}) : super(key: key);
+  const VehicleSearch({Key? key, required this.type, required this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,31 +26,26 @@ class VehicleSearch extends StatelessWidget {
           {
             return value;
           }
-          break;
 
         case "type":
           {
             return AppLocalizations.of(context).translate(value + "s");
           }
-          break;
 
         case "operator":
           {
             return value;
           }
-          break;
 
         case "manufacturer":
           {
             return value;
           }
-          break;
 
         default:
           {
             return "";
           }
-          break;
       }
     }
 
@@ -58,31 +55,26 @@ class VehicleSearch extends StatelessWidget {
           {
             return "type";
           }
-          break;
 
         case "type":
           {
             return "mission";
           }
-          break;
 
         case "operator":
           {
             return "manufacturer";
           }
-          break;
 
         case "manufacturer":
           {
             return "operator";
           }
-          break;
 
         default:
           {
             return "";
           }
-          break;
       }
     }
 
@@ -96,8 +88,7 @@ class VehicleSearch extends StatelessWidget {
                 Opacity(
                   opacity: 0,
                   child: Appbar(
-                    // TODO localize
-                    title: "Search for",
+                    title: AppLocalizations.of(context).translate("searchFor"),
                     subtitle: searchContent(),
                     leftAction: Padding(
                       padding: EdgeInsets.only(
@@ -139,8 +130,12 @@ class VehicleSearch extends StatelessWidget {
                       Container(
                         height: MediaQuery.of(context).size.width * .03,
                       ),
-                      RoverGrid(isVisible: ValueNotifier(true), inputType: type, filter: value,
-                          outputType: outputType(), errorString: searchContent()),
+                      RoverGrid(
+                          isVisible: ValueNotifier(true),
+                          inputType: type,
+                          filter: value,
+                          outputType: outputType(),
+                          errorString: searchContent()),
                       Container(
                         height: MediaQuery.of(context).size.width * .05,
                       ),
@@ -151,8 +146,7 @@ class VehicleSearch extends StatelessWidget {
             ),
           ),
           Appbar(
-            // TODO localize
-            title: "Search for",
+            title: AppLocalizations.of(context).translate("searchFor"),
             subtitle: searchContent(),
             leftAction: Padding(
               padding: EdgeInsets.only(

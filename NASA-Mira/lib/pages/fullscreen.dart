@@ -1,8 +1,8 @@
-// @dart=2.9
-
+// Flutter
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// utils
 import '../utils/localization.dart';
 
 class FullScreen extends StatefulWidget {
@@ -34,14 +34,14 @@ class _FullScreenState extends State<FullScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       floatingActionButton: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Align(
               alignment: Alignment.topLeft,
               child: FloatingActionButton(
-                // have to have this because this widget uses two FloatingActionButton-s
+                /// have to have this because this widget uses two [FloatingActionButton]-s
                 heroTag: null,
                 backgroundColor: Colors.black,
                 onPressed: () {
@@ -58,7 +58,7 @@ class _FullScreenState extends State<FullScreen> {
             Align(
               alignment: Alignment.topRight,
               child: FloatingActionButton(
-                // have to have this because this widget uses two FloatingActionButton-s
+                /// have to have this because this widget uses two [FloatingActionButton]-s
                 heroTag: null,
                 backgroundColor: Colors.black,
                 onPressed: () {
@@ -68,18 +68,15 @@ class _FullScreenState extends State<FullScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      // todo localize
-                      content: Text("URL copied!"),
+                      content: Text(AppLocalizations.of(context).translate("UrlCopied")),
                       action: SnackBarAction(
-                        // todo localize
-                        label: "OK",
+                        label: AppLocalizations.of(context).translate("ok"),
                         onPressed: () {},
                       ),
                     ),
                   );
                 },
-                // todo localize
-                tooltip: "Copy URL",
+                tooltip: AppLocalizations.of(context).translate("copyURL"),
                 child: Icon(
                   Icons.link,
                   size: MediaQuery.of(context).size.width * .075,

@@ -1,21 +1,19 @@
-// @dart=2.9
-
+// Flutter
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class Content extends StatelessWidget {
   final String title;
-  final String nick;
 
-  final Widget child;
-  final List<Widget> children;
+  final Widget? child;
+  final List<Widget>? children;
 
-  const Content({Key key, this.title = "", this.nick, this.child, this.children})
+  const Content({Key? key, required this.title, this.child, this.children})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    AutoSizeGroup specPageBigText;
+    AutoSizeGroup contentBigTextSize = AutoSizeGroup();
 
     return Padding(
       padding: EdgeInsets.only(
@@ -42,14 +40,14 @@ class Content extends StatelessWidget {
                             .04 +
                         MediaQuery.of(context).size.width * .05),
                 child: AutoSizeText(
-                  nick == null ? title : nick,
+                  title,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: MediaQuery.of(context).size.width * .08,
                     color: Colors.black,
                   ),
                   maxLines: 1,
-                  group: specPageBigText,
+                  group: contentBigTextSize,
                 ),
               ),
               Padding(
@@ -78,7 +76,7 @@ class Content extends StatelessWidget {
                         .02),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: child != null ? [child] : children != null ? children : [ErrorWidget("Child / Children property is not provided")],
+                      children: child != null ? [child!] : children != null ? children! : [ErrorWidget("You must provide a Child or a Children property is not provided")],
                     ),
                   ),
                 ),

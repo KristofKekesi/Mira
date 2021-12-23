@@ -1,12 +1,17 @@
-// @dart=2.9
-
+// Dart
 import 'dart:convert';
 
+// Flutter
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:nasamira/widgets/selector.dart';
 
+// widgets
+import 'selector.dart';
+
+// pages
 import '../pages/roverSpecPage.dart';
+
+// utils
 import '../utils/localization.dart';
 import '../utils/update.dart';
 
@@ -25,11 +30,11 @@ class _RoverGridInner extends StatelessWidget {
   final String errorString;
 
   const _RoverGridInner(
-      {Key key,
-      this.inputType,
-      this.filter,
-      this.outputType,
-      this.data,
+      {Key? key,
+      required this.inputType,
+      required this.filter,
+      required this.outputType,
+      required this.data,
       this.errorString = ""})
       : super(key: key);
 
@@ -93,7 +98,6 @@ class _RoverGridInner extends StatelessWidget {
                       builder: (context) => RoverSpecPage(
                             dataSector: index,
                             apiEnabled: data[index]["api-enabled"],
-                            url: data[index]["url"],
                             mission: data[index]["mission"],
                             name: data[index]["name"],
                             nick: data[index]["nick"],
@@ -253,8 +257,8 @@ class RoverGrid extends StatefulWidget {
 
   final String errorString;
 
-  RoverGrid({this.isVisible, this.inputType, this.filter, this.outputType,
-      this.errorString = ""});
+  const RoverGrid({Key? key, required this.isVisible, required this.inputType, required this.filter, required this.outputType,
+      this.errorString = ""}) : super(key: key);
 
   @override
   _RoverGridState createState() => _RoverGridState();
@@ -265,7 +269,7 @@ class _RoverGridState extends State<RoverGrid> {
   Widget build(BuildContext context) {
     // for sort
     return ValueListenableBuilder(
-      builder: (BuildContext context, bool value, Widget child) {
+      builder: (BuildContext context, bool value, Widget? child) {
         Widget _roverGridInnerWithSort() {
           if (notifierIsReverse.value) {
             return _RoverGridInner(
@@ -288,7 +292,7 @@ class _RoverGridState extends State<RoverGrid> {
 
         // for visibility
         return ValueListenableBuilder(
-          builder: (BuildContext context, bool value, Widget child) {
+          builder: (BuildContext context, bool value, Widget? child) {
             if (widget.isVisible.value) {
               return FutureBuilder(
                   future: DefaultAssetBundle.of(context)
@@ -318,9 +322,9 @@ class _RoverGridState extends State<RoverGrid> {
                               child: Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                  AppLocalizations.of(context).translate(
-                                      widget.filter + "s" ??
-                                          widget.errorString),
+                                  AppLocalizations.of(context).translateWithoutNullSafety(
+                                      widget.filter + "s") ??
+                                      widget.errorString,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize:
@@ -353,7 +357,7 @@ class _RoverGridState extends State<RoverGrid> {
                                 ),
                                 child: Text(
                                   AppLocalizations.of(context)
-                                          .translate(widget.filter + "s") ??
+                                          .translateWithoutNullSafety(widget.filter + "s") ??
                                       widget.errorString,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,

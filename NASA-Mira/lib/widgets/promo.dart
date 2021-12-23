@@ -1,16 +1,15 @@
-// @dart=2.9
-
+// Dart
 import 'dart:io';
 
+// Flutter
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class Application extends StatelessWidget {
   final String name;
-  final String redirect;
   final String image;
 
-  const Application({Key key, this.name, this.redirect, this.image})
+  const Application({Key? key, required this.name, required this.image})
       : super(key: key);
 
   @override
@@ -29,8 +28,9 @@ class Application extends StatelessWidget {
   }
 }
 
-// todo make promo extension
 class PromoWidget extends StatelessWidget {
+  const PromoWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Future<bool> _widgetOpacity() async {
@@ -73,13 +73,6 @@ class PromoWidget extends StatelessWidget {
                       image:
                       "https://play-lh.googleusercontent.com/FC2hG2B5SSCWhmSmzBUIZ05wzwIS12gjX3IIfojIKGBxpGQBoRdG8NzyETWTCSok6Vf4=s180-rw",
                     ),
-                    // Application(
-                    //   name: "NASA Mira",
-                    //   redirect:
-                    //   "https://play.google.com/store/apps/details?id=com.kristofkekesi.nasamira",
-                    //   image:
-                    //   "https://play-lh.googleusercontent.com/5fosGp6zjFsa8pyy44UwosS8mEDdCG2e77wyqiQmyugReagRIxIzgH5alkDAwsWI7tM=s180-rw",
-                    // ),
                     Container(
                       width: MediaQuery.of(context).size.width * .025,
                     ),

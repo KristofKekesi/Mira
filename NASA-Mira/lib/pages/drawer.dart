@@ -1,12 +1,16 @@
-// @dart=2.9
-
+// Dart
 import 'dart:ui';
 
+// Flutter
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 
+// utils
 import '../utils/localization.dart';
+import '../utils/extensions.dart';
+
+// widgets
 import '../widgets/promo.dart';
 
 String capitalize(input) {
@@ -14,6 +18,8 @@ String capitalize(input) {
 }
 
 class SidebarDrawer extends StatelessWidget {
+  const SidebarDrawer({Key? key}) : super(key: key);
+
   _launchURL(url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -104,7 +110,7 @@ class SidebarDrawer extends StatelessWidget {
                     },
                     child: ListTile(
                       title: Text(
-                        AppLocalizations.of(context).translate('moreinfo'),
+                        AppLocalizations.of(context).translate('moreInfo'),
                         style: TextStyle(
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold,
@@ -120,8 +126,7 @@ class SidebarDrawer extends StatelessWidget {
                   ),
                   ListTile(
                     title: Text(
-                      capitalize(
-                              AppLocalizations.of(context).translate('name')) +
+                      AppLocalizations.of(context).translate('name').capitalize() +
                           ' [' +
                           AppLocalizations.of(context).translate('key') +
                           ']',

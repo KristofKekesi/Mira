@@ -1,10 +1,14 @@
-// @dart=2.9
-
+// Dart
 import 'package:dio/dio.dart';
+
+// Flutter
 import 'package:flutter/material.dart';
 
+// pages
 import '../pages/fullscreen.dart';
 
+// utils
+import '../utils/localization.dart';
 import '../pass.dart';
 
 
@@ -12,12 +16,14 @@ _fetchAPI(url) async {
   Dio dio = Dio();
   dio.options.connectTimeout = 5000;
   dio.options.receiveTimeout = 30000;
-  Response response = await dio.get(url);
+  Response<dynamic> response = await dio.get(url);
 
   return response;
 }
 
 class ApodWidget extends StatefulWidget {
+  const ApodWidget({Key? key}) : super(key: key);
+
   @override
   _ApodWidgetState createState() => _ApodWidgetState();
 }
@@ -28,21 +34,18 @@ class _ApodWidgetState extends State<ApodWidget> {
     return FutureBuilder(
         future: _fetchAPI(
             "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true"), //&date=2021-04-19
-        builder: (context, snapshot) {
+        builder: (context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData &&
-              snapshot.data.data["media_type"] == "image" &&
               snapshot.data.data["thumbnail_url"] != "") {
             String mediaType = snapshot.data.data["media_type"];
-            //String copyright = snapshot.data.data["copyright"];
             String url = snapshot.data.data["url"];
-            String thumbnailUrl = snapshot.data.data["thumbnail_url"];
-            //String title = snapshot.data.data["title"];
+            String? thumbnailUrl = snapshot.data.data["thumbnail_url"];
 
             String displayURL() {
               if (mediaType == "image") {
                 return url;
               } else {
-                return thumbnailUrl;
+                return thumbnailUrl ?? "";
               }
             }
 
@@ -67,10 +70,7 @@ class _ApodWidgetState extends State<ApodWidget> {
                 height: MediaQuery.of(context).size.height * .2,
                 child: Align(
                   alignment: Alignment.bottomRight,
-                  child: Tooltip(
-                    // todo localize
-                    message: "Fullscreen",
-                    child: GestureDetector(
+                  child: GestureDetector(
                       onTap: () {
                         //_popup(context, title, copyright, url);
                         Navigator.push(
@@ -83,8 +83,7 @@ class _ApodWidgetState extends State<ApodWidget> {
                         );
                       },
                       child: Tooltip(
-                          // todo localize
-                          message: "Fullscreen",
+                          message: AppLocalizations.of(context).translate("fullscreen"),
                           child: Padding(
                             padding: EdgeInsets.all(
                                 (MediaQuery.of(context).size.width +
@@ -102,11 +101,10 @@ class _ApodWidgetState extends State<ApodWidget> {
                     ),
                   ),
                 ),
-              ),
             );
           } else {
             return Container();
           }
-        });
+        },);
   }
 }

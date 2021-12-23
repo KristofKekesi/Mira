@@ -1,5 +1,3 @@
-// @dart=2.9
-
 import 'localization.dart';
 
 String getTh(context,int num) {

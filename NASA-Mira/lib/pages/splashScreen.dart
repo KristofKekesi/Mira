@@ -1,22 +1,21 @@
-// @dart=2.9
-
+// Flutter
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
+// utils
 import '../utils/localization.dart';
-
 
 class SplashScreenPage extends StatelessWidget {
   final Widget child;
 
-  const SplashScreenPage({Key key, this.child}) : super(key: key);
+  const SplashScreenPage({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SplashScreen(
         seconds: 2,
-        title: Text(
+        title: const Text(
           'NASA Mira',
           style: TextStyle(
             fontSize: 25,
@@ -26,19 +25,19 @@ class SplashScreenPage extends StatelessWidget {
         ),
         loadingText: Text(
           AppLocalizations.of(context).translate('loading'),
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         loadingTextPadding: EdgeInsets.zero,
-        imageBackground: AssetImage('lib/images/background.jpg'),
-        backgroundColor: Color(0xFFD66F3D),
-        image: Image(
+        imageBackground: const AssetImage('lib/images/background.jpg'),
+        backgroundColor: const Color(0xFFD66F3D),
+        image: const Image(
           image: AssetImage('lib/images/mira_logo.png'),
         ),
         photoSize: 50,
         useLoader: true,
         loaderColor: Colors.white,
-        styleTextUnderTheLoader: TextStyle(),
+        styleTextUnderTheLoader: const TextStyle(),
         navigateAfterSeconds: child,
       ),
     );

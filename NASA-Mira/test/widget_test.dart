@@ -1,9 +1,12 @@
+// Flutter
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:nasamira/main.dart';
+// pages
+import '../lib/pages/homePage.dart';
 
 void main() {
-  testWidgets('HineScren', (WidgetTester tester) async {
-    await tester.pumpWidget(HomeScreen());
+  // HomePage
+  testWidgets('HomePage', (WidgetTester tester) async {
+    await tester.pumpWidget(HomePage());
   });
 }

@@ -1,9 +1,8 @@
-// @dart=2.9
-
+// Flutter
 import 'package:flutter/material.dart';
 
+// utils
 import '../utils/localization.dart';
-
 
 ValueNotifier<bool> notifierIsReverse = ValueNotifier(false);
 ValueNotifier<bool> notifierAreHelicoptersVisible = ValueNotifier(true);
