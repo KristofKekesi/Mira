@@ -16,8 +16,8 @@ assignees: KristofKekesi
 
 **Screenshots**
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
+**Smartphone (complete as follows):**
+ - Device: [e.g. iPhone 6]
+ - OS: [e.g. iOS 8.1]
 
 **Additional context**
