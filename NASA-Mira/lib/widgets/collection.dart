@@ -6,10 +6,11 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 // widgets
+import 'min.dart';
 import 'selector.dart';
 
 // pages
-import '../pages/rover_spec_page.dart';
+import '../pages/vehicle_spec_page.dart';
 
 // utils
 import '../utils/localization.dart';
@@ -20,7 +21,7 @@ var roverGridMission = AutoSizeGroup();
 var roverGridTitle = AutoSizeGroup();
 int counter = 0;
 
-class _RoverGridInner extends StatelessWidget {
+class _CollectionInner extends StatelessWidget {
   final String inputType;
   final String filter;
   final String outputType;
@@ -29,7 +30,7 @@ class _RoverGridInner extends StatelessWidget {
 
   final String errorString;
 
-  const _RoverGridInner(
+  const _CollectionInner(
       {Key? key,
       required this.inputType,
       required this.filter,
@@ -38,17 +39,8 @@ class _RoverGridInner extends StatelessWidget {
       this.errorString = ""})
       : super(key: key);
 
-  String displayedName(name, nick) {
-    if (nick != null) {
-      return nick;
-    } else {
-      return name;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-
     List<Widget> roverList = [];
     for (var index = 0; index < data.length; index++) {
       bool isPassed = false;
@@ -142,8 +134,9 @@ class _RoverGridInner extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            data[index]["mission"] != null
-                                ? AutoSizeText(
+                            data[index]["mission"] == null
+                                ? const Min()
+                                : AutoSizeText(
                                     data[index]["mission"],
                                     style: TextStyle(
                                       color: Colors.white70,
@@ -155,11 +148,9 @@ class _RoverGridInner extends StatelessWidget {
                                     group: roverGridMission,
                                     maxLines: 1,
                                     minFontSize: 1,
-                                  )
-                                : Container(),
+                                  ),
                             AutoSizeText(
-                              displayedName(
-                                  data[index]["name"], data[index]["nick"]),
+                              data[index]["nick"] ?? data[index]["name"],
                               group: roverGridTitle,
                               maxLines: 2,
                               overflow: TextOverflow.fade,
@@ -247,7 +238,7 @@ class _RoverGridInner extends StatelessWidget {
   }
 }
 
-class RoverGrid extends StatefulWidget {
+class Collection extends StatefulWidget {
   final ValueNotifier<bool> isVisible;
 
   final String inputType;
@@ -256,14 +247,20 @@ class RoverGrid extends StatefulWidget {
 
   final String errorString;
 
-  const RoverGrid({Key? key, required this.isVisible, required this.inputType, required this.filter, required this.outputType,
-      this.errorString = ""}) : super(key: key);
+  const Collection(
+      {Key? key,
+      required this.isVisible,
+      required this.inputType,
+      required this.filter,
+      required this.outputType,
+      this.errorString = ""})
+      : super(key: key);
 
   @override
-  _RoverGridState createState() => _RoverGridState();
+  _CollectionState createState() => _CollectionState();
 }
 
-class _RoverGridState extends State<RoverGrid> {
+class _CollectionState extends State<Collection> {
   @override
   Widget build(BuildContext context) {
     // for sort
@@ -271,7 +268,7 @@ class _RoverGridState extends State<RoverGrid> {
       builder: (BuildContext context, bool value, Widget? child) {
         Widget _roverGridInnerWithSort() {
           if (notifierIsReverse.value) {
-            return _RoverGridInner(
+            return _CollectionInner(
               data: hardCodeData.reversed.toList(),
               inputType: widget.inputType,
               filter: widget.filter,
@@ -279,7 +276,7 @@ class _RoverGridState extends State<RoverGrid> {
               errorString: widget.errorString,
             );
           } else {
-            return _RoverGridInner(
+            return _CollectionInner(
               data: hardCodeData,
               inputType: widget.inputType,
               filter: widget.filter,
@@ -321,8 +318,9 @@ class _RoverGridState extends State<RoverGrid> {
                               child: Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                  AppLocalizations.of(context).translateWithoutNullSafety(
-                                      widget.filter + "s") ??
+                                  AppLocalizations.of(context)
+                                          .translateWithoutNullSafety(
+                                              widget.filter + "s") ??
                                       widget.errorString,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -356,7 +354,8 @@ class _RoverGridState extends State<RoverGrid> {
                                 ),
                                 child: Text(
                                   AppLocalizations.of(context)
-                                          .translateWithoutNullSafety(widget.filter + "s") ??
+                                          .translateWithoutNullSafety(
+                                              widget.filter + "s") ??
                                       widget.errorString,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -393,13 +392,13 @@ class _RoverGridState extends State<RoverGrid> {
                               ),
                             ),
                           ),
-                          Container(),
+                          const Min(),
                         ],
                       );
                     }
                   });
             } else {
-              return Container();
+              return const Min();
             }
           },
           valueListenable: widget.isVisible,

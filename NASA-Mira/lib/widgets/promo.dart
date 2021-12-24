@@ -5,6 +5,8 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import 'min.dart';
+
 class Application extends StatelessWidget {
   final String name;
   final String image;
@@ -70,7 +72,7 @@ class PromoWidget extends StatelessWidget {
                     const Application(
                       name: "Clean Earth",
                       image:
-                      "https://play-lh.googleusercontent.com/FC2hG2B5SSCWhmSmzBUIZ05wzwIS12gjX3IIfojIKGBxpGQBoRdG8NzyETWTCSok6Vf4=s180-rw",
+                          "https://play-lh.googleusercontent.com/FC2hG2B5SSCWhmSmzBUIZ05wzwIS12gjX3IIfojIKGBxpGQBoRdG8NzyETWTCSok6Vf4=s180-rw",
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * .025,
@@ -79,10 +81,10 @@ class PromoWidget extends StatelessWidget {
                 ),
               );
             } else {
-              return Container();
+              return const Min();
             }
           } else {
-            return Container();
+            return const Min();
           }
         });
   }

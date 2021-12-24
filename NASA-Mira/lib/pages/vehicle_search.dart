@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 
 // widgets
-import '../widgets/rover_grid.dart';
+import '../widgets/collection.dart';
 import '../widgets/selector.dart';
-import '../widgets/appbars.dart';
+import '../widgets/appbar.dart';
 
 // utils
 import '../utils/localization.dart';
@@ -130,7 +130,7 @@ class VehicleSearch extends StatelessWidget {
                       Container(
                         height: MediaQuery.of(context).size.width * .03,
                       ),
-                      RoverGrid(
+                      Collection(
                           isVisible: ValueNotifier(true),
                           inputType: type,
                           filter: value,

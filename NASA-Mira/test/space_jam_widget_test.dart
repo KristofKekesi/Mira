@@ -6,7 +6,7 @@
 // - ContentBox
 // - Button
 // - ImageBox
-// - FullScreenImagePage
+// - FullScreen
 
 // - SpaceJamTheme
 // - IconStyle

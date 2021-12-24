@@ -2,13 +2,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class Content extends StatelessWidget {
+class ContentBox extends StatelessWidget {
   final String title;
 
   final Widget? child;
   final List<Widget>? children;
 
-  const Content({Key? key, required this.title, this.child, this.children})
+  const ContentBox({Key? key, required this.title, this.child, this.children})
       : super(key: key);
 
   @override

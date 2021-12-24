@@ -2,11 +2,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
+import 'min.dart';
+
 class AutoSizeTextStyle {
   final int maxLines;
   final AutoSizeGroup? group;
 
-  /// constructors
+  /// constructor
   const AutoSizeTextStyle({this.maxLines = 1, this.group});
 }
 
@@ -14,11 +16,11 @@ class IconStyle {
   final int size;
   final Color? color;
 
-  /// constructors
+  /// constructor
   const IconStyle({this.size = 24, this.color});
 }
 
-class DeclarationalButton extends StatelessWidget {
+class Button extends StatelessWidget {
   final Color background;
 
   final String? title;
@@ -42,7 +44,8 @@ class DeclarationalButton extends StatelessWidget {
 
   final VoidCallback? action;
 
-  const DeclarationalButton(
+  /// constructor
+  const Button(
       {Key? key,
       this.background = Colors.white12,
       this.valueTextStyle = const TextStyle(
@@ -99,7 +102,7 @@ class DeclarationalButton extends StatelessWidget {
                       title!,
                       style: secondaryFinalTextStyle,
                     )
-                  : Container(),
+                  : const Min(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,7 +134,7 @@ class DeclarationalButton extends StatelessWidget {
                             color: iconStyle.color ?? valueTextStyle.color,
                           ),
                         )
-                      : Container(),
+                      : const Min(),
                 ],
               ),
             ],

@@ -3,6 +3,7 @@ import 'dart:ui';
 
 // Flutter
 import 'package:flutter/material.dart';
+import 'package:nasamira/widgets/min.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 
@@ -155,7 +156,7 @@ class SidebarDrawer extends StatelessWidget {
                         MediaQuery.of(context).size.width) /
                         2 *
                         .02),
-                child: Container(),
+                child: const Min(),
               ),
             ],
           ),

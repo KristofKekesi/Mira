@@ -9,8 +9,8 @@ import '../utils/localization.dart';
 
 // widgets
 import '../widgets/apod.dart';
-import '../widgets/appbars.dart';
-import '../widgets/rover_grid.dart';
+import '../widgets/appbar.dart';
+import '../widgets/collection.dart';
 import '../widgets/selector.dart';
 
 class HomePage extends StatelessWidget {
@@ -32,7 +32,6 @@ class HomePage extends StatelessWidget {
                       opacity: 0,
                       child: Appbar(
                         title: AppLocalizations.of(context).translate("title"),
-                        leftAction: Container(),
                         rightAction: Padding(
                           padding: EdgeInsets.only(
                               right: (MediaQuery.of(context).size.width +
@@ -61,15 +60,15 @@ class HomePage extends StatelessWidget {
                             height: MediaQuery.of(context).size.width * .03,
                           ),
                           const ApodWidget(),
-                          RoverGrid(isVisible: notifierAreHelicoptersVisible, inputType: "type",
+                          Collection(isVisible: notifierAreHelicoptersVisible, inputType: "type",
                               filter: "helicopter", outputType: "type"),
-                          RoverGrid(isVisible: notifierAreRoversVisible, inputType: "type", filter: "rover",
+                          Collection(isVisible: notifierAreRoversVisible, inputType: "type", filter: "rover",
                               outputType: "type"),
-                          RoverGrid(isVisible: notifierAreOrbitersVisible, inputType: "type", filter: "orbiter",
+                          Collection(isVisible: notifierAreOrbitersVisible, inputType: "type", filter: "orbiter",
                               outputType: "type"),
-                          RoverGrid(isVisible: notifierAreLandersVisible, inputType: "type", filter: "lander",
+                          Collection(isVisible: notifierAreLandersVisible, inputType: "type", filter: "lander",
                               outputType: "type"),
-                          RoverGrid(isVisible: notifierAreFlybysVisible, inputType: "type", filter: "flyby",
+                          Collection(isVisible: notifierAreFlybysVisible, inputType: "type", filter: "flyby",
                               outputType: "type"),
                           Container(
                             height: MediaQuery.of(context).size.width * .05,

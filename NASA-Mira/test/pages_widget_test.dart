@@ -9,7 +9,7 @@ import 'package:nasamira/pages/home_page.dart';
 import 'package:nasamira/pages/date_picker.dart';
 import 'package:nasamira/pages/drawer.dart';
 import 'package:nasamira/pages/image_search.dart';
-import 'package:nasamira/pages/rover_spec_page.dart';
+import 'package:nasamira/pages/vehicle_spec_page.dart';
 import 'package:nasamira/pages/vehicle_search.dart';
 
 void main() {

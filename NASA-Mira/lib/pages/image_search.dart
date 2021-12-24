@@ -5,9 +5,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 // widgets
-import '../widgets/appbars.dart';
-import '../widgets/content.dart';
-import '../widgets/declarational_button.dart';
+import '../widgets/appbar.dart';
+import '../widgets/content_box.dart';
+import '../widgets/button.dart';
 
 // pages
 import 'fullscreen.dart';
@@ -163,7 +163,7 @@ FutureBuilder<dynamic> _data(String url) {
             );
           }
           serializedImages.add(
-            Content(
+            ContentBox(
               title: data[index]["id"].toString(),
               children: [
                 Padding(
@@ -244,7 +244,7 @@ FutureBuilder<dynamic> _data(String url) {
                               MediaQuery.of(context).size.height) /
                           2 *
                           .02),
-                  child: DeclarationalButton(
+                  child: Button(
                     title: AppLocalizations.of(context).translate("captured"),
                     value: data[index]["earth_date"].replaceAll("-", "/") +
                         " (" +
@@ -256,7 +256,7 @@ FutureBuilder<dynamic> _data(String url) {
                     titleFontSize: MediaQuery.of(context).size.width * .05,
                   ),
                 ),
-                DeclarationalButton(
+                Button(
                   title: AppLocalizations.of(context).translate("camera"),
                   value: data[index]["camera"]["name"],
 

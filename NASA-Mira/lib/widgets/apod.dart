@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 
 // Flutter
 import 'package:flutter/material.dart';
+import 'package:nasamira/widgets/min.dart';
 
 // pages
 import '../pages/fullscreen.dart';
@@ -103,7 +104,7 @@ class _ApodWidgetState extends State<ApodWidget> {
                 ),
             );
           } else {
-            return Container();
+            return const Min();
           }
         },);
   }

@@ -17,3 +17,4 @@ linter:
     - empty_catches
     - use_key_in_widget_constructors
     - prefer_const_constructors_in_immutables
+    - prefer_spread_collections

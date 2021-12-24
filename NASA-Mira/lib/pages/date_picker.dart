@@ -5,10 +5,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 // widgets
-import '../widgets/declarational_button.dart';
-import '../widgets/rover_grid.dart';
-import '../widgets/content.dart';
-import '../widgets/appbars.dart';
+import '../widgets/button.dart';
+import '../widgets/collection.dart';
+import '../widgets/content_box.dart';
+import '../widgets/appbar.dart';
 
 // pages
 import 'image_search.dart';
@@ -187,7 +187,7 @@ class _DatePickerPage extends State<DatePickerPage> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Content(
+          ContentBox(
             title: name,
             children: [
               Padding(
@@ -196,7 +196,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                             MediaQuery.of(context).size.height) /
                         2 *
                         .02),
-                child: DeclarationalButton(
+                child: Button(
                   valueTextStyle: TextStyle(
                     color: timeFormat == false ? Colors.white : Colors.black38,
                     fontWeight: FontWeight.bold,
@@ -302,7 +302,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                             MediaQuery.of(context).size.height) /
                         2 *
                         .02),
-                child: DeclarationalButton(
+                child: Button(
                   valueTextStyle: TextStyle(
                     color: timeFormat == true ? Colors.white : Colors.black38,
                     fontWeight: FontWeight.bold,
@@ -392,7 +392,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                   ],
                 ),
               ),
-              DeclarationalButton(
+              Button(
                 background: Colors.white,
                 valueTextStyle: const TextStyle(
                   color: Colors.black,

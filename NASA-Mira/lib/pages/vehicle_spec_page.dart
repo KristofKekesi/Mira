@@ -1,12 +1,11 @@
-// todo rename file to vehicle_spec_page.dart
 // Flutter
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 // widgets
-import '../widgets/declarational_button.dart';
-import '../widgets/content.dart';
-import '../widgets/appbars.dart';
+import '../widgets/button.dart';
+import '../widgets/content_box.dart';
+import '../widgets/appbar.dart';
 
 // pages
 import '../widgets/min.dart';
@@ -154,7 +153,7 @@ class RoverSpecPage extends StatelessWidget {
                           MediaQuery.of(context).size.height) /
                       2 *
                       .02),
-              child: DeclarationalButton(
+              child: Button(
                 title:
                     AppLocalizations.of(context).translate("roverSpecMission"),
                 valueFontSize: MediaQuery.of(context).size.width * .08,
@@ -185,7 +184,7 @@ class RoverSpecPage extends StatelessWidget {
                           MediaQuery.of(context).size.height) /
                       2 *
                       .02),
-              child: DeclarationalButton(
+              child: Button(
                 title: name,
                 valueFontSize: MediaQuery.of(context).size.width * .08,
                 titleFontSize: MediaQuery.of(context).size.width * .05,
@@ -205,7 +204,7 @@ class RoverSpecPage extends StatelessWidget {
                       2 *
                       .02),
               child: Center(
-                child: DeclarationalButton(
+                child: Button(
                   background: Colors.white,
                   valueTextStyle: const TextStyle(
                     color: Colors.black,
@@ -230,7 +229,7 @@ class RoverSpecPage extends StatelessWidget {
                 ),
               ),
             )
-          : Container(),
+          : Min(),
     );
 
     String appbarTitle() => nick == null ? name : nick!;
@@ -269,12 +268,12 @@ class RoverSpecPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Content(
+              ContentBox(
                 title: nick == null ? name : nick!,
                 children: [
                   missionWidget(mission),
                   nicknameWidget(nick),
-                  DeclarationalButton(
+                  Button(
                     valueFontSize: MediaQuery.of(context).size.width * .08,
                     titleFontSize: MediaQuery.of(context).size.width * .05,
                     title:
@@ -653,7 +652,7 @@ class RoverSpecPage extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      DeclarationalButton(
+                      Button(
                         valueFontSize: MediaQuery.of(context).size.width * .08,
                         titleFontSize: MediaQuery.of(context).size.width * .05,
                         title: AppLocalizations.of(context)
@@ -678,7 +677,7 @@ class RoverSpecPage extends StatelessWidget {
                             2 *
                             .02,
                       ),
-                      DeclarationalButton(
+                      Button(
                         valueFontSize: MediaQuery.of(context).size.width * .08,
                         titleFontSize: MediaQuery.of(context).size.width * .05,
                         title: AppLocalizations.of(context)
