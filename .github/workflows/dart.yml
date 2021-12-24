@@ -20,4 +20,5 @@ jobs:
     - run: flutter upgrade
     - working-directory: ./NASA-Mira
       run: flutter pub get
+    - working-directory: ./NASA-Mira
       run: flutter test
