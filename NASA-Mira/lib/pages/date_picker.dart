@@ -216,7 +216,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                         message:
                             AppLocalizations.of(context).translate('month'),
                         child: AutoSizeText(
-                          checkNull(date.month),
+                          spacerZeros(date.month),
                           maxLines: 1,
                           style: TextStyle(
                               fontSize: MediaQuery.of(context).size.width * .08,
@@ -239,7 +239,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                       Tooltip(
                         message: AppLocalizations.of(context).translate('day'),
                         child: AutoSizeText(
-                          checkNull(date.day),
+                          spacerZeros(date.day),
                           maxLines: 1,
                           style: TextStyle(
                               fontSize: MediaQuery.of(context).size.width * .08,
@@ -426,7 +426,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                               url:
                                   '${url}photos?earth_date=${date.year}-${date.month}-${date.day}&api_key=$apiKey',
                               time:
-                                  '${checkNull(date.month)}/${checkNull(date.day)}/${date.year}')),
+                                  '${spacerZeros(date.month)}/${spacerZeros(date.day)}/${date.year}')),
                     );
                   }
                 },

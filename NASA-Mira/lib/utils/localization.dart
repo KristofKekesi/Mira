@@ -20,29 +20,35 @@ class AppLocalizations {
 
   late Map<String, String> _localizedStrings;
 
-  Future<Map<String, dynamic>> load() async {
-    String jsonString =
-    await rootBundle.loadString('lib/trans/${locale.languageCode}.json');
-    Map<String, dynamic> jsonMap = json.decode(jsonString);
+  Future<bool> load() async {
+    try {
+      String jsonString =
+      await rootBundle.loadString('lib/trans/${locale.languageCode}.json');
+      Map<String, dynamic> jsonMap = json.decode(jsonString);
 
-    _localizedStrings = jsonMap.map((key, value) {
-      return MapEntry(key, value.toString());
-    });
+      _localizedStrings = jsonMap.map((key, value) {
+        return MapEntry(key, value.toString());
+      });
 
-    return Future.error("error loading translation");
+      return true;
+    }
+    catch (error) {
+      return Future.error(
+          "Error loading translation. Tried ${locale.languageCode}.json. Reason: $error");
+    }
   }
 
   // These methods will be called from every widget which needs a localized text
   String translate(String key) {
     if (_localizedStrings[key] == null) { if (kDebugMode) {
-      print("Key wasn't found when trying $key as key");
+      print("Key wasn't found when trying $key as key.");
     } }
     return _localizedStrings[key] ?? key ;
   }
 
   String? translateWithoutNullSafety(String key) {
     if (_localizedStrings[key] == null) { if (kDebugMode) {
-      print("Key wasn't found when trying $key as key");
+      print("Key wasn't found when trying $key as key. This method was created to return nullable strings, if not required please use the translate method!");
     } }
     return _localizedStrings[key];
   }

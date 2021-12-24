@@ -15,17 +15,25 @@ import 'pages/home_page.dart';
 
 void main() {
   darkTitlebar();
-  runApp(const Mira());
+  runApp(
+    const MiraApp(
+      child: SplashScreenPage(
+        child: HomePage(),
+      ),
+    ),
+  );
 }
 
-class Mira extends StatefulWidget {
-  const Mira({Key? key}) : super(key: key);
+class MiraApp extends StatefulWidget {
+  const MiraApp({Key? key, required this.child}) : super(key: key);
+
+  final Widget child;
 
   @override
-  _MiraState createState() => _MiraState();
+  _MiraAppState createState() => _MiraAppState();
 }
 
-class _MiraState extends State<Mira> {
+class _MiraAppState extends State<MiraApp> {
   @override
   void initState() {
     super.initState();
@@ -61,14 +69,13 @@ class _MiraState extends State<Mira> {
         }
         return supportedLocales.first;
       },
-
       title: "NASA Mira",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
         primarySwatch: createMaterialColor(const Color(0xffE8672D)),
       ),
-      home: const SplashScreenPage(child: HomePage(),), //Home(),
+      home: widget.child,
     );
   }
 }

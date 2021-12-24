@@ -1,18 +1,13 @@
+// Dart
 import 'package:dio/dio.dart';
 
+// utils
+import 'extensions.dart';
 import '../pass.dart';
 
 
 late List<dynamic> localUpdate;
 bool updated = false;
-
-String checkNull(int? num) {
-  if (num != null && num < 10) {
-    return "0" + num.toString();
-  } else {
-    return num.toString();
-  }
-}
 
 Future<void> update(data) async {
   for (int index = 0; index < data.length; index++) {
@@ -28,7 +23,7 @@ Future<void> update(data) async {
       }
 
       // check last-date
-      if (data[index]["last-date"] == null || "${data[index]["last-date"]["year"]}-${checkNull(data[index]["last-date"]["month"])}-${checkNull(data[index]["last-date"]["day"])}" != response.data["photo_manifest"]["max_date"] ) {
+      if (data[index]["last-date"] == null || "${data[index]["last-date"]["year"]}-${spacerZeros(data[index]["last-date"]["month"])}-${spacerZeros(data[index]["last-date"]["day"])}" != response.data["photo_manifest"]["max_date"] ) {
         data[index]["last-date"]["year"] = int.parse(response.data["photo_manifest"]["max_date"].split("-")[0]);
         data[index]["last-date"]["month"] = int.parse(response.data["photo_manifest"]["max_date"].split("-")[1]);
         data[index]["last-date"]["day"] = int.parse(response.data["photo_manifest"]["max_date"].split("-")[2]);
