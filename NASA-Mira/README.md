@@ -5,7 +5,7 @@
   NASA Mira
 </h1>
 
-<img src="https://img.shields.io/badge/Beta%20Program-Open-green.svg" alt=""> <img src="https://img.shields.io/badge/Status-Release-green.svg" alt=""> <img src="https://img.shields.io/badge/Released-2020/07/26-green.svg" alt=""> <img src="https://img.shields.io/badge/Contributors-3-blue.svg" alt=""> <img src="https://img.shields.io/badge/Build-Passed-green.svg" alt=""> [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
+<img src="https://img.shields.io/badge/Released-2020/07/26-green.svg" alt=""> <img src="https://img.shields.io/badge/Contributors-3-blue.svg" alt=""> [![Dart CI](https://github.com/KristofKekesi/Mira/actions/workflows/dart.yml/badge.svg)](https://github.com/KristofKekesi/Mira/actions/workflows/dart.yml) [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
 
 <span style="text-align: justify;">View the surface of the Mars with images made by NASA's rovers. An app to search for images made by NASA's mars rovers. It's also provide specifications of the rovers.</span>
 
@@ -51,13 +51,6 @@ Made with __Flutter SDK__ in __Dart__ in __Flutter__. Programmed in __Android St
   kristofkekesiofficial@gmail.com
  </td></tr>
 </table>
-
-## System Requirements
-My system / Known minimum:
-- __CPU__: Intel core i7-2640M @ 2.80GHz
-- __OS__: Windows 7 Professional
-- __System type__: 64-bit
-- __RAM__: 8Gb
 
 ## License <img src="https://img.shields.io/badge/LGPL%203.0-brown.svg" alt="">
  GNU LESSER GENERAL PUBLIC LICENSE
