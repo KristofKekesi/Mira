@@ -18,6 +18,6 @@ jobs:
       with:
         flutter-version: '2.8.1'
     - run: flutter upgrade
-    - run: cd NASA-Mira
-    - run: flutter pub get
-    - run: flutter test
+    - working-directory: ./NASA-Mira
+      run: flutter pub get
+      run: flutter test
