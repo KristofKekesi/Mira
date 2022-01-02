@@ -61,7 +61,7 @@ class _CollectionInner extends StatelessWidget {
 
         case "operator":
           {
-            if (data[index]["operator"] == filter) {
+            if (data[index]["operator"].join(", ") == filter) {
               isPassed = true;
             }
           }
@@ -108,7 +108,7 @@ class _CollectionInner extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     image: const DecorationImage(
-                      image: AssetImage('lib/images/background.jpg'),
+                      image: AssetImage('lib/images/nasa-background.jpg'),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.all(
@@ -144,7 +144,7 @@ class _CollectionInner extends StatelessWidget {
                                               .02),
                                     ),
                                     group: roverGridCaption,
-                                    maxLines: 2,
+                                    maxLines: 1,
                                     minFontSize: 1,
                                   ),
                             AutoSizeText(
@@ -285,7 +285,6 @@ class _CollectionState extends State<Collection> {
           }
         }
 
-        // for visibility
         return ValueListenableBuilder(
           builder: (BuildContext context, bool value, Widget? child) {
             if (widget.isVisible.value) {

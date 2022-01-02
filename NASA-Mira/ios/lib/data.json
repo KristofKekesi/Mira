@@ -1,0 +1,524 @@
+[
+	{
+		"status": "active",
+
+		"mission": "Mars 2020",
+		"name": "Ingenuity",
+		"type": "helicopter",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+		
+		"launch": {"year": 2020, "month": 7, "day": 30},
+		"arrive": {"year": 2021, "month": 2, "day": 18},
+		"connection-lost": null,
+		"end": null,
+
+		"3dmodel": "https://mars.nasa.gov/layout/embed/model/?s=8&rotate=true",
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "active",
+
+		"mission": "Mars 2020",
+		"name": "Perseveance",
+		"type": "rover",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+		
+		"launch": {"year": 2020, "month": 7, "day": 30},
+		"arrive": {"year": 2021, "month": 2, "day": 18},
+		"connection-lost": null,
+		"end": null,
+
+		"default-date": {"year": 2021, "month": 2, "day": 18},
+		"default-sol": 10,
+		"last-date": {"year": null, "month": null, "day": null},
+		"last-sol": null,
+
+		"api-enabled": true,
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/",
+		"manifest": "https://api.nasa.gov/mars-photos/api/v1/manifests/perseverance"
+	},
+	{
+		"status": "active",
+
+		"mission": "Discovery",
+		"name": "InSight",
+		"type": "lander",
+		"operator": "NASA",
+		"manufacturer": "Lockheed Martin",
+
+		"launch": {"year": 2018, "month": 6, "day": 5},
+		"arrive": {"year": 2018, "month": 11, "day": 26},
+		"connection-lost": null,
+		"end": null,
+
+		"default-date": null,
+		"default-sol": null,
+		"last-date": null,
+		"last-sol": null,
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mars Scout",
+		"name": "Maven",
+		"type": "orbiter",
+		"operator": "NASA",
+		"manufacturer": "Lockheed Martin",
+
+		"launch": {"year": 2013, "month": 11, "day": 18},
+		"arrive": {"year": 2014, "month": 9, "day": 21},
+		"connection-lost": null,
+		"end": null,
+
+		"3dmodel": "https://mars.nasa.gov/layout/embed/model/?s=7&rotate=true",
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "active",
+
+		"mission": null,
+		"name": "Curiosity",
+		"type": "rover",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+		
+		"launch": {"year": 2011, "month": 11, "day": 26},
+		"arrive": {"year": 2012, "month": 8, "day": 6},
+		"connection-lost": null,
+		"end": null,
+		
+		"default-date": {"year": 2019, "month": 6, "day": 13},
+		"default-sol": 10,
+		"last-date": {"year": null, "month": null, "day": null},
+		"last-sol": null,
+		
+		"api-enabled": true,
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/",
+		"manifest": "https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity"
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Discovery",
+		"name": "Dawn",
+		"type": "flyby",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 2007, "month": 9, "day": 27},
+		"arrive": {"year": 2009, "month": 2, "day": 18},
+		"connection-lost": {"year": 2009, "month": 10, "day": 30},
+		"end": {"year": 2009, "month": 10, "day": 30},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mars Scout",
+		"name": "Phoenix",
+		"type": "lander",
+		"operator": "NASA",
+		"manufacturer": "Lockheed Martin",
+
+		"launch": {"year": 2007, "month": 6, "day": 10},
+		"arrive": {"year": 2008, "month": 5, "day": 25},
+		"connection-lost": {"year": 2008, "month": 11, "day": 2},
+		"end": {"year": 2008, "month": 11, "day": 2},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "active",
+
+		"mission": null,
+		"name": "Mars Reconnaissance Orbiter",
+		"nick": "MRO",
+		"type": "orbiter",
+		"operator": "NASA",
+		"manufacturer": "Lockheed Martin",
+
+		"launch": {"year": 2005, "month": 8, "day": 12},
+		"arrive": {"year": 2006, "month": 3, "day": 10},
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "MER-B",
+		"name": "Opportunity",
+		"type": "rover",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+		
+		"launch": {"year": 2003, "month": 7, "day": 7},
+		"arrive": {"year": 2004, "month": 1, "day": 25},
+		"connection-lost": {"year": 2018, "month": 6, "day": 11},
+		"end": {"year": 2019, "month": 2, "day": 13},
+		
+		"default-date": {"year": 2017, "month": 3, "day": 13},
+		"default-sol": 100,
+		"last-date": {"year": 2018, "month": 6, "day": 11},
+		"last-sol": 5111,
+		
+		"api-enabled": true,
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/",
+		"manifest": "https://api.nasa.gov/mars-photos/api/v1/manifests/opportunity"
+	},
+	{
+		"status": "inactive",
+
+		"mission": "MER-A",
+		"name": "Spirit",
+		"type": "rover",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+		
+		"launch": {"year": 2003, "month": 6, "day": 10},
+		"arrive": {"year": 2004, "month": 1, "day": 4},
+		"connection-lost": {"year": 2010, "month": 3, "day": 22},
+		"end": {"year": 2011, "month": 5, "day": 25},
+		
+		"default-date": {"year": 2004, "month": 4, "day": 5},
+		"default-sol": 10,
+		"last-date": {"year": 2010, "month": 3, "day": 21},
+		"last-sol": 2208,
+
+		"api-enabled": true,
+		"url": "https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/",
+		"manifest": "https://api.nasa.gov/mars-photos/api/v1/manifests/spirit"
+	},
+	{
+		"status": "active",
+
+		"mission": null,
+		"name": "Mars Odyssey",
+		"type": "orbiter",
+		"operator": "NASA",
+		"manufacturer": "Lockheed Martin",
+
+		"launch": {"year": 2001, "month": 4, "day": 7},
+		"arrive": {"year": 2001, "month": 10, "day": 24},
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Surveyor",
+		"name": "Mars Polar Lander",
+		"nick": "MPL",
+		"type": "lander",
+		"operator": "NASA",
+		"manufacturer": "Martin Marietta",
+
+		"launch": {"year": 1999, "month": 1, "day": 3},
+		"arrive": {"year": 1999, "month": 12, "day": 4},
+		"connection-lost": {"year": 1999, "month": 12, "day": 4},
+		"end": {"year": 1999, "month": 12, "day": 4},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars Climate Oribter",
+		"nick": "MCO",
+		"type": "orbiter",
+		"operator": "NASA",
+		"manufacturer": "Lockheed Martin",
+
+		"launch": {"year": 1998, "month": 12, "day": 11},
+		"arrive": null,
+		"connection-lost": {"year": 1999, "month": 9, "day": 23},
+		"end": {"year": 1999, "month": 9, "day": 23},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Discovery",
+		"name": "Pathfinder",
+		"type": "lander",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1996, "month": 12, "day": 6},
+		"arrive": {"year": 1997, "month": 7, "day": 4},
+		"connection-lost": {"year": 1997, "month": 9, "day": 27},
+		"end": {"year": 1997, "month": 9, "day": 27},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Discovery",
+		"name": "Sojourner",
+		"type": "rover",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+		
+		"launch": {"year": 1996, "month": 12, "day": 6},
+		"arrive": {"year": 1997, "month": 7, "day": 4},
+		"connection-lost": {"year": 1997, "month": 9, "day": 27},
+		"end": {"year": 1997, "month": 9, "day": 27},
+		
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Surveyor",
+		"name": "Mars Global Surveyor",
+		"nick": "MGS",
+		"type": "orbiter",
+		"operator": "NASA",
+		"manufacturer": "Lockheed Martin",
+
+		"launch": {"year": 1996, "month": 11, "day": 7},
+		"arrive": {"year": 1997, "month": 9, "day": 11},
+		"connection-lost": {"year": 2006, "month": 11, "day": 14},
+		"end": {"year": 2006, "month": 11, "day": 14},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars Observer",
+		"type": "orbiter",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1992, "month": 9, "day": 25},
+		"arrive": null,
+		"connection-lost": {"year": 1993, "month": 8, "day": 22},
+		"end": {"year": 1993, "month": 8, "day": 22},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Viking Program",
+		"name": "Viking 2",
+		"type": "orbiter",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1975, "month": 9, "day": 9},
+		"arrive": {"year": 1976, "month": 8, "day": 7},
+		"connection-lost": {"year": 1978, "month": 7, "day": 25},
+		"end": {"year": 1978, "month": 7, "day": 25},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Viking Program",
+		"name": "Viking 2",
+		"type":  "lander",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1975, "month": 9, "day": 9},
+		"arrive": {"year": 1976, "month": 9, "day": 3},
+		"connection-lost": {"year": 1980, "month": 4, "day": 11},
+		"end": {"year": 1980, "month": 4, "day": 11},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Viking Program",
+		"name": "Viking 1",
+		"type": "orbiter",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1975, "month": 8, "day": 20},
+		"arrive": {"year": 1976, "month": 6, "day": 19},
+		"connection-lost": {"year": 1980, "month": 8, "day": 17},
+		"end": {"year": 1980, "month": 8, "day": 17},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Viking Program",
+		"name": "Viking 1",
+		"type": "lander",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1975, "month": 8, "day": 20},
+		"arrive": {"year": 1976, "month": 7, "day": 20},
+		"connection-lost": {"year": 1982, "month": 11, "day": 13},
+		"end": {"year": 1982, "month": 11, "day": 13},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mariner Program",
+		"name": "Mariner 9",
+		"type": "flyby",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1971, "month": 5, "day": 30},
+		"arrive": {"year": 1971, "month": 11, "day": 14},
+		"connection-lost": null,
+		"deactivated": {"year": 1972, "month": 10, "day": 27},
+		"end": {"year": 1972, "month": 10, "day": 27},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mariner Program",
+		"name": "Mariner 8",
+		"type": "flyby",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1971, "month": 5, "day": 9},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mariner Program",
+		"name": "Mariner 7",
+		"type": "flyby",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1969, "month": 3, "day": 27},
+		"arrive": {"year": 1969, "month": 8, "day": 5},
+		"connection-lost": null,
+		"deactivated": {"year": 1970, "month": 12, "day": 27},
+		"end": {"year": 1970, "month": 12, "day": 27},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mariner Program",
+		"name": "Mariner 6",
+		"type": "flyby",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1969, "month": 2, "day": 25},
+		"arrive": {"year": 1969, "month": 7, "day": 31},
+		"connection-lost": null,
+		"deactivated": {"year": 1970, "month": 12, "day": 23},
+		"end": {"year": 1970, "month": 12, "day": 23},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mariner Program",
+		"name": "Mariner 4",
+		"type": "flyby",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1964, "month": 11, "day": 28},
+		"arrive": {"year": 1965, "month": 7, "day": 15},
+		"connection-lost": {"year": 1965, "month": 12, "day": 20},
+		"end": {"year": 1965, "month": 12, "day": 20},
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mariner Program",
+		"name": "Mariner 3",
+		"type": "flyby",
+		"operator": "NASA",
+		"manufacturer": "JPL",
+
+		"launch": {"year": 1964, "month": 11, "day": 5},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false,
+		"url": null,
+		"manifest": null
+	}
+]

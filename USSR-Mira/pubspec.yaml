@@ -1,0 +1,43 @@
+name: ussrmira
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 3.0.0+13
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  splashscreen:
+    git:
+      url: https://github.com/DPLYR-dev/SplashScreenFlutterPackage.git
+      ref: master
+
+  cupertino_icons: ^1.0.4
+  characters: ^1.0.0
+  numberpicker: ^2.1.1
+  dio: ^4.0.4
+  auto_size_text: ^3.0.0
+  cached_network_image: ^3.2.0
+
+
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.4
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - lib/images/
+    - lib/trans/
+    - lib/

@@ -40,7 +40,7 @@ void main() {
               dataSector: 9,
               name: "test",
               type: "rover",
-              operator: "NASA",
+              operator: ["NASA"],
               manufacturer: "JPL"),
         ),
       );

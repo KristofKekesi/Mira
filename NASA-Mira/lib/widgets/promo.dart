@@ -2,7 +2,6 @@
 import 'dart:io';
 
 // Flutter
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'min.dart';
@@ -40,7 +39,7 @@ class Application extends StatelessWidget {
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(themeColor, BlendMode.color),
                 child: const Image(
-                  image: AssetImage('lib/images/background.jpg'),
+                  image: AssetImage('lib/images/nasa-background.jpg'),
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: double.infinity,

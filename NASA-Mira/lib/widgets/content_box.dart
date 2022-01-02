@@ -1,7 +1,7 @@
 // Flutter
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:nasamira/widgets/text_styles.dart';
+import './text_styles.dart';
 
 class ContentBox extends StatelessWidget {
   final String title;
@@ -55,7 +55,7 @@ class ContentBox extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     image: const DecorationImage(
-                      image: AssetImage('lib/images/background.jpg'),
+                      image: AssetImage('lib/images/nasa-background.jpg'),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.all(

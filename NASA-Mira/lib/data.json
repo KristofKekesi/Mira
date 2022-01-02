@@ -5,7 +5,7 @@
 		"mission": "Mars 2020",
 		"name": "Ingenuity",
 		"type": "helicopter",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 		
 		"launch": {"year": 2020, "month": 7, "day": 30},
@@ -25,7 +25,7 @@
 		"mission": "Mars 2020",
 		"name": "Perseveance",
 		"type": "rover",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 		
 		"launch": {"year": 2020, "month": 7, "day": 30},
@@ -48,7 +48,7 @@
 		"mission": "Discovery",
 		"name": "InSight",
 		"type": "lander",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "Lockheed Martin",
 
 		"launch": {"year": 2018, "month": 6, "day": 5},
@@ -71,7 +71,7 @@
 		"mission": "Mars Scout",
 		"name": "Maven",
 		"type": "orbiter",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "Lockheed Martin",
 
 		"launch": {"year": 2013, "month": 11, "day": 18},
@@ -91,7 +91,7 @@
 		"mission": null,
 		"name": "Curiosity",
 		"type": "rover",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 		
 		"launch": {"year": 2011, "month": 11, "day": 26},
@@ -114,7 +114,7 @@
 		"mission": "Discovery",
 		"name": "Dawn",
 		"type": "flyby",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 2007, "month": 9, "day": 27},
@@ -132,7 +132,7 @@
 		"mission": "Mars Scout",
 		"name": "Phoenix",
 		"type": "lander",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "Lockheed Martin",
 
 		"launch": {"year": 2007, "month": 6, "day": 10},
@@ -151,7 +151,7 @@
 		"name": "Mars Reconnaissance Orbiter",
 		"nick": "MRO",
 		"type": "orbiter",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "Lockheed Martin",
 
 		"launch": {"year": 2005, "month": 8, "day": 12},
@@ -169,7 +169,7 @@
 		"mission": "MER-B",
 		"name": "Opportunity",
 		"type": "rover",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 		
 		"launch": {"year": 2003, "month": 7, "day": 7},
@@ -192,7 +192,7 @@
 		"mission": "MER-A",
 		"name": "Spirit",
 		"type": "rover",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 		
 		"launch": {"year": 2003, "month": 6, "day": 10},
@@ -215,7 +215,7 @@
 		"mission": null,
 		"name": "Mars Odyssey",
 		"type": "orbiter",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "Lockheed Martin",
 
 		"launch": {"year": 2001, "month": 4, "day": 7},
@@ -234,7 +234,7 @@
 		"name": "Mars Polar Lander",
 		"nick": "MPL",
 		"type": "lander",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "Martin Marietta",
 
 		"launch": {"year": 1999, "month": 1, "day": 3},
@@ -253,7 +253,7 @@
 		"name": "Mars Climate Oribter",
 		"nick": "MCO",
 		"type": "orbiter",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "Lockheed Martin",
 
 		"launch": {"year": 1998, "month": 12, "day": 11},
@@ -271,7 +271,7 @@
 		"mission": "Discovery",
 		"name": "Pathfinder",
 		"type": "lander",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1996, "month": 12, "day": 6},
@@ -289,7 +289,7 @@
 		"mission": "Discovery",
 		"name": "Sojourner",
 		"type": "rover",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 		
 		"launch": {"year": 1996, "month": 12, "day": 6},
@@ -308,7 +308,7 @@
 		"name": "Mars Global Surveyor",
 		"nick": "MGS",
 		"type": "orbiter",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "Lockheed Martin",
 
 		"launch": {"year": 1996, "month": 11, "day": 7},
@@ -326,7 +326,7 @@
 		"mission": null,
 		"name": "Mars Observer",
 		"type": "orbiter",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1992, "month": 9, "day": 25},
@@ -344,7 +344,7 @@
 		"mission": "Viking Program",
 		"name": "Viking 2",
 		"type": "orbiter",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1975, "month": 9, "day": 9},
@@ -362,7 +362,7 @@
 		"mission": "Viking Program",
 		"name": "Viking 2",
 		"type":  "lander",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1975, "month": 9, "day": 9},
@@ -380,7 +380,7 @@
 		"mission": "Viking Program",
 		"name": "Viking 1",
 		"type": "orbiter",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1975, "month": 8, "day": 20},
@@ -398,7 +398,7 @@
 		"mission": "Viking Program",
 		"name": "Viking 1",
 		"type": "lander",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1975, "month": 8, "day": 20},
@@ -416,7 +416,7 @@
 		"mission": "Mariner Program",
 		"name": "Mariner 9",
 		"type": "flyby",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1971, "month": 5, "day": 30},
@@ -435,7 +435,7 @@
 		"mission": "Mariner Program",
 		"name": "Mariner 8",
 		"type": "flyby",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1971, "month": 5, "day": 9},
@@ -453,7 +453,7 @@
 		"mission": "Mariner Program",
 		"name": "Mariner 7",
 		"type": "flyby",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1969, "month": 3, "day": 27},
@@ -472,7 +472,7 @@
 		"mission": "Mariner Program",
 		"name": "Mariner 6",
 		"type": "flyby",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1969, "month": 2, "day": 25},
@@ -491,7 +491,7 @@
 		"mission": "Mariner Program",
 		"name": "Mariner 4",
 		"type": "flyby",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1964, "month": 11, "day": 28},
@@ -509,7 +509,7 @@
 		"mission": "Mariner Program",
 		"name": "Mariner 3",
 		"type": "flyby",
-		"operator": "NASA",
+		"operator": ["NASA"],
 		"manufacturer": "JPL",
 
 		"launch": {"year": 1964, "month": 11, "day": 5},

@@ -29,10 +29,10 @@ class SplashScreenPage extends StatelessWidget {
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         loadingTextPadding: EdgeInsets.zero,
-        imageBackground: const AssetImage('lib/images/background.jpg'),
+        imageBackground: const AssetImage('lib/images/nasa-background.jpg'),
         backgroundColor: const Color(0xFFD66F3D),
         image: const Image(
-          image: AssetImage('lib/images/logo.png'),
+          image: AssetImage('lib/images/nasa-logo.png'),
         ),
         photoSize: 50,
         useLoader: true,

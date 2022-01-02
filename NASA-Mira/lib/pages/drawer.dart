@@ -1,7 +1,7 @@
 // Flutter
 import 'package:flutter/material.dart';
-import 'package:nasamira/widgets/appbar.dart';
-import 'package:nasamira/widgets/text_styles.dart';
+import '../widgets/appbar.dart';
+import '../widgets/text_styles.dart';
 
 // utils
 import '../utils/localization.dart';
@@ -50,8 +50,8 @@ class SidebarDrawer extends StatelessWidget {
                       themeColor: Color(0xffE8672D),
                     ),
                     Application(
-                      name: "USSR Mira",
-                      logo: "lib/images/ussr-black.png",
+                      name: "NASA Mira",
+                      logo: "lib/images/nasa-black.png",
                       themeColor: Color(0xffd02717),
                     ),
                     Application(
@@ -205,7 +205,7 @@ void autoAboutDialog(context) {
     applicationName: 'NASA Mira',
     applicationLegalese: 'Kristóf Kékesi',
     applicationIcon: Image.asset(
-      'lib/images/logo.png',
+      'lib/images/nasa-logo.png',
       width: 120,
       height: 120,
     ),

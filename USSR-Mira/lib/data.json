@@ -1,0 +1,436 @@
+[
+	{
+		"status": "active",
+
+		"mission": "ExoMars 2016",
+		"name": "Schiaparelli EDM",
+		"type": "lander",
+		"operator": ["Roscosmos", "ESA"],
+		"manufacturer": "Thales Alenia Space",
+
+		"launch": {"year": 2016, "month": 3, "day": 14},
+		"arrive": {"year": 2016, "month": 10, "day": 19},
+		"connection-lost": {"year": 2016, "month": 10, "day": 19},
+		"end": {"year": 2016, "month": 10, "day": 19},
+
+		"api-enabled": false
+	},
+	{
+		"status": "active",
+
+		"mission": "ExoMars",
+		"nick": "TGO",
+		"name": "Trace Gas Orbiter",
+		"type": "orbiter",
+		"operator": ["Roscosmos", "ESA"],
+		"manufacturer": "Thales Alenia Space",
+
+		"launch": {"year": 2016, "month": 3, "day": 14},
+		"arrive": {"year": 2016, "month": 10, "day": 19},
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Fobos-Grunt",
+		"type": "orbiter",
+		"operator": ["Roscosmos"],
+		"manufacturer": "Roscosmos",
+
+		"launch": {"year": 2011, "month": 11, "day": 8},
+		"arrive": null,
+		"connection-lost": {"year": 2011, "month": 11, "day": 24},
+		"end": {"year": 2011, "month": 11, "day": 24},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars 96",
+		"type": "orbiter",
+		"operator": ["Roscosmos"],
+		"manufacturer": "Roscosmos",
+
+		"launch": {"year": 1996, "month": 11, "day": 16},
+		"arrive": null,
+		"connection-lost": {"year": 1996, "month": 11, "day": 17},
+		"end": {"year": 1996, "month": 11, "day": 17},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Phobos 2",
+		"type": "orbiter",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "Sovjet Union",
+
+		"launch": {"year": 1988, "month": 7, "day": 12},
+		"arrive": {"year": 1989, "month": 1, "day": 29},
+		"connection-lost": {"year": 1989, "month": 3, "day": 27},
+		"end": {"year": 1989, "month": 3, "day": 27},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Phobos 1",
+		"type": "orbiter",
+		"operator": ["IKI"],
+		"manufacturer": "Sovjet Union",
+
+		"launch": {"year": 1988, "month": 7, "day": 7},
+		"arrive": null,
+		"connection-lost": {"year": 1988, "month": 9, "day": 2},
+		"end": {"year": 1988, "month": 9, "day": 2},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars 7",
+		"type": "lander",
+		"operator": ["Lavochkin"],
+		"manufacturer": "Lavochkin",
+
+		"launch": {"year": 1973, "month": 8, "day": 9},
+		"arrive": {"year": 1974, "month": 3, "day": 25},
+		"connection-lost": {"year": 1974, "month": 3, "day": 25},
+		"end": {"year": 1974, "month": 3, "day": 25},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars 7",
+		"type": "flyby",
+		"operator": ["Lavochkin"],
+		"manufacturer": "Lavochkin",
+
+		"launch": {"year": 1973, "month": 8, "day": 9},
+		"arrive": {"year": 1974, "month": 3, "day": 25},
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars 6",
+		"type": "lander",
+		"operator": ["Lavochkin"],
+		"manufacturer": "Lavochkin",
+
+		"launch": {"year": 1973, "month": 8, "day": 5},
+		"arrive": {"year": 1974, "month": 3, "day": 12},
+		"connection-lost": {"year": 1974, "month": 3, "day": 12},
+		"end": {"year": 1974, "month": 3, "day": 12},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars 6",
+		"type": "flyby",
+		"operator": ["Lavochkin"],
+		"manufacturer": "Lavochkin",
+
+		"launch": {"year": 1973, "month": 8, "day": 5},
+		"arrive": {"year": 1974, "month": 3, "day": 12},
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars 5",
+		"type": "orbiter",
+		"operator": ["Lavochkin"],
+		"manufacturer": "Lavochkin",
+
+		"launch": {"year": 1973, "month": 7, "day": 25},
+		"arrive": {"year": 1974, "month": 2, "day": 12},
+		"connection-lost": {"year": 1974, "month": 2, "day": 28},
+		"end": {"year": 1974, "month": 2, "day": 28},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars 4",
+		"type": "orbiter",
+		"operator": ["Lavochkin"],
+		"manufacturer": "Lavochkin",
+
+		"launch": {"year": 1973, "month": 7, "day": 21},
+		"arrive": null,
+		"connection-lost": {"year": 1974, "month": 2, "day": 10},
+		"end": {"year": 1974, "month": 2, "day": 10},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mars 3",
+		"name": "Prop-M",
+		"type": "rover",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "Sovjet Union",
+
+		"launch": {"year": 1971, "month": 5, "day": 28},
+		"arrive": {"year": 1971, "month": 12, "day": 2},
+		"connection-lost": {"year": 1971, "month": 12, "day": 2},
+		"end": {"year": 1971, "month": 12, "day": 2},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mars 3",
+		"name": "Mars 3",
+		"type": "orbiter",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "Sovjet Union",
+
+		"launch": {"year": 1971, "month": 5, "day": 28},
+		"arrive": {"year": 1971, "month": 12, "day": 2},
+		"deactivated": {"year": 1972, "month": 8, "day": 22},
+		"end": {"year": 1972, "month": 8, "day": 22},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mars 3",
+		"name": "Mars 3",
+		"type": "lander",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "Sovjet Union",
+
+		"launch": {"year": 1971, "month": 5, "day": 28},
+		"arrive": {"year": 1971, "month": 12, "day": 2},
+		"connection-lost": {"year": 1971, "month": 12, "day": 2},
+		"end": {"year": 1971, "month": 12, "day": 2},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mars 2",
+		"name": "Prop-M",
+		"type": "rover",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "OKB-1",
+
+		"launch": {"year": 1971, "month": 5, "day": 19},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mars 2",
+		"name": "Mars 2",
+		"type": "orbiter",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "OKB-1",
+
+		"launch": {"year": 1971, "month": 5, "day": 19},
+		"arrive": {"year": 1971, "month": 11, "day": 27},
+		"deactivated": {"year": 1972, "month": 8, "day": 22},
+		"end": {"year": 1972, "month": 8, "day": 22},
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": "Mars 2",
+		"name": "Mars 2",
+		"type": "lander",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "OKB-1",
+
+		"launch": {"year": 1971, "month": 5, "day": 19},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Kosmos 419",
+		"type": "orbiter",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "Sovjet Union",
+
+		"launch": {"year": 1971, "month": 5, "day": 10},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars 2M No.522",
+		"type": "orbiter",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "NPO Lavochkin",
+
+		"launch": {"year": 1969, "month": 4, "day": 2},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars 2M No.521",
+		"type": "orbiter",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "NPO Lavochkin",
+
+		"launch": {"year": 1969, "month": 3, "day": 27},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Zond 2",
+		"type": "flyby",
+		"operator": ["OKB-1"],
+		"manufacturer": "OKB-1",
+
+		"launch": {"year": 1964, "month": 11, "day": 30},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Sputnik 24",
+		"type": "lander",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "Sovjet Union",
+
+		"launch": {"year": 1962, "month": 11, "day": 4},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Mars 1",
+		"nick": "Sputnik 23",
+		"type": "flyby",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "Sovjet Union",
+
+		"launch": {"year": 1962, "month": 11, "day": 1},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Sputnik 22",
+		"type": "flyby",
+		"operator": ["Sovjet Union"],
+		"manufacturer": "OKB-1",
+
+		"launch": {"year": 1962, "month": 10, "day": 24},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Marsnik 2",
+		"type": "flyby",
+		"operator": ["OKB-1"],
+		"manufacturer": "OKB-1",
+
+		"launch": {"year": 1960, "month": 10, "day": 14},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "inactive",
+
+		"mission": null,
+		"name": "Marsnik 1",
+		"type": "flyby",
+		"operator": ["OKB-1"],
+		"manufacturer": "OKB-1",
+
+		"launch": {"year": 1960, "month": 10, "day": 10},
+		"arrive": null,
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	}
+]
