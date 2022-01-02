@@ -361,17 +361,9 @@ class _SearchWindowState extends State<SearchWindow> {
                 child: Appbar(
                   title: widget.name,
                   subtitle: widget.time,
-                  leftAction: Padding(
-                    padding: EdgeInsets.only(
-                        right: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
-                            2 *
-                            .02),
-                    child: Icon(
-                      Icons.arrow_back_rounded,
-                      size: MediaQuery.of(context).size.width * .075,
-                      color: Colors.black,
-                    ),
+                  leftAction:
+                  const AppBarAction(
+                    icon: Icons.arrow_back_rounded,
                   ),
                 ),
               ),
@@ -381,25 +373,12 @@ class _SearchWindowState extends State<SearchWindow> {
           Appbar(
             title: widget.name,
             subtitle: widget.time,
-            leftAction: Tooltip(
-              message: AppLocalizations.of(context).translate("back"),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      right: (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                          2 *
-                          .02),
-                  child: Icon(
-                    Icons.arrow_back_rounded,
-                    size: MediaQuery.of(context).size.width * .075,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+            leftAction: AppBarAction(
+              icon: Icons.arrow_back_rounded,
+              tooltip: AppLocalizations.of(context).translate("back"),
+              action: () {
+                Navigator.pop(context);
+              },
             ),
           ),
         ],

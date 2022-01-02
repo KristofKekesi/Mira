@@ -5,22 +5,42 @@ import 'package:flutter/material.dart';
 import 'min.dart';
 
 class AutoSizeTextStyle {
+  // constructor
+  const AutoSizeTextStyle({this.maxLines = 1, this.group});
+
   final int maxLines;
   final AutoSizeGroup? group;
-
-  /// constructor
-  const AutoSizeTextStyle({this.maxLines = 1, this.group});
 }
 
 class IconStyle {
+  // constructor
+  const IconStyle({this.size = 24, this.color});
+
   final int size;
   final Color? color;
-
-  /// constructor
-  const IconStyle({this.size = 24, this.color});
 }
 
 class Button extends StatelessWidget {
+  // constructor
+  const Button(
+      {Key? key,
+        this.background = Colors.white12,
+        this.valueTextStyle = const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+        required this.valueFontSize,
+        this.titleTextStyle = const TextStyle(color: Colors.white70, fontWeight: FontWeight.bold),
+        required this.titleFontSize,
+        this.tooltip = "",
+        this.title,
+        this.iconStyle = const IconStyle(color: null),
+        this.autoSizeTextStyle = const AutoSizeTextStyle(),
+        this.action,
+        this.valueSizeGroup,
+        this.value})
+      : super(key: key);
+
   final Color background;
 
   final String? title;
@@ -43,26 +63,6 @@ class Button extends StatelessWidget {
   final String tooltip;
 
   final VoidCallback? action;
-
-  /// constructor
-  const Button(
-      {Key? key,
-      this.background = Colors.white12,
-      this.valueTextStyle = const TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-      ),
-      required this.valueFontSize,
-      this.titleTextStyle = const TextStyle(color: Colors.white70, fontWeight: FontWeight.bold),
-      required this.titleFontSize,
-      this.tooltip = "",
-      this.title,
-        this.iconStyle = const IconStyle(color: null),
-        this.autoSizeTextStyle = const AutoSizeTextStyle(),
-      this.action,
-      this.valueSizeGroup,
-      this.value})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

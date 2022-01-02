@@ -41,7 +41,8 @@ class _FullScreenState extends State<FullScreen> {
             Align(
               alignment: Alignment.topLeft,
               child: FloatingActionButton(
-                /// have to have this because this widget uses two [FloatingActionButton]-s
+                /// have to define heroTag because this widget uses two [FloatingActionButton]-s
+                /// which are making an error because of their same default values.
                 heroTag: null,
                 backgroundColor: Colors.black,
                 onPressed: () {
@@ -58,7 +59,8 @@ class _FullScreenState extends State<FullScreen> {
             Align(
               alignment: Alignment.topRight,
               child: FloatingActionButton(
-                /// have to have this because this widget uses two [FloatingActionButton]-s
+                /// have to define heroTag because this widget uses two [FloatingActionButton]-s
+                /// which are making an error because of their same default values.
                 heroTag: null,
                 backgroundColor: Colors.black,
                 onPressed: () {

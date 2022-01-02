@@ -1,6 +1,7 @@
 // Flutter
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:nasamira/widgets/text_styles.dart';
 
 class ContentBox extends StatelessWidget {
   final String title;
@@ -41,11 +42,7 @@ class ContentBox extends StatelessWidget {
                         MediaQuery.of(context).size.width * .05),
                 child: AutoSizeText(
                   title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: MediaQuery.of(context).size.width * .08,
-                    color: Colors.black,
-                  ),
+                  style: SpaceJamTextStyles.headline(context),
                   maxLines: 1,
                   group: contentBigTextSize,
                 ),

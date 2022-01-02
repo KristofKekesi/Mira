@@ -404,8 +404,7 @@ class _DatePickerPage extends State<DatePickerPage> {
                   fontWeight: FontWeight.bold,
                 ),
                 titleFontSize: MediaQuery.of(context).size.width * .05,
-                value:
-                    AppLocalizations.of(context).translate("search"),
+                value: AppLocalizations.of(context).translate("search"),
                 tooltip: AppLocalizations.of(context).translate('searchImage'),
                 action: () {
                   if (timeFormat == true) {
@@ -447,25 +446,8 @@ class _DatePickerPage extends State<DatePickerPage> {
                 opacity: 0,
                 child: Appbar(
                   title: name,
-                  leftAction: Padding(
-                    padding: EdgeInsets.only(
-                        right: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
-                            2 *
-                            .02),
-                    child: Tooltip(
-                      message: AppLocalizations.of(context).translate("back"),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_rounded,
-                          size: MediaQuery.of(context).size.width * .075,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
+                  leftAction: const AppBarAction(
+                    icon: Icons.arrow_back_rounded,
                   ),
                 ),
               ),
@@ -479,25 +461,12 @@ class _DatePickerPage extends State<DatePickerPage> {
           ),
           Appbar(
             title: name,
-            leftAction: Padding(
-              padding: EdgeInsets.only(
-                  right: (MediaQuery.of(context).size.width +
-                          MediaQuery.of(context).size.height) /
-                      2 *
-                      .02),
-              child: Tooltip(
-                message: AppLocalizations.of(context).translate("back"),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    Icons.arrow_back_rounded,
-                    size: MediaQuery.of(context).size.width * .075,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+            leftAction: AppBarAction(
+              icon: Icons.arrow_back_rounded,
+              tooltip: AppLocalizations.of(context).translate("back"),
+              action: () {
+                Navigator.pop(context);
+              },
             ),
           ),
         ],

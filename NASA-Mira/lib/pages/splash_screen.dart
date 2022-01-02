@@ -32,7 +32,7 @@ class SplashScreenPage extends StatelessWidget {
         imageBackground: const AssetImage('lib/images/background.jpg'),
         backgroundColor: const Color(0xFFD66F3D),
         image: const Image(
-          image: AssetImage('lib/images/mira_logo.png'),
+          image: AssetImage('lib/images/logo.png'),
         ),
         photoSize: 50,
         useLoader: true,

@@ -52,6 +52,7 @@ class _ApodWidgetState extends State<ApodWidget> {
 
             return Padding(
               padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.width * .03,
                   bottom: MediaQuery.of(context).size.width * .0125),
               child: Container(
                 decoration: BoxDecoration(

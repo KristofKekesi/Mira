@@ -24,7 +24,6 @@ int counter = 0;
 class _CollectionInner extends StatelessWidget {
   final String inputType;
   final String filter;
-  final String outputType;
 
   final List<dynamic> data;
 
@@ -34,7 +33,6 @@ class _CollectionInner extends StatelessWidget {
       {Key? key,
       required this.inputType,
       required this.filter,
-      required this.outputType,
       required this.data,
       this.errorString = ""})
       : super(key: key);
@@ -272,7 +270,6 @@ class _CollectionState extends State<Collection> {
               data: hardCodeData.reversed.toList(),
               inputType: widget.inputType,
               filter: widget.filter,
-              outputType: widget.outputType,
               errorString: widget.errorString,
             );
           } else {
@@ -280,7 +277,6 @@ class _CollectionState extends State<Collection> {
               data: hardCodeData,
               inputType: widget.inputType,
               filter: widget.filter,
-              outputType: widget.outputType,
               errorString: widget.errorString,
             );
           }

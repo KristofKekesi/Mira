@@ -229,7 +229,7 @@ class RoverSpecPage extends StatelessWidget {
                 ),
               ),
             )
-          : Min(),
+          : const Min(),
     );
 
     String appbarTitle() => nick == null ? name : nick!;
@@ -246,25 +246,8 @@ class RoverSpecPage extends StatelessWidget {
                 child: Appbar(
                   title: appbarTitle(),
                   subtitle: appbarSubtitle(),
-                  leftAction: Padding(
-                    padding: EdgeInsets.only(
-                        right: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
-                            2 *
-                            .02),
-                    child: Tooltip(
-                      message: AppLocalizations.of(context).translate("back"),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_rounded,
-                          size: MediaQuery.of(context).size.width * .075,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
+                  leftAction: const AppBarAction(
+                    icon: Icons.arrow_back_rounded,
                   ),
                 ),
               ),
@@ -706,25 +689,12 @@ class RoverSpecPage extends StatelessWidget {
           Appbar(
             title: appbarTitle(),
             subtitle: appbarSubtitle(),
-            leftAction: Padding(
-              padding: EdgeInsets.only(
-                  right: (MediaQuery.of(context).size.width +
-                          MediaQuery.of(context).size.height) /
-                      2 *
-                      .02),
-              child: Tooltip(
-                message: AppLocalizations.of(context).translate("back"),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    Icons.arrow_back_rounded,
-                    size: MediaQuery.of(context).size.width * .075,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+            leftAction: AppBarAction(
+              icon: Icons.arrow_back_rounded,
+              tooltip: AppLocalizations.of(context).translate("back"),
+              action: () {
+                Navigator.pop(context);
+              },
             ),
           ),
         ],

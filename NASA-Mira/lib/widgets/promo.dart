@@ -9,21 +9,70 @@ import 'min.dart';
 
 class Application extends StatelessWidget {
   final String name;
-  final String image;
+  final String logo;
+  final Color themeColor;
 
-  const Application({Key? key, required this.name, required this.image})
+  const Application(
+      {Key? key,
+      required this.name,
+      required this.logo,
+      required this.themeColor})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(MediaQuery.of(context).size.width * .025),
-      child: Tooltip(
-        message: name,
-        child: Image(
-          image: CachedNetworkImageProvider(image),
-          width: MediaQuery.of(context).size.width * .15,
-          height: MediaQuery.of(context).size.width * .15,
+      padding: EdgeInsets.only(
+          left: MediaQuery.of(context).size.width * .0125,
+          right: MediaQuery.of(context).size.width * .0125,
+          bottom: MediaQuery.of(context).size.width * .025),
+      child: AspectRatio(
+        aspectRatio: 3 / 2,
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.all(
+                Radius.circular((MediaQuery.of(context).size.width +
+                        MediaQuery.of(context).size.height) /
+                    2 *
+                    .02),
+              ),
+              child: ColorFiltered(
+                colorFilter: ColorFilter.mode(themeColor, BlendMode.color),
+                child: const Image(
+                  image: AssetImage('lib/images/background.jpg'),
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: double.infinity,
+                ),
+              ),
+            ),
+            Tooltip(
+              message: name,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular((MediaQuery.of(context).size.width +
+                            MediaQuery.of(context).size.height) /
+                        2 *
+                        .04),
+                  ),
+                ),
+                width: double.infinity,
+                height: double.infinity,
+                padding:
+                    EdgeInsets.all(MediaQuery.of(context).size.width * .035),
+                child:
+                    Opacity(
+                      opacity: .25,
+                      child:
+                    Image(
+                      image: AssetImage(logo),
+                      width: MediaQuery.of(context).size.width * .2,
+                    ),),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -31,7 +80,10 @@ class Application extends StatelessWidget {
 }
 
 class PromoWidget extends StatelessWidget {
-  const PromoWidget({Key? key}) : super(key: key);
+  const PromoWidget({Key? key, required this.children, required this.height}) : super(key: key);
+
+  final List<Application> children;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -52,30 +104,16 @@ class PromoWidget extends StatelessWidget {
             if (snapshot.data == true) {
               return SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.width * .2,
+                height: height,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
                     Container(
-                      width: MediaQuery.of(context).size.width * .025,
+                      width: MediaQuery.of(context).size.width * .075,
                     ),
-                    const Application(
-                      name: "Elements",
-                      image:
-                          "https://play-lh.googleusercontent.com/uLZHtNEMYGNJrNiQ5vku85fX2dLS85Qnfhl3jEKluN5m5vLxR-1G4r6gQoC9W5gP-0g=s180-rw",
-                    ),
-                    const Application(
-                      name: "Preacher",
-                      image:
-                          "https://play-lh.googleusercontent.com/v-HoxSuPTB4XxQ_1Z8UGJV3eUjUqJ7D9bnNol8FaO-zZQ1jm04vBVxF_Ns5HDA7kg7E=s180-rw",
-                    ),
-                    const Application(
-                      name: "Clean Earth",
-                      image:
-                          "https://play-lh.googleusercontent.com/FC2hG2B5SSCWhmSmzBUIZ05wzwIS12gjX3IIfojIKGBxpGQBoRdG8NzyETWTCSok6Vf4=s180-rw",
-                    ),
+                    ...children,
                     Container(
-                      width: MediaQuery.of(context).size.width * .025,
+                      width: MediaQuery.of(context).size.width * .075,
                     ),
                   ],
                 ),

@@ -32,21 +32,8 @@ class HomePage extends StatelessWidget {
                       opacity: 0,
                       child: Appbar(
                         title: AppLocalizations.of(context).translate("title"),
-                        rightAction: Padding(
-                          padding: EdgeInsets.only(
-                              right: (MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
-                                  2 *
-                                  .04),
-                          child: Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("settings"),
-                            child: Icon(
-                              Icons.menu,
-                              size: MediaQuery.of(context).size.width * .075,
-                              color: Colors.black,
-                            ),
-                          ),
+                        rightAction: const AppBarAction(
+                          icon: Icons.menu,
                         ),
                       ),
                     ),
@@ -56,19 +43,31 @@ class HomePage extends StatelessWidget {
                           right: MediaQuery.of(context).size.width * .05),
                       child: Column(
                         children: [
-                          Container(
-                            height: MediaQuery.of(context).size.width * .03,
-                          ),
                           const ApodWidget(),
-                          Collection(isVisible: notifierAreHelicoptersVisible, inputType: "type",
-                              filter: "helicopter", outputType: "type"),
-                          Collection(isVisible: notifierAreRoversVisible, inputType: "type", filter: "rover",
+                          Collection(
+                              isVisible: notifierAreHelicoptersVisible,
+                              inputType: "type",
+                              filter: "helicopter",
                               outputType: "type"),
-                          Collection(isVisible: notifierAreOrbitersVisible, inputType: "type", filter: "orbiter",
+                          Collection(
+                              isVisible: notifierAreRoversVisible,
+                              inputType: "type",
+                              filter: "rover",
                               outputType: "type"),
-                          Collection(isVisible: notifierAreLandersVisible, inputType: "type", filter: "lander",
+                          Collection(
+                              isVisible: notifierAreOrbitersVisible,
+                              inputType: "type",
+                              filter: "orbiter",
                               outputType: "type"),
-                          Collection(isVisible: notifierAreFlybysVisible, inputType: "type", filter: "flyby",
+                          Collection(
+                              isVisible: notifierAreLandersVisible,
+                              inputType: "type",
+                              filter: "lander",
+                              outputType: "type"),
+                          Collection(
+                              isVisible: notifierAreFlybysVisible,
+                              inputType: "type",
+                              filter: "flyby",
                               outputType: "type"),
                           Container(
                             height: MediaQuery.of(context).size.width * .05,
@@ -83,25 +82,12 @@ class HomePage extends StatelessWidget {
           ),
           Appbar(
             title: AppLocalizations.of(context).translate("title"),
-            rightAction: Padding(
-              padding: EdgeInsets.only(
-                  right: (MediaQuery.of(context).size.width +
-                      MediaQuery.of(context).size.height) /
-                      2 *
-                      .04),
-              child: Tooltip(
-                message: AppLocalizations.of(context).translate("settings"),
-                child: GestureDetector(
-                  onTap: () {
-                    showSelectors(context, "main", false);
-                  },
-                  child: Icon(
-                    Icons.menu,
-                    size: MediaQuery.of(context).size.width * .075,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+            rightAction: AppBarAction(
+              icon: Icons.menu,
+              tooltip: AppLocalizations.of(context).translate("selectors"),
+              action: () {
+                showSelectors(context, "main", false);
+              },
             ),
           ),
         ],

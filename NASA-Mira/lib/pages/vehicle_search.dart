@@ -16,7 +16,8 @@ class VehicleSearch extends StatelessWidget {
   final String type;
   final String value;
 
-  const VehicleSearch({Key? key, required this.type, required this.value}) : super(key: key);
+  const VehicleSearch({Key? key, required this.type, required this.value})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -90,34 +91,11 @@ class VehicleSearch extends StatelessWidget {
                   child: Appbar(
                     title: AppLocalizations.of(context).translate("searchFor"),
                     subtitle: searchContent(),
-                    leftAction: Padding(
-                      padding: EdgeInsets.only(
-                          right: (MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
-                              2 *
-                              .02),
-                      child: Tooltip(
-                        message: AppLocalizations.of(context).translate("back"),
-                        child: Icon(
-                          Icons.arrow_back_rounded,
-                          size: MediaQuery.of(context).size.width * .075,
-                          color: Colors.black,
-                        ),
-                      ),
+                    leftAction: const AppBarAction(
+                      icon: Icons.arrow_back_rounded,
                     ),
-                    rightAction: Padding(
-                      padding: EdgeInsets.only(
-                        right: MediaQuery.of(context).size.width * .05,
-                      ),
-                      child: Tooltip(
-                        message:
-                            AppLocalizations.of(context).translate("settings"),
-                        child: Icon(
-                          Icons.menu,
-                          size: MediaQuery.of(context).size.width * .075,
-                          color: Colors.black,
-                        ),
-                      ),
+                    rightAction: const AppBarAction(
+                      icon: Icons.menu,
                     ),
                   ),
                 ),
@@ -148,43 +126,19 @@ class VehicleSearch extends StatelessWidget {
           Appbar(
             title: AppLocalizations.of(context).translate("searchFor"),
             subtitle: searchContent(),
-            leftAction: Padding(
-              padding: EdgeInsets.only(
-                  right: (MediaQuery.of(context).size.width +
-                          MediaQuery.of(context).size.height) /
-                      2 *
-                      .02),
-              child: Tooltip(
-                message: AppLocalizations.of(context).translate("back"),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    Icons.arrow_back_rounded,
-                    size: MediaQuery.of(context).size.width * .075,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+            leftAction: AppBarAction(
+              icon: Icons.arrow_back_rounded,
+              tooltip: AppLocalizations.of(context).translate("back"),
+              action: () {
+                Navigator.pop(context);
+              },
             ),
-            rightAction: Padding(
-              padding: EdgeInsets.only(
-                right: MediaQuery.of(context).size.width * .05,
-              ),
-              child: Tooltip(
-                message: AppLocalizations.of(context).translate("settings"),
-                child: GestureDetector(
-                  onTap: () {
-                    showSelectors(context, "search", true);
-                  },
-                  child: Icon(
-                    Icons.menu,
-                    size: MediaQuery.of(context).size.width * .075,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+            rightAction: AppBarAction(
+              icon: Icons.menu,
+              tooltip: AppLocalizations.of(context).translate("selectors"),
+              action: () {
+                showSelectors(context, "search", true);
+              },
             ),
           ),
         ],

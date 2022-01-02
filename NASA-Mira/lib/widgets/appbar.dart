@@ -3,15 +3,47 @@ import 'dart:ui';
 
 // Flutter
 import 'package:flutter/material.dart';
+import 'package:nasamira/widgets/text_styles.dart';
 
 // widgets
 import 'min.dart';
 
+class AppBarAction extends StatelessWidget {
+  const AppBarAction({Key? key, required this.icon, this.tooltip = "", this.action}) : super(key: key);
+
+  final IconData icon;
+  final String? tooltip;
+  final VoidCallback? action;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: action,
+      child: Padding(
+        padding: EdgeInsets.only(
+          right: (MediaQuery.of(context).size.width +
+              MediaQuery.of(context).size.height) /
+              2 *
+              .04,
+        ),
+        child: Tooltip(
+          message: tooltip,
+          child: Icon(
+            icon,
+            size: MediaQuery.of(context).size.width * .075,
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class Appbar extends StatelessWidget {
   final String title;
   final String? subtitle;
-  final Widget? leftAction;
-  final Widget? rightAction;
+  final AppBarAction? leftAction;
+  final AppBarAction? rightAction;
 
   const Appbar(
       {Key? key, required this.title, this.subtitle, this.leftAction, this.rightAction})
@@ -23,13 +55,7 @@ class Appbar extends StatelessWidget {
       if (subtitle != null) {
         return Text(
           subtitle!,
-          style: TextStyle(
-            fontSize: (MediaQuery.of(context).size.width +
-                MediaQuery.of(context).size.height) /
-                2 *
-                .04,
-            color: Colors.black,
-          ),
+          style: SpaceJamTextStyles.subTitle(context),
         );
       } else {
         return const Min();
@@ -81,14 +107,7 @@ class Appbar extends StatelessWidget {
                             children: <Widget>[
                               Text(
                                 title,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: (MediaQuery.of(context).size.width +
-                                          MediaQuery.of(context).size.height) /
-                                      2 *
-                                      .06,
-                                  color: Colors.black,
-                                ),
+                                style: SpaceJamTextStyles.title(context),
                               ),
                               subtitleWidget(),
                             ],
