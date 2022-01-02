@@ -17,7 +17,7 @@ import '../utils/localization.dart';
 import '../utils/update.dart';
 
 List<dynamic> hardCodeData = [];
-var roverGridMission = AutoSizeGroup();
+var roverGridCaption = AutoSizeGroup();
 var roverGridTitle = AutoSizeGroup();
 int counter = 0;
 
@@ -143,8 +143,8 @@ class _CollectionInner extends StatelessWidget {
                                           (MediaQuery.of(context).size.height *
                                               .02),
                                     ),
-                                    group: roverGridMission,
-                                    maxLines: 1,
+                                    group: roverGridCaption,
+                                    maxLines: 2,
                                     minFontSize: 1,
                                   ),
                             AutoSizeText(
@@ -168,7 +168,7 @@ class _CollectionInner extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
+                                AutoSizeText(
                                   AppLocalizations.of(context)
                                       .translate("state"),
                                   style: TextStyle(
@@ -178,6 +178,9 @@ class _CollectionInner extends StatelessWidget {
                                         (MediaQuery.of(context).size.height *
                                             .02),
                                   ),
+                                  group: roverGridCaption,
+                                  maxLines: 1,
+                                  minFontSize: 1,
                                 ),
                                 data[index]["status"] == "active"
                                     ? Text(
