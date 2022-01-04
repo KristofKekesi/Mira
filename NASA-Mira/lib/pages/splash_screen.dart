@@ -16,7 +16,7 @@ class SplashScreenPage extends StatelessWidget {
       body: SplashScreen(
         seconds: 2,
         title: const Text(
-          'NASA Mira',
+          'ESA Mira',
           style: TextStyle(
             fontSize: 25,
             color: Colors.white,
@@ -29,10 +29,10 @@ class SplashScreenPage extends StatelessWidget {
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         loadingTextPadding: EdgeInsets.zero,
-        imageBackground: const AssetImage('lib/images/nasa-background.jpg'),
+        imageBackground: const AssetImage('assets/esa-background.jpg'),
         backgroundColor: const Color(0xFFD66F3D),
         image: const Image(
-          image: AssetImage('lib/images/nasa-logo.png'),
+          image: AssetImage('assets/esa-logo.png'),
         ),
         photoSize: 50,
         useLoader: true,

@@ -74,7 +74,7 @@ FutureBuilder<dynamic> _data(String url) {
                           child: Container(
                             decoration: BoxDecoration(
                               image: const DecorationImage(
-                                image: AssetImage('lib/images/nasa-background.jpg'),
+                                image: AssetImage('assets/esa-background.jpg'),
                                 fit: BoxFit.cover,
                               ),
                               borderRadius: BorderRadius.all(

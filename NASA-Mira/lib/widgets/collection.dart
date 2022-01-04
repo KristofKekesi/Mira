@@ -108,7 +108,7 @@ class _CollectionInner extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     image: const DecorationImage(
-                      image: AssetImage('lib/images/nasa-background.jpg'),
+                      image: AssetImage('assets/esa-background.jpg'),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.all(
@@ -290,7 +290,7 @@ class _CollectionState extends State<Collection> {
             if (widget.isVisible.value) {
               return FutureBuilder(
                   future: DefaultAssetBundle.of(context)
-                      .loadString('lib/data.json'),
+                      .loadString('assets/data.json'),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       hardCodeData = json.decode(snapshot.data.toString());
