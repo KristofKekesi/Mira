@@ -41,7 +41,7 @@ class Application extends StatelessWidget {
               child: themeColor != null ? ColorFiltered(
                 colorFilter: ColorFilter.mode(themeColor!, BlendMode.color),
                 child: const Image(
-                  image: AssetImage('lib/images/esa-background.jpg'),
+                  image: AssetImage('assets/esa-background.jpg'),
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: double.infinity,

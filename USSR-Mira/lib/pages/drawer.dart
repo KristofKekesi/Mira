@@ -1,14 +1,15 @@
 // Flutter
 import 'package:flutter/material.dart';
+
+// widgets
+import '../widgets/promo.dart';
 import '../widgets/appbar.dart';
 import '../widgets/text_styles.dart';
 
 // utils
 import '../utils/localization.dart';
 import '../utils/extensions.dart';
-
-// widgets
-import '../widgets/promo.dart';
+import '../pass.dart';
 
 class SidebarDrawer extends StatelessWidget {
   const SidebarDrawer({Key? key}) : super(key: key);
@@ -45,19 +46,19 @@ class SidebarDrawer extends StatelessWidget {
                 PromoWidget(
                   children: const [
                     Application(
-                      name: "ESA Mira",
-                      logo: "lib/images/nasa-black.png",
-                      background: "lib/images/nasa-background.jpg",
+                      name: "NASA Mira",
+                      logo: "assets/nasa-black.png",
+                      background: "assets/nasa-background.jpg",
                     ),
                     Application(
                       name: "USSR Mira",
-                      logo: "lib/images/ussr-black.png",
-                      background: "lib/images/ussr-background.jpg",
+                      logo: "assets/ussr-black.png",
+                      background: "assets/ussr-background.jpg",
                     ),
                     Application(
                       name: "ESA Mira",
-                      logo: "lib/images/esa-black.png",
-                      background: "lib/images/esa-background.jpg",
+                      logo: "assets/esa-black.png",
+                      background: "assets/esa-background.jpg",
                     ),
                   ],
                   height: MediaQuery.of(context).size.width * .325,
@@ -75,12 +76,12 @@ class SidebarDrawer extends StatelessWidget {
                   children: const [
                     Application(
                       name: "Elements",
-                      logo: "lib/images/elements-black.png",
+                      logo: "assets/elements-black.png",
                       themeColor: Color(0xff198db3),
                     ),
                     Application(
                       name: "Preacher",
-                      logo: "lib/images/preacher-black.png",
+                      logo: "assets/preacher-black.png",
                       themeColor: Colors.red,
                     ),
                   ],
@@ -111,7 +112,7 @@ class SidebarDrawer extends StatelessWidget {
                               context: context,
                               applicationIcon: Image(
                                 image: const AssetImage(
-                                    "lib/images/esa-logo.png"),
+                                    "assets/esa-logo.png"),
                                 width: MediaQuery.of(context).size.width * .5,
                               ),
                             );
@@ -123,7 +124,7 @@ class SidebarDrawer extends StatelessWidget {
                               letterSpacing: 2,
                               fontWeight: FontWeight.bold,
                               fontSize: (MediaQuery.of(context).size.height +
-                                  MediaQuery.of(context).size.width) /
+                                      MediaQuery.of(context).size.width) /
                                   2 *
                                   .03,
                             ),
@@ -134,12 +135,12 @@ class SidebarDrawer extends StatelessWidget {
                         padding: EdgeInsets.only(
                             top: MediaQuery.of(context).size.width * .05),
                         child: Text(
-                          "ESA Mira",
+                          appTitle,
                           style: TextStyle(
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold,
                             fontSize: (MediaQuery.of(context).size.height +
-                                MediaQuery.of(context).size.width) /
+                                    MediaQuery.of(context).size.width) /
                                 2 *
                                 .03,
                           ),
@@ -151,7 +152,7 @@ class SidebarDrawer extends StatelessWidget {
                           letterSpacing: 2,
                           fontWeight: FontWeight.bold,
                           fontSize: (MediaQuery.of(context).size.height +
-                              MediaQuery.of(context).size.width) /
+                                  MediaQuery.of(context).size.width) /
                               2 *
                               .03,
                         ),
@@ -161,8 +162,8 @@ class SidebarDrawer extends StatelessWidget {
                             top: MediaQuery.of(context).size.width * .05),
                         child: Text(
                           AppLocalizations.of(context)
-                              .translate('name')
-                              .capitalize() +
+                                  .translate('name')
+                                  .capitalize() +
                               ' [' +
                               AppLocalizations.of(context).translate('key') +
                               ']',
@@ -170,7 +171,7 @@ class SidebarDrawer extends StatelessWidget {
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold,
                             fontSize: (MediaQuery.of(context).size.height +
-                                MediaQuery.of(context).size.width) /
+                                    MediaQuery.of(context).size.width) /
                                 2 *
                                 .03,
                           ),
@@ -202,10 +203,10 @@ void autoAboutDialog(context) {
   showAboutDialog(
     context: context,
     applicationVersion: '3.0.0',
-    applicationName: 'USSR Mira',
+    applicationName: appTitle,
     applicationLegalese: 'Kristóf Kékesi',
     applicationIcon: Image.asset(
-      'lib/images/esa-logo.png',
+      'assets/esa-logo.png',
       width: 120,
       height: 120,
     ),

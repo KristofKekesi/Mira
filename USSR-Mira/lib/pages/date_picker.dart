@@ -116,7 +116,7 @@ class _DatePickerPage extends State<DatePickerPage> {
             child: Container(
               decoration: BoxDecoration(
                 image: const DecorationImage(
-                  image: AssetImage('lib/images/ussr-background.jpg'),
+                  image: AssetImage('assets/esa-background.jpg'),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.all(

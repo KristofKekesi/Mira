@@ -14,8 +14,8 @@ class Application extends StatelessWidget {
 
   const Application(
       {Key? key,
-        required this.name,
-        required this.logo,
+      required this.name,
+      required this.logo,
         this.themeColor,
         this.background})
       : super(key: key);
@@ -34,14 +34,14 @@ class Application extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.all(
                 Radius.circular((MediaQuery.of(context).size.width +
-                    MediaQuery.of(context).size.height) /
+                        MediaQuery.of(context).size.height) /
                     2 *
                     .02),
               ),
               child: themeColor != null ? ColorFiltered(
                 colorFilter: ColorFilter.mode(themeColor!, BlendMode.color),
                 child: const Image(
-                  image: AssetImage('lib/images/esa-background.jpg'),
+                  image: AssetImage('assets/esa-background.jpg'),
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: double.infinity,
@@ -59,7 +59,7 @@ class Application extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular((MediaQuery.of(context).size.width +
-                        MediaQuery.of(context).size.height) /
+                            MediaQuery.of(context).size.height) /
                         2 *
                         .04),
                   ),
@@ -67,15 +67,15 @@ class Application extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 padding:
-                EdgeInsets.all(MediaQuery.of(context).size.width * .035),
+                    EdgeInsets.all(MediaQuery.of(context).size.width * .035),
                 child:
-                Opacity(
-                  opacity: .25,
-                  child:
-                  Image(
-                    image: AssetImage(logo),
-                    width: MediaQuery.of(context).size.width * .2,
-                  ),),
+                    Opacity(
+                      opacity: .25,
+                      child:
+                    Image(
+                      image: AssetImage(logo),
+                      width: MediaQuery.of(context).size.width * .2,
+                    ),),
               ),
             ),
           ],

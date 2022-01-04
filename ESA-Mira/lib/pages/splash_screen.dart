@@ -29,10 +29,10 @@ class SplashScreenPage extends StatelessWidget {
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         loadingTextPadding: EdgeInsets.zero,
-        imageBackground: const AssetImage('lib/images/esa-background.jpg'),
+        imageBackground: const AssetImage('assets/esa-background.jpg'),
         backgroundColor: const Color(0xFFD66F3D),
         image: const Image(
-          image: AssetImage('lib/images/esa-logo.png'),
+          image: AssetImage('assets/esa-logo.png'),
         ),
         photoSize: 50,
         useLoader: true,
