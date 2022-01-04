@@ -45,19 +45,19 @@ class SidebarDrawer extends StatelessWidget {
                 PromoWidget(
                   children: const [
                     Application(
-                      name: "NASA Mira",
+                      name: "ESA Mira",
                       logo: "lib/images/nasa-black.png",
-                      themeColor: Color(0xffE8672D),
+                      background: "lib/images/nasa-background.jpg",
                     ),
                     Application(
-                      name: "NASA Mira",
-                      logo: "lib/images/nasa-black.png",
-                      themeColor: Color(0xffd02717),
+                      name: "USSR Mira",
+                      logo: "lib/images/ussr-black.png",
+                      background: "lib/images/ussr-background.jpg",
                     ),
                     Application(
                       name: "ESA Mira",
                       logo: "lib/images/esa-black.png",
-                      themeColor: Color(0xff0b29d2),
+                      background: "lib/images/esa-background.jpg",
                     ),
                   ],
                   height: MediaQuery.of(context).size.width * .325,
@@ -81,7 +81,7 @@ class SidebarDrawer extends StatelessWidget {
                     Application(
                       name: "Preacher",
                       logo: "lib/images/preacher-black.png",
-                      themeColor: Color(0xffd02717),
+                      themeColor: Colors.red,
                     ),
                   ],
                   height: MediaQuery.of(context).size.width * .25,
@@ -111,7 +111,7 @@ class SidebarDrawer extends StatelessWidget {
                               context: context,
                               applicationIcon: Image(
                                 image: const AssetImage(
-                                    "lib/images/nasa-logo.png"),
+                                    "lib/images/esa-logo.png"),
                                 width: MediaQuery.of(context).size.width * .5,
                               ),
                             );
@@ -123,7 +123,7 @@ class SidebarDrawer extends StatelessWidget {
                               letterSpacing: 2,
                               fontWeight: FontWeight.bold,
                               fontSize: (MediaQuery.of(context).size.height +
-                                      MediaQuery.of(context).size.width) /
+                                  MediaQuery.of(context).size.width) /
                                   2 *
                                   .03,
                             ),
@@ -134,12 +134,12 @@ class SidebarDrawer extends StatelessWidget {
                         padding: EdgeInsets.only(
                             top: MediaQuery.of(context).size.width * .05),
                         child: Text(
-                          "NASA Mira",
+                          "ESA Mira",
                           style: TextStyle(
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold,
                             fontSize: (MediaQuery.of(context).size.height +
-                                    MediaQuery.of(context).size.width) /
+                                MediaQuery.of(context).size.width) /
                                 2 *
                                 .03,
                           ),
@@ -151,7 +151,7 @@ class SidebarDrawer extends StatelessWidget {
                           letterSpacing: 2,
                           fontWeight: FontWeight.bold,
                           fontSize: (MediaQuery.of(context).size.height +
-                                  MediaQuery.of(context).size.width) /
+                              MediaQuery.of(context).size.width) /
                               2 *
                               .03,
                         ),
@@ -161,8 +161,8 @@ class SidebarDrawer extends StatelessWidget {
                             top: MediaQuery.of(context).size.width * .05),
                         child: Text(
                           AppLocalizations.of(context)
-                                  .translate('name')
-                                  .capitalize() +
+                              .translate('name')
+                              .capitalize() +
                               ' [' +
                               AppLocalizations.of(context).translate('key') +
                               ']',
@@ -170,7 +170,7 @@ class SidebarDrawer extends StatelessWidget {
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold,
                             fontSize: (MediaQuery.of(context).size.height +
-                                    MediaQuery.of(context).size.width) /
+                                MediaQuery.of(context).size.width) /
                                 2 *
                                 .03,
                           ),
@@ -202,10 +202,10 @@ void autoAboutDialog(context) {
   showAboutDialog(
     context: context,
     applicationVersion: '3.0.0',
-    applicationName: 'NASA Mira',
+    applicationName: 'ESA Mira',
     applicationLegalese: 'Kristóf Kékesi',
     applicationIcon: Image.asset(
-      'lib/images/nasa-logo.png',
+      'lib/images/esa-logo.png',
       width: 120,
       height: 120,
     ),

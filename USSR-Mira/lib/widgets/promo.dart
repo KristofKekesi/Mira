@@ -2,7 +2,6 @@
 import 'dart:io';
 
 // Flutter
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'min.dart';
@@ -10,13 +9,15 @@ import 'min.dart';
 class Application extends StatelessWidget {
   final String name;
   final String logo;
-  final Color themeColor;
+  final String? background;
+  final Color? themeColor;
 
   const Application(
       {Key? key,
-      required this.name,
-      required this.logo,
-      required this.themeColor})
+        required this.name,
+        required this.logo,
+        this.themeColor,
+        this.background})
       : super(key: key);
 
   @override
@@ -33,18 +34,23 @@ class Application extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.all(
                 Radius.circular((MediaQuery.of(context).size.width +
-                        MediaQuery.of(context).size.height) /
+                    MediaQuery.of(context).size.height) /
                     2 *
                     .02),
               ),
-              child: ColorFiltered(
-                colorFilter: ColorFilter.mode(themeColor, BlendMode.color),
+              child: themeColor != null ? ColorFiltered(
+                colorFilter: ColorFilter.mode(themeColor!, BlendMode.color),
                 child: const Image(
-                  image: AssetImage('lib/images/ussr-background.jpg'),
+                  image: AssetImage('lib/images/esa-background.jpg'),
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: double.infinity,
                 ),
+              ) : Image(
+                image: AssetImage(background!),
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
               ),
             ),
             Tooltip(
@@ -53,7 +59,7 @@ class Application extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular((MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
+                        MediaQuery.of(context).size.height) /
                         2 *
                         .04),
                   ),
@@ -61,15 +67,15 @@ class Application extends StatelessWidget {
                 width: double.infinity,
                 height: double.infinity,
                 padding:
-                    EdgeInsets.all(MediaQuery.of(context).size.width * .035),
+                EdgeInsets.all(MediaQuery.of(context).size.width * .035),
                 child:
-                    Opacity(
-                      opacity: .25,
-                      child:
-                    Image(
-                      image: AssetImage(logo),
-                      width: MediaQuery.of(context).size.width * .2,
-                    ),),
+                Opacity(
+                  opacity: .25,
+                  child:
+                  Image(
+                    image: AssetImage(logo),
+                    width: MediaQuery.of(context).size.width * .2,
+                  ),),
               ),
             ),
           ],

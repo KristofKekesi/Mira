@@ -123,7 +123,7 @@ class SidebarDrawer extends StatelessWidget {
                               letterSpacing: 2,
                               fontWeight: FontWeight.bold,
                               fontSize: (MediaQuery.of(context).size.height +
-                                  MediaQuery.of(context).size.width) /
+                                      MediaQuery.of(context).size.width) /
                                   2 *
                                   .03,
                             ),
@@ -139,7 +139,7 @@ class SidebarDrawer extends StatelessWidget {
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold,
                             fontSize: (MediaQuery.of(context).size.height +
-                                MediaQuery.of(context).size.width) /
+                                    MediaQuery.of(context).size.width) /
                                 2 *
                                 .03,
                           ),
@@ -151,7 +151,7 @@ class SidebarDrawer extends StatelessWidget {
                           letterSpacing: 2,
                           fontWeight: FontWeight.bold,
                           fontSize: (MediaQuery.of(context).size.height +
-                              MediaQuery.of(context).size.width) /
+                                  MediaQuery.of(context).size.width) /
                               2 *
                               .03,
                         ),
@@ -161,8 +161,8 @@ class SidebarDrawer extends StatelessWidget {
                             top: MediaQuery.of(context).size.width * .05),
                         child: Text(
                           AppLocalizations.of(context)
-                              .translate('name')
-                              .capitalize() +
+                                  .translate('name')
+                                  .capitalize() +
                               ' [' +
                               AppLocalizations.of(context).translate('key') +
                               ']',
@@ -170,7 +170,7 @@ class SidebarDrawer extends StatelessWidget {
                             letterSpacing: 2,
                             fontWeight: FontWeight.bold,
                             fontSize: (MediaQuery.of(context).size.height +
-                                MediaQuery.of(context).size.width) /
+                                    MediaQuery.of(context).size.width) /
                                 2 *
                                 .03,
                           ),
@@ -202,7 +202,7 @@ void autoAboutDialog(context) {
   showAboutDialog(
     context: context,
     applicationVersion: '3.0.0',
-    applicationName: 'USSR Mira',
+    applicationName: 'ESA Mira',
     applicationLegalese: 'Kristóf Kékesi',
     applicationIcon: Image.asset(
       'lib/images/esa-logo.png',

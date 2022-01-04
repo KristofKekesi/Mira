@@ -1,0 +1,67 @@
+[
+	{
+		"status": "active",
+
+		"mission": "ExoMars 2016",
+		"name": "Schiaparelli EDM",
+		"type": "lander",
+		"operator": ["ESA", "Roscosmos"],
+		"manufacturer": "Thales Alenia Space",
+
+		"launch": {"year": 2016, "month": 3, "day": 14},
+		"arrive": {"year": 2016, "month": 10, "day": 19},
+		"connection-lost": {"year": 2016, "month": 10, "day": 19},
+		"end": {"year": 2016, "month": 10, "day": 19},
+
+		"api-enabled": false
+	},
+	{
+		"status": "active",
+
+		"mission": "ExoMars 2016",
+		"nick": "TGO",
+		"name": "Trace Gas Orbiter",
+		"type": "orbiter",
+		"operator": ["ESA", "Roscosmos"],
+		"manufacturer": "Thales Alenia Space",
+
+		"launch": {"year": 2016, "month": 3, "day": 14},
+		"arrive": {"year": 2016, "month": 10, "day": 19},
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	},
+	{
+		"status": "active",
+
+		"mission": null,
+		"name": "Rosetta",
+		"type": "flyby",
+		"operator": ["ESA"],
+		"manufacturer": "ESA",
+
+		"launch": {"year": 2004, "month": 3, "day": 2},
+		"arrive": {"year": 2005, "month": 3, "day": 4},
+		"connection-lost": {"year": 2016, "month": 9, "day": 30},
+		"end": {"year": 2016, "month": 9, "day": 30},
+
+		"api-enabled": false
+	},
+	{
+		"status": "active",
+
+		"mission": null,
+		"name": "Mars Express",
+		"type": "orbiter",
+		"operator": ["ESA"],
+		"manufacturer": "ESA",
+
+		"launch": {"year": 2003, "month": 6, "day": 2},
+		"arrive": {"year": 2003, "month": 12, "day": 25},
+		"connection-lost": null,
+		"end": null,
+
+		"api-enabled": false
+	}
+]
