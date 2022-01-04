@@ -1,6 +1,6 @@
 [
 	{
-		"status": "active",
+		"status": "inactive",
 
 		"mission": "ExoMars 2016",
 		"name": "Schiaparelli EDM",
@@ -33,7 +33,7 @@
 		"api-enabled": false
 	},
 	{
-		"status": "active",
+		"status": "inactive",
 
 		"mission": null,
 		"name": "Rosetta",
