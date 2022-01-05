@@ -4,7 +4,11 @@ import 'dart:io';
 // Flutter
 import 'package:flutter/material.dart';
 
+// widgets
 import 'min.dart';
+
+// utils
+import '../pass.dart';
 
 class Application extends StatelessWidget {
   final String name;
@@ -41,7 +45,7 @@ class Application extends StatelessWidget {
               child: themeColor != null ? ColorFiltered(
                 colorFilter: ColorFilter.mode(themeColor!, BlendMode.color),
                 child: const Image(
-                  image: AssetImage('assets/esa-background.jpg'),
+                  image: AssetImage(appBackground),
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: double.infinity,

@@ -4,6 +4,7 @@ import 'dart:convert';
 // Flutter
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import '../pass.dart';
 
 // widgets
 import 'min.dart';
@@ -108,7 +109,7 @@ class _CollectionInner extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     image: const DecorationImage(
-                      image: AssetImage('assets/esa-background.jpg'),
+                      image: AssetImage(appBackground),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.all(

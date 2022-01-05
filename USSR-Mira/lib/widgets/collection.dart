@@ -15,6 +15,7 @@ import '../pages/vehicle_spec_page.dart';
 // utils
 import '../utils/localization.dart';
 import '../utils/update.dart';
+import '../pass.dart';
 
 List<dynamic> hardCodeData = [];
 var roverGridCaption = AutoSizeGroup();
@@ -108,7 +109,7 @@ class _CollectionInner extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     image: const DecorationImage(
-                      image: AssetImage('assets/esa-background.jpg'),
+                      image: AssetImage(appBackground),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.all(

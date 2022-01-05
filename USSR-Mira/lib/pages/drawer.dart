@@ -14,6 +14,39 @@ import '../pass.dart';
 class SidebarDrawer extends StatelessWidget {
   const SidebarDrawer({Key? key}) : super(key: key);
 
+  List<Application> miraCollection() {
+    List<Application> _applications = [];
+    if (appTitle != "NASA Mira") {
+      _applications.add(
+        const Application(
+          name: "NASA Mira",
+          logo: "assets/nasa-black.png",
+          background: "assets/nasa-background.jpg",
+        ),
+      );
+    }
+    if (appTitle != "ESA Mira") {
+      _applications.add(
+        const Application(
+          name: "ESA Mira",
+          logo: "assets/esa-black.png",
+          background: "assets/esa-background.jpg",
+        ),
+      );
+    }
+    if (appTitle != "USSR Mira") {
+      _applications.add(
+        const Application(
+          name: "USSR Mira",
+          logo: "assets/ussr-black.png",
+          background: "assets/ussr-background.jpg",
+        ),
+      );
+    }
+
+    return _applications;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,23 +77,7 @@ class SidebarDrawer extends StatelessWidget {
                   ),
                 ),
                 PromoWidget(
-                  children: const [
-                    Application(
-                      name: "NASA Mira",
-                      logo: "assets/nasa-black.png",
-                      background: "assets/nasa-background.jpg",
-                    ),
-                    Application(
-                      name: "USSR Mira",
-                      logo: "assets/ussr-black.png",
-                      background: "assets/ussr-background.jpg",
-                    ),
-                    Application(
-                      name: "ESA Mira",
-                      logo: "assets/esa-black.png",
-                      background: "assets/esa-background.jpg",
-                    ),
-                  ],
+                  children: miraCollection(),
                   height: MediaQuery.of(context).size.width * .325,
                 ),
                 Padding(
@@ -111,8 +128,7 @@ class SidebarDrawer extends StatelessWidget {
                             showLicensePage(
                               context: context,
                               applicationIcon: Image(
-                                image: const AssetImage(
-                                    "assets/esa-logo.png"),
+                                image: const AssetImage(appLogo),
                                 width: MediaQuery.of(context).size.width * .5,
                               ),
                             );
@@ -206,7 +222,7 @@ void autoAboutDialog(context) {
     applicationName: appTitle,
     applicationLegalese: 'Kristóf Kékesi',
     applicationIcon: Image.asset(
-      'assets/esa-logo.png',
+      appLogo,
       width: 120,
       height: 120,
     ),

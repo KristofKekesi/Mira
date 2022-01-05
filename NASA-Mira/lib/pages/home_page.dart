@@ -6,6 +6,7 @@ import 'drawer.dart';
 
 // utils
 import '../utils/localization.dart';
+import '../pass.dart';
 
 // widgets
 import '../widgets/apod.dart';
@@ -28,11 +29,11 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    Opacity(
+                    const Opacity(
                       opacity: 0,
                       child: Appbar(
-                        title: AppLocalizations.of(context).translate("title"),
-                        rightAction: const AppBarAction(
+                        title: appTitle,
+                        rightAction: AppBarAction(
                           icon: Icons.menu,
                         ),
                       ),
@@ -76,7 +77,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Appbar(
-            title: AppLocalizations.of(context).translate("title"),
+            title: appTitle,
             rightAction: AppBarAction(
               icon: Icons.menu,
               tooltip: AppLocalizations.of(context).translate("selectors"),

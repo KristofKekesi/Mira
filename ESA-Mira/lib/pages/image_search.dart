@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 
 // Flutter
 import 'package:flutter/material.dart';
+import '../pass.dart';
 
 // widgets
 import '../widgets/appbar.dart';
@@ -74,7 +75,7 @@ FutureBuilder<dynamic> _data(String url) {
                           child: Container(
                             decoration: BoxDecoration(
                               image: const DecorationImage(
-                                image: AssetImage('assets/esa-background.jpg'),
+                                image: AssetImage(appBackground),
                                 fit: BoxFit.cover,
                               ),
                               borderRadius: BorderRadius.all(

@@ -1,7 +1,12 @@
 // Flutter
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+
+// widgets
 import './text_styles.dart';
+
+// utils
+import '../pass.dart';
 
 class ContentBox extends StatelessWidget {
   final String title;
@@ -55,7 +60,7 @@ class ContentBox extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     image: const DecorationImage(
-                      image: AssetImage('assets/esa-background.jpg'),
+                      image: AssetImage(appBackground),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.all(

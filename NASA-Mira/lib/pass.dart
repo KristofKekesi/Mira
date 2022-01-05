@@ -2,5 +2,5 @@
 const apiKey = "DEMO_KEY";
 
 const appTitle = "NASA Mira";
-const appLogo = "lib/images/nasa-logo.png";
-const appBackground = "lib/images/nasa-background.jpg";
+const appLogo = "assets/nasa-logo.png";
+const appBackground = "assets/nasa-background.jpg";

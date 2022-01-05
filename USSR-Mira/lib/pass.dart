@@ -2,5 +2,5 @@
 const apiKey = "DEMO_KEY";
 
 const appTitle = "USSR Mira";
-const appLogo = "lib/images/ussr-logo.png";
-const appBackground = "lib/images/ussr-background.jpg";
+const appLogo = "assets/ussr-logo.png";
+const appBackground = "assets/ussr-background.jpg";
