@@ -46,6 +46,11 @@ class HomePage extends StatelessWidget {
                         children: [
                           const ApodWidget(),
                           Collection(
+                              isVisible: notifierAreHelicoptersVisible,
+                              inputType: "type",
+                              filter: "helicopter",
+                              outputType: "type"),
+                          Collection(
                               isVisible: notifierAreRoversVisible,
                               inputType: "type",
                               filter: "rover",
@@ -82,7 +87,7 @@ class HomePage extends StatelessWidget {
               icon: Icons.menu,
               tooltip: AppLocalizations.of(context).translate("selectors"),
               action: () {
-                showSelectors(context, "main", false);
+                showSelectors(context);
               },
             ),
           ),

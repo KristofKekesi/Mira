@@ -1,5 +1,5 @@
 // Flutter
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 /// [SpaceJamTextStyles] are commonly used [TextStyle]s made for
 /// general use in all kinds of applications.

@@ -137,7 +137,7 @@ class VehicleSearch extends StatelessWidget {
               icon: Icons.menu,
               tooltip: AppLocalizations.of(context).translate("selectors"),
               action: () {
-                showSelectors(context, "search", true);
+                showSelectors(context, areTypesDisabled: true);
               },
             ),
           ),

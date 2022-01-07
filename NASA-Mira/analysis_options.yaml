@@ -1,4 +1,4 @@
-include: package:flutter_lints/flutter.yaml
+include: package:all_lint_rules_community/all.yaml
 
 analyzer:
   exclude: [
@@ -10,11 +10,9 @@ analyzer:
 
 linter:
   rules:
-    - camel_case_types
-    - camel_case_extensions
-    - avoid_empty_else
-    - empty_statements
-    - empty_catches
-    - use_key_in_widget_constructors
-    - prefer_const_constructors_in_immutables
-    - prefer_spread_collections
+    prefer_single_quotes: false
+    directives_ordering: false
+    always_use_package_imports: false
+    prefer_final_parameters: false
+    avoid_types_on_closure_parameters: false
+    omit_local_variable_types: false
