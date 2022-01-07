@@ -1,21 +1,21 @@
 // Flutter
-import 'package:flutter_test/flutter_test.dart';
+import "package:flutter_test/flutter_test.dart";
 
 // MiraApp
-import 'package:nasamira/main.dart';
+import "package:nasamira/main.dart";
 
 // pages
-import 'package:nasamira/pages/home_page.dart';
-import 'package:nasamira/pages/date_picker.dart';
-import 'package:nasamira/pages/drawer.dart';
-import 'package:nasamira/pages/image_search.dart';
-import 'package:nasamira/pages/vehicle_spec_page.dart';
-import 'package:nasamira/pages/vehicle_search.dart';
+import "package:nasamira/pages/home_page.dart";
+import "package:nasamira/pages/date_picker.dart";
+import "package:nasamira/pages/drawer.dart";
+import "package:nasamira/pages/image_search.dart";
+import "package:nasamira/pages/vehicle_spec_page.dart";
+import "package:nasamira/pages/vehicle_search.dart";
 
 void main() {
-  group('Pages', () {
+  group("Pages", () {
     // HomePage
-    testWidgets('HomePage', (WidgetTester tester) async {
+    testWidgets("HomePage", (WidgetTester tester) async {
       await tester.pumpWidget(
         const MiraApp(
           child: HomePage(),
@@ -24,7 +24,7 @@ void main() {
     });
 
     // Drawer
-    testWidgets('Drawer', (WidgetTester tester) async {
+    testWidgets("Drawer", (WidgetTester tester) async {
       await tester.pumpWidget(
         const MiraApp(
           child: SidebarDrawer(),
@@ -33,7 +33,7 @@ void main() {
     });
 
     // SpecificationPage
-    testWidgets('SpecPage', (WidgetTester tester) async {
+    testWidgets("SpecPage", (WidgetTester tester) async {
       await tester.pumpWidget(
         const MiraApp(
           child: RoverSpecPage(
@@ -47,7 +47,7 @@ void main() {
     });
 
     // VehicleSearchPage
-    testWidgets('VehicleSearchPage', (WidgetTester tester) async {
+    testWidgets("VehicleSearchPage", (WidgetTester tester) async {
       await tester.pumpWidget(
         const MiraApp(
           child: VehicleSearch(type: "mission", value: "test"),
@@ -56,7 +56,7 @@ void main() {
     });
 
     // DatePickerPage
-    testWidgets('DatePickerPage', (WidgetTester tester) async {
+    testWidgets("DatePickerPage", (WidgetTester tester) async {
       await tester.pumpWidget(
         const MiraApp(
           child: DatePickerPage(dataSector: 9),
@@ -65,7 +65,7 @@ void main() {
     });
 
     // ImageSearchPage
-    testWidgets('ImageSearchPage', (WidgetTester tester) async {
+    testWidgets("ImageSearchPage", (WidgetTester tester) async {
       await tester.pumpWidget(
         const MiraApp(
           child: SearchWindow(
