@@ -2,6 +2,7 @@ include: package:all_lint_rules_community/all.yaml
 
 analyzer:
   exclude: [
+      ios/**,
       build/**,
       packages/**
   ]
@@ -16,3 +17,6 @@ linter:
     prefer_final_parameters: false
     avoid_types_on_closure_parameters: false
     omit_local_variable_types: false
+    prefer_if_elements_to_conditional_expressions: false
+    unnecessary_final: false
+    diagnostic_describe_all_properties: false

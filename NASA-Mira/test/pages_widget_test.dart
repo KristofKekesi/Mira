@@ -40,8 +40,8 @@ void main() {
               dataSector: 9,
               name: "test",
               type: "rover",
-              operator: ["NASA"],
-              manufacturer: "JPL"),
+              operator: <String>["NASA"],
+              manufacturer: "JPL",),
         ),
       );
     });
@@ -72,7 +72,7 @@ void main() {
               name: "name",
               url:
                   "https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/photos?sol=10&api_key=DEMO_KEY",
-              time: "time"),
+              time: "time",),
         ),
       );
     });

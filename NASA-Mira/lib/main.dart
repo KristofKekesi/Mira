@@ -1,17 +1,17 @@
 // Flutter
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import "package:flutter/material.dart";
+import "package:flutter_localizations/flutter_localizations.dart";
 
 // utils
-import 'utils/orientation_lock.dart';
-import 'utils/no_material_glow.dart';
-import 'utils/material_color.dart';
-import 'utils/dark_titlebar.dart';
-import 'utils/localization.dart';
+import "utils/orientation_lock.dart";
+import "utils/no_material_glow.dart";
+import "utils/material_color.dart";
+import "utils/dark_titlebar.dart";
+import "utils/localization.dart";
 
 // pages
-import 'pages/splash_screen.dart';
-import 'pages/home_page.dart';
+import "pages/splash_screen.dart";
+import "pages/home_page.dart";
 
 void main() {
   darkTitlebar();
@@ -24,16 +24,20 @@ void main() {
   );
 }
 
+/// The MiraApp
 class MiraApp extends StatefulWidget {
-  const MiraApp({Key? key, required this.child}) : super(key: key);
+  /// Constructor
+  const MiraApp({required this.child, Key? key, }) : super(key: key);
 
+  /// Child to pass on.
   final Widget child;
 
   @override
-  _MiraAppState createState() => _MiraAppState();
+  MiraAppState createState() => MiraAppState();
 }
 
-class _MiraAppState extends State<MiraApp> {
+/// Stateful section of [MiraApp].
+class MiraAppState extends State<MiraApp> {
   @override
   void initState() {
     super.initState();
@@ -41,25 +45,22 @@ class _MiraAppState extends State<MiraApp> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: (context, Widget? child) {
-        return ScrollConfiguration(
+  Widget build(BuildContext context) => MaterialApp(
+      builder: (BuildContext context, Widget? child) => ScrollConfiguration(
           behavior: NoScrollGlow(),
           child: child!,
-        );
-      },
-      localizationsDelegates: const [
+        ),
+      localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('en', ''),
-        Locale('de', ''),
-        Locale('da', ''),
-        Locale('hu', ''),
+      supportedLocales: const <Locale>[
+        Locale("en", ""),
+        Locale("de", ""),
+        Locale("da", ""),
+        Locale("hu", ""),
       ],
       localeResolutionCallback: (Locale? locale, supportedLocales) {
         for (var supportedLocale in supportedLocales) {
@@ -77,5 +78,4 @@ class _MiraAppState extends State<MiraApp> {
       ),
       home: widget.child,
     );
-  }
 }

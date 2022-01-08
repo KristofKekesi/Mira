@@ -1,28 +1,29 @@
 // Flutter
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 // pages
-import 'drawer.dart';
+import "drawer.dart";
 
 // utils
-import '../utils/localization.dart';
-import '../pass.dart';
+import "../utils/localization.dart";
+import "../pass.dart";
 
 // widgets
-import '../widgets/apod.dart';
-import '../widgets/appbar.dart';
-import '../widgets/collection.dart';
-import '../widgets/selector.dart';
+import "../widgets/apod.dart";
+import "../widgets/appbar.dart";
+import "../widgets/collection.dart";
+import "../widgets/selector.dart";
 
+/// The homepage, the first page the user sees.
 class HomePage extends StatelessWidget {
+  /// Constructor
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
-        children: [
+        children: <Widget>[
           SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,35 +42,35 @@ class HomePage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(
                           left: MediaQuery.of(context).size.width * .05,
-                          right: MediaQuery.of(context).size.width * .05),
+                          right: MediaQuery.of(context).size.width * .05,),
                       child: Column(
-                        children: [
+                        children: <Widget>[
                           const ApodWidget(),
                           Collection(
                               isVisible: notifierAreHelicoptersVisible,
                               inputType: "type",
                               filter: "helicopter",
-                              outputType: "type"),
+                              outputType: "type",),
                           Collection(
                               isVisible: notifierAreRoversVisible,
                               inputType: "type",
                               filter: "rover",
-                              outputType: "type"),
+                              outputType: "type",),
                           Collection(
                               isVisible: notifierAreOrbitersVisible,
                               inputType: "type",
                               filter: "orbiter",
-                              outputType: "type"),
+                              outputType: "type",),
                           Collection(
                               isVisible: notifierAreLandersVisible,
                               inputType: "type",
                               filter: "lander",
-                              outputType: "type"),
+                              outputType: "type",),
                           Collection(
                               isVisible: notifierAreFlybysVisible,
                               inputType: "type",
                               filter: "flyby",
-                              outputType: "type"),
+                              outputType: "type",),
                           Container(
                             height: MediaQuery.of(context).size.width * .05,
                           ),
@@ -95,5 +96,4 @@ class HomePage extends StatelessWidget {
       ),
       drawer: const SidebarDrawer(),
     );
-  }
 }

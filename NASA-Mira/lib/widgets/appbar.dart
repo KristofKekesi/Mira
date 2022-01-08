@@ -1,53 +1,64 @@
 // Dart
-import 'dart:ui';
+import "dart:ui";
 
 // Flutter
-import 'package:flutter/material.dart';
-import './text_styles.dart';
+import "package:flutter/material.dart";
+import "./text_styles.dart";
 
 // widgets
-import 'min.dart';
+import "min.dart";
 
+/// An icon with onTap event used in the [Appbar].
 class AppBarAction extends StatelessWidget {
-  const AppBarAction({Key? key, required this.icon, this.tooltip = "", this.action}) : super(key: key);
+  /// Constructor
+  const AppBarAction({
+    required this.icon,
+    this.tooltip = "",
+    this.action,
+    Key? key,
+  }) : super(key: key);
 
+  /// Icon of the ap
   final IconData icon;
   final String? tooltip;
   final VoidCallback? action;
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: action,
-      child: Padding(
-        padding: EdgeInsets.only(
-          right: (MediaQuery.of(context).size.width +
-              MediaQuery.of(context).size.height) /
-              2 *
-              .04,
-        ),
-        child: Tooltip(
-          message: tooltip,
-          child: Icon(
-            icon,
-            size: MediaQuery.of(context).size.width * .075,
-            color: Colors.black,
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: action,
+        child: Padding(
+          padding: EdgeInsets.only(
+            right: (MediaQuery.of(context).size.width +
+                    MediaQuery.of(context).size.height) /
+                2 *
+                .04,
+          ),
+          child: Tooltip(
+            message: tooltip,
+            child: Icon(
+              icon,
+              size: MediaQuery.of(context).size.width * .075,
+              color: Colors.black,
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }
 
 class Appbar extends StatelessWidget {
+  const Appbar(
+      {
+      required this.title,
+      this.subtitle,
+      this.leftAction,
+      this.rightAction,
+        Key? key,})
+      : super(key: key);
+
   final String title;
   final String? subtitle;
   final AppBarAction? leftAction;
   final AppBarAction? rightAction;
-
-  const Appbar(
-      {Key? key, required this.title, this.subtitle, this.leftAction, this.rightAction})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -74,13 +85,13 @@ class Appbar extends StatelessWidget {
               sigmaY: (MediaQuery.of(context).size.height +
                       MediaQuery.of(context).size.width) /
                   2 *
-                  .02),
+                  .02,),
           child: Container(
             color: const Color.fromRGBO(255, 255, 255, .4),
             child: Padding(
               padding: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width * .05,
-                  right: MediaQuery.of(context).size.width * .05),
+                  right: MediaQuery.of(context).size.width * .05,),
               child: SafeArea(
                 bottom: false,
                 left: false,
@@ -97,10 +108,8 @@ class Appbar extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          leftAction != null ?
-                              leftAction! : const Min(),
+                          leftAction != null ? leftAction! : const Min(),
                           Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,9 +123,7 @@ class Appbar extends StatelessWidget {
                           ),
                         ],
                       ),
-                      rightAction != null
-                          ? rightAction! :
-                      const Min(),
+                      rightAction != null ? rightAction! : const Min(),
                     ],
                   ),
                 ),

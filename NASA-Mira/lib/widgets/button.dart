@@ -1,11 +1,11 @@
 // Flutter
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
+import "package:auto_size_text/auto_size_text.dart";
+import "package:flutter/material.dart";
 
-import 'min.dart';
+// Widgets
+import "min.dart";
 
 class AutoSizeTextStyle {
-  // constructor
   const AutoSizeTextStyle({this.maxLines = 1, this.group});
 
   final int maxLines;
@@ -13,7 +13,6 @@ class AutoSizeTextStyle {
 }
 
 class IconStyle {
-  // constructor
   const IconStyle({this.size = 24, this.color});
 
   final int size;
@@ -21,24 +20,24 @@ class IconStyle {
 }
 
 class Button extends StatelessWidget {
-  // constructor
   const Button(
-      {Key? key,
+      {
+        required this.valueFontSize,
+        required this.titleFontSize,
         this.background = Colors.white12,
         this.valueTextStyle = const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
         ),
-        required this.valueFontSize,
         this.titleTextStyle = const TextStyle(color: Colors.white70, fontWeight: FontWeight.bold),
-        required this.titleFontSize,
         this.tooltip = "",
         this.title,
         this.iconStyle = const IconStyle(color: null),
         this.autoSizeTextStyle = const AutoSizeTextStyle(),
         this.action,
         this.valueSizeGroup,
-        this.value})
+        this.value,
+        Key? key,})
       : super(key: key);
 
   final Color background;
@@ -66,9 +65,9 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle primaryFinalTextStyle =
+    final TextStyle primaryFinalTextStyle =
         valueTextStyle.copyWith(fontSize: valueFontSize);
-    TextStyle secondaryFinalTextStyle =
+    final TextStyle secondaryFinalTextStyle =
         titleTextStyle.copyWith(fontSize: titleFontSize);
 
     return GestureDetector(
@@ -84,7 +83,7 @@ class Button extends StatelessWidget {
             Radius.circular((MediaQuery.of(context).size.width +
                     MediaQuery.of(context).size.height) /
                 2 *
-                .02),
+                .02,),
           ),
           color: background,
         ),
@@ -92,7 +91,7 @@ class Button extends StatelessWidget {
           padding: EdgeInsets.all((MediaQuery.of(context).size.width +
                   MediaQuery.of(context).size.height) /
               2 *
-              .02),
+              .02,),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[

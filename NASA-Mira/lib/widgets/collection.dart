@@ -1,28 +1,37 @@
 // Dart
-import 'dart:convert';
+import "dart:convert";
 
 // Flutter
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import '../pass.dart';
+import "package:auto_size_text/auto_size_text.dart";
+import "package:flutter/material.dart";
+import "../pass.dart";
 
 // widgets
-import 'min.dart';
-import 'selector.dart';
+import "min.dart";
+import "selector.dart";
 
 // pages
-import '../pages/vehicle_spec_page.dart';
+import "../pages/vehicle_spec_page.dart";
 
 // utils
-import '../utils/localization.dart';
-import '../utils/update.dart';
+import "../utils/localization.dart";
+import "../utils/update.dart";
 
 List<dynamic> hardCodeData = [];
-var roverGridCaption = AutoSizeGroup();
-var roverGridTitle = AutoSizeGroup();
+AutoSizeGroup roverGridCaption = AutoSizeGroup();
+AutoSizeGroup roverGridTitle = AutoSizeGroup();
 int counter = 0;
 
 class _CollectionInner extends StatelessWidget {
+  const _CollectionInner(
+      {
+        required this.inputType,
+        required this.filter,
+        required this.data,
+        this.errorString = "",
+        Key? key,})
+      : super(key: key);
+
   final String inputType;
   final String filter;
 
@@ -30,18 +39,10 @@ class _CollectionInner extends StatelessWidget {
 
   final String errorString;
 
-  const _CollectionInner(
-      {Key? key,
-      required this.inputType,
-      required this.filter,
-      required this.data,
-      this.errorString = ""})
-      : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    List<Widget> roverList = [];
-    for (var index = 0; index < data.length; index++) {
+    final List<Widget> roverList = <Widget>[];
+    for (int index = 0; index < data.length; index++) {
       bool isPassed = false;
       switch (inputType) {
         case "type":
@@ -86,7 +87,7 @@ class _CollectionInner extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => RoverSpecPage(
+                      builder: (BuildContext context) => RoverSpecPage(
                             dataSector: index,
                             apiEnabled: data[index]["api-enabled"],
                             mission: data[index]["mission"],
@@ -100,7 +101,7 @@ class _CollectionInner extends StatelessWidget {
                             end: data[index]["end"],
                             operator: data[index]["operator"],
                             manufacturer: data[index]["manufacturer"],
-                          )),
+                          ),),
                 );
               },
               child: Padding(
@@ -116,7 +117,7 @@ class _CollectionInner extends StatelessWidget {
                       Radius.circular((MediaQuery.of(context).size.width +
                               MediaQuery.of(context).size.height) /
                           2 *
-                          .04),
+                          .04,),
                     ),
                   ),
                   width: MediaQuery.of(context).size.width * .38749,
@@ -125,7 +126,7 @@ class _CollectionInner extends StatelessWidget {
                     padding: EdgeInsets.all((MediaQuery.of(context).size.width +
                             MediaQuery.of(context).size.height) /
                         2 *
-                        .03),
+                        .03,),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -141,8 +142,8 @@ class _CollectionInner extends StatelessWidget {
                                       color: Colors.white70,
                                       fontWeight: FontWeight.bold,
                                       fontSize:
-                                          (MediaQuery.of(context).size.height *
-                                              .02),
+                                          MediaQuery.of(context).size.height *
+                                              .02,
                                     ),
                                     group: roverGridCaption,
                                     maxLines: 1,
@@ -176,8 +177,8 @@ class _CollectionInner extends StatelessWidget {
                                     color: Colors.white70,
                                     fontWeight: FontWeight.bold,
                                     fontSize:
-                                        (MediaQuery.of(context).size.height *
-                                            .02),
+                                        MediaQuery.of(context).size.height *
+                                            .02,
                                   ),
                                   group: roverGridCaption,
                                   maxLines: 1,
@@ -190,10 +191,10 @@ class _CollectionInner extends StatelessWidget {
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
-                                          fontSize: (MediaQuery.of(context)
+                                          fontSize: MediaQuery.of(context)
                                                   .size
                                                   .height *
-                                              .025),
+                                              .025,
                                         ),
                                       )
                                     : Text(
@@ -202,10 +203,10 @@ class _CollectionInner extends StatelessWidget {
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
-                                          fontSize: (MediaQuery.of(context)
+                                          fontSize: MediaQuery.of(context)
                                                   .size
                                                   .height *
-                                              .025),
+                                              .025,
                                         ),
                                       ),
                               ],
@@ -231,9 +232,6 @@ class _CollectionInner extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width * .825,
       child: Wrap(
-        direction: Axis.horizontal,
-        spacing: 0,
-        runSpacing: 0,
         children: roverList,
       ),
     );
@@ -241,6 +239,15 @@ class _CollectionInner extends StatelessWidget {
 }
 
 class Collection extends StatefulWidget {
+  const Collection({
+    required this.isVisible,
+    required this.inputType,
+    required this.filter,
+    required this.outputType,
+    this.errorString = "",
+    Key? key,
+  }) : super(key: key);
+
   final ValueNotifier<bool> isVisible;
 
   final String inputType;
@@ -249,50 +256,39 @@ class Collection extends StatefulWidget {
 
   final String errorString;
 
-  const Collection(
-      {Key? key,
-      required this.isVisible,
-      required this.inputType,
-      required this.filter,
-      required this.outputType,
-      this.errorString = ""})
-      : super(key: key);
-
   @override
-  _CollectionState createState() => _CollectionState();
+  CollectionState createState() => CollectionState();
 }
 
-class _CollectionState extends State<Collection> {
+class CollectionState extends State<Collection> {
   @override
-  Widget build(BuildContext context) {
-    // for sort
-    return ValueListenableBuilder(
-      builder: (BuildContext context, bool value, Widget? child) {
-        Widget _roverGridInnerWithSort() {
-          if (notifierIsReverse.value) {
-            return _CollectionInner(
-              data: hardCodeData.reversed.toList(),
-              inputType: widget.inputType,
-              filter: widget.filter,
-              errorString: widget.errorString,
-            );
-          } else {
-            return _CollectionInner(
-              data: hardCodeData,
-              inputType: widget.inputType,
-              filter: widget.filter,
-              errorString: widget.errorString,
-            );
+  Widget build(BuildContext context) => ValueListenableBuilder(
+        builder: (BuildContext context, bool value, Widget? child) {
+          Widget _roverGridInnerWithSort() {
+            if (notifierIsReverse.value) {
+              return _CollectionInner(
+                data: hardCodeData.reversed.toList(),
+                inputType: widget.inputType,
+                filter: widget.filter,
+                errorString: widget.errorString,
+              );
+            } else {
+              return _CollectionInner(
+                data: hardCodeData,
+                inputType: widget.inputType,
+                filter: widget.filter,
+                errorString: widget.errorString,
+              );
+            }
           }
-        }
 
-        return ValueListenableBuilder(
-          builder: (BuildContext context, bool value, Widget? child) {
-            if (widget.isVisible.value) {
-              return FutureBuilder(
+          return ValueListenableBuilder(
+            builder: (BuildContext context, bool value, Widget? child) {
+              if (widget.isVisible.value) {
+                return FutureBuilder(
                   future: DefaultAssetBundle.of(context)
-                      .loadString('assets/data.json'),
-                  builder: (context, snapshot) {
+                      .loadString("assets/data.json"),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (snapshot.hasData) {
                       hardCodeData = json.decode(snapshot.data.toString());
                       if (counter == 0) {
@@ -319,7 +315,8 @@ class _CollectionState extends State<Collection> {
                                 child: Text(
                                   AppLocalizations.of(context)
                                           .translateWithoutNullSafety(
-                                              widget.filter + "s") ??
+                                        "${widget.filter}s",
+                                      ) ??
                                       widget.errorString,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -354,7 +351,8 @@ class _CollectionState extends State<Collection> {
                                 child: Text(
                                   AppLocalizations.of(context)
                                           .translateWithoutNullSafety(
-                                              widget.filter + "s") ??
+                                        "${widget.filter}s",
+                                      ) ??
                                       widget.errorString,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -395,15 +393,15 @@ class _CollectionState extends State<Collection> {
                         ],
                       );
                     }
-                  });
-            } else {
-              return const Min();
-            }
-          },
-          valueListenable: widget.isVisible,
-        );
-      },
-      valueListenable: notifierIsReverse,
-    );
-  }
+                  },
+                );
+              } else {
+                return const Min();
+              }
+            },
+            valueListenable: widget.isVisible,
+          );
+        },
+        valueListenable: notifierIsReverse,
+      );
 }

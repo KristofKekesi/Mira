@@ -1,46 +1,52 @@
+// Ignore because working with API calls with complex Map returns.
+//ignore_for_file: avoid_dynamic_calls
+
 // Dart
-import 'package:dio/dio.dart';
+import "package:dio/dio.dart";
 
 // Flutter
-import 'package:flutter/material.dart';
-import './min.dart';
+import "package:flutter/material.dart";
+import "./min.dart";
 
 // pages
-import '../pages/fullscreen.dart';
+import "../pages/fullscreen.dart";
 
 // utils
-import '../utils/localization.dart';
-import '../pass.dart';
+import "../utils/localization.dart";
+import "../pass.dart";
 
-
-_fetchAPI(url) async {
-  Dio dio = Dio();
+// TODO(KristofKekesi): _fetchAPI into a new utility file.
+_fetchAPI(String url) async {
+  final Dio dio = Dio();
   dio.options.connectTimeout = 5000;
   dio.options.receiveTimeout = 30000;
-  Response<dynamic> response = await dio.get(url);
+  final Response<dynamic> response = await dio.get(url);
 
   return response;
 }
 
+/// The astronomy picture of day widget. This shows the
+/// image in asimilar way like an item in a collection.
 class ApodWidget extends StatefulWidget {
+  /// Constructor
   const ApodWidget({Key? key}) : super(key: key);
 
   @override
-  _ApodWidgetState createState() => _ApodWidgetState();
+  ApodWidgetState createState() => ApodWidgetState();
 }
 
-class _ApodWidgetState extends State<ApodWidget> {
+/// The stateful part of the widget.
+class ApodWidgetState extends State<ApodWidget> {
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
+  Widget build(BuildContext context) => FutureBuilder(
         future: _fetchAPI(
-            "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true"), //&date=2021-04-19
-        builder: (context, AsyncSnapshot<dynamic> snapshot) {
-          if (snapshot.hasData &&
-              snapshot.data.data["thumbnail_url"] != "") {
-            String mediaType = snapshot.data.data["media_type"];
-            String url = snapshot.data.data["url"];
-            String? thumbnailUrl = snapshot.data.data["thumbnail_url"];
+          "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true",
+        ), //&date=2021-04-19
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.hasData && snapshot.data.data["thumbnail_url"] != "") {
+            final String mediaType = snapshot.data.data["media_type"];
+            final String url = snapshot.data.data["url"];
+            final String? thumbnailUrl = snapshot.data.data["thumbnail_url"];
 
             String displayURL() {
               if (mediaType == "image") {
@@ -52,8 +58,9 @@ class _ApodWidgetState extends State<ApodWidget> {
 
             return Padding(
               padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.width * .03,
-                  bottom: MediaQuery.of(context).size.width * .0125),
+                top: MediaQuery.of(context).size.width * .03,
+                bottom: MediaQuery.of(context).size.width * .0125,
+              ),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.black,
@@ -62,10 +69,12 @@ class _ApodWidgetState extends State<ApodWidget> {
                     fit: BoxFit.contain,
                   ),
                   borderRadius: BorderRadius.all(
-                    Radius.circular((MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
-                        2 *
-                        .04),
+                    Radius.circular(
+                      (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .04,
+                    ),
                   ),
                 ),
                 width: MediaQuery.of(context).size.width * 0.8,
@@ -73,40 +82,41 @@ class _ApodWidgetState extends State<ApodWidget> {
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: GestureDetector(
-                      onTap: () {
-                        //_popup(context, title, copyright, url);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) {
-                              return FullScreen(imageURL: displayURL());
-                            },
+                    onTap: () {
+                      //_popup(context, title, copyright, url);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => FullScreen(
+                            imageURL: displayURL(),
                           ),
-                        );
-                      },
-                      child: Tooltip(
-                          message: AppLocalizations.of(context).translate("fullscreen"),
-                          child: Padding(
-                            padding: EdgeInsets.all(
-                                (MediaQuery.of(context).size.width +
-                                    MediaQuery.of(context).size.height) /
-                                    2 *
-                                    .03),
-                            child: Icon(
-                              Icons.fullscreen,
-                              color: Colors.white,
-                              size: MediaQuery.of(context).size.width *
-                                  .075,
-                          ),
+                        ),
+                      );
+                    },
+                    child: Tooltip(
+                      message:
+                          AppLocalizations.of(context).translate("fullscreen"),
+                      child: Padding(
+                        padding: EdgeInsets.all(
+                          (MediaQuery.of(context).size.width +
+                                  MediaQuery.of(context).size.height) /
+                              2 *
+                              .03,
+                        ),
+                        child: Icon(
+                          Icons.fullscreen,
+                          color: Colors.white,
+                          size: MediaQuery.of(context).size.width * .075,
                         ),
                       ),
                     ),
                   ),
                 ),
+              ),
             );
           } else {
             return const Min();
           }
-        },);
-  }
+        },
+      );
 }
