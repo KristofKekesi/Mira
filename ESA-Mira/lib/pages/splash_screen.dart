@@ -1,19 +1,21 @@
 // Flutter
-import 'package:flutter/material.dart';
-import 'package:splashscreen/splashscreen.dart';
+import "package:flutter/material.dart";
+import "package:splashscreen/splashscreen.dart";
 
 // utils
-import '../utils/localization.dart';
-import '../pass.dart';
+import "../utils/localization.dart";
+import "../pass.dart";
 
+/// Splash screen of the app.
 class SplashScreenPage extends StatelessWidget {
+  /// Constructor
+  const SplashScreenPage({required this.child, Key? key,}) : super(key: key);
+
+  /// The widget that will displayed after the splashscreen.
   final Widget child;
 
-  const SplashScreenPage({Key? key, required this.child}) : super(key: key);
-
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       body: SplashScreen(
         seconds: 2,
         title: const Text(
@@ -25,9 +27,9 @@ class SplashScreenPage extends StatelessWidget {
           ),
         ),
         loadingText: Text(
-          AppLocalizations.of(context).translate('loading'),
+          AppLocalizations.of(context).translate("loading"),
           style: const TextStyle(
-              fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold,),
         ),
         loadingTextPadding: EdgeInsets.zero,
         imageBackground: const AssetImage(appBackground),
@@ -42,5 +44,4 @@ class SplashScreenPage extends StatelessWidget {
         navigateAfterSeconds: child,
       ),
     );
-  }
 }

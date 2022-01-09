@@ -1,25 +1,30 @@
 // Flutter
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
+import "package:auto_size_text/auto_size_text.dart";
+import "package:flutter/material.dart";
 
-// widgets
-import './text_styles.dart';
+// Widgets
+import "./text_styles.dart";
 
 // utils
-import '../pass.dart';
+import "../pass.dart";
 
+/// Custom decorated widget to display information.
 class ContentBox extends StatelessWidget {
+  /// Constructor
+  const ContentBox({required this.title, this.child, this.children, Key? key,})
+      : super(key: key);
+
+  /// Title displayed at the top.
   final String title;
 
+  /// Child of the widget.
   final Widget? child;
+  /// Children of the widget.
   final List<Widget>? children;
-
-  const ContentBox({Key? key, required this.title, this.child, this.children})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    AutoSizeGroup contentBigTextSize = AutoSizeGroup();
+    final AutoSizeGroup contentBigTextSize = AutoSizeGroup();
 
     return Padding(
       padding: EdgeInsets.only(
@@ -40,11 +45,12 @@ class ContentBox extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(
-                    left: (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
-                            2 *
-                            .04 +
-                        MediaQuery.of(context).size.width * .05),
+                  left: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .04 +
+                      MediaQuery.of(context).size.width * .05,
+                ),
                 child: AutoSizeText(
                   title,
                   style: SpaceJamTextStyles.headline(context),
@@ -64,21 +70,33 @@ class ContentBox extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.all(
-                      Radius.circular((MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                          2 *
-                          .04),
+                      Radius.circular(
+                        (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                            2 *
+                            .04,
+                      ),
                     ),
                   ),
                   width: MediaQuery.of(context).size.width * .9,
                   child: Padding(
-                    padding: EdgeInsets.all((MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
-                        2 *
-                        .02),
+                    padding: EdgeInsets.all(
+                      (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .02,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: child != null ? [child!] : children != null ? children! : [ErrorWidget("You must provide a Child or a Children property is not provided")],
+                      children: child != null
+                          ? <Widget>[child!]
+                          : children != null
+                              ? children!
+                              : <ErrorWidget>[
+                                  ErrorWidget(
+                                      "You must provide a Child or a Children "
+                                      "property is not provided",)
+                                ],
                     ),
                   ),
                 ),

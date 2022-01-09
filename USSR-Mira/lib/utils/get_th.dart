@@ -1,8 +1,12 @@
-// utils
-import 'localization.dart';
+// Flutter
+import "package:flutter/material.dart";
 
-String getTh(context,int num) {
-  String last = num.toString()[num.toString().length - 1];
+// utils
+import "localization.dart";
+
+/// Returns endings like st, nd, rd and th.
+String getTh(BuildContext context,int num) {
+  final String last = num.toString()[num.toString().length - 1];
   if (last == "0") {
     return AppLocalizations.of(context).translate("serial0");
   } else if (last == "1") {

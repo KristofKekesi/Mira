@@ -8,6 +8,7 @@ import "utils/no_material_glow.dart";
 import "utils/material_color.dart";
 import "utils/dark_titlebar.dart";
 import "utils/localization.dart";
+import "pass.dart";
 
 // pages
 import "pages/splash_screen.dart";
@@ -74,7 +75,7 @@ class MiraAppState extends State<MiraApp> {
           }
           return supportedLocales.first;
         },
-        title: "NASA Mira",
+        title: appTitle,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.light,

@@ -1,23 +1,28 @@
 // Flutter
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 // widgets
-import '../widgets/collection.dart';
-import '../widgets/selector.dart';
-import '../widgets/appbar.dart';
+import "../widgets/collection.dart";
+import "../widgets/selector.dart";
+import "../widgets/appbar.dart";
 
 // utils
-import '../utils/localization.dart';
+import "../utils/localization.dart";
 
-bool isReverse = false;
-ValueNotifier<bool> sortIsReverse = ValueNotifier<bool>(isReverse);
+/// Are the vehicles reversed (based on time)?
+/// This variable is used in collections.
+ValueNotifier<bool> sortIsReverse = ValueNotifier<bool>(false);
 
+/// Shows vehicles based on a search.
 class VehicleSearch extends StatelessWidget {
-  final String type;
-  final String value;
-
-  const VehicleSearch({Key? key, required this.type, required this.value})
+  /// Constructor
+  const VehicleSearch({required this.type, required this.value, Key? key,})
       : super(key: key);
+
+  /// The parameter that we want to query.
+  final String type;
+  /// The value that we are wanting to find.
+  final String value;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +35,7 @@ class VehicleSearch extends StatelessWidget {
 
         case "type":
           {
-            return AppLocalizations.of(context).translate(value + "s");
+            return AppLocalizations.of(context).translate("${value}s");
           }
 
         case "operator":
@@ -102,18 +107,18 @@ class VehicleSearch extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(
                       left: MediaQuery.of(context).size.width * .05,
-                      right: MediaQuery.of(context).size.width * .05),
+                      right: MediaQuery.of(context).size.width * .05,),
                   child: Column(
-                    children: [
+                    children: <Widget>[
                       Container(
                         height: MediaQuery.of(context).size.width * .03,
                       ),
                       Collection(
-                          isVisible: ValueNotifier(true),
+                          isVisible: ValueNotifier<bool>(true),
                           inputType: type,
                           filter: value,
                           outputType: outputType(),
-                          errorString: searchContent()),
+                          errorString: searchContent(),),
                       Container(
                         height: MediaQuery.of(context).size.width * .05,
                       ),
@@ -137,7 +142,7 @@ class VehicleSearch extends StatelessWidget {
               icon: Icons.menu,
               tooltip: AppLocalizations.of(context).translate("selectors"),
               action: () {
-                showSelectors(context, "search", true);
+                showSelectors(context, areTypesDisabled: true);
               },
             ),
           ),

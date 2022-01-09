@@ -1,8 +1,9 @@
 // extensions on String
-extension CapitalizeStringExtension on String {
-  String capitalize() {
-    return "${this[0].toUpperCase()}${substring(1)}";
-  }
+/// Extensions on [String]s.
+extension StringExtension on String {
+  /// Capitalises the [String].
+  String capitalize() => "${this[0].toUpperCase()}${substring(1)}";
 }
 
-String spacerZeros(number) =>  number < 10 ? "0$number": number.toString();
+/// Adds trailing zeros to numbers smaller than 10.
+String spacerZeros(int number) =>  number < 10 ? "0$number": number.toString();

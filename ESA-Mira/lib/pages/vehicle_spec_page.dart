@@ -1,57 +1,73 @@
 // Flutter
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
+import "package:auto_size_text/auto_size_text.dart";
+import "package:flutter/material.dart";
 
 // widgets
-import '../widgets/button.dart';
-import '../widgets/content_box.dart';
-import '../widgets/appbar.dart';
+import "../widgets/button.dart";
+import "../widgets/content_box.dart";
+import "../widgets/appbar.dart";
 
 // pages
-import '../widgets/min.dart';
-import 'vehicle_search.dart';
-import 'date_picker.dart';
+import "../widgets/min.dart";
+import "vehicle_search.dart";
+import "date_picker.dart";
 
 // utils
-import '../utils/localization.dart';
-import '../utils/extensions.dart';
+import "../utils/localization.dart";
+import "../utils/extensions.dart";
 
+/// [AutoSizeGroup] of the texts with title parameters.
 AutoSizeGroup specPageBigText = AutoSizeGroup();
 
+/// Shows the specifiactions of a vehicle.
 class RoverSpecPage extends StatelessWidget {
-  final int dataSector;
-
-  final bool apiEnabled;
-
-  final String? mission;
-  final String name;
-  final String? nick;
-  final String type;
-  final List<dynamic> operator;
-  final String manufacturer;
-
-  final Map<String, dynamic>? launch;
-  final Map<String, dynamic>? arrive;
-  final Map<String, dynamic>? deactivated;
-  final Map<String, dynamic>? connectionLost;
-  final Map<String, dynamic>? end;
-
+  /// Constructor
   const RoverSpecPage({
-    Key? key,
     required this.dataSector,
+    required this.name,
+    required this.type,
+    required this.operator,
+    required this.manufacturer,
     this.apiEnabled = false,
     this.mission,
-    required this.name,
     this.nick,
-    required this.type,
     this.launch,
     this.arrive,
     this.connectionLost,
     this.deactivated,
     this.end,
-    required this.operator,
-    required this.manufacturer,
+    Key? key,
   }) : super(key: key);
+
+  /// Don't know what is this.
+  final int dataSector;
+
+  /// Shows that the vehicle is API enabled.
+  final bool apiEnabled;
+
+  /// The mission if the vehicle has one.
+  final String? mission;
+  /// The name of the vehicle.
+  final String name;
+  /// The nickname of the vehicle if it has one.
+  final String? nick;
+  /// The type of the vehicle. E.g.: rover
+  final String type;
+  /// The organisation who controls the vehicle.
+  final List<dynamic> operator;
+  /// The manufacturer of the vehicle.
+  final String manufacturer;
+
+  /// Map that contains the launch date.
+  final Map<String, dynamic>? launch;
+  /// Map that contains the date of arrival.
+  final Map<String, dynamic>? arrive;
+  /// Map that contains the date of deactivation.
+  final Map<String, dynamic>? deactivated;
+  /// Map that contains the date of connection lost.
+  final Map<String, dynamic>? connectionLost;
+  /// Map that contains the date of the end of the mission.
+  final Map<String, dynamic>? end;
 
   @override
   Widget build(BuildContext context) {
@@ -144,15 +160,14 @@ class RoverSpecPage extends StatelessWidget {
     getEndDateAndPrefix();
     getMissionEndDate();
 
-    Widget missionWidget(mission) {
-      return mission == null
+    Widget missionWidget(String? mission) => mission == null
           ? const Min()
           : Padding(
               padding: EdgeInsets.only(
                   bottom: (MediaQuery.of(context).size.width +
                           MediaQuery.of(context).size.height) /
                       2 *
-                      .02),
+                      .02,),
               child: Button(
                 title:
                     AppLocalizations.of(context).translate("roverSpecMission"),
@@ -163,8 +178,8 @@ class RoverSpecPage extends StatelessWidget {
                 action: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => VehicleSearch(
+                    MaterialPageRoute<Widget>(
+                      builder: (BuildContext context) => VehicleSearch(
                         type: "mission",
                         value: mission,
                       ),
@@ -173,36 +188,32 @@ class RoverSpecPage extends StatelessWidget {
                 },
               ),
             );
-    }
 
-    Widget nicknameWidget(nick) {
-      return nick == null
+    Widget nicknameWidget(String? nick) => nick == null
           ? const Min()
           : Padding(
               padding: EdgeInsets.only(
                   bottom: (MediaQuery.of(context).size.width +
                           MediaQuery.of(context).size.height) /
                       2 *
-                      .02),
+                      .02,),
               child: Button(
                 title: name,
                 valueFontSize: MediaQuery.of(context).size.width * .08,
                 titleFontSize: MediaQuery.of(context).size.width * .05,
-                value: "\"" + nick + "\"",
+                value: '"$nick"',
                 valueSizeGroup: specPageBigText,
               ),
             );
-    }
 
-    List<Widget> actionWidget = [];
-    actionWidget.add(
-      apiEnabled
+    final List<Widget> actionWidget = <Widget>[
+    apiEnabled
           ? Padding(
               padding: EdgeInsets.only(
                   top: (MediaQuery.of(context).size.width +
                           MediaQuery.of(context).size.height) /
                       2 *
-                      .02),
+                      .02,),
               child: Center(
                 child: Button(
                   background: Colors.white,
@@ -213,15 +224,15 @@ class RoverSpecPage extends StatelessWidget {
                   valueFontSize: MediaQuery.of(context).size.width * .08,
                   titleFontSize: MediaQuery.of(context).size.width * .06,
                   tooltip: AppLocalizations.of(context)
-                      .translate('searchImage')
+                      .translate("searchImage")
                       .replaceAll("{0}", type),
                   value: AppLocalizations.of(context).translate("search"),
                   autoSizeTextStyle: AutoSizeTextStyle(group: specPageBigText),
                   action: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) =>
+                      MaterialPageRoute<Widget>(
+                        builder: (BuildContext context) =>
                             DatePickerPage(dataSector: dataSector),
                       ),
                     );
@@ -229,8 +240,7 @@ class RoverSpecPage extends StatelessWidget {
                 ),
               ),
             )
-          : const Min(),
-    );
+          : const Min(),];
 
     String appbarTitle() => nick == null ? name : nick!;
     String? appbarSubtitle() => nick == null ? null : name;
@@ -253,7 +263,7 @@ class RoverSpecPage extends StatelessWidget {
               ),
               ContentBox(
                 title: nick == null ? name : nick!,
-                children: [
+                children: <Widget>[
                   missionWidget(mission),
                   nicknameWidget(nick),
                   Button(
@@ -266,8 +276,8 @@ class RoverSpecPage extends StatelessWidget {
                     action: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => VehicleSearch(
+                        MaterialPageRoute<Widget>(
+                          builder: (BuildContext context) => VehicleSearch(
                             type: "type",
                             value: type,
                           ),
@@ -285,7 +295,7 @@ class RoverSpecPage extends StatelessWidget {
                     padding: EdgeInsets.all((MediaQuery.of(context).size.width +
                             MediaQuery.of(context).size.height) /
                         2 *
-                        .02),
+                        .02,),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -294,7 +304,7 @@ class RoverSpecPage extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               AppLocalizations.of(context)
-                                  .translate('roverSpecLaunch'),
+                                  .translate("roverSpecLaunch"),
                               style: TextStyle(
                                 fontSize:
                                     MediaQuery.of(context).size.width * .05,
@@ -306,7 +316,7 @@ class RoverSpecPage extends StatelessWidget {
                               children: <Widget>[
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('month'),
+                                      .translate("month"),
                                   child: Text(
                                     launchM,
                                     style: TextStyle(
@@ -319,7 +329,7 @@ class RoverSpecPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  '/',
+                                  "/",
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -329,7 +339,7 @@ class RoverSpecPage extends StatelessWidget {
                                 ),
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('day'),
+                                      .translate("day"),
                                   child: Text(
                                     launchD,
                                     style: TextStyle(
@@ -342,7 +352,7 @@ class RoverSpecPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  '/',
+                                  "/",
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -352,7 +362,7 @@ class RoverSpecPage extends StatelessWidget {
                                 ),
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('year'),
+                                      .translate("year"),
                                   child: Text(
                                     launchY,
                                     style: TextStyle(
@@ -373,7 +383,7 @@ class RoverSpecPage extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               AppLocalizations.of(context)
-                                  .translate('roverSpecArrive'),
+                                  .translate("roverSpecArrive"),
                               style: TextStyle(
                                 fontSize:
                                     MediaQuery.of(context).size.width * .05,
@@ -385,7 +395,7 @@ class RoverSpecPage extends StatelessWidget {
                               children: <Widget>[
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('month'),
+                                      .translate("month"),
                                   child: Text(
                                     arriveM,
                                     style: TextStyle(
@@ -398,7 +408,7 @@ class RoverSpecPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  '/',
+                                  "/",
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -408,7 +418,7 @@ class RoverSpecPage extends StatelessWidget {
                                 ),
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('day'),
+                                      .translate("day"),
                                   child: Text(
                                     arriveD,
                                     style: TextStyle(
@@ -421,7 +431,7 @@ class RoverSpecPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  '/',
+                                  "/",
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -431,7 +441,7 @@ class RoverSpecPage extends StatelessWidget {
                                 ),
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('year'),
+                                      .translate("year"),
                                   child: Text(
                                     arriveY,
                                     style: TextStyle(
@@ -467,7 +477,7 @@ class RoverSpecPage extends StatelessWidget {
                               children: <Widget>[
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('month'),
+                                      .translate("month"),
                                   child: Text(
                                     endM,
                                     style: TextStyle(
@@ -480,7 +490,7 @@ class RoverSpecPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  '/',
+                                  "/",
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -490,7 +500,7 @@ class RoverSpecPage extends StatelessWidget {
                                 ),
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('day'),
+                                      .translate("day"),
                                   child: Text(
                                     endD,
                                     style: TextStyle(
@@ -503,7 +513,7 @@ class RoverSpecPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  '/',
+                                  "/",
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -513,7 +523,7 @@ class RoverSpecPage extends StatelessWidget {
                                 ),
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('year'),
+                                      .translate("year"),
                                   child: Text(
                                     endY,
                                     style: TextStyle(
@@ -534,7 +544,7 @@ class RoverSpecPage extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               AppLocalizations.of(context)
-                                  .translate('roverSpecEndMin'),
+                                  .translate("roverSpecEndMin"),
                               style: TextStyle(
                                 fontSize:
                                     MediaQuery.of(context).size.width * .05,
@@ -546,7 +556,7 @@ class RoverSpecPage extends StatelessWidget {
                               children: <Widget>[
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('month'),
+                                      .translate("month"),
                                   child: Text(
                                     missionEndM,
                                     style: TextStyle(
@@ -559,7 +569,7 @@ class RoverSpecPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  '/',
+                                  "/",
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -569,7 +579,7 @@ class RoverSpecPage extends StatelessWidget {
                                 ),
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('day'),
+                                      .translate("day"),
                                   child: Text(
                                     missionEndD,
                                     style: TextStyle(
@@ -582,7 +592,7 @@ class RoverSpecPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  '/',
+                                  "/",
                                   style: TextStyle(
                                     fontSize:
                                         MediaQuery.of(context).size.width * .05,
@@ -592,7 +602,7 @@ class RoverSpecPage extends StatelessWidget {
                                 ),
                                 Tooltip(
                                   message: AppLocalizations.of(context)
-                                      .translate('year'),
+                                      .translate("year"),
                                   child: Text(
                                     missionEndY,
                                     style: TextStyle(
@@ -609,21 +619,19 @@ class RoverSpecPage extends StatelessWidget {
                           ],
                         ),
                         Text(
-                          "* " +
-                              (deactivated != null
+                          "* ${deactivated != null
                                   ? AppLocalizations.of(context)
                                       .translate("roverSpecDeactivated")
                                   : AppLocalizations.of(context)
-                                      .translate("roverSpecLast")),
+                                      .translate("roverSpecLast")}",
                           style: TextStyle(
                             fontSize: MediaQuery.of(context).size.width * .045,
                             color: Colors.white70,
                           ),
                         ),
                         Text(
-                          "** " +
-                              AppLocalizations.of(context)
-                                  .translate('roverSpecEnd'),
+                          "** ${AppLocalizations.of(context)
+                                  .translate("roverSpecEnd")}",
                           style: TextStyle(
                             fontSize: MediaQuery.of(context).size.width * .045,
                             color: Colors.white70,
@@ -639,14 +647,14 @@ class RoverSpecPage extends StatelessWidget {
                         valueFontSize: MediaQuery.of(context).size.width * .08,
                         titleFontSize: MediaQuery.of(context).size.width * .05,
                         title: AppLocalizations.of(context)
-                            .translate('roverSpecOperator'),
+                            .translate("roverSpecOperator"),
                         value: operator.join(", "),
                         valueSizeGroup: specPageBigText,
                         action: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => VehicleSearch(
+                            MaterialPageRoute<Widget>(
+                              builder: (BuildContext context) => VehicleSearch(
                                 type: "operator",
                                 value: operator.join(", "),
                               ),
@@ -664,14 +672,14 @@ class RoverSpecPage extends StatelessWidget {
                         valueFontSize: MediaQuery.of(context).size.width * .08,
                         titleFontSize: MediaQuery.of(context).size.width * .05,
                         title: AppLocalizations.of(context)
-                            .translate('roverSpecManufacturer'),
+                            .translate("roverSpecManufacturer"),
                         value: manufacturer,
                         valueSizeGroup: specPageBigText,
                         action: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => VehicleSearch(
+                            MaterialPageRoute<Widget>(
+                              builder: (BuildContext context) => VehicleSearch(
                                 type: "manufacturer",
                                 value: manufacturer,
                               ),

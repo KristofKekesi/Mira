@@ -1,14 +1,18 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
+/// Creates a [MaterialColor] based on a [Color].
 MaterialColor createMaterialColor(Color color) {
-  List<double> strengths = <double>[.05];
-  Map<int, Color> swatch = <int, Color>{};
-  final int r = color.red, g = color.green, b = color.blue;
+  final List<double> strengths = <double>[.05];
+  final Map<int, Color> swatch = <int, Color>{};
+
+  final int r = color.red;
+  final int g = color.green;
+  final int b = color.blue;
 
   for (int i = 1; i < 10; i++) {
     strengths.add(0.1 * i);
   }
-  for (var strength in strengths) {
+  for (final double strength in strengths) {
     final double ds = 0.5 - strength;
     swatch[(strength * 1000).round()] = Color.fromRGBO(
       r + ((ds < 0 ? r : (255 - r)) * ds).round(),
