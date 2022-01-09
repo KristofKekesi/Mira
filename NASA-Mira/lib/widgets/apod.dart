@@ -16,7 +16,7 @@ import "../utils/localization.dart";
 import "../pass.dart";
 
 // TODO(KristofKekesi): _fetchAPI into a new utility file.
-_fetchAPI(String url) async {
+Future<Response<dynamic>> _fetchAPI(String url) async {
   final Dio dio = Dio();
   dio.options.connectTimeout = 5000;
   dio.options.receiveTimeout = 30000;
@@ -38,7 +38,7 @@ class ApodWidget extends StatefulWidget {
 /// The stateful part of the widget.
 class ApodWidgetState extends State<ApodWidget> {
   @override
-  Widget build(BuildContext context) => FutureBuilder(
+  Widget build(BuildContext context) => FutureBuilder<dynamic>(
         future: _fetchAPI(
           "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true",
         ), //&date=2021-04-19
@@ -86,7 +86,7 @@ class ApodWidgetState extends State<ApodWidget> {
                       //_popup(context, title, copyright, url);
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
+                        MaterialPageRoute<Widget>(
                           builder: (BuildContext context) => FullScreen(
                             imageURL: displayURL(),
                           ),

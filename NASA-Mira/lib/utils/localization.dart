@@ -33,17 +33,19 @@ class AppLocalizations {
       final Map<String, dynamic> jsonMap = json.decode(jsonString);
 
       _localizedStrings = jsonMap.map(
-        (String key, value) => MapEntry(
+        //ignore: always_specify_types
+        (String key, value) => MapEntry<String, String>(
           key,
           value.toString(),
         ),
       );
 
       return true;
-    } catch (error) {
+    } on Exception catch (error) {
+      //ignore: always_specify_types
       return Future.error("Error loading translation. "
           "Tried ${locale.languageCode}.json. "
-          "Reason: $error");
+          "Reason: $error",);
     }
   }
 

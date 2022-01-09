@@ -23,19 +23,23 @@ class Application extends StatelessWidget {
 
   /// The name of the app.
   final String name;
+
   /// Path to the logo of the app.
   final String logo;
+
   /// Path to the background of the app.
   final String? background;
+
   /// Defining color of the app.
   final Color? themeColor;
 
   @override
   Widget build(BuildContext context) => Padding(
         padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * .0125,
-            right: MediaQuery.of(context).size.width * .0125,
-            bottom: MediaQuery.of(context).size.width * .025,),
+          left: MediaQuery.of(context).size.width * .0125,
+          right: MediaQuery.of(context).size.width * .0125,
+          bottom: MediaQuery.of(context).size.width * .025,
+        ),
         child: AspectRatio(
           aspectRatio: 3 / 2,
           child: Stack(
@@ -110,6 +114,7 @@ class PromoWidget extends StatelessWidget {
 
   /// List of [Application]s to display.
   final List<Application> children;
+
   /// The wanted height of the [PromoWidget].
   final double height;
 
@@ -117,11 +122,12 @@ class PromoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Future<bool> _widgetOpacity() async {
       try {
-        final result = await InternetAddress.lookup("google.com");
+        final List<InternetAddress> result =
+            await InternetAddress.lookup("google.com");
         if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
           return true;
         }
-      } catch (_) {}
+      } on Exception catch (_) {}
       return false;
     }
 

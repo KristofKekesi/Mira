@@ -8,18 +8,23 @@ import "./text_styles.dart";
 // utils
 import "../pass.dart";
 
+/// Custom decorated widget to display information.
 class ContentBox extends StatelessWidget {
+  /// Constructor
   const ContentBox({required this.title, this.child, this.children, Key? key,})
       : super(key: key);
 
+  /// Title displayed at the top.
   final String title;
 
+  /// Child of the widget.
   final Widget? child;
+  /// Children of the widget.
   final List<Widget>? children;
 
   @override
   Widget build(BuildContext context) {
-    AutoSizeGroup contentBigTextSize = AutoSizeGroup();
+    final AutoSizeGroup contentBigTextSize = AutoSizeGroup();
 
     return Padding(
       padding: EdgeInsets.only(

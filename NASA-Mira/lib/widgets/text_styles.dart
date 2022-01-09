@@ -34,13 +34,13 @@ class SpaceJamTextStyles {
 
   // TODO(KristofKekesi): Finish it.
   /// TextStyle for subheadlines.
-  static TextStyle subHeadline(BuildContext context) => TextStyle();
+  static TextStyle subHeadline(BuildContext context) => const TextStyle();
 
   // TODO(KristofKekesi): Finish it.
   /// TextStyle for captions.
-  static TextStyle caption(BuildContext context) => TextStyle();
+  static TextStyle caption(BuildContext context) => const TextStyle();
 
   // TODO(KristofKekesi): Finish it.
   /// TextStyle for default.
-  static TextStyle defaultTextStyle(BuildContext context) => TextStyle();
+  static TextStyle defaultTextStyle(BuildContext context) => const TextStyle();
 }

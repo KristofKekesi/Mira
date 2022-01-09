@@ -221,7 +221,7 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(
+                                    MaterialPageRoute<Widget>(
                                       builder: (BuildContext context) =>
                                           FullScreen(
                                         imageURL: data[index]["img_src"],

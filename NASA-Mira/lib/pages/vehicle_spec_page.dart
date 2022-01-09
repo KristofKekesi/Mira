@@ -178,7 +178,7 @@ class RoverSpecPage extends StatelessWidget {
                 action: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
+                    MaterialPageRoute<Widget>(
                       builder: (BuildContext context) => VehicleSearch(
                         type: "mission",
                         value: mission,
@@ -231,7 +231,7 @@ class RoverSpecPage extends StatelessWidget {
                   action: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
+                      MaterialPageRoute<Widget>(
                         builder: (BuildContext context) =>
                             DatePickerPage(dataSector: dataSector),
                       ),
@@ -276,7 +276,7 @@ class RoverSpecPage extends StatelessWidget {
                     action: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
+                        MaterialPageRoute<Widget>(
                           builder: (BuildContext context) => VehicleSearch(
                             type: "type",
                             value: type,
@@ -653,7 +653,7 @@ class RoverSpecPage extends StatelessWidget {
                         action: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
+                            MaterialPageRoute<Widget>(
                               builder: (BuildContext context) => VehicleSearch(
                                 type: "operator",
                                 value: operator.join(", "),
@@ -678,7 +678,7 @@ class RoverSpecPage extends StatelessWidget {
                         action: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
+                            MaterialPageRoute<Widget>(
                               builder: (BuildContext context) => VehicleSearch(
                                 type: "manufacturer",
                                 value: manufacturer,

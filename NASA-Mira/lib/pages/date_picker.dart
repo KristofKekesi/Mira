@@ -449,7 +449,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                     if (timeFormat == true) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
+                        MaterialPageRoute<Widget>(
                           builder: (BuildContext context) => SearchWindow(
                             name: name,
                             url: "${url}photos?sol=$sol&api_key=$apiKey",
@@ -460,7 +460,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                     } else if (timeFormat == false) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
+                        MaterialPageRoute<Widget>(
                           builder: (BuildContext context) => SearchWindow(
                             name: name,
                             url: "${url}photos?earth_date=${date.year}"

@@ -18,9 +18,11 @@ class AppBarAction extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  /// Icon of the ap
+  /// Icon of the action.
   final IconData icon;
+  /// Tooltip when tapping the icon.
   final String? tooltip;
+  /// Action that happens when tapping on the icon.
   final VoidCallback? action;
 
   @override
@@ -45,7 +47,9 @@ class AppBarAction extends StatelessWidget {
       );
 }
 
+/// The appbar widget.
 class Appbar extends StatelessWidget {
+  /// Constructor
   const Appbar(
       {
       required this.title,
@@ -55,9 +59,13 @@ class Appbar extends StatelessWidget {
         Key? key,})
       : super(key: key);
 
+  /// The title of the appbar.
   final String title;
+  /// The subtitle of the appbar.
   final String? subtitle;
+  /// The left tappable [AppBarAction].
   final AppBarAction? leftAction;
+  /// The right tappable [AppBarAction].
   final AppBarAction? rightAction;
 
   @override

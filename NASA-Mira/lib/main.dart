@@ -27,7 +27,10 @@ void main() {
 /// The MiraApp
 class MiraApp extends StatefulWidget {
   /// Constructor
-  const MiraApp({required this.child, Key? key, }) : super(key: key);
+  const MiraApp({
+    required this.child,
+    Key? key,
+  }) : super(key: key);
 
   /// Child to pass on.
   final Widget child;
@@ -46,36 +49,37 @@ class MiraAppState extends State<MiraApp> {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-      builder: (BuildContext context, Widget? child) => ScrollConfiguration(
+        builder: (BuildContext context, Widget? child) => ScrollConfiguration(
           behavior: NoScrollGlow(),
           child: child!,
         ),
-      localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const <Locale>[
-        Locale("en", ""),
-        Locale("de", ""),
-        Locale("da", ""),
-        Locale("hu", ""),
-      ],
-      localeResolutionCallback: (Locale? locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (locale!.languageCode == supportedLocale.languageCode) {
-            return supportedLocale;
+        localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const <Locale>[
+          Locale("en", ""),
+          Locale("de", ""),
+          Locale("da", ""),
+          Locale("hu", ""),
+        ],
+        localeResolutionCallback:
+            (Locale? locale, Iterable<Locale> supportedLocales) {
+          for (final Locale supportedLocale in supportedLocales) {
+            if (locale!.languageCode == supportedLocale.languageCode) {
+              return supportedLocale;
+            }
           }
-        }
-        return supportedLocales.first;
-      },
-      title: "NASA Mira",
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: createMaterialColor(const Color(0xffE8672D)),
-      ),
-      home: widget.child,
-    );
+          return supportedLocales.first;
+        },
+        title: "NASA Mira",
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.light,
+          primarySwatch: createMaterialColor(const Color(0xffE8672D)),
+        ),
+        home: widget.child,
+      );
 }

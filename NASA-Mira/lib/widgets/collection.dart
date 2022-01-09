@@ -1,3 +1,6 @@
+// Ignore because working with API calls with complex Map returns.
+//ignore_for_file: avoid_dynamic_calls
+
 // Dart
 import "dart:convert";
 
@@ -17,20 +20,26 @@ import "../pages/vehicle_spec_page.dart";
 import "../utils/localization.dart";
 import "../utils/update.dart";
 
-List<dynamic> hardCodeData = [];
+/// I don't know what this is.
+List<dynamic> hardCodeData = <Widget>[];
+
+/// An [AutoSizeGroup] for the collection to link captions together.
 AutoSizeGroup roverGridCaption = AutoSizeGroup();
+
+/// An [AutoSizeGroup] for the collection to link titles together.
 AutoSizeGroup roverGridTitle = AutoSizeGroup();
+
+/// Counter used to know when is the first time of rendering.
 int counter = 0;
 
 class _CollectionInner extends StatelessWidget {
-  const _CollectionInner(
-      {
-        required this.inputType,
-        required this.filter,
-        required this.data,
-        this.errorString = "",
-        Key? key,})
-      : super(key: key);
+  const _CollectionInner({
+    required this.inputType,
+    required this.filter,
+    required this.data,
+    this.errorString = "",
+    Key? key,
+  }) : super(key: key);
 
   final String inputType;
   final String filter;
@@ -86,22 +95,23 @@ class _CollectionInner extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => RoverSpecPage(
-                            dataSector: index,
-                            apiEnabled: data[index]["api-enabled"],
-                            mission: data[index]["mission"],
-                            name: data[index]["name"],
-                            nick: data[index]["nick"],
-                            type: data[index]["type"],
-                            launch: data[index]["launch"],
-                            arrive: data[index]["arrive"],
-                            deactivated: data[index]["deactivated"],
-                            connectionLost: data[index]["connection-lost"],
-                            end: data[index]["end"],
-                            operator: data[index]["operator"],
-                            manufacturer: data[index]["manufacturer"],
-                          ),),
+                  MaterialPageRoute<Widget>(
+                    builder: (BuildContext context) => RoverSpecPage(
+                      dataSector: index,
+                      apiEnabled: data[index]["api-enabled"],
+                      mission: data[index]["mission"],
+                      name: data[index]["name"],
+                      nick: data[index]["nick"],
+                      type: data[index]["type"],
+                      launch: data[index]["launch"],
+                      arrive: data[index]["arrive"],
+                      deactivated: data[index]["deactivated"],
+                      connectionLost: data[index]["connection-lost"],
+                      end: data[index]["end"],
+                      operator: data[index]["operator"],
+                      manufacturer: data[index]["manufacturer"],
+                    ),
+                  ),
                 );
               },
               child: Padding(
@@ -114,19 +124,23 @@ class _CollectionInner extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.all(
-                      Radius.circular((MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                          2 *
-                          .04,),
+                      Radius.circular(
+                        (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                            2 *
+                            .04,
+                      ),
                     ),
                   ),
                   width: MediaQuery.of(context).size.width * .38749,
                   height: MediaQuery.of(context).size.height * .2,
                   child: Padding(
-                    padding: EdgeInsets.all((MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
-                        2 *
-                        .03,),
+                    padding: EdgeInsets.all(
+                      (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .03,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -238,7 +252,9 @@ class _CollectionInner extends StatelessWidget {
   }
 }
 
+/// Shows a collection with a caption.
 class Collection extends StatefulWidget {
+  /// Constructor
   const Collection({
     required this.isVisible,
     required this.inputType,
@@ -248,21 +264,29 @@ class Collection extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
+  /// Visibility of the collection.
   final ValueNotifier<bool> isVisible;
 
+  /// The input type of the collection.
   final String inputType;
+
+  /// Filter used to filter from the inputs of the collection.
   final String filter;
+
+  /// The output type after the filter.
   final String outputType;
 
+  /// String used when the plural version of localization returns null.
   final String errorString;
 
   @override
   CollectionState createState() => CollectionState();
 }
 
+/// Stateful part of the widget.
 class CollectionState extends State<Collection> {
   @override
-  Widget build(BuildContext context) => ValueListenableBuilder(
+  Widget build(BuildContext context) => ValueListenableBuilder<bool>(
         builder: (BuildContext context, bool value, Widget? child) {
           Widget _roverGridInnerWithSort() {
             if (notifierIsReverse.value) {
@@ -282,18 +306,19 @@ class CollectionState extends State<Collection> {
             }
           }
 
-          return ValueListenableBuilder(
+          return ValueListenableBuilder<bool>(
             builder: (BuildContext context, bool value, Widget? child) {
               if (widget.isVisible.value) {
-                return FutureBuilder(
+                return FutureBuilder<String>(
                   future: DefaultAssetBundle.of(context)
                       .loadString("assets/data.json"),
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  builder:
+                      (BuildContext context, AsyncSnapshot<String> snapshot) {
                     if (snapshot.hasData) {
                       hardCodeData = json.decode(snapshot.data.toString());
                       if (counter == 0) {
                         counter++;
-                        update(hardCodeData).then((e) {
+                        update(hardCodeData).then((_) {
                           if (updated == true) {
                             setState(() {});
                           }
