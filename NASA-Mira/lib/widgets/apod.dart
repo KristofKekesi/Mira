@@ -1,9 +1,6 @@
 // Ignore because working with API calls with complex Map returns.
 //ignore_for_file: avoid_dynamic_calls
 
-// Dart
-import "package:dio/dio.dart";
-
 // Flutter
 import "package:flutter/material.dart";
 import "./min.dart";
@@ -13,17 +10,8 @@ import "../pages/fullscreen.dart";
 
 // utils
 import "../utils/localization.dart";
+import "../utils/fetch.dart";
 import "../pass.dart";
-
-// TODO(KristofKekesi): _fetchAPI into a new utility file.
-Future<Response<dynamic>> _fetchAPI(String url) async {
-  final Dio dio = Dio();
-  dio.options.connectTimeout = 5000;
-  dio.options.receiveTimeout = 30000;
-  final Response<dynamic> response = await dio.get(url);
-
-  return response;
-}
 
 /// The astronomy picture of day widget. This shows the
 /// image in asimilar way like an item in a collection.
@@ -39,7 +27,7 @@ class ApodWidget extends StatefulWidget {
 class ApodWidgetState extends State<ApodWidget> {
   @override
   Widget build(BuildContext context) => FutureBuilder<dynamic>(
-        future: _fetchAPI(
+        future: fetchAPI(
           "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true",
         ), //&date=2021-04-19
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
