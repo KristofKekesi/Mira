@@ -1,4 +1,4 @@
-// TODO(KristofKekesi): replace with api key before release.
+// TODO(KristofKekesi): Replace with api key before release.
 /// NASA API key.
 const String apiKey = "DEMO_KEY";
 
