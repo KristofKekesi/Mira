@@ -215,6 +215,8 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                                     MaterialPageRoute<Widget>(
                                       builder: (BuildContext context) =>
                                           FullScreen(
+                                        image: Image.network(
+                                            data[index]["img_src"],),
                                         imageURL: data[index]["img_src"],
                                       ),
                                     ),
@@ -354,8 +356,10 @@ class SearchWindow extends StatefulWidget {
 
   /// The name displayed in appbar.
   final String name;
+
   /// The URL from where to query the images.
   final String url;
+
   /// The date / SOL when the images were captured.
   final String time;
 

@@ -2,6 +2,9 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 
+// widgets
+import "../widgets/min.dart";
+
 // utils
 import "../utils/localization.dart";
 
@@ -9,12 +12,16 @@ import "../utils/localization.dart";
 class FullScreen extends StatefulWidget {
   /// Constructor
   const FullScreen({
-    required this.imageURL,
+    required this.image,
+    this.imageURL,
     Key? key,
   }) : super(key: key);
 
-  /// The URL of the displayed image.
-  final String imageURL;
+  /// Image Widget
+  final Image image;
+
+  /// The url of the image. Optional.
+  final String? imageURL;
 
   @override
   FullScreenState createState() => FullScreenState();
@@ -71,7 +78,7 @@ class FullScreenState extends State<FullScreen> {
                   ),
                 ),
               ),
-              Align(
+              widget.imageURL != null ? Align(
                 alignment: Alignment.topRight,
                 child: FloatingActionButton(
                   /// have to define heroTag because this widget uses
@@ -102,7 +109,7 @@ class FullScreenState extends State<FullScreen> {
                     color: Colors.white,
                   ),
                 ),
-              ),
+              ) : const Min(),
             ],
           ),
         ),
@@ -111,9 +118,7 @@ class FullScreenState extends State<FullScreen> {
           minScale: 1,
           maxScale: 4,
           child: Align(
-            child: Image.network(
-              widget.imageURL,
-            ),
+            child: widget.image,
           ),
         ),
       );

@@ -76,6 +76,7 @@ class ApodWidgetState extends State<ApodWidget> {
                         context,
                         MaterialPageRoute<Widget>(
                           builder: (BuildContext context) => FullScreen(
+                            image: Image.network(displayURL()),
                             imageURL: displayURL(),
                           ),
                         ),
