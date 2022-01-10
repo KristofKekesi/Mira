@@ -17,18 +17,9 @@ import "../widgets/button.dart";
 import "fullscreen.dart";
 
 // utils
+import "../utils/fetch.dart";
 import "../utils/get_th.dart";
 import "../utils/localization.dart";
-
-// TODO(KristofKekesi): all _fetchAPI into a new utility file.
-Future<Response<dynamic>> _fetchAPI(String url) async {
-  final Dio dio = Dio();
-  dio.options.connectTimeout = 30000;
-  dio.options.receiveTimeout = 30000;
-  final Response<dynamic> response = await dio.get(url);
-
-  return response;
-}
 
 /// A string function to return correct translation based on plurality.
 String imageCounter(BuildContext context, int num) {
@@ -45,7 +36,7 @@ String imageCounter(BuildContext context, int num) {
 
 FutureBuilder<Response<dynamic>> _data(String url) =>
     FutureBuilder<Response<dynamic>>(
-      future: _fetchAPI(url),
+      future: fetchAPI(url),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.hasData) {
           final List<dynamic> data = snapshot.data.data["photos"];
@@ -224,6 +215,8 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                                     MaterialPageRoute<Widget>(
                                       builder: (BuildContext context) =>
                                           FullScreen(
+                                        image: Image.network(
+                                            data[index]["img_src"],),
                                         imageURL: data[index]["img_src"],
                                       ),
                                     ),
@@ -363,8 +356,10 @@ class SearchWindow extends StatefulWidget {
 
   /// The name displayed in appbar.
   final String name;
+
   /// The URL from where to query the images.
   final String url;
+
   /// The date / SOL when the images were captured.
   final String time;
 

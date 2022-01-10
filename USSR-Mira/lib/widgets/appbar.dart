@@ -20,8 +20,10 @@ class AppBarAction extends StatelessWidget {
 
   /// Icon of the action.
   final IconData icon;
+
   /// Tooltip when tapping the icon.
   final String? tooltip;
+
   /// Action that happens when tapping on the icon.
   final VoidCallback? action;
 
@@ -50,21 +52,23 @@ class AppBarAction extends StatelessWidget {
 /// The appbar widget.
 class Appbar extends StatelessWidget {
   /// Constructor
-  const Appbar(
-      {
-      required this.title,
-      this.subtitle,
-      this.leftAction,
-      this.rightAction,
-        Key? key,})
-      : super(key: key);
+  const Appbar({
+    required this.title,
+    this.subtitle,
+    this.leftAction,
+    this.rightAction,
+    Key? key,
+  }) : super(key: key);
 
   /// The title of the appbar.
   final String title;
+
   /// The subtitle of the appbar.
   final String? subtitle;
+
   /// The left tappable [AppBarAction].
   final AppBarAction? leftAction;
+
   /// The right tappable [AppBarAction].
   final AppBarAction? rightAction;
 
@@ -86,20 +90,22 @@ class Appbar extends StatelessWidget {
       child: ClipRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(
-              sigmaX: (MediaQuery.of(context).size.height +
-                      MediaQuery.of(context).size.width) /
-                  2 *
-                  .02,
-              sigmaY: (MediaQuery.of(context).size.height +
-                      MediaQuery.of(context).size.width) /
-                  2 *
-                  .02,),
+            sigmaX: (MediaQuery.of(context).size.height +
+                    MediaQuery.of(context).size.width) /
+                2 *
+                .02,
+            sigmaY: (MediaQuery.of(context).size.height +
+                    MediaQuery.of(context).size.width) /
+                2 *
+                .02,
+          ),
           child: Container(
             color: const Color.fromRGBO(255, 255, 255, .4),
             child: Padding(
               padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * .05,
-                  right: MediaQuery.of(context).size.width * .05,),
+                left: MediaQuery.of(context).size.width * .05,
+                right: MediaQuery.of(context).size.width * .05,
+              ),
               child: SafeArea(
                 bottom: false,
                 left: false,

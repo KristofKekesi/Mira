@@ -1,23 +1,23 @@
 // Flutter
-import "package:flutter/cupertino.dart";
-import "package:flutter/material.dart";
 import "package:auto_size_text/auto_size_text.dart";
 import "package:numberpicker/numberpicker.dart";
+import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
 
 // widgets
-import "../widgets/button.dart";
 import "../widgets/collection.dart";
 import "../widgets/content_box.dart";
 import "../widgets/appbar.dart";
+import "../widgets/button.dart";
 
 // pages
 import "image_search.dart";
 
 // utils
 import "../utils/localization.dart";
-import "../utils/update.dart";
 import "../utils/extensions.dart";
 import "../utils/get_th.dart";
+import "../utils/update.dart";
 import "../pass.dart";
 
 /// The date picker page used in the image search page.
@@ -53,19 +53,21 @@ class DatePickerPageState extends State<DatePickerPage> {
   /// The default value of date.
   late Map<String, dynamic> defaultDatePosition;
 
-  // TODO(KristofKekesi): Rename sol to defaultSolPosition
   /// The default value of SOL.
-  late int sol;
+  late int defaultSolPosition;
+
   /// The maximum value that is selectable.
   late int maxSol;
 
   /// Map that contains the date of arrival
   late Map<String, dynamic> arrive;
+
   /// Map that contains the date of arrival
   late Map<String, dynamic> maxDateRaw;
 
   /// The name of the rover
   late String name;
+
   /// The vehicles' API's URL.
   late String url;
 
@@ -80,7 +82,7 @@ class DatePickerPageState extends State<DatePickerPage> {
 
     arrive = source["arrive"];
     defaultDatePosition = source["default-date"];
-    sol = source["default-sol"];
+    defaultSolPosition = source["default-sol"];
     maxDateRaw = source["last-date"];
     maxSol = source["last-sol"] ?? 10000;
 
@@ -353,7 +355,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                     title: AppLocalizations.of(context).translate("SOL"),
                     tooltip: AppLocalizations.of(context)
                         .translate("roverImgSearchSetSOL"),
-                    value: sol.toString(),
+                    value: defaultSolPosition.toString(),
                     action: () {
                       showCupertinoModalPopup(
                         context: context,
@@ -363,12 +365,12 @@ class DatePickerPageState extends State<DatePickerPage> {
                             color: Colors.white,
                           ),
                           child: NumberPicker(
-                            value: sol,
+                            value: defaultSolPosition,
                             minValue: 0,
                             maxValue: maxSol,
                             onChanged: (int val) {
                               setState(() {
-                                sol = val;
+                                defaultSolPosition = val;
                               });
                             },
                           ),
@@ -452,8 +454,10 @@ class DatePickerPageState extends State<DatePickerPage> {
                         MaterialPageRoute<Widget>(
                           builder: (BuildContext context) => SearchWindow(
                             name: name,
-                            url: "${url}photos?sol=$sol&api_key=$apiKey",
-                            time: "$sol${getTh(context, sol)} sol",
+                            url: "${url}photos?sol=$defaultSolPosition"
+                                "&api_key=$apiKey",
+                            time: "$defaultSolPosition"
+                                "${getTh(context, defaultSolPosition)} sol",
                           ),
                         ),
                       );
