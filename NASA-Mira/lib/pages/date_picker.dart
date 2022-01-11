@@ -5,8 +5,9 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 
 // widgets
-import "../widgets/collection.dart";
+import "../widgets/text_styles.dart";
 import "../widgets/content_box.dart";
+import "../widgets/collection.dart";
 import "../widgets/appbar.dart";
 import "../widgets/button.dart";
 
@@ -127,11 +128,7 @@ class DatePickerPageState extends State<DatePickerPage> {
               ),
               child: AutoSizeText(
                 name,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: MediaQuery.of(context).size.width * .08,
-                  color: Colors.black,
-                ),
+                style: SpaceJamTextStyles.headline(context),
                 maxLines: 1,
               ),
             ),
@@ -181,10 +178,9 @@ class DatePickerPageState extends State<DatePickerPage> {
                         child: Text(
                           AppLocalizations.of(context)
                               .translate("invalidDateTitle"),
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * .05,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white70,
+                          style: SpaceJamTextStyles.subHeadline(
+                            context,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -192,13 +188,9 @@ class DatePickerPageState extends State<DatePickerPage> {
                         AppLocalizations.of(context)
                             .translate("invalidDateContent"),
                         maxLines: 2,
-                        style: TextStyle(
-                          fontSize: (MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
-                              2 *
-                              .05,
+                        style: SpaceJamTextStyles.subHeadline(
+                          context,
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
@@ -223,16 +215,16 @@ class DatePickerPageState extends State<DatePickerPage> {
                         .02,
                   ),
                   child: Button(
-                    valueTextStyle: TextStyle(
+                    valueTextStyle: SpaceJamTextStyles.headline(
+                      context,
                       color:
                           timeFormat == false ? Colors.white : Colors.black38,
-                      fontWeight: FontWeight.bold,
                     ),
                     valueFontSize: MediaQuery.of(context).size.width * .08,
-                    titleTextStyle: TextStyle(
+                    titleTextStyle: SpaceJamTextStyles.headline(
+                      context,
                       color:
                           timeFormat == false ? Colors.white : Colors.black38,
-                      fontWeight: FontWeight.bold,
                     ),
                     titleFontSize: MediaQuery.of(context).size.width * .05,
                     title: AppLocalizations.of(context)
@@ -246,24 +238,22 @@ class DatePickerPageState extends State<DatePickerPage> {
                           child: AutoSizeText(
                             spacerZeros(date.month),
                             maxLines: 1,
-                            style: TextStyle(
-                              fontSize: MediaQuery.of(context).size.width * .08,
+                            style: SpaceJamTextStyles.headline(
+                              context,
                               color: timeFormat == false
                                   ? Colors.white
                                   : Colors.black38,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         AutoSizeText(
                           "/",
                           maxLines: 1,
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * .08,
+                          style: SpaceJamTextStyles.headline(
+                            context,
                             color: timeFormat == false
                                 ? Colors.white
                                 : Colors.black38,
-                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         Tooltip(
@@ -272,24 +262,22 @@ class DatePickerPageState extends State<DatePickerPage> {
                           child: AutoSizeText(
                             spacerZeros(date.day),
                             maxLines: 1,
-                            style: TextStyle(
-                              fontSize: MediaQuery.of(context).size.width * .08,
+                            style: SpaceJamTextStyles.headline(
+                              context,
                               color: timeFormat == false
                                   ? Colors.white
                                   : Colors.black38,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         AutoSizeText(
                           "/",
                           maxLines: 1,
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * .08,
+                          style: SpaceJamTextStyles.headline(
+                            context,
                             color: timeFormat == false
                                 ? Colors.white
                                 : Colors.black38,
-                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         Tooltip(
@@ -298,12 +286,11 @@ class DatePickerPageState extends State<DatePickerPage> {
                           child: AutoSizeText(
                             "${date.year}",
                             maxLines: 1,
-                            style: TextStyle(
-                              fontSize: MediaQuery.of(context).size.width * .08,
+                            style: SpaceJamTextStyles.headline(
+                              context,
                               color: timeFormat == false
                                   ? Colors.white
                                   : Colors.black38,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
@@ -342,14 +329,16 @@ class DatePickerPageState extends State<DatePickerPage> {
                         .02,
                   ),
                   child: Button(
-                    valueTextStyle: TextStyle(
-                      color: timeFormat == true ? Colors.white : Colors.black38,
-                      fontWeight: FontWeight.bold,
+                    valueTextStyle: SpaceJamTextStyles.headline(
+                      context,
+                      color:
+                          timeFormat != false ? Colors.white : Colors.black38,
                     ),
                     valueFontSize: MediaQuery.of(context).size.width * .08,
-                    titleTextStyle: TextStyle(
-                      color: timeFormat == true ? Colors.white : Colors.black38,
-                      fontWeight: FontWeight.bold,
+                    titleTextStyle: SpaceJamTextStyles.headline(
+                      context,
+                      color:
+                          timeFormat != false ? Colors.white : Colors.black38,
                     ),
                     titleFontSize: MediaQuery.of(context).size.width * .05,
                     title: AppLocalizations.of(context).translate("SOL"),
@@ -396,12 +385,12 @@ class DatePickerPageState extends State<DatePickerPage> {
                         AppLocalizations.of(context)
                             .translate("date")
                             .toUpperCase(),
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: MediaQuery.of(context).size.width * .05,
+                        style: SpaceJamTextStyles.caption(
+                          context,
                           color: timeFormat == false
                               ? Colors.white
                               : Colors.black38,
+                          weight: FontWeight.bold,
                         ),
                       ),
                       Tooltip(
@@ -421,12 +410,12 @@ class DatePickerPageState extends State<DatePickerPage> {
                         AppLocalizations.of(context)
                             .translate("SOL")
                             .toUpperCase(),
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: MediaQuery.of(context).size.width * .05,
+                        style: SpaceJamTextStyles.caption(
+                          context,
                           color: timeFormat == true
                               ? Colors.white
                               : Colors.black38,
+                          weight: FontWeight.bold,
                         ),
                       ),
                     ],
@@ -434,15 +423,8 @@ class DatePickerPageState extends State<DatePickerPage> {
                 ),
                 Button(
                   background: Colors.white,
-                  valueTextStyle: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  valueTextStyle: SpaceJamTextStyles.headline(context),
                   valueFontSize: MediaQuery.of(context).size.width * .08,
-                  titleTextStyle: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
                   titleFontSize: MediaQuery.of(context).size.width * .05,
                   value: AppLocalizations.of(context).translate("search"),
                   tooltip:

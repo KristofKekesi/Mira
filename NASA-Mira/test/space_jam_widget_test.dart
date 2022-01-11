@@ -1,15 +1,10 @@
 // TODO(KristofKekesi): add tests for the following widgets:
 // - PageBuilder
-// - AppBar
 // - Collection
 // - CollectionItem
-// - ContentBox
-// - Button
 // - ImageBox
-// - FullScreen
 
 // - SpaceJamTheme
-// - IconStyle
 
 // Flutter
 import "package:flutter/material.dart";
