@@ -109,8 +109,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -136,8 +142,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -163,8 +175,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -190,8 +208,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -217,8 +241,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -260,8 +290,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -284,8 +320,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
