@@ -139,60 +139,45 @@ class SidebarDrawer extends StatelessWidget {
                             child: Text(
                               AppLocalizations.of(context)
                                   .translate("licenses"),
-                              style: TextStyle(
+                              style: SpaceJamTextStyles.caption(
+                                context,
+                                color: Colors.black,
                                 decoration: TextDecoration.underline,
-                                letterSpacing: 2,
-                                fontWeight: FontWeight.bold,
-                                fontSize: (MediaQuery.of(context).size.height +
-                                        MediaQuery.of(context).size.width) /
-                                    2 *
-                                    .03,
                               ),
                             ),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.width * .05,
+                            top: MediaQuery.of(context).size.width * .04,
                           ),
                           child: Text(
                             appTitle,
-                            style: TextStyle(
-                              letterSpacing: 2,
-                              fontWeight: FontWeight.bold,
-                              fontSize: (MediaQuery.of(context).size.height +
-                                      MediaQuery.of(context).size.width) /
-                                  2 *
-                                  .03,
+                            style: SpaceJamTextStyles.caption(
+                              context,
+                              color: Colors.black,
                             ),
                           ),
                         ),
                         Text(
                           "3.0.0 [12]",
-                          style: TextStyle(
-                            letterSpacing: 2,
-                            fontWeight: FontWeight.bold,
-                            fontSize: (MediaQuery.of(context).size.height +
-                                    MediaQuery.of(context).size.width) /
-                                2 *
-                                .03,
+                          style: SpaceJamTextStyles.caption(
+                            context,
+                            color: Colors.black,
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                              top: MediaQuery.of(context).size.width * .05,),
+                            top: MediaQuery.of(context).size.width * .03,
+                          ),
                           child: Text(
-                            "${AppLocalizations.of(context).translate("name")
-                                .capitalize()}"
+                            "${AppLocalizations.of(context)
+                                .translate("name").capitalize()}"
                             "[${AppLocalizations.of(context)
                                 .translate("key")}]",
-                            style: TextStyle(
-                              letterSpacing: 2,
-                              fontWeight: FontWeight.bold,
-                              fontSize: (MediaQuery.of(context).size.height +
-                                      MediaQuery.of(context).size.width) /
-                                  2 *
-                                  .03,
+                            style: SpaceJamTextStyles.caption(
+                              context,
+                              color: Colors.black,
                             ),
                           ),
                         ),

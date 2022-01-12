@@ -2,6 +2,9 @@
 import "package:flutter/material.dart";
 import "package:splashscreen/splashscreen.dart";
 
+// Widgets
+import "../widgets/text_styles.dart";
+
 // utils
 import "../utils/localization.dart";
 import "../pass.dart";
@@ -18,18 +21,13 @@ class SplashScreenPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
       body: SplashScreen(
         seconds: 2,
-        title: const Text(
+        title: Text(
           appTitle,
-          style: TextStyle(
-            fontSize: 25,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          style: SpaceJamTextStyles.headline(context, color: Colors.white),
         ),
         loadingText: Text(
           AppLocalizations.of(context).translate("loading"),
-          style: const TextStyle(
-              fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold,),
+          style: SpaceJamTextStyles.defaultTextStyle(context),
         ),
         loadingTextPadding: EdgeInsets.zero,
         imageBackground: const AssetImage(appBackground),

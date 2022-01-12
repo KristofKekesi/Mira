@@ -1,6 +1,9 @@
 // Flutter
 import "package:flutter/material.dart";
 
+// widgets
+import "text_styles.dart";
+
 // utils
 import "../utils/localization.dart";
 
@@ -73,21 +76,20 @@ void showSelectors(
                     child: Text(
                       AppLocalizations.of(context)
                           .translate("selectorsandsort"),
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * .05,
-                        fontWeight: FontWeight.bold,
+                      style: SpaceJamTextStyles.subHeadline(
+                        context,
                       ),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * .025,
-                      bottom: MediaQuery.of(context).size.height * .01,
                     ),
                     child: Text(
                       AppLocalizations.of(context).translate("types"),
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * .05,
+                      style: SpaceJamTextStyles.caption(
+                        context,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -107,8 +109,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -134,8 +142,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -161,8 +175,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -188,8 +208,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -215,8 +241,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -234,12 +266,12 @@ void showSelectors(
                   Padding(
                     padding: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * .025,
-                      bottom: MediaQuery.of(context).size.height * .01,
                     ),
                     child: Text(
                       AppLocalizations.of(context).translate("sort"),
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * .05,
+                      style: SpaceJamTextStyles.caption(
+                        context,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -258,8 +290,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -282,8 +320,14 @@ void showSelectors(
                           ),
                         ),
                         showCheckmark: false,
-                        backgroundColor: const Color.fromRGBO(232, 103, 45, .3),
-                        selectedColor: const Color.fromRGBO(232, 103, 45, .75),
+                        backgroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.3),
+                        selectedColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(.8),
                         disabledColor: const Color(0xffcccccc),
                         shadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -316,8 +360,9 @@ void showSelectors(
               ),
               child: Text(
                 AppLocalizations.of(context).translate("ok"),
-                style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * .05,
+                style: SpaceJamTextStyles.caption(
+                  context,
+                  color: Colors.black,
                 ),
               ),
             ),

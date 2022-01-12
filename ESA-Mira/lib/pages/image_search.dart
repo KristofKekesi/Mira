@@ -9,8 +9,9 @@ import "package:flutter/material.dart";
 import "../pass.dart";
 
 // widgets
-import "../widgets/appbar.dart";
+import "../widgets/text_styles.dart";
 import "../widgets/content_box.dart";
+import "../widgets/appbar.dart";
 import "../widgets/button.dart";
 
 // pages
@@ -42,6 +43,25 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
           final List<dynamic> data = snapshot.data.data["photos"];
 
           final List<Widget> serializedImages = <Widget>[];
+
+          if (data.isEmpty) {
+            serializedImages.add(
+              Padding(
+                padding: EdgeInsets.only(
+                  top: (MediaQuery.of(context).size.width +
+                          MediaQuery.of(context).size.height) /
+                      2 *
+                      .04,
+                ),
+                child: Text(
+                  AppLocalizations.of(context).translate("imgNoRes"),
+                  style:
+                      SpaceJamTextStyles.caption(context, color: Colors.black),
+                ),
+              ),
+            );
+          }
+
           for (int index = 0; index < data.length; index++) {
             if (index == 0) {
               serializedImages.add(
@@ -139,13 +159,10 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                                         ),
                                         Text(
                                           imageCounter(context, data.length),
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                .05,
+                                          style: SpaceJamTextStyles.subHeadline(
+                                            context,
                                             color: Colors.white,
+                                            weight: FontWeight.normal,
                                           ),
                                         ),
                                       ],
@@ -216,7 +233,8 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                                       builder: (BuildContext context) =>
                                           FullScreen(
                                         image: Image.network(
-                                            data[index]["img_src"],),
+                                          data[index]["img_src"],
+                                        ),
                                         imageURL: data[index]["img_src"],
                                       ),
                                     ),
@@ -295,15 +313,13 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                   children: <Widget>[
                     Text(
                       AppLocalizations.of(context).translate("imgError"),
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * .1,
-                      ),
+                      style: SpaceJamTextStyles.caption(context,
+                          color: Colors.black,),
                     ),
                     Text(
                       "${snapshot.error}",
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * .05,
-                      ),
+                      style: SpaceJamTextStyles.caption(context,
+                          color: Colors.black,),
                     ),
                   ],
                 ),
@@ -325,15 +341,14 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * .05,
+                  padding: const EdgeInsets.only(
+                    top: 15,
                   ),
                   child: Text(
                     AppLocalizations.of(context).translate("loading"),
-                    style: const TextStyle(
-                      fontSize: 25,
+                    style: SpaceJamTextStyles.defaultTextStyle(
+                      context,
                       color: Colors.black,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

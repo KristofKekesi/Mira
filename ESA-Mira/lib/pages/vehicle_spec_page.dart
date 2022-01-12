@@ -3,8 +3,9 @@ import "package:auto_size_text/auto_size_text.dart";
 import "package:flutter/material.dart";
 
 // widgets
-import "../widgets/button.dart";
+import "../widgets/text_styles.dart";
 import "../widgets/content_box.dart";
+import "../widgets/button.dart";
 import "../widgets/appbar.dart";
 
 // pages
@@ -47,25 +48,34 @@ class RoverSpecPage extends StatelessWidget {
 
   /// The mission if the vehicle has one.
   final String? mission;
+
   /// The name of the vehicle.
   final String name;
+
   /// The nickname of the vehicle if it has one.
   final String? nick;
+
   /// The type of the vehicle. E.g.: rover
   final String type;
+
   /// The organisation who controls the vehicle.
   final List<dynamic> operator;
+
   /// The manufacturer of the vehicle.
   final String manufacturer;
 
   /// Map that contains the launch date.
   final Map<String, dynamic>? launch;
+
   /// Map that contains the date of arrival.
   final Map<String, dynamic>? arrive;
+
   /// Map that contains the date of deactivation.
   final Map<String, dynamic>? deactivated;
+
   /// Map that contains the date of connection lost.
   final Map<String, dynamic>? connectionLost;
+
   /// Map that contains the date of the end of the mission.
   final Map<String, dynamic>? end;
 
@@ -161,66 +171,65 @@ class RoverSpecPage extends StatelessWidget {
     getMissionEndDate();
 
     Widget missionWidget(String? mission) => mission == null
-          ? const Min()
-          : Padding(
-              padding: EdgeInsets.only(
-                  bottom: (MediaQuery.of(context).size.width +
-                          MediaQuery.of(context).size.height) /
-                      2 *
-                      .02,),
-              child: Button(
-                title:
-                    AppLocalizations.of(context).translate("roverSpecMission"),
-                valueFontSize: MediaQuery.of(context).size.width * .08,
-                value: mission,
-                valueSizeGroup: specPageBigText,
-                titleFontSize: MediaQuery.of(context).size.width * .05,
-                action: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute<Widget>(
-                      builder: (BuildContext context) => VehicleSearch(
-                        type: "mission",
-                        value: mission,
-                      ),
+        ? const Min()
+        : Padding(
+            padding: EdgeInsets.only(
+              bottom: (MediaQuery.of(context).size.width +
+                      MediaQuery.of(context).size.height) /
+                  2 *
+                  .02,
+            ),
+            child: Button(
+              title: AppLocalizations.of(context).translate("roverSpecMission"),
+              valueFontSize: MediaQuery.of(context).size.width * .08,
+              value: mission,
+              valueSizeGroup: specPageBigText,
+              titleFontSize: MediaQuery.of(context).size.width * .05,
+              action: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<Widget>(
+                    builder: (BuildContext context) => VehicleSearch(
+                      type: "mission",
+                      value: mission,
                     ),
-                  );
-                },
-              ),
-            );
+                  ),
+                );
+              },
+            ),
+          );
 
     Widget nicknameWidget(String? nick) => nick == null
-          ? const Min()
-          : Padding(
-              padding: EdgeInsets.only(
-                  bottom: (MediaQuery.of(context).size.width +
-                          MediaQuery.of(context).size.height) /
-                      2 *
-                      .02,),
-              child: Button(
-                title: name,
-                valueFontSize: MediaQuery.of(context).size.width * .08,
-                titleFontSize: MediaQuery.of(context).size.width * .05,
-                value: '"$nick"',
-                valueSizeGroup: specPageBigText,
-              ),
-            );
+        ? const Min()
+        : Padding(
+            padding: EdgeInsets.only(
+              bottom: (MediaQuery.of(context).size.width +
+                      MediaQuery.of(context).size.height) /
+                  2 *
+                  .02,
+            ),
+            child: Button(
+              title: name,
+              valueFontSize: MediaQuery.of(context).size.width * .08,
+              titleFontSize: MediaQuery.of(context).size.width * .05,
+              value: '"$nick"',
+              valueSizeGroup: specPageBigText,
+            ),
+          );
 
     final List<Widget> actionWidget = <Widget>[
-    apiEnabled
+      apiEnabled
           ? Padding(
               padding: EdgeInsets.only(
-                  top: (MediaQuery.of(context).size.width +
-                          MediaQuery.of(context).size.height) /
-                      2 *
-                      .02,),
+                top: (MediaQuery.of(context).size.width +
+                        MediaQuery.of(context).size.height) /
+                    2 *
+                    .02,
+              ),
               child: Center(
                 child: Button(
                   background: Colors.white,
-                  valueTextStyle: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  valueTextStyle: SpaceJamTextStyles.headline(context),
                   valueFontSize: MediaQuery.of(context).size.width * .08,
                   titleFontSize: MediaQuery.of(context).size.width * .06,
                   tooltip: AppLocalizations.of(context)
@@ -240,7 +249,8 @@ class RoverSpecPage extends StatelessWidget {
                 ),
               ),
             )
-          : const Min(),];
+          : const Min(),
+    ];
 
     String appbarTitle() => nick == null ? name : nick!;
     String? appbarSubtitle() => nick == null ? null : name;
@@ -292,10 +302,12 @@ class RoverSpecPage extends StatelessWidget {
                         .02,
                   ),
                   Padding(
-                    padding: EdgeInsets.all((MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
-                        2 *
-                        .02,),
+                    padding: EdgeInsets.all(
+                      (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .02,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -305,11 +317,9 @@ class RoverSpecPage extends StatelessWidget {
                             Text(
                               AppLocalizations.of(context)
                                   .translate("roverSpecLaunch"),
-                              style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .05,
+                              style: SpaceJamTextStyles.subHeadline(
+                                context,
                                 color: Colors.white70,
-                                fontWeight: FontWeight.bold,
                               ),
                             ),
                             Row(
@@ -319,22 +329,15 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("month"),
                                   child: Text(
                                     launchM,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: SpaceJamTextStyles.defaultTextStyle(
+                                      context,
                                     ),
                                   ),
                                 ),
                                 Text(
                                   "/",
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                  style: SpaceJamTextStyles.defaultTextStyle(
+                                    context,
                                   ),
                                 ),
                                 Tooltip(
@@ -342,22 +345,15 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("day"),
                                   child: Text(
                                     launchD,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: SpaceJamTextStyles.defaultTextStyle(
+                                      context,
                                     ),
                                   ),
                                 ),
                                 Text(
                                   "/",
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                  style: SpaceJamTextStyles.defaultTextStyle(
+                                    context,
                                   ),
                                 ),
                                 Tooltip(
@@ -365,12 +361,8 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("year"),
                                   child: Text(
                                     launchY,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: SpaceJamTextStyles.defaultTextStyle(
+                                      context,
                                     ),
                                   ),
                                 ),
@@ -384,11 +376,9 @@ class RoverSpecPage extends StatelessWidget {
                             Text(
                               AppLocalizations.of(context)
                                   .translate("roverSpecArrive"),
-                              style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .05,
+                              style: SpaceJamTextStyles.subHeadline(
+                                context,
                                 color: Colors.white70,
-                                fontWeight: FontWeight.bold,
                               ),
                             ),
                             Row(
@@ -398,22 +388,15 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("month"),
                                   child: Text(
                                     arriveM,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: SpaceJamTextStyles.defaultTextStyle(
+                                      context,
                                     ),
                                   ),
                                 ),
                                 Text(
                                   "/",
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                  style: SpaceJamTextStyles.defaultTextStyle(
+                                    context,
                                   ),
                                 ),
                                 Tooltip(
@@ -421,22 +404,15 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("day"),
                                   child: Text(
                                     arriveD,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: SpaceJamTextStyles.defaultTextStyle(
+                                      context,
                                     ),
                                   ),
                                 ),
                                 Text(
                                   "/",
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                  style: SpaceJamTextStyles.defaultTextStyle(
+                                    context,
                                   ),
                                 ),
                                 Tooltip(
@@ -444,12 +420,8 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("year"),
                                   child: Text(
                                     arriveY,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: SpaceJamTextStyles.defaultTextStyle(
+                                      context,
                                     ),
                                   ),
                                 ),
@@ -466,11 +438,9 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("roverSpecDeactivatedMin")
                                   : AppLocalizations.of(context)
                                       .translate("roverSpecLastMin"),
-                              style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .05,
+                              style: SpaceJamTextStyles.subHeadline(
+                                context,
                                 color: Colors.white70,
-                                fontWeight: FontWeight.bold,
                               ),
                             ),
                             Row(
@@ -480,22 +450,15 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("month"),
                                   child: Text(
                                     endM,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: SpaceJamTextStyles.defaultTextStyle(
+                                      context,
                                     ),
                                   ),
                                 ),
                                 Text(
                                   "/",
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                  style: SpaceJamTextStyles.defaultTextStyle(
+                                    context,
                                   ),
                                 ),
                                 Tooltip(
@@ -503,22 +466,15 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("day"),
                                   child: Text(
                                     endD,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: SpaceJamTextStyles.defaultTextStyle(
+                                      context,
                                     ),
                                   ),
                                 ),
                                 Text(
                                   "/",
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                  style: SpaceJamTextStyles.defaultTextStyle(
+                                    context,
                                   ),
                                 ),
                                 Tooltip(
@@ -526,12 +482,8 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("year"),
                                   child: Text(
                                     endY,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: SpaceJamTextStyles.defaultTextStyle(
+                                      context,
                                     ),
                                   ),
                                 ),
@@ -545,11 +497,9 @@ class RoverSpecPage extends StatelessWidget {
                             Text(
                               AppLocalizations.of(context)
                                   .translate("roverSpecEndMin"),
-                              style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .05,
+                              style: SpaceJamTextStyles.subHeadline(
+                                context,
                                 color: Colors.white70,
-                                fontWeight: FontWeight.bold,
                               ),
                             ),
                             Row(
@@ -559,22 +509,15 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("month"),
                                   child: Text(
                                     missionEndM,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: SpaceJamTextStyles.defaultTextStyle(
+                                      context,
                                     ),
                                   ),
                                 ),
                                 Text(
                                   "/",
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                  style: SpaceJamTextStyles.defaultTextStyle(
+                                    context,
                                   ),
                                 ),
                                 Tooltip(
@@ -582,22 +525,15 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("day"),
                                   child: Text(
                                     missionEndD,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                    style: SpaceJamTextStyles.defaultTextStyle(
+                                      context,
                                     ),
                                   ),
                                 ),
                                 Text(
                                   "/",
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.of(context).size.width * .05,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                  style: SpaceJamTextStyles.defaultTextStyle(
+                                    context,
                                   ),
                                 ),
                                 Tooltip(
@@ -605,13 +541,8 @@ class RoverSpecPage extends StatelessWidget {
                                       .translate("year"),
                                   child: Text(
                                     missionEndY,
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              .05,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style: SpaceJamTextStyles
+                                        .defaultTextStyle(context,),
                                   ),
                                 ),
                               ],
@@ -619,23 +550,17 @@ class RoverSpecPage extends StatelessWidget {
                           ],
                         ),
                         Text(
-                          "* ${deactivated != null
-                                  ? AppLocalizations.of(context)
-                                      .translate("roverSpecDeactivated")
-                                  : AppLocalizations.of(context)
-                                      .translate("roverSpecLast")}",
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * .045,
-                            color: Colors.white70,
-                          ),
+                          "* ${deactivated != null ?
+                          AppLocalizations.of(context)
+                              .translate("roverSpecDeactivated") :
+                          AppLocalizations.of(context)
+                              .translate("roverSpecLast")}",
+                          style: SpaceJamTextStyles.caption(context,),
                         ),
                         Text(
                           "** ${AppLocalizations.of(context)
-                                  .translate("roverSpecEnd")}",
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * .045,
-                            color: Colors.white70,
-                          ),
+                              .translate("roverSpecEnd")}",
+                          style: SpaceJamTextStyles.caption(context,),
                         ),
                       ],
                     ),

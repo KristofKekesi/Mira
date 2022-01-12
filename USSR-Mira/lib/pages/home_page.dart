@@ -46,11 +46,11 @@ class HomePage extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           const ApodWidget(),
-                          Collection(
+                          /*Collection(
                               isVisible: notifierAreHelicoptersVisible,
                               inputType: "type",
                               filter: "helicopter",
-                              outputType: "type",),
+                              outputType: "type",),*/
                           Collection(
                               isVisible: notifierAreRoversVisible,
                               inputType: "type",

@@ -10,8 +10,9 @@ import "package:flutter/material.dart";
 import "../pass.dart";
 
 // widgets
-import "min.dart";
+import "text_styles.dart";
 import "selector.dart";
+import "min.dart";
 
 // pages
 import "../pages/vehicle_spec_page.dart";
@@ -152,13 +153,7 @@ class _CollectionInner extends StatelessWidget {
                                 ? const Min()
                                 : AutoSizeText(
                                     data[index]["mission"],
-                                    style: TextStyle(
-                                      color: Colors.white70,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize:
-                                          MediaQuery.of(context).size.height *
-                                              .02,
-                                    ),
+                                    style: SpaceJamTextStyles.caption(context),
                                     group: roverGridCaption,
                                     maxLines: 1,
                                     minFontSize: 1,
@@ -168,12 +163,8 @@ class _CollectionInner extends StatelessWidget {
                               group: roverGridTitle,
                               maxLines: 2,
                               overflow: TextOverflow.fade,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize:
-                                    MediaQuery.of(context).size.height * .025,
-                              ),
+                              style:
+                                  SpaceJamTextStyles.defaultTextStyle(context),
                               minFontSize: 1,
                             ),
                           ],
@@ -187,42 +178,21 @@ class _CollectionInner extends StatelessWidget {
                                 AutoSizeText(
                                   AppLocalizations.of(context)
                                       .translate("state"),
-                                  style: TextStyle(
-                                    color: Colors.white70,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            .02,
-                                  ),
+                                  style: SpaceJamTextStyles.caption(context),
                                   group: roverGridCaption,
                                   maxLines: 1,
                                   minFontSize: 1,
                                 ),
-                                data[index]["status"] == "active"
-                                    ? Text(
-                                        AppLocalizations.of(context)
-                                            .translate("active"),
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              .025,
-                                        ),
-                                      )
-                                    : Text(
-                                        AppLocalizations.of(context)
-                                            .translate("inactive"),
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              .025,
-                                        ),
-                                      ),
+                                Text(
+                                  data[index]["status"] == "active"
+                                      ? AppLocalizations.of(context)
+                                          .translate("active")
+                                      : AppLocalizations.of(context)
+                                          .translate("inactive"),
+                                  style: SpaceJamTextStyles.defaultTextStyle(
+                                    context,
+                                  ),
+                                ),
                               ],
                             ),
                             Icon(
@@ -343,17 +313,7 @@ class CollectionState extends State<Collection> {
                                         "${widget.filter}s",
                                       ) ??
                                       widget.errorString,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize:
-                                        (MediaQuery.of(context).size.width +
-                                                MediaQuery.of(context)
-                                                    .size
-                                                    .height) /
-                                            2 *
-                                            .05,
-                                    color: Colors.black,
-                                  ),
+                                  style: SpaceJamTextStyles.headline(context),
                                 ),
                               ),
                             ),
@@ -379,17 +339,7 @@ class CollectionState extends State<Collection> {
                                         "${widget.filter}s",
                                       ) ??
                                       widget.errorString,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize:
-                                        (MediaQuery.of(context).size.width +
-                                                MediaQuery.of(context)
-                                                    .size
-                                                    .height) /
-                                            2 *
-                                            .05,
-                                    color: Colors.black,
-                                  ),
+                                  style: SpaceJamTextStyles.headline(context),
                                 ),
                               ),
                             ),
@@ -404,14 +354,7 @@ class CollectionState extends State<Collection> {
                             alignment: Alignment.topLeft,
                             child: Text(
                               widget.filter,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: (MediaQuery.of(context).size.width +
-                                        MediaQuery.of(context).size.height) /
-                                    2 *
-                                    .05,
-                                color: Colors.black,
-                              ),
+                              style: SpaceJamTextStyles.caption(context),
                             ),
                           ),
                           const Min(),

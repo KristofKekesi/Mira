@@ -79,7 +79,7 @@ class MiraAppState extends State<MiraApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.light,
-          primarySwatch: createMaterialColor(const Color(0xffE8672D)),
+          primarySwatch: createMaterialColor(const Color(0xff174bd0)),
         ),
         home: widget.child,
       );
