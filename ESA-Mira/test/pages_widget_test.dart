@@ -5,12 +5,12 @@ import "package:flutter_test/flutter_test.dart";
 import "package:esamira/main.dart";
 
 // pages
-import "package:esamira/pages/home_page.dart";
-import "package:esamira/pages/date_picker.dart";
-import "package:esamira/pages/drawer.dart";
-import "package:esamira/pages/image_search.dart";
 import "package:esamira/pages/vehicle_spec_page.dart";
 import "package:esamira/pages/vehicle_search.dart";
+import "package:esamira/pages/image_search.dart";
+import "package:esamira/pages/date_picker.dart";
+import "package:esamira/pages/home_page.dart";
+import "package:esamira/pages/drawer.dart";
 
 void main() {
   group("Pages", () {
