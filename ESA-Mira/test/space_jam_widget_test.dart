@@ -12,14 +12,14 @@
 // - IconStyle
 
 // Flutter
-import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
+import "package:flutter/material.dart";
 
 // widgets
+import "package:esamira/widgets/content_box.dart";
+import "package:esamira/pages/fullscreen.dart";
 import "package:esamira/widgets/button.dart";
 import "package:esamira/widgets/appbar.dart";
-import "package:esamira/pages/fullscreen.dart";
-import "package:esamira/widgets/content_box.dart";
 
 // MiraApp
 import "package:esamira/main.dart";

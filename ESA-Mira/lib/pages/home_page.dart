@@ -9,10 +9,10 @@ import "../utils/localization.dart";
 import "../pass.dart";
 
 // widgets
-import "../widgets/apod.dart";
-import "../widgets/appbar.dart";
 import "../widgets/collection.dart";
 import "../widgets/selector.dart";
+import "../widgets/appbar.dart";
+import "../widgets/apod.dart";
 
 /// The homepage, the first page the user sees.
 class HomePage extends StatelessWidget {

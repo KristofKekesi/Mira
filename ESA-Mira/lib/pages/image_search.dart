@@ -18,9 +18,9 @@ import "../widgets/button.dart";
 import "fullscreen.dart";
 
 // utils
-import "../utils/fetch.dart";
-import "../utils/get_th.dart";
 import "../utils/localization.dart";
+import "../utils/get_th.dart";
+import "../utils/fetch.dart";
 
 /// A string function to return correct translation based on plurality.
 String imageCounter(BuildContext context, int num) {
