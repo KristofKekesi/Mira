@@ -1,33 +1,24 @@
 <p align="center">
-<img width="128" align="center" src="lib/images/logo.png">
+<img width="128" align="center" src="assets/nasa-logo.png">
 </p>
 <h1 align="center">
   NASA Mira
 </h1>
 
-<img src="https://img.shields.io/badge/Released-2020/07/26-green.svg" alt=""> <img src="https://img.shields.io/badge/Contributors-3-blue.svg" alt=""> [![Dart CI](https://github.com/KristofKekesi/Mira/actions/workflows/dart.yml/badge.svg)](https://github.com/KristofKekesi/Mira/actions/workflows/dart.yml) [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
+<img src="https://img.shields.io/badge/Released-2020/07/26-green.svg" alt=""> <img src="https://img.shields.io/badge/Contributors-3-blue.svg" alt=""> [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/9HudGEeYnV) [![Test NASA Mira](https://github.com/KristofKekesi/Mira/actions/workflows/test_nasamira.yml/badge.svg)](https://github.com/KristofKekesi/Mira/actions/workflows/test_nasamira.yml)
 
-<span style="text-align: justify;">View the surface of the Mars with images made by NASA's rovers. An app to search for images made by NASA's mars rovers. It's also provide specifications of the rovers.</span>
+<span style="text-align: justify;">View the surface of the Mars with images made by NASA's rovers. An app to search for images made by NASA's mars rovers. It's also provide some specifications of the rovers.</span>
 
 
 ## Download <img src="https://img.shields.io/badge/Play%20Store-green.svg" alt="">
 Latest release: __2.0.1__
 
-<a href='https://play.google.com/store/apps/details?id=com.kristofkekesi.nasamira&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
-
-## Beta program <img src="https://img.shields.io/badge/Open-green.svg" alt="">
-#### To aply:
-Send an email to kristofkekesiofficial@gmail.com with your name and email address and some sentences about yourself and why are you interested in the app.
-#### Requirements:
-- Phone or tablet with Android
-- Google Drive
+<a href='https://play.google.com/store/apps/details?id=com.kristofkekesi.nasamira&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' height='100px'/></a>
  
 ## Made with <img src="https://img.shields.io/badge/Flutter-blue.svg" alt=""> <img src="https://img.shields.io/badge/Android Studio-green.svg" alt="">
-Made with __Flutter SDK__ in __Dart__ in __Flutter__. Programmed in __Android Studio__. 
+Made with __Flutter__ in __Dart__. Programmed in __Android Studio__. 
 
 ## Contributors <img src="https://img.shields.io/badge/3-blue.svg" alt="">
-[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/0)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/0)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/1)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/1)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/2)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/2)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/3)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/3)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/4)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/4)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/5)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/5)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/6)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/6)[![](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/images/7)](https://sourcerer.io/fame/KristofKekesi/KristofKekesi/NASA-Mira/links/7)
-
 * _[Programming]_  - [__Kristóf Kékesi__](https://github.com/KristofKekesi)
 
 
@@ -37,13 +28,13 @@ Made with __Flutter SDK__ in __Dart__ in __Flutter__. Programmed in __Android St
   * _[da]_ - [__Viktória Várszegi__](https://www.instagram.com/viktoriavarszegi/)
   * _[de]_ - [__Kristóf Kékesi__](https://github.com/KristofKekesi), [__Farkas Bódis__](https://www.instagram.com/bodisfarkas/)
   
-## Contacts [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/7URAMuc)
+## Contacts [![Discord](https://img.shields.io/discord/639186082214445116.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/9HudGEeYnV)
 
 <table>
  <tr><td>
   Discord:
  </td><td>
-  https://discord.gg/7URAMuc
+  https://discord.gg/9HudGEeYnV
  </td></tr>
  <tr><td>
   mail:
