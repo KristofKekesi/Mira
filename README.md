@@ -13,3 +13,8 @@
 [![Test ESA Mira](https://github.com/KristofKekesi/Mira/actions/workflows/test_esamira.yaml/badge.svg?branch=master)](https://github.com/KristofKekesi/Mira/actions/workflows/test_esamira.yaml)
 
 [Go to the project](https://github.com/KristofKekesi/Mira/tree/master/ESA-Mira)
+
+## SpaceJam package
+[![Test SpaceJam package](https://github.com/PrismForDart/SpaceJam/actions/workflows/test_package.yml/badge.svg)](https://github.com/PrismForDart/SpaceJam/actions/workflows/test_package.yml)
+
+[Go to the project](https://github.com/PrismForDart/SpaceJam)
