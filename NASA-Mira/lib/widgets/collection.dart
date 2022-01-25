@@ -6,11 +6,11 @@ import "dart:convert";
 
 // Flutter
 import "package:auto_size_text/auto_size_text.dart";
+import "package:spacejam/spacejam.dart";
 import "package:flutter/material.dart";
 import "../pass.dart";
 
 // widgets
-import "text_styles.dart";
 import "selector.dart";
 import "min.dart";
 
@@ -153,7 +153,10 @@ class _CollectionInner extends StatelessWidget {
                                 ? const Min()
                                 : AutoSizeText(
                                     data[index]["mission"],
-                                    style: SpaceJamTextStyles.caption(context),
+                                    style: SpaceJamTextStyles.bodySmall(
+                                      context,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                     group: roverGridCaption,
                                     maxLines: 1,
                                     minFontSize: 1,
@@ -163,8 +166,11 @@ class _CollectionInner extends StatelessWidget {
                               group: roverGridTitle,
                               maxLines: 2,
                               overflow: TextOverflow.fade,
-                              style:
-                                  SpaceJamTextStyles.defaultTextStyle(context),
+                              style: SpaceJamTextStyles.bodyMedium(
+                                context,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                               minFontSize: 1,
                             ),
                           ],
@@ -178,7 +184,8 @@ class _CollectionInner extends StatelessWidget {
                                 AutoSizeText(
                                   AppLocalizations.of(context)
                                       .translate("state"),
-                                  style: SpaceJamTextStyles.caption(context),
+                                  style: SpaceJamTextStyles.bodySmall(context,
+                                      fontWeight: FontWeight.bold,),
                                   group: roverGridCaption,
                                   maxLines: 1,
                                   minFontSize: 1,
@@ -189,8 +196,10 @@ class _CollectionInner extends StatelessWidget {
                                           .translate("active")
                                       : AppLocalizations.of(context)
                                           .translate("inactive"),
-                                  style: SpaceJamTextStyles.defaultTextStyle(
+                                  style: SpaceJamTextStyles.bodyMedium(
                                     context,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ],
@@ -313,7 +322,10 @@ class CollectionState extends State<Collection> {
                                         "${widget.filter}s",
                                       ) ??
                                       widget.errorString,
-                                  style: SpaceJamTextStyles.headline(context),
+                                  style: SpaceJamTextStyles.headline(
+                                    context,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
                             ),
@@ -354,7 +366,7 @@ class CollectionState extends State<Collection> {
                             alignment: Alignment.topLeft,
                             child: Text(
                               widget.filter,
-                              style: SpaceJamTextStyles.caption(context),
+                              style: SpaceJamTextStyles.bodySmall(context),
                             ),
                           ),
                           const Min(),

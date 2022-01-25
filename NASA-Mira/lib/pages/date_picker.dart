@@ -1,15 +1,12 @@
 // Flutter
 import "package:auto_size_text/auto_size_text.dart";
 import "package:numberpicker/numberpicker.dart";
+import "package:spacejam/spacejam.dart";
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 
 // widgets
-import "../widgets/text_styles.dart";
-import "../widgets/content_box.dart";
 import "../widgets/collection.dart";
-import "../widgets/appbar.dart";
-import "../widgets/button.dart";
 
 // pages
 import "image_search.dart";
@@ -178,7 +175,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                         child: Text(
                           AppLocalizations.of(context)
                               .translate("invalidDateTitle"),
-                          style: SpaceJamTextStyles.subHeadline(
+                          style: SpaceJamTextStyles.headlineSmall(
                             context,
                             color: Colors.white,
                           ),
@@ -188,7 +185,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                         AppLocalizations.of(context)
                             .translate("invalidDateContent"),
                         maxLines: 2,
-                        style: SpaceJamTextStyles.subHeadline(
+                        style: SpaceJamTextStyles.headlineSmall(
                           context,
                           color: Colors.white,
                         ),
@@ -206,6 +203,7 @@ class DatePickerPageState extends State<DatePickerPage> {
           children: <Widget>[
             ContentBox(
               title: name,
+              pathToBackground: appBackground,
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(
@@ -385,12 +383,12 @@ class DatePickerPageState extends State<DatePickerPage> {
                         AppLocalizations.of(context)
                             .translate("date")
                             .toUpperCase(),
-                        style: SpaceJamTextStyles.caption(
+                        style: SpaceJamTextStyles.bodySmall(
                           context,
                           color: timeFormat == false
                               ? Colors.white
                               : Colors.black38,
-                          weight: FontWeight.bold,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Tooltip(
@@ -410,12 +408,12 @@ class DatePickerPageState extends State<DatePickerPage> {
                         AppLocalizations.of(context)
                             .translate("SOL")
                             .toUpperCase(),
-                        style: SpaceJamTextStyles.caption(
+                        style: SpaceJamTextStyles.bodySmall(
                           context,
                           color: timeFormat == true
                               ? Colors.white
                               : Colors.black38,
-                          weight: FontWeight.bold,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
@@ -464,31 +462,44 @@ class DatePickerPageState extends State<DatePickerPage> {
           ],
         );
 
+    final ScrollController controller = ScrollController();
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
-          ListView(
-            children: <Widget>[
-              Opacity(
-                opacity: 0,
-                child: Appbar(
-                  title: name,
-                  leftAction: const AppBarAction(
-                    icon: Icons.arrow_back_rounded,
+          NotificationListener<ScrollNotification>(
+            onNotification: (ScrollNotification notification) {
+              if (notification is ScrollStartNotification ||
+                  notification is ScrollUpdateNotification) {
+                setState(() {});
+              }
+              return true;
+            },
+            child: ListView(
+              controller: controller,
+              children: <Widget>[
+                Opacity(
+                  opacity: 0,
+                  child: Appbar(
+                    title: name,
+                    leftAction: const AppBarAction(
+                      icon: Icons.arrow_back_rounded,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                child:
-                    maxDateRaw["year"] == null && minDate.compareTo(maxDate) > 0
-                        ? invalidDateContainer()
-                        : datePickerContainer(),
-              ),
-            ],
+                Container(
+                  child: maxDateRaw["year"] == null &&
+                          minDate.compareTo(maxDate) > 0
+                      ? invalidDateContainer()
+                      : datePickerContainer(),
+                ),
+              ],
+            ),
           ),
           Appbar(
             title: name,
+            controller: controller,
             leftAction: AppBarAction(
               icon: Icons.arrow_back_rounded,
               tooltip: AppLocalizations.of(context).translate("back"),

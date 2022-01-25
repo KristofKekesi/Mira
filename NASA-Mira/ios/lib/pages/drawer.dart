@@ -15,6 +15,7 @@ class SidebarDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+    backgroundColor: Colors.white,
         body: Container(
           width: MediaQuery.of(context).size.width,
           color: Colors.white,

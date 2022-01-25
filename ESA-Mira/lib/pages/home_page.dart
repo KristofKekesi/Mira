@@ -3,7 +3,6 @@ import "package:flutter/material.dart";
 
 // pages
 import "drawer.dart";
-
 // utils
 import "../utils/localization.dart";
 import "../pass.dart";

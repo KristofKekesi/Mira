@@ -1,10 +1,9 @@
 // Flutter
 import "package:flutter/material.dart";
+import "package:spacejam/spacejam.dart";
 
 // widgets
 import "../widgets/promo.dart";
-import "../widgets/appbar.dart";
-import "../widgets/text_styles.dart";
 
 // utils
 import "../utils/localization.dart";
@@ -52,6 +51,7 @@ class SidebarDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+    backgroundColor: Colors.white,
         body: Container(
           width: MediaQuery.of(context).size.width,
           color: Colors.white,
@@ -139,7 +139,7 @@ class SidebarDrawer extends StatelessWidget {
                             child: Text(
                               AppLocalizations.of(context)
                                   .translate("licenses"),
-                              style: SpaceJamTextStyles.caption(
+                              style: SpaceJamTextStyles.bodySmall(
                                 context,
                                 color: Colors.black,
                                 decoration: TextDecoration.underline,
@@ -153,7 +153,7 @@ class SidebarDrawer extends StatelessWidget {
                           ),
                           child: Text(
                             appTitle,
-                            style: SpaceJamTextStyles.caption(
+                            style: SpaceJamTextStyles.bodySmall(
                               context,
                               color: Colors.black,
                             ),
@@ -161,7 +161,7 @@ class SidebarDrawer extends StatelessWidget {
                         ),
                         Text(
                           "3.0.0 [12]",
-                          style: SpaceJamTextStyles.caption(
+                          style: SpaceJamTextStyles.bodySmall(
                             context,
                             color: Colors.black,
                           ),
@@ -175,7 +175,7 @@ class SidebarDrawer extends StatelessWidget {
                                 .translate("name").capitalize()}"
                             "[${AppLocalizations.of(context)
                                 .translate("key")}]",
-                            style: SpaceJamTextStyles.caption(
+                            style: SpaceJamTextStyles.bodySmall(
                               context,
                               color: Colors.black,
                             ),

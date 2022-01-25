@@ -6,18 +6,13 @@ import "package:dio/dio.dart";
 
 // Flutter
 import "package:flutter/material.dart";
-import "../pass.dart";
-
-// widgets
-import "../widgets/text_styles.dart";
-import "../widgets/content_box.dart";
-import "../widgets/appbar.dart";
-import "../widgets/button.dart";
+import "package:spacejam/spacejam.dart";
 
 // pages
 import "fullscreen.dart";
 
 // utils
+import "../pass.dart";
 import "../utils/fetch.dart";
 import "../utils/get_th.dart";
 import "../utils/localization.dart";
@@ -55,8 +50,10 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                 ),
                 child: Text(
                   AppLocalizations.of(context).translate("imgNoRes"),
-                  style:
-                      SpaceJamTextStyles.caption(context, color: Colors.black),
+                  style: SpaceJamTextStyles.bodySmall(
+                    context,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             );
@@ -159,10 +156,11 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                                         ),
                                         Text(
                                           imageCounter(context, data.length),
-                                          style: SpaceJamTextStyles.subHeadline(
+                                          style:
+                                              SpaceJamTextStyles.headlineSmall(
                                             context,
                                             color: Colors.white,
-                                            weight: FontWeight.normal,
+                                            fontWeight: FontWeight.normal,
                                           ),
                                         ),
                                       ],
@@ -182,6 +180,7 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
             serializedImages.add(
               ContentBox(
                 title: data[index]["id"].toString(),
+                pathToBackground: appBackground,
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
@@ -313,13 +312,17 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                   children: <Widget>[
                     Text(
                       AppLocalizations.of(context).translate("imgError"),
-                      style: SpaceJamTextStyles.caption(context,
-                          color: Colors.black,),
+                      style: SpaceJamTextStyles.bodySmall(
+                        context,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
                       "${snapshot.error}",
-                      style: SpaceJamTextStyles.caption(context,
-                          color: Colors.black,),
+                      style: SpaceJamTextStyles.bodySmall(
+                        context,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),
@@ -346,7 +349,7 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                   ),
                   child: Text(
                     AppLocalizations.of(context).translate("loading"),
-                    style: SpaceJamTextStyles.defaultTextStyle(
+                    style: SpaceJamTextStyles.bodyMedium(
                       context,
                       color: Colors.black,
                     ),

@@ -13,6 +13,7 @@ class SplashScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SplashScreen(
         seconds: 2,
         title: const Text(

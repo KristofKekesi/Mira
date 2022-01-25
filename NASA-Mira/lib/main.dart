@@ -18,7 +18,7 @@ void main() {
   darkTitlebar();
   runApp(
     const MiraApp(
-      child: SplashScreenPage(
+      home: SplashScreenPage(
         child: HomePage(),
       ),
     ),
@@ -29,12 +29,12 @@ void main() {
 class MiraApp extends StatefulWidget {
   /// Constructor
   const MiraApp({
-    required this.child,
+    required this.home,
     Key? key,
   }) : super(key: key);
 
-  /// Child to pass on.
-  final Widget child;
+  /// Homepage to pass on.
+  final Widget home;
 
   @override
   MiraAppState createState() => MiraAppState();
@@ -77,10 +77,46 @@ class MiraAppState extends State<MiraApp> {
         },
         title: appTitle,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          brightness: Brightness.light,
-          primarySwatch: createMaterialColor(const Color(0xffE8672D)),
+    theme: ThemeData(
+      primarySwatch: createMaterialColor(const Color(0xffE8672D)),
+      // TextThemes
+      textTheme: const TextTheme(
+        titleMedium: TextStyle(
+          fontWeight: FontWeight.bold,
+          /* fontSize: (MediaQuery.of(context).size.width +
+                 MediaQuery.of(context).size.height) /
+                 2 * .06,
+              */
+          color: Colors.black,
         ),
-        home: widget.child,
+        titleSmall: TextStyle(
+          /* fontSize: (MediaQuery.of(context).size.width +
+              MediaQuery.of(context).size.height) /
+              2 * .04,
+          */
+          color: Colors.black,
+        ),
+        headlineMedium: TextStyle(
+          //fontSize: MediaQuery.of(context).size.width * .08,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+        headlineSmall: TextStyle(
+          //fontSize: MediaQuery.of(context).size.width * .05,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+        bodyMedium: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          //fontSize: MediaQuery.of(context).size.height * .025,
+        ),
+        bodySmall: TextStyle(
+          color: Colors.white70,
+          //fontSize: MediaQuery.of(context).size.height * .02,
+        ),
+      ),
+    ),
+        home: widget.home,
       );
 }

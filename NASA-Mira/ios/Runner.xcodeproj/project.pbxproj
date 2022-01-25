@@ -14,24 +14,7 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		E1856A57273C7AFE00A9D480 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1856A56273C7AFE00A9D480 /* WidgetKit.framework */; };
-		E1856A59273C7AFF00A9D480 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1856A58273C7AFE00A9D480 /* SwiftUI.framework */; };
-		E1856A5C273C7AFF00A9D480 /* Apod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1856A5B273C7AFF00A9D480 /* Apod.swift */; };
-		E1856A5F273C7AFF00A9D480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1856A5E273C7AFF00A9D480 /* Assets.xcassets */; };
-		E1856A61273C7AFF00A9D480 /* Apod.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E1856A5D273C7AFF00A9D480 /* Apod.intentdefinition */; };
-		E1856A62273C7AFF00A9D480 /* Apod.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E1856A5D273C7AFF00A9D480 /* Apod.intentdefinition */; };
-		E1856A65273C7AFF00A9D480 /* ApodExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E1856A55273C7AFE00A9D480 /* ApodExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E1856A63273C7AFF00A9D480 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E1856A54273C7AFE00A9D480;
-			remoteInfo = ApodExtension;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
@@ -50,7 +33,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E1856A65273C7AFF00A9D480 /* ApodExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,13 +57,8 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1856A55273C7AFE00A9D480 /* ApodExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ApodExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1856A56273C7AFE00A9D480 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		E1856A58273C7AFE00A9D480 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		E1856A5B273C7AFF00A9D480 /* Apod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apod.swift; sourceTree = "<group>"; };
-		E1856A5D273C7AFF00A9D480 /* Apod.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Apod.intentdefinition; sourceTree = "<group>"; };
-		E1856A5E273C7AFF00A9D480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E1856A60273C7AFF00A9D480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,15 +67,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				507577FD263CE2E1240B52DA /* Pods_Runner.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E1856A52273C7AFE00A9D480 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E1856A59273C7AFF00A9D480 /* SwiftUI.framework in Frameworks */,
-				E1856A57273C7AFE00A9D480 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +99,6 @@
 			children = (
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
-				E1856A5A273C7AFF00A9D480 /* Apod */,
 				97C146EF1CF9000F007C117D /* Products */,
 				192BEA4B536BA48C90C5BDE9 /* Pods */,
 				BFA084F4C94445589DA8BB23 /* Frameworks */,
@@ -142,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				97C146EE1CF9000F007C117D /* Runner.app */,
-				E1856A55273C7AFE00A9D480 /* ApodExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,17 +146,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E1856A5A273C7AFF00A9D480 /* Apod */ = {
-			isa = PBXGroup;
-			children = (
-				E1856A5B273C7AFF00A9D480 /* Apod.swift */,
-				E1856A5D273C7AFF00A9D480 /* Apod.intentdefinition */,
-				E1856A5E273C7AFF00A9D480 /* Assets.xcassets */,
-				E1856A60273C7AFF00A9D480 /* Info.plist */,
-			);
-			path = Apod;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,29 +166,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				E1856A64273C7AFF00A9D480 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
-		};
-		E1856A54273C7AFE00A9D480 /* ApodExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E1856A6A273C7AFF00A9D480 /* Build configuration list for PBXNativeTarget "ApodExtension" */;
-			buildPhases = (
-				E1856A51273C7AFE00A9D480 /* Sources */,
-				E1856A52273C7AFE00A9D480 /* Frameworks */,
-				E1856A53273C7AFE00A9D480 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ApodExtension;
-			productName = ApodExtension;
-			productReference = E1856A55273C7AFE00A9D480 /* ApodExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -248,9 +185,6 @@
 					97C146ED1CF9000F007C117D = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 1100;
-					};
-					E1856A54273C7AFE00A9D480 = {
-						CreatedOnToolsVersion = 13.1;
 					};
 				};
 			};
@@ -268,7 +202,6 @@
 			projectRoot = "";
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
-				E1856A54273C7AFE00A9D480 /* ApodExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -282,14 +215,6 @@
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E1856A53273C7AFE00A9D480 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E1856A5F273C7AFF00A9D480 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,28 +297,10 @@
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
-				E1856A62273C7AFF00A9D480 /* Apod.intentdefinition in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E1856A51273C7AFE00A9D480 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E1856A61273C7AFF00A9D480 /* Apod.intentdefinition in Sources */,
-				E1856A5C273C7AFF00A9D480 /* Apod.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E1856A64273C7AFF00A9D480 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E1856A54273C7AFE00A9D480 /* ApodExtension */;
-			targetProxy = E1856A63273C7AFF00A9D480 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		97C146FA1CF9000F007C117D /* Main.storyboard */ = {
@@ -669,121 +576,6 @@
 			};
 			name = Release;
 		};
-		E1856A67273C7AFF00A9D480 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 626S7SSF43;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Apod/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Astrology Picture of Day";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kristofkekesi.nasamira.apod;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		E1856A68273C7AFF00A9D480 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 626S7SSF43;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Apod/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Astrology Picture of Day";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kristofkekesi.nasamira.apod;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		E1856A69273C7AFF00A9D480 /* Profile */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 626S7SSF43;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Apod/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Astrology Picture of Day";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kristofkekesi.nasamira.apod;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Profile;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -803,16 +595,6 @@
 				97C147061CF9000F007C117D /* Debug */,
 				97C147071CF9000F007C117D /* Release */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E1856A6A273C7AFF00A9D480 /* Build configuration list for PBXNativeTarget "ApodExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E1856A67273C7AFF00A9D480 /* Debug */,
-				E1856A68273C7AFF00A9D480 /* Release */,
-				E1856A69273C7AFF00A9D480 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -2,6 +2,7 @@
 //ignore_for_file: avoid_dynamic_calls
 
 // Flutter
+import "package:flutter/services.dart";
 import "package:flutter/material.dart";
 import "./min.dart";
 
@@ -71,7 +72,7 @@ class ApodWidgetState extends State<ApodWidget> {
                   alignment: Alignment.bottomRight,
                   child: GestureDetector(
                     onTap: () {
-                      //_popup(context, title, copyright, url);
+                      HapticFeedback.selectionClick();
                       Navigator.push(
                         context,
                         MaterialPageRoute<Widget>(

@@ -1,10 +1,10 @@
 // Flutter
 import "package:flutter/material.dart";
+import "package:spacejam/spacejam.dart";
 
 // widgets
 import "../widgets/collection.dart";
 import "../widgets/selector.dart";
-import "../widgets/appbar.dart";
 
 // utils
 import "../utils/localization.dart";
@@ -85,6 +85,7 @@ class VehicleSearch extends StatelessWidget {
     }
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
           SingleChildScrollView(
