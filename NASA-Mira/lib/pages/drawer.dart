@@ -61,10 +61,10 @@ class SidebarDrawer extends StatelessWidget {
                 children: <Widget>[
                   Opacity(
                     opacity: 0,
-                    child: Appbar(
+                    child: SpaceJamAppBar(
                       title: AppLocalizations.of(context).translate("settings"),
-                      rightAction: const AppBarAction(
-                        icon: Icons.arrow_forward_rounded,
+                      rightAction: const SpaceJamAppBarAction(
+                        Icons.arrow_forward_rounded,
                       ),
                     ),
                   ),
@@ -186,10 +186,10 @@ class SidebarDrawer extends StatelessWidget {
                   ),
                 ],
               ),
-              Appbar(
+              SpaceJamAppBar(
                 title: AppLocalizations.of(context).translate("settings"),
-                rightAction: AppBarAction(
-                  icon: Icons.arrow_forward_rounded,
+                rightAction: SpaceJamAppBarAction(
+                  Icons.arrow_forward_rounded,
                   tooltip: AppLocalizations.of(context).translate("back"),
                   action: () {
                     Navigator.pop(context);

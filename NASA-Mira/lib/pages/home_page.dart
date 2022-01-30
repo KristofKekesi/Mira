@@ -32,10 +32,10 @@ class HomePage extends StatelessWidget {
                       children: <Widget>[
                         const Opacity(
                           opacity: 0,
-                          child: Appbar(
+                          child: SpaceJamAppBar(
                             title: appTitle,
-                            rightAction: AppBarAction(
-                              icon: Icons.menu,
+                            rightAction: SpaceJamAppBarAction(
+                              Icons.menu,
                             ),
                           ),
                         ),
@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                           ),
                           child: Column(
                             children: <Widget>[
-                              const ApodWidget(),
+                              Container(color: Colors.red, child: ApodWidget(),),
                               Collection(
                                 isVisible: notifierAreHelicoptersVisible,
                                 inputType: "type",
@@ -88,10 +88,10 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-            Appbar(
+            SpaceJamAppBar(
               title: appTitle,
-              rightAction: AppBarAction(
-                icon: Icons.menu,
+              rightAction: SpaceJamAppBarAction(
+                Icons.menu,
                 tooltip: AppLocalizations.of(context).translate("selectors"),
                 action: () {
                   showSelectors(context);

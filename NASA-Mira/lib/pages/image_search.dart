@@ -178,119 +178,123 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
               );
             }
             serializedImages.add(
-              ContentBox(
+              SpaceJamContainer(
                 title: data[index]["id"].toString(),
                 pathToBackground: appBackground,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                          2 *
-                          .02,
-                    ),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * .9,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              (MediaQuery.of(context).size.width +
-                                      MediaQuery.of(context).size.height) /
-                                  2 *
-                                  .02,
-                            ),
-                          ),
-                          color: Colors.black,
-                        ),
-                        width: MediaQuery.of(context).size.width * .9 -
-                            (MediaQuery.of(context).size.width +
-                                    MediaQuery.of(context).size.height) /
-                                2 *
-                                .02,
-                        //height: MediaQuery.of(context).size.height * .4,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              (MediaQuery.of(context).size.width +
-                                      MediaQuery.of(context).size.height) /
-                                  2 *
-                                  .02,
-                            ),
-                          ),
-                          child: Stack(
-                            alignment: Alignment.bottomRight,
-                            children: <Widget>[
-                              Image.network(
-                                data[index]["img_src"],
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                        bottom: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                            2 *
+                            .02,
+                      ),
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * .9,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(
+                                (MediaQuery.of(context).size.width +
+                                        MediaQuery.of(context).size.height) /
+                                    2 *
+                                    .02,
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute<Widget>(
-                                      builder: (BuildContext context) =>
-                                          FullScreen(
-                                        image: Image.network(
-                                          data[index]["img_src"],
+                            ),
+                            color: Colors.black,
+                          ),
+                          width: MediaQuery.of(context).size.width * .9 -
+                              (MediaQuery.of(context).size.width +
+                                      MediaQuery.of(context).size.height) /
+                                  2 *
+                                  .02,
+                          //height: MediaQuery.of(context).size.height * .4,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(
+                                (MediaQuery.of(context).size.width +
+                                        MediaQuery.of(context).size.height) /
+                                    2 *
+                                    .02,
+                              ),
+                            ),
+                            child: Stack(
+                              alignment: Alignment.bottomRight,
+                              children: <Widget>[
+                                Image.network(
+                                  data[index]["img_src"],
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute<Widget>(
+                                        builder: (BuildContext context) =>
+                                            FullScreen(
+                                          image: Image.network(
+                                            data[index]["img_src"],
+                                          ),
+                                          imageURL: data[index]["img_src"],
                                         ),
-                                        imageURL: data[index]["img_src"],
                                       ),
-                                    ),
-                                  );
-                                },
-                                child: Tooltip(
-                                  message: AppLocalizations.of(context)
-                                      .translate("fullscreen"),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(
-                                      (MediaQuery.of(context).size.width +
-                                              MediaQuery.of(context)
-                                                  .size
-                                                  .height) /
-                                          2 *
-                                          .02,
-                                    ),
-                                    child: Icon(
-                                      Icons.fullscreen,
-                                      color: Colors.white,
-                                      size: MediaQuery.of(context).size.width *
-                                          .075,
+                                    );
+                                  },
+                                  child: Tooltip(
+                                    message: AppLocalizations.of(context)
+                                        .translate("fullscreen"),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(
+                                        (MediaQuery.of(context).size.width +
+                                                MediaQuery.of(context)
+                                                    .size
+                                                    .height) /
+                                            2 *
+                                            .02,
+                                      ),
+                                      child: Icon(
+                                        Icons.fullscreen,
+                                        color: Colors.white,
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                .075,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                          2 *
-                          .02,
+                    Padding(
+                      padding: EdgeInsets.only(
+                        bottom: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                            2 *
+                            .02,
+                      ),
+                      child: SpaceJamButton(
+                        title:
+                            AppLocalizations.of(context).translate("captured"),
+                        value: data[index]["earth_date"].replaceAll("-", "/") +
+                            " (" +
+                            data[index]["sol"].toString() +
+                            getTh(context, data[index]["sol"]) +
+                            " sol)",
+                        valueFontSize: MediaQuery.of(context).size.width * .08,
+                        titleFontSize: MediaQuery.of(context).size.width * .05,
+                      ),
                     ),
-                    child: Button(
-                      title: AppLocalizations.of(context).translate("captured"),
-                      value: data[index]["earth_date"].replaceAll("-", "/") +
-                          " (" +
-                          data[index]["sol"].toString() +
-                          getTh(context, data[index]["sol"]) +
-                          " sol)",
+                    SpaceJamButton(
+                      title: AppLocalizations.of(context).translate("camera"),
+                      value: data[index]["camera"]["name"],
                       valueFontSize: MediaQuery.of(context).size.width * .08,
                       titleFontSize: MediaQuery.of(context).size.width * .05,
-                    ),
-                  ),
-                  Button(
-                    title: AppLocalizations.of(context).translate("camera"),
-                    value: data[index]["camera"]["name"],
-                    valueFontSize: MediaQuery.of(context).size.width * .08,
-                    titleFontSize: MediaQuery.of(context).size.width * .05,
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             );
           }
@@ -396,22 +400,22 @@ class SearchWindowState extends State<SearchWindow> {
               children: <Widget>[
                 Opacity(
                   opacity: 0,
-                  child: Appbar(
+                  child: SpaceJamAppBar(
                     title: widget.name,
                     subtitle: widget.time,
-                    leftAction: const AppBarAction(
-                      icon: Icons.arrow_back_rounded,
+                    leftAction: const SpaceJamAppBarAction(
+                      Icons.arrow_back_rounded,
                     ),
                   ),
                 ),
                 _data(widget.url),
               ],
             ),
-            Appbar(
+            SpaceJamAppBar(
               title: widget.name,
               subtitle: widget.time,
-              leftAction: AppBarAction(
-                icon: Icons.arrow_back_rounded,
+              leftAction: SpaceJamAppBarAction(
+                Icons.arrow_back_rounded,
                 tooltip: AppLocalizations.of(context).translate("back"),
                 action: () {
                   Navigator.pop(context);

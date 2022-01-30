@@ -181,7 +181,7 @@ class RoverSpecPageState extends State<RoverSpecPage> {
                   2 *
                   .02,
             ),
-            child: Button(
+            child: SpaceJamButton(
               title: AppLocalizations.of(context).translate("roverSpecMission"),
               valueFontSize: MediaQuery.of(context).size.width * .08,
               value: mission,
@@ -210,7 +210,7 @@ class RoverSpecPageState extends State<RoverSpecPage> {
                   2 *
                   .02,
             ),
-            child: Button(
+            child: SpaceJamButton(
               title: widget.name,
               valueFontSize: MediaQuery.of(context).size.width * .08,
               titleFontSize: MediaQuery.of(context).size.width * .05,
@@ -229,7 +229,7 @@ class RoverSpecPageState extends State<RoverSpecPage> {
                     .02,
               ),
               child: Center(
-                child: Button(
+                child: SpaceJamButton(
                   background: Colors.white,
                   valueTextStyle: SpaceJamTextStyles.headline(context),
                   valueFontSize: MediaQuery.of(context).size.width * .08,
@@ -275,20 +275,20 @@ class RoverSpecPageState extends State<RoverSpecPage> {
               children: <Widget>[
                 Opacity(
                   opacity: 0,
-                  child: Appbar(
+                  child: SpaceJamAppBar(
                     title: appbarTitle(),
-                    leftAction: const AppBarAction(
-                      icon: Icons.arrow_back_rounded,
+                    leftAction: const SpaceJamAppBarAction(
+                      Icons.arrow_back_rounded,
                     ),
                   ),
                 ),
-                ContentBox(
+                SpaceJamContainer(
                   title: widget.nick == null ? widget.name : widget.nick!,
                   pathToBackground: appBackground,
-                  children: <Widget>[
+                  child: Column(children: <Widget>[
                     missionWidget(widget.mission),
                     nicknameWidget(widget.nick),
-                    Button(
+                    SpaceJamButton(
                       valueFontSize: MediaQuery.of(context).size.width * .08,
                       titleFontSize: MediaQuery.of(context).size.width * .05,
                       title: AppLocalizations.of(context)
@@ -586,7 +586,7 @@ class RoverSpecPageState extends State<RoverSpecPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Button(
+                        SpaceJamButton(
                           valueFontSize:
                               MediaQuery.of(context).size.width * .08,
                           titleFontSize:
@@ -614,7 +614,7 @@ class RoverSpecPageState extends State<RoverSpecPage> {
                               2 *
                               .02,
                         ),
-                        Button(
+                        SpaceJamButton(
                           valueFontSize:
                               MediaQuery.of(context).size.width * .08,
                           titleFontSize:
@@ -640,15 +640,15 @@ class RoverSpecPageState extends State<RoverSpecPage> {
                     ),
                     Column(children: actionWidget),
                   ],
-                ),
+                ),),
               ],
             ),
           ),
-          Appbar(
+          SpaceJamAppBar(
             title: appbarTitle(),
             controller: controller,
-            leftAction: AppBarAction(
-              icon: Icons.arrow_back_rounded,
+            leftAction: SpaceJamAppBarAction(
+              Icons.arrow_back_rounded,
               tooltip: AppLocalizations.of(context).translate("back"),
               action: () {
                 Navigator.pop(context);

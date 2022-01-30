@@ -201,10 +201,10 @@ class DatePickerPageState extends State<DatePickerPage> {
     Widget datePickerContainer() => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ContentBox(
+            SpaceJamContainer(
               title: name,
               pathToBackground: appBackground,
-              children: <Widget>[
+              child: Column(children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(
                     bottom: (MediaQuery.of(context).size.width +
@@ -212,7 +212,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                         2 *
                         .02,
                   ),
-                  child: Button(
+                  child: SpaceJamButton(
                     valueTextStyle: SpaceJamTextStyles.headline(
                       context,
                       color:
@@ -326,7 +326,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                         2 *
                         .02,
                   ),
-                  child: Button(
+                  child: SpaceJamButton(
                     valueTextStyle: SpaceJamTextStyles.headline(
                       context,
                       color:
@@ -419,7 +419,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                     ],
                   ),
                 ),
-                Button(
+                SpaceJamButton(
                   background: Colors.white,
                   valueTextStyle: SpaceJamTextStyles.headline(context),
                   valueFontSize: MediaQuery.of(context).size.width * .08,
@@ -458,7 +458,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                   },
                 )
               ],
-            ),
+            ),),
           ],
         );
 
@@ -481,10 +481,10 @@ class DatePickerPageState extends State<DatePickerPage> {
               children: <Widget>[
                 Opacity(
                   opacity: 0,
-                  child: Appbar(
+                  child: SpaceJamAppBar(
                     title: name,
-                    leftAction: const AppBarAction(
-                      icon: Icons.arrow_back_rounded,
+                    leftAction: const SpaceJamAppBarAction(
+                      Icons.arrow_back_rounded,
                     ),
                   ),
                 ),
@@ -497,11 +497,11 @@ class DatePickerPageState extends State<DatePickerPage> {
               ],
             ),
           ),
-          Appbar(
+          SpaceJamAppBar(
             title: name,
             controller: controller,
-            leftAction: AppBarAction(
-              icon: Icons.arrow_back_rounded,
+            leftAction: SpaceJamAppBarAction(
+              Icons.arrow_back_rounded,
               tooltip: AppLocalizations.of(context).translate("back"),
               action: () {
                 Navigator.pop(context);

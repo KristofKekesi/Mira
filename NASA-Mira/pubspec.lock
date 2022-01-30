@@ -217,7 +217,7 @@ packages:
       name: spacejam
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.2"
+    version: "1.0.1"
   splashscreen:
     dependency: "direct main"
     description:

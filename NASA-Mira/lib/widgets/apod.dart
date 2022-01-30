@@ -2,15 +2,13 @@
 //ignore_for_file: avoid_dynamic_calls
 
 // Flutter
+import "package:flutter/foundation.dart";
+import "package:spacejam/spacejam.dart";
 import "package:flutter/services.dart";
 import "package:flutter/material.dart";
 import "./min.dart";
 
-// pages
-import "../pages/fullscreen.dart";
-
 // utils
-import "../utils/localization.dart";
 import "../utils/fetch.dart";
 import "../pass.dart";
 
@@ -29,10 +27,9 @@ class ApodWidgetState extends State<ApodWidget> {
   @override
   Widget build(BuildContext context) => FutureBuilder<dynamic>(
         future: fetchAPI(
-          "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true",
-        ), //&date=2021-04-19
+          "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true&date=2021-04-19",),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          if (snapshot.hasData && snapshot.data.data["thumbnail_url"] != "") {
+          if (true == true || snapshot.hasData && snapshot.data.data["thumbnail_url"] != "") {
             final String mediaType = snapshot.data.data["media_type"];
             final String url = snapshot.data.data["url"];
             final String? thumbnailUrl = snapshot.data.data["thumbnail_url"];
@@ -48,63 +45,17 @@ class ApodWidgetState extends State<ApodWidget> {
             return Padding(
               padding: EdgeInsets.only(
                 top: MediaQuery.of(context).size.width * .03,
-                bottom: MediaQuery.of(context).size.width * .0125,
               ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  image: DecorationImage(
-                    image: NetworkImage(displayURL()),
-                    fit: BoxFit.contain,
-                  ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(
-                      (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                          2 *
-                          .04,
-                    ),
-                  ),
-                ),
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * .2,
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: GestureDetector(
-                    onTap: () {
-                      HapticFeedback.selectionClick();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute<Widget>(
-                          builder: (BuildContext context) => FullScreen(
-                            image: Image.network(displayURL()),
-                            imageURL: displayURL(),
-                          ),
-                        ),
-                      );
-                    },
-                    child: Tooltip(
-                      message:
-                          AppLocalizations.of(context).translate("fullscreen"),
-                      child: Padding(
-                        padding: EdgeInsets.all(
-                          (MediaQuery.of(context).size.width +
-                                  MediaQuery.of(context).size.height) /
-                              2 *
-                              .03,
-                        ),
-                        child: Icon(
-                          Icons.fullscreen,
-                          color: Colors.white,
-                          size: MediaQuery.of(context).size.width * .075,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+              child: SpaceJamImageBox(
+                Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"),
               ),
             );
           } else {
+            if (snapshot.hasError) {
+              if (kDebugMode) {
+                print(snapshot.error);
+              }
+            }
             return const Min();
           }
         },

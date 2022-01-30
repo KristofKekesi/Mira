@@ -94,14 +94,14 @@ class VehicleSearch extends StatelessWidget {
               children: <Widget>[
                 Opacity(
                   opacity: 0,
-                  child: Appbar(
+                  child: SpaceJamAppBar(
                     title: AppLocalizations.of(context).translate("searchFor"),
                     subtitle: searchContent(),
-                    leftAction: const AppBarAction(
-                      icon: Icons.arrow_back_rounded,
+                    leftAction: const SpaceJamAppBarAction(
+                      Icons.arrow_back_rounded,
                     ),
-                    rightAction: const AppBarAction(
-                      icon: Icons.menu,
+                    rightAction: const SpaceJamAppBarAction(
+                      Icons.menu,
                     ),
                   ),
                 ),
@@ -129,18 +129,18 @@ class VehicleSearch extends StatelessWidget {
               ],
             ),
           ),
-          Appbar(
+          SpaceJamAppBar(
             title: AppLocalizations.of(context).translate("searchFor"),
             subtitle: searchContent(),
-            leftAction: AppBarAction(
-              icon: Icons.arrow_back_rounded,
+            leftAction: SpaceJamAppBarAction(
+              Icons.arrow_back_rounded,
               tooltip: AppLocalizations.of(context).translate("back"),
               action: () {
                 Navigator.pop(context);
               },
             ),
-            rightAction: AppBarAction(
-              icon: Icons.menu,
+            rightAction: SpaceJamAppBarAction(
+              Icons.menu,
               tooltip: AppLocalizations.of(context).translate("selectors"),
               action: () {
                 showSelectors(context, areTypesDisabled: true);
