@@ -47,7 +47,8 @@ class ApodWidgetState extends State<ApodWidget> {
                 top: MediaQuery.of(context).size.width * .03,
               ),
               child: SpaceJamImageBox(
-                Image.network("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"),
+                Image.network(displayURL(),),
+                imageURL: displayURL(),
               ),
             );
           } else {

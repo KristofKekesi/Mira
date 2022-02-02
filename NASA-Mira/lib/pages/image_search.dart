@@ -180,7 +180,9 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
             serializedImages.add(
               SpaceJamContainer(
                 title: data[index]["id"].toString(),
-                pathToBackground: appBackground,
+                backgroundImage: const DecorationImage(
+                  image: AssetImage(appBackground),
+                ),
                 child: Column(
                   children: <Widget>[
                     Padding(

@@ -61,10 +61,10 @@ class MiraAppState extends State<MiraApp> {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const <Locale>[
-          Locale("en", ""),
-          Locale("de", ""),
-          Locale("da", ""),
-          Locale("hu", ""),
+          Locale("en"),
+          Locale("de"),
+          Locale("da"),
+          Locale("hu"),
         ],
         localeResolutionCallback:
             (Locale? locale, Iterable<Locale> supportedLocales) {
