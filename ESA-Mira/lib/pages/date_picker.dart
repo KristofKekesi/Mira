@@ -1,15 +1,12 @@
 // Flutter
 import "package:auto_size_text/auto_size_text.dart";
 import "package:numberpicker/numberpicker.dart";
+import "package:spacejam/spacejam.dart";
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 
 // widgets
-import "../widgets/text_styles.dart";
-import "../widgets/content_box.dart";
 import "../widgets/collection.dart";
-import "../widgets/appbar.dart";
-import "../widgets/button.dart";
 
 // pages
 import "image_search.dart";
@@ -178,7 +175,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                         child: Text(
                           AppLocalizations.of(context)
                               .translate("invalidDateTitle"),
-                          style: SpaceJamTextStyles.subHeadline(
+                          style: SpaceJamTextStyles.headlineSmall(
                             context,
                             color: Colors.white,
                           ),
@@ -188,7 +185,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                         AppLocalizations.of(context)
                             .translate("invalidDateContent"),
                         maxLines: 2,
-                        style: SpaceJamTextStyles.subHeadline(
+                        style: SpaceJamTextStyles.headlineSmall(
                           context,
                           color: Colors.white,
                         ),
@@ -204,298 +201,289 @@ class DatePickerPageState extends State<DatePickerPage> {
     Widget datePickerContainer() => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ContentBox(
+            SpaceJamContainer(
               title: name,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                    bottom: (MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
-                        2 *
-                        .02,
+              backgroundImage: const DecorationImage(
+                image: AssetImage(appBackground),
+                fit: BoxFit.cover,
+              ),
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .02,
+                    ),
+                    child: SpaceJamButton(
+                      valueTextStyle: SpaceJamTextStyles.headline(
+                        context,
+                        color:
+                            timeFormat == false ? Colors.white : Colors.black38,
+                      ),
+                      valueFontSize: MediaQuery.of(context).size.width * .08,
+                      titleTextStyle: SpaceJamTextStyles.headline(
+                        context,
+                        color:
+                            timeFormat == false ? Colors.white : Colors.black38,
+                      ),
+                      titleFontSize: MediaQuery.of(context).size.width * .05,
+                      title: AppLocalizations.of(context)
+                          .translate("date")
+                          .capitalize(),
+                      value: Row(
+                        children: <Widget>[
+                          Tooltip(
+                            message:
+                                AppLocalizations.of(context).translate("month"),
+                            child: AutoSizeText(
+                              spacerZeros(date.month),
+                              maxLines: 1,
+                              style: SpaceJamTextStyles.headline(
+                                context,
+                                color: timeFormat == false
+                                    ? Colors.white
+                                    : Colors.black38,
+                              ),
+                            ),
+                          ),
+                          AutoSizeText(
+                            "/",
+                            maxLines: 1,
+                            style: SpaceJamTextStyles.headline(
+                              context,
+                              color: timeFormat == false
+                                  ? Colors.white
+                                  : Colors.black38,
+                            ),
+                          ),
+                          Tooltip(
+                            message:
+                                AppLocalizations.of(context).translate("day"),
+                            child: AutoSizeText(
+                              spacerZeros(date.day),
+                              maxLines: 1,
+                              style: SpaceJamTextStyles.headline(
+                                context,
+                                color: timeFormat == false
+                                    ? Colors.white
+                                    : Colors.black38,
+                              ),
+                            ),
+                          ),
+                          AutoSizeText(
+                            "/",
+                            maxLines: 1,
+                            style: SpaceJamTextStyles.headline(
+                              context,
+                              color: timeFormat == false
+                                  ? Colors.white
+                                  : Colors.black38,
+                            ),
+                          ),
+                          Tooltip(
+                            message:
+                                AppLocalizations.of(context).translate("year"),
+                            child: AutoSizeText(
+                              "${date.year}",
+                              maxLines: 1,
+                              style: SpaceJamTextStyles.headline(
+                                context,
+                                color: timeFormat == false
+                                    ? Colors.white
+                                    : Colors.black38,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      tooltip: AppLocalizations.of(context)
+                          .translate("roverImgSearchSetDate"),
+                      action: () {
+                        final Widget actionWidget = SizedBox(
+                          height: 200,
+                          child: CupertinoDatePicker(
+                            initialDateTime: date,
+                            mode: CupertinoDatePickerMode.date,
+                            backgroundColor: Colors.white,
+                            minimumDate: minDate,
+                            maximumDate: maxDate,
+                            onDateTimeChanged: (DateTime newDate) {
+                              setState(() {
+                                date = newDate;
+                              });
+                            },
+                          ),
+                        );
+                        showCupertinoModalPopup(
+                          context: context,
+                          builder: (BuildContext context) => actionWidget,
+                        );
+                      },
+                    ),
                   ),
-                  child: Button(
-                    valueTextStyle: SpaceJamTextStyles.headline(
-                      context,
-                      color:
-                          timeFormat == false ? Colors.white : Colors.black38,
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .02,
                     ),
-                    valueFontSize: MediaQuery.of(context).size.width * .08,
-                    titleTextStyle: SpaceJamTextStyles.headline(
-                      context,
-                      color:
-                          timeFormat == false ? Colors.white : Colors.black38,
+                    child: SpaceJamButton(
+                      valueTextStyle: SpaceJamTextStyles.headline(
+                        context,
+                        color:
+                            timeFormat != false ? Colors.white : Colors.black38,
+                      ),
+                      valueFontSize: MediaQuery.of(context).size.width * .08,
+                      titleTextStyle: SpaceJamTextStyles.headline(
+                        context,
+                        color:
+                            timeFormat != false ? Colors.white : Colors.black38,
+                      ),
+                      titleFontSize: MediaQuery.of(context).size.width * .05,
+                      title: AppLocalizations.of(context).translate("SOL"),
+                      tooltip: AppLocalizations.of(context)
+                          .translate("roverImgSearchSetSOL"),
+                      value: defaultSolPosition.toString(),
+                      action: () {
+                        showCupertinoModalPopup(
+                          context: context,
+                          builder: (BuildContext context) => Container(
+                            width: MediaQuery.of(context).size.width,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                            ),
+                            child: NumberPicker(
+                              value: defaultSolPosition,
+                              minValue: 0,
+                              maxValue: maxSol,
+                              onChanged: (int val) {
+                                setState(() {
+                                  defaultSolPosition = val;
+                                });
+                              },
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                    titleFontSize: MediaQuery.of(context).size.width * .05,
-                    title: AppLocalizations.of(context)
-                        .translate("date")
-                        .capitalize(),
-                    value: Row(
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .02,
+                      bottom: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .02,
+                    ),
+                    child: Row(
                       children: <Widget>[
-                        Tooltip(
-                          message:
-                              AppLocalizations.of(context).translate("month"),
-                          child: AutoSizeText(
-                            spacerZeros(date.month),
-                            maxLines: 1,
-                            style: SpaceJamTextStyles.headline(
-                              context,
-                              color: timeFormat == false
-                                  ? Colors.white
-                                  : Colors.black38,
-                            ),
-                          ),
-                        ),
-                        AutoSizeText(
-                          "/",
-                          maxLines: 1,
-                          style: SpaceJamTextStyles.headline(
+                        Text(
+                          AppLocalizations.of(context)
+                              .translate("date")
+                              .toUpperCase(),
+                          style: SpaceJamTextStyles.bodySmall(
                             context,
                             color: timeFormat == false
                                 ? Colors.white
                                 : Colors.black38,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         Tooltip(
-                          message:
-                              AppLocalizations.of(context).translate("day"),
-                          child: AutoSizeText(
-                            spacerZeros(date.day),
-                            maxLines: 1,
-                            style: SpaceJamTextStyles.headline(
-                              context,
-                              color: timeFormat == false
-                                  ? Colors.white
-                                  : Colors.black38,
-                            ),
+                          message: AppLocalizations.of(context)
+                              .translate("timePicker"),
+                          child: Switch(
+                            value: timeFormat,
+                            activeTrackColor: Colors.black38,
+                            inactiveTrackColor: Colors.black38,
+                            inactiveThumbColor: Colors.white,
+                            activeColor: Colors.white,
+                            splashRadius: 0,
+                            onChanged: _changeValue,
                           ),
                         ),
-                        AutoSizeText(
-                          "/",
-                          maxLines: 1,
-                          style: SpaceJamTextStyles.headline(
+                        Text(
+                          AppLocalizations.of(context)
+                              .translate("SOL")
+                              .toUpperCase(),
+                          style: SpaceJamTextStyles.bodySmall(
                             context,
-                            color: timeFormat == false
+                            color: timeFormat == true
                                 ? Colors.white
                                 : Colors.black38,
-                          ),
-                        ),
-                        Tooltip(
-                          message:
-                              AppLocalizations.of(context).translate("year"),
-                          child: AutoSizeText(
-                            "${date.year}",
-                            maxLines: 1,
-                            style: SpaceJamTextStyles.headline(
-                              context,
-                              color: timeFormat == false
-                                  ? Colors.white
-                                  : Colors.black38,
-                            ),
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
                     ),
-                    tooltip: AppLocalizations.of(context)
-                        .translate("roverImgSearchSetDate"),
-                    action: () {
-                      final Widget actionWidget = SizedBox(
-                        height: 200,
-                        child: CupertinoDatePicker(
-                          initialDateTime: date,
-                          mode: CupertinoDatePickerMode.date,
-                          backgroundColor: Colors.white,
-                          minimumDate: minDate,
-                          maximumDate: maxDate,
-                          onDateTimeChanged: (DateTime newDate) {
-                            setState(() {
-                              date = newDate;
-                            });
-                          },
-                        ),
-                      );
-                      showCupertinoModalPopup(
-                        context: context,
-                        builder: (BuildContext context) => actionWidget,
-                      );
-                    },
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    bottom: (MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
-                        2 *
-                        .02,
-                  ),
-                  child: Button(
-                    valueTextStyle: SpaceJamTextStyles.headline(
-                      context,
-                      color:
-                          timeFormat != false ? Colors.white : Colors.black38,
-                    ),
+                  SpaceJamButton(
+                    backgroundColor: Colors.white,
+                    valueTextStyle: SpaceJamTextStyles.headline(context),
                     valueFontSize: MediaQuery.of(context).size.width * .08,
-                    titleTextStyle: SpaceJamTextStyles.headline(
-                      context,
-                      color:
-                          timeFormat != false ? Colors.white : Colors.black38,
-                    ),
                     titleFontSize: MediaQuery.of(context).size.width * .05,
-                    title: AppLocalizations.of(context).translate("SOL"),
-                    tooltip: AppLocalizations.of(context)
-                        .translate("roverImgSearchSetSOL"),
-                    value: defaultSolPosition.toString(),
+                    value: AppLocalizations.of(context).translate("images"),
+                    tooltip:
+                        AppLocalizations.of(context).translate("searchImage"),
                     action: () {
-                      showCupertinoModalPopup(
-                        context: context,
-                        builder: (BuildContext context) => Container(
-                          width: MediaQuery.of(context).size.width,
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
+                      if (timeFormat == true) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<Widget>(
+                            builder: (BuildContext context) => SearchWindow(
+                              name: name,
+                              url: "${url}photos?sol=$defaultSolPosition"
+                                  "&api_key=$apiKey",
+                              time: "$defaultSolPosition"
+                                  "${getTh(context, defaultSolPosition)} sol",
+                            ),
                           ),
-                          child: NumberPicker(
-                            value: defaultSolPosition,
-                            minValue: 0,
-                            maxValue: maxSol,
-                            onChanged: (int val) {
-                              setState(() {
-                                defaultSolPosition = val;
-                              });
-                            },
+                        );
+                      } else if (timeFormat == false) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<Widget>(
+                            builder: (BuildContext context) => SearchWindow(
+                              name: name,
+                              url: "${url}photos?earth_date=${date.year}"
+                                  "-${date.month}-${date.day}&api_key=$apiKey",
+                              time:
+                                  "${spacerZeros(date.month)}/${spacerZeros(date.day)}/${date.year}",
+                            ),
                           ),
-                        ),
-                      );
+                        );
+                      }
                     },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: (MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
-                        2 *
-                        .02,
-                    bottom: (MediaQuery.of(context).size.width +
-                            MediaQuery.of(context).size.height) /
-                        2 *
-                        .02,
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      Text(
-                        AppLocalizations.of(context)
-                            .translate("date")
-                            .toUpperCase(),
-                        style: SpaceJamTextStyles.caption(
-                          context,
-                          color: timeFormat == false
-                              ? Colors.white
-                              : Colors.black38,
-                          weight: FontWeight.bold,
-                        ),
-                      ),
-                      Tooltip(
-                        message: AppLocalizations.of(context)
-                            .translate("timePicker"),
-                        child: Switch(
-                          value: timeFormat,
-                          activeTrackColor: Colors.black38,
-                          inactiveTrackColor: Colors.black38,
-                          inactiveThumbColor: Colors.white,
-                          activeColor: Colors.white,
-                          splashRadius: 0,
-                          onChanged: _changeValue,
-                        ),
-                      ),
-                      Text(
-                        AppLocalizations.of(context)
-                            .translate("SOL")
-                            .toUpperCase(),
-                        style: SpaceJamTextStyles.caption(
-                          context,
-                          color: timeFormat == true
-                              ? Colors.white
-                              : Colors.black38,
-                          weight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Button(
-                  background: Colors.white,
-                  valueTextStyle: SpaceJamTextStyles.headline(context),
-                  valueFontSize: MediaQuery.of(context).size.width * .08,
-                  titleFontSize: MediaQuery.of(context).size.width * .05,
-                  value: AppLocalizations.of(context).translate("search"),
-                  tooltip:
-                      AppLocalizations.of(context).translate("searchImage"),
-                  action: () {
-                    if (timeFormat == true) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute<Widget>(
-                          builder: (BuildContext context) => SearchWindow(
-                            name: name,
-                            url: "${url}photos?sol=$defaultSolPosition"
-                                "&api_key=$apiKey",
-                            time: "$defaultSolPosition"
-                                "${getTh(context, defaultSolPosition)} sol",
-                          ),
-                        ),
-                      );
-                    } else if (timeFormat == false) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute<Widget>(
-                          builder: (BuildContext context) => SearchWindow(
-                            name: name,
-                            url: "${url}photos?earth_date=${date.year}"
-                                "-${date.month}-${date.day}&api_key=$apiKey",
-                            time:
-                                "${spacerZeros(date.month)}/${spacerZeros(date.day)}/${date.year}",
-                          ),
-                        ),
-                      );
-                    }
-                  },
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ],
         );
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
+      body: SpaceJamPage(
+        title: name,
+        locale: AppLocalizations.of(context).locale,
+        appBarLeftAction: SpaceJamAppBarAction(
+          Icons.arrow_back_rounded,
+          tooltip: AppLocalizations.of(context).translate("back"),
+          action: () {
+            Navigator.pop(context);
+          },
+        ),
         children: <Widget>[
-          ListView(
-            children: <Widget>[
-              Opacity(
-                opacity: 0,
-                child: Appbar(
-                  title: name,
-                  leftAction: const AppBarAction(
-                    icon: Icons.arrow_back_rounded,
-                  ),
-                ),
-              ),
-              Container(
-                child:
-                    maxDateRaw["year"] == null && minDate.compareTo(maxDate) > 0
-                        ? invalidDateContainer()
-                        : datePickerContainer(),
-              ),
-            ],
-          ),
-          Appbar(
-            title: name,
-            leftAction: AppBarAction(
-              icon: Icons.arrow_back_rounded,
-              tooltip: AppLocalizations.of(context).translate("back"),
-              action: () {
-                Navigator.pop(context);
-              },
-            ),
+          Container(
+            child: maxDateRaw["year"] == null && minDate.compareTo(maxDate) > 0
+                ? invalidDateContainer()
+                : datePickerContainer(),
           ),
         ],
       ),

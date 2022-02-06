@@ -10,7 +10,7 @@ void main() {
   testWidgets("MiraApp", (WidgetTester tester) async {
     await tester.pumpWidget(
       const MiraApp(
-        child: Scaffold(
+        home: Scaffold(
           body: Text("test"),
         ),
       ),
