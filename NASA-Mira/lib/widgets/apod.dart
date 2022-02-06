@@ -27,7 +27,8 @@ class ApodWidgetState extends State<ApodWidget> {
   @override
   Widget build(BuildContext context) => FutureBuilder<dynamic>(
         future: fetchAPI(
-          "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true&date=2021-04-19",),
+          "https://api.nasa.gov/planetary/apod?api_key=$apiKey&thumbs=true",),
+          //"&date=2021-04-19",),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData && snapshot.data.data["thumbnail_url"] != "") {
             final String mediaType = snapshot.data.data["media_type"];

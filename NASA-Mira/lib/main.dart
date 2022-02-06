@@ -1,5 +1,6 @@
 // Flutter
 import "package:flutter/material.dart";
+import "package:spacejam/spacejam.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 
 // utils
@@ -77,46 +78,11 @@ class MiraAppState extends State<MiraApp> {
         },
         title: appTitle,
         debugShowCheckedModeBanner: false,
-    theme: ThemeData(
-      primarySwatch: createMaterialColor(const Color(0xffE8672D)),
-      // TextThemes
-      textTheme: const TextTheme(
-        titleMedium: TextStyle(
-          fontWeight: FontWeight.bold,
-          /* fontSize: (MediaQuery.of(context).size.width +
-                 MediaQuery.of(context).size.height) /
-                 2 * .06,
-              */
-          color: Colors.black,
+        theme: ThemeData(
+          primarySwatch: createMaterialColor(const Color(0xffE8672D)),
+          // TextThemes
+          textTheme: SpaceJamThemeData.textTheme(),
         ),
-        titleSmall: TextStyle(
-          /* fontSize: (MediaQuery.of(context).size.width +
-              MediaQuery.of(context).size.height) /
-              2 * .04,
-          */
-          color: Colors.black,
-        ),
-        headlineMedium: TextStyle(
-          //fontSize: MediaQuery.of(context).size.width * .08,
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-        ),
-        headlineSmall: TextStyle(
-          //fontSize: MediaQuery.of(context).size.width * .05,
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-        ),
-        bodyMedium: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          //fontSize: MediaQuery.of(context).size.height * .025,
-        ),
-        bodySmall: TextStyle(
-          color: Colors.white70,
-          //fontSize: MediaQuery.of(context).size.height * .02,
-        ),
-      ),
-    ),
         home: widget.home,
       );
 }
