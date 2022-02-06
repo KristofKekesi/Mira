@@ -379,7 +379,7 @@ class RoverSpecPageState extends State<RoverSpecPage> {
                           Text(
                             AppLocalizations.of(context)
                                 .translate("roverSpecArrive"),
-                            style: SpaceJamTextStyles.bodyMedium(
+                            style: SpaceJamTextStyles.headlineSmall(
                               context,
                               color: Colors.white70,
                             ),
