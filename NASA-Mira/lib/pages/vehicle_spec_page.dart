@@ -261,6 +261,7 @@ class RoverSpecPageState extends State<RoverSpecPage> {
       backgroundColor: Colors.white,
       body: SpaceJamPage(
         title: appbarTitle(),
+        locale: AppLocalizations.of(context).locale,
         appBarLeftAction: SpaceJamAppBarAction(
           Icons.arrow_back_rounded,
           tooltip: AppLocalizations.of(context).translate("back"),
@@ -268,370 +269,366 @@ class RoverSpecPageState extends State<RoverSpecPage> {
             Navigator.pop(context);
           },
         ),
-        children: <Widget> [SpaceJamContainer(
-        title: appbarTitle(),
-        backgroundImage: const DecorationImage(
-          image: AssetImage(appBackground),
-          fit: BoxFit.cover,
-        ),
-        child: Column(
-          children: <Widget>[
-            missionWidget(widget.mission),
-            nicknameWidget(widget.nick),
-            SpaceJamButton(
-              valueFontSize: MediaQuery.of(context).size.width * .08,
-              titleFontSize: MediaQuery.of(context).size.width * .05,
-              title: AppLocalizations.of(context)
-                  .translate("roverSpecType"),
-              value:
-              AppLocalizations.of(context).translate(widget.type),
-              valueSizeGroup: specPageBigText,
-              action: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<Widget>(
-                    builder: (BuildContext context) => VehicleSearch(
-                      type: "type",
-                      value: widget.type,
-                    ),
-                  ),
-                );
-              },
+        children: <Widget>[
+          SpaceJamContainer(
+            title: appbarTitle(),
+            backgroundImage: const DecorationImage(
+              image: AssetImage(appBackground),
+              fit: BoxFit.cover,
             ),
-            Container(
-              height: (MediaQuery.of(context).size.width +
-                  MediaQuery.of(context).size.height) /
-                  2 *
-                  .02,
-            ),
-            Padding(
-              padding: EdgeInsets.all(
-                (MediaQuery.of(context).size.width +
-                    MediaQuery.of(context).size.height) /
-                    2 *
-                    .02,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        AppLocalizations.of(context)
-                            .translate("roverSpecLaunch"),
-                        style: SpaceJamTextStyles.headlineSmall(
-                          context,
-                          color: Colors.white70,
-                        ),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("month"),
-                            child: Text(
-                              launchM,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "/",
-                            style: SpaceJamTextStyles.bodyMedium(
-                              context,
-                            ),
-                          ),
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("day"),
-                            child: Text(
-                              launchD,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "/",
-                            style: SpaceJamTextStyles.bodyMedium(
-                              context,
-                            ),
-                          ),
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("year"),
-                            child: Text(
-                              launchY,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        AppLocalizations.of(context)
-                            .translate("roverSpecArrive"),
-                        style: SpaceJamTextStyles.bodyMedium(
-                          context,
-                          color: Colors.white70,
-                        ),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("month"),
-                            child: Text(
-                              arriveM,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "/",
-                            style: SpaceJamTextStyles.bodyMedium(
-                              context,
-                            ),
-                          ),
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("day"),
-                            child: Text(
-                              arriveD,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "/",
-                            style: SpaceJamTextStyles.bodyMedium(
-                              context,
-                            ),
-                          ),
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("year"),
-                            child: Text(
-                              arriveY,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        widget.deactivated != null
-                            ? AppLocalizations.of(context)
-                            .translate("roverSpecDeactivatedMin")
-                            : AppLocalizations.of(context)
-                            .translate("roverSpecLastMin"),
-                        style: SpaceJamTextStyles.headlineSmall(
-                          context,
-                          color: Colors.white70,
-                        ),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("month"),
-                            child: Text(
-                              endM,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "/",
-                            style: SpaceJamTextStyles.bodyMedium(
-                              context,
-                            ),
-                          ),
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("day"),
-                            child: Text(
-                              endD,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "/",
-                            style: SpaceJamTextStyles.bodyMedium(
-                              context,
-                            ),
-                          ),
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("year"),
-                            child: Text(
-                              endY,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        AppLocalizations.of(context)
-                            .translate("roverSpecEndMin"),
-                        style: SpaceJamTextStyles.headlineSmall(
-                          context,
-                          color: Colors.white70,
-                        ),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("month"),
-                            child: Text(
-                              missionEndM,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "/",
-                            style: SpaceJamTextStyles.bodyMedium(
-                              context,
-                            ),
-                          ),
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("day"),
-                            child: Text(
-                              missionEndD,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "/",
-                            style: SpaceJamTextStyles.bodyMedium(
-                              context,
-                            ),
-                          ),
-                          Tooltip(
-                            message: AppLocalizations.of(context)
-                                .translate("year"),
-                            child: Text(
-                              missionEndY,
-                              style: SpaceJamTextStyles.bodyMedium(
-                                context,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Text(
-                    "* ${widget.deactivated != null ?
-                    AppLocalizations.of(context)
-                        .translate("roverSpecDeactivated") :
-                    AppLocalizations.of(context)
-                        .translate("roverSpecLast")}",
-                    style: SpaceJamTextStyles.bodySmall(
-                      context,
-                    ),
-                  ),
-                  Text(
-                    "** ${AppLocalizations
-                        .of(context).translate("roverSpecEnd")}",
-                    style: SpaceJamTextStyles.bodySmall(
-                      context,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
               children: <Widget>[
+                missionWidget(widget.mission),
+                nicknameWidget(widget.nick),
                 SpaceJamButton(
-                  valueFontSize:
-                  MediaQuery.of(context).size.width * .08,
-                  titleFontSize:
-                  MediaQuery.of(context).size.width * .05,
-                  title: AppLocalizations.of(context)
-                      .translate("roverSpecOperator"),
-                  value: widget.operator.join(", "),
+                  valueFontSize: MediaQuery.of(context).size.width * .08,
+                  titleFontSize: MediaQuery.of(context).size.width * .05,
+                  title:
+                      AppLocalizations.of(context).translate("roverSpecType"),
+                  value: AppLocalizations.of(context).translate(widget.type),
                   valueSizeGroup: specPageBigText,
                   action: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute<Widget>(
-                        builder: (BuildContext context) =>
-                            VehicleSearch(
-                              type: "operator",
-                              value: widget.operator.join(", "),
-                            ),
+                        builder: (BuildContext context) => VehicleSearch(
+                          type: "type",
+                          value: widget.type,
+                        ),
                       ),
                     );
                   },
                 ),
                 Container(
                   height: (MediaQuery.of(context).size.width +
-                      MediaQuery.of(context).size.height) /
+                          MediaQuery.of(context).size.height) /
                       2 *
                       .02,
                 ),
-                SpaceJamButton(
-                  valueFontSize:
-                  MediaQuery.of(context).size.width * .08,
-                  titleFontSize:
-                  MediaQuery.of(context).size.width * .05,
-                  title: AppLocalizations.of(context)
-                      .translate("roverSpecManufacturer"),
-                  value: widget.manufacturer,
-                  valueSizeGroup: specPageBigText,
-                  action: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute<Widget>(
-                        builder: (BuildContext context) =>
-                            VehicleSearch(
+                Padding(
+                  padding: EdgeInsets.all(
+                    (MediaQuery.of(context).size.width +
+                            MediaQuery.of(context).size.height) /
+                        2 *
+                        .02,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            AppLocalizations.of(context)
+                                .translate("roverSpecLaunch"),
+                            style: SpaceJamTextStyles.headlineSmall(
+                              context,
+                              color: Colors.white70,
+                            ),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("month"),
+                                child: Text(
+                                  launchM,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "/",
+                                style: SpaceJamTextStyles.bodyMedium(
+                                  context,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("day"),
+                                child: Text(
+                                  launchD,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "/",
+                                style: SpaceJamTextStyles.bodyMedium(
+                                  context,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("year"),
+                                child: Text(
+                                  launchY,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            AppLocalizations.of(context)
+                                .translate("roverSpecArrive"),
+                            style: SpaceJamTextStyles.bodyMedium(
+                              context,
+                              color: Colors.white70,
+                            ),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("month"),
+                                child: Text(
+                                  arriveM,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "/",
+                                style: SpaceJamTextStyles.bodyMedium(
+                                  context,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("day"),
+                                child: Text(
+                                  arriveD,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "/",
+                                style: SpaceJamTextStyles.bodyMedium(
+                                  context,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("year"),
+                                child: Text(
+                                  arriveY,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            widget.deactivated != null
+                                ? AppLocalizations.of(context)
+                                    .translate("roverSpecDeactivatedMin")
+                                : AppLocalizations.of(context)
+                                    .translate("roverSpecLastMin"),
+                            style: SpaceJamTextStyles.headlineSmall(
+                              context,
+                              color: Colors.white70,
+                            ),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("month"),
+                                child: Text(
+                                  endM,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "/",
+                                style: SpaceJamTextStyles.bodyMedium(
+                                  context,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("day"),
+                                child: Text(
+                                  endD,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "/",
+                                style: SpaceJamTextStyles.bodyMedium(
+                                  context,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("year"),
+                                child: Text(
+                                  endY,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            AppLocalizations.of(context)
+                                .translate("roverSpecEndMin"),
+                            style: SpaceJamTextStyles.headlineSmall(
+                              context,
+                              color: Colors.white70,
+                            ),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("month"),
+                                child: Text(
+                                  missionEndM,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "/",
+                                style: SpaceJamTextStyles.bodyMedium(
+                                  context,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("day"),
+                                child: Text(
+                                  missionEndD,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "/",
+                                style: SpaceJamTextStyles.bodyMedium(
+                                  context,
+                                ),
+                              ),
+                              Tooltip(
+                                message: AppLocalizations.of(context)
+                                    .translate("year"),
+                                child: Text(
+                                  missionEndY,
+                                  style: SpaceJamTextStyles.bodyMedium(
+                                    context,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Text(
+                        "* ${widget.deactivated != null ?
+                        AppLocalizations.of(context)
+                            .translate("roverSpecDeactivated") :
+                        AppLocalizations.of(context)
+                            .translate("roverSpecLast")}",
+                        style: SpaceJamTextStyles.bodySmall(
+                          context,
+                        ),
+                      ),
+                      Text(
+                        "** ${AppLocalizations.of(context)
+                            .translate("roverSpecEnd")}",
+                        style: SpaceJamTextStyles.bodySmall(
+                          context,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    SpaceJamButton(
+                      valueFontSize: MediaQuery.of(context).size.width * .08,
+                      titleFontSize: MediaQuery.of(context).size.width * .05,
+                      title: AppLocalizations.of(context)
+                          .translate("roverSpecOperator"),
+                      value: widget.operator.join(", "),
+                      valueSizeGroup: specPageBigText,
+                      action: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<Widget>(
+                            builder: (BuildContext context) => VehicleSearch(
+                              type: "operator",
+                              value: widget.operator.join(", "),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    Container(
+                      height: (MediaQuery.of(context).size.width +
+                              MediaQuery.of(context).size.height) /
+                          2 *
+                          .02,
+                    ),
+                    SpaceJamButton(
+                      valueFontSize: MediaQuery.of(context).size.width * .08,
+                      titleFontSize: MediaQuery.of(context).size.width * .05,
+                      title: AppLocalizations.of(context)
+                          .translate("roverSpecManufacturer"),
+                      value: widget.manufacturer,
+                      valueSizeGroup: specPageBigText,
+                      action: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<Widget>(
+                            builder: (BuildContext context) => VehicleSearch(
                               type: "manufacturer",
                               value: widget.manufacturer,
                             ),
-                      ),
-                    );
-                  },
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
+                Column(children: actionWidget),
               ],
             ),
-            Column(children: actionWidget),
-          ],
-        ),
-      ),],),
+          ),
+        ],
+      ),
     );
   }
 }

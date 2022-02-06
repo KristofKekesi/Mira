@@ -8,9 +8,6 @@ import "package:dio/dio.dart";
 import "package:flutter/material.dart";
 import "package:spacejam/spacejam.dart";
 
-// pages
-import "fullscreen.dart";
-
 // utils
 import "../pass.dart";
 import "../utils/fetch.dart";
@@ -30,7 +27,7 @@ String imageCounter(BuildContext context, int num) {
   }
 }
 
-FutureBuilder<Response<dynamic>> _data(String url) =>
+FutureBuilder<Response<dynamic>> _imageSearchResult(String url) =>
     FutureBuilder<Response<dynamic>>(
       future: fetchAPI(url),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
@@ -182,6 +179,7 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                 title: data[index]["id"].toString(),
                 backgroundImage: const DecorationImage(
                   image: AssetImage(appBackground),
+                  fit: BoxFit.cover,
                 ),
                 child: Column(
                   children: <Widget>[
@@ -192,82 +190,14 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                             2 *
                             .02,
                       ),
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width * .9,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(
-                                (MediaQuery.of(context).size.width +
-                                        MediaQuery.of(context).size.height) /
-                                    2 *
-                                    .02,
-                              ),
-                            ),
-                            color: Colors.black,
-                          ),
-                          width: MediaQuery.of(context).size.width * .9 -
-                              (MediaQuery.of(context).size.width +
-                                      MediaQuery.of(context).size.height) /
-                                  2 *
-                                  .02,
-                          //height: MediaQuery.of(context).size.height * .4,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(
-                                (MediaQuery.of(context).size.width +
-                                        MediaQuery.of(context).size.height) /
-                                    2 *
-                                    .02,
-                              ),
-                            ),
-                            child: Stack(
-                              alignment: Alignment.bottomRight,
-                              children: <Widget>[
-                                Image.network(
-                                  data[index]["img_src"],
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute<Widget>(
-                                        builder: (BuildContext context) =>
-                                            FullScreen(
-                                          image: Image.network(
-                                            data[index]["img_src"],
-                                          ),
-                                          imageURL: data[index]["img_src"],
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  child: Tooltip(
-                                    message: AppLocalizations.of(context)
-                                        .translate("fullscreen"),
-                                    child: Padding(
-                                      padding: EdgeInsets.all(
-                                        (MediaQuery.of(context).size.width +
-                                                MediaQuery.of(context)
-                                                    .size
-                                                    .height) /
-                                            2 *
-                                            .02,
-                                      ),
-                                      child: Icon(
-                                        Icons.fullscreen,
-                                        color: Colors.white,
-                                        size:
-                                            MediaQuery.of(context).size.width *
-                                                .075,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                      child: SpaceJamImageBox(
+                        Image.network(
+                          data[index]["img_src"],
                         ),
+                        imageURL: data[index]["img_src"],
+                        autoHeight: true,
+                        semanticLabel:
+                            "An image made by the Perseverance rover.",
                       ),
                     ),
                     Padding(
@@ -396,34 +326,20 @@ class SearchWindowState extends State<SearchWindow> {
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Colors.white,
-        body: Stack(
+        body: SpaceJamPage(
+          animated: "off",
+          title: widget.name,
+          subtitle: widget.time,
+          locale: AppLocalizations.of(context).locale,
+          appBarLeftAction: SpaceJamAppBarAction(
+            Icons.arrow_back_rounded,
+            tooltip: AppLocalizations.of(context).translate("back"),
+            action: () {
+              Navigator.pop(context);
+            },
+          ),
           children: <Widget>[
-            ListView(
-              children: <Widget>[
-                Opacity(
-                  opacity: 0,
-                  child: SpaceJamAppBar(
-                    title: widget.name,
-                    subtitle: widget.time,
-                    leftAction: const SpaceJamAppBarAction(
-                      Icons.arrow_back_rounded,
-                    ),
-                  ),
-                ),
-                _data(widget.url),
-              ],
-            ),
-            SpaceJamAppBar(
-              title: widget.name,
-              subtitle: widget.time,
-              leftAction: SpaceJamAppBarAction(
-                Icons.arrow_back_rounded,
-                tooltip: AppLocalizations.of(context).translate("back"),
-                action: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
+            _imageSearchResult(widget.url),
           ],
         ),
       );
