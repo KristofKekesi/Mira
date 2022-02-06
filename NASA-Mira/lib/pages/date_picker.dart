@@ -468,51 +468,23 @@ class DatePickerPageState extends State<DatePickerPage> {
           ],
         );
 
-    final ScrollController controller = ScrollController();
-
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
+      body: SpaceJamPage(
+        title: name,
+        locale: AppLocalizations.of(context).locale,
+        appBarLeftAction: SpaceJamAppBarAction(
+          Icons.arrow_back_rounded,
+          tooltip: AppLocalizations.of(context).translate("back"),
+          action: () {
+            Navigator.pop(context);
+          },
+        ),
         children: <Widget>[
-          NotificationListener<ScrollNotification>(
-            onNotification: (ScrollNotification notification) {
-              if (notification is ScrollStartNotification ||
-                  notification is ScrollUpdateNotification) {
-                setState(() {});
-              }
-              return true;
-            },
-            child: ListView(
-              controller: controller,
-              children: <Widget>[
-                Opacity(
-                  opacity: 0,
-                  child: SpaceJamAppBar(
-                    title: name,
-                    leftAction: const SpaceJamAppBarAction(
-                      Icons.arrow_back_rounded,
-                    ),
-                  ),
-                ),
-                Container(
-                  child: maxDateRaw["year"] == null &&
-                          minDate.compareTo(maxDate) > 0
-                      ? invalidDateContainer()
-                      : datePickerContainer(),
-                ),
-              ],
-            ),
-          ),
-          SpaceJamAppBar(
-            title: name,
-            controller: controller,
-            leftAction: SpaceJamAppBarAction(
-              Icons.arrow_back_rounded,
-              tooltip: AppLocalizations.of(context).translate("back"),
-              action: () {
-                Navigator.pop(context);
-              },
-            ),
+          Container(
+            child: maxDateRaw["year"] == null && minDate.compareTo(maxDate) > 0
+                ? invalidDateContainer()
+                : datePickerContainer(),
           ),
         ],
       ),

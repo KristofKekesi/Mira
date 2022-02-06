@@ -17,7 +17,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   numberpicker: ^2.1.1
-  spacejam: ^1.1.3
+  spacejam: ^1.1.7
   splashscreen:
     git:
       url: https://github.com/DPLYR-dev/SplashScreenFlutterPackage.git
