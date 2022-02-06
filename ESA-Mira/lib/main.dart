@@ -1,5 +1,6 @@
 // Flutter
 import "package:flutter/material.dart";
+import "package:spacejam/spacejam.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 
 // utils
@@ -18,7 +19,7 @@ void main() {
   darkTitlebar();
   runApp(
     const MiraApp(
-      child: SplashScreenPage(
+      home: SplashScreenPage(
         child: HomePage(),
       ),
     ),
@@ -29,12 +30,12 @@ void main() {
 class MiraApp extends StatefulWidget {
   /// Constructor
   const MiraApp({
-    required this.child,
+    required this.home,
     Key? key,
   }) : super(key: key);
 
-  /// Child to pass on.
-  final Widget child;
+  /// Homepage to pass on.
+  final Widget home;
 
   @override
   MiraAppState createState() => MiraAppState();
@@ -61,10 +62,10 @@ class MiraAppState extends State<MiraApp> {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const <Locale>[
-          Locale("en", ""),
-          Locale("de", ""),
-          Locale("da", ""),
-          Locale("hu", ""),
+          Locale("en"),
+          Locale("de"),
+          Locale("da"),
+          Locale("hu"),
         ],
         localeResolutionCallback:
             (Locale? locale, Iterable<Locale> supportedLocales) {
@@ -78,9 +79,10 @@ class MiraAppState extends State<MiraApp> {
         title: appTitle,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          brightness: Brightness.light,
-          primarySwatch: createMaterialColor(const Color(0xff174bd0)),
+          primarySwatch: createMaterialColor(appColor),
+          // TextThemes
+          textTheme: SpaceJamThemeData.textTheme(),
         ),
-        home: widget.child,
+        home: widget.home,
       );
 }

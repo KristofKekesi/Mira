@@ -79,7 +79,7 @@ class MiraAppState extends State<MiraApp> {
         title: appTitle,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: createMaterialColor(const Color(0xffE8672D)),
+          primarySwatch: createMaterialColor(appColor),
           // TextThemes
           textTheme: SpaceJamThemeData.textTheme(),
         ),

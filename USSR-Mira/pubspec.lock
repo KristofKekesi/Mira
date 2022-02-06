@@ -338,7 +338,7 @@ packages:
     source: hosted
     version: "1.8.2"
   spacejam:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: spacejam
       url: "https://pub.dartlang.org"
