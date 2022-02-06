@@ -2,23 +2,25 @@
 import "package:auto_size_text/auto_size_text.dart";
 import "package:flutter/material.dart";
 
-// Widgets
-import "./text_styles.dart";
-
 // utils
 import "../pass.dart";
 
 /// Custom decorated widget to display information.
 class ContentBox extends StatelessWidget {
   /// Constructor
-  const ContentBox({required this.title, this.child, this.children, Key? key,})
-      : super(key: key);
+  const ContentBox({
+    required this.title,
+    this.child,
+    this.children,
+    Key? key,
+  }) : super(key: key);
 
   /// Title displayed at the top.
   final String title;
 
   /// Child of the widget.
   final Widget? child;
+
   /// Children of the widget.
   final List<Widget>? children;
 
@@ -29,11 +31,11 @@ class ContentBox extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(
         top: (MediaQuery.of(context).size.width +
-                MediaQuery.of(context).size.height) /
+            MediaQuery.of(context).size.height) /
             2 *
             .04,
         bottom: (MediaQuery.of(context).size.width +
-                MediaQuery.of(context).size.height) /
+            MediaQuery.of(context).size.height) /
             2 *
             .04,
       ),
@@ -46,14 +48,14 @@ class ContentBox extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(
                   left: (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                          2 *
-                          .04 +
+                      MediaQuery.of(context).size.height) /
+                      2 *
+                      .04 +
                       MediaQuery.of(context).size.width * .05,
                 ),
                 child: AutoSizeText(
                   title,
-                  style: SpaceJamTextStyles.headline(context),
+                  style: Theme.of(context).textTheme.headlineMedium,
                   maxLines: 1,
                   group: contentBigTextSize,
                 ),
@@ -72,7 +74,7 @@ class ContentBox extends StatelessWidget {
                     borderRadius: BorderRadius.all(
                       Radius.circular(
                         (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
+                            MediaQuery.of(context).size.height) /
                             2 *
                             .04,
                       ),
@@ -82,7 +84,7 @@ class ContentBox extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(
                       (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
+                          MediaQuery.of(context).size.height) /
                           2 *
                           .02,
                     ),
@@ -91,12 +93,13 @@ class ContentBox extends StatelessWidget {
                       children: child != null
                           ? <Widget>[child!]
                           : children != null
-                              ? children!
-                              : <ErrorWidget>[
-                                  ErrorWidget(
-                                      "You must provide a Child or a Children "
-                                      "property is not provided",)
-                                ],
+                          ? children!
+                          : <ErrorWidget>[
+                        ErrorWidget(
+                          "You must provide a Child or a Children "
+                              "property is not provided",
+                        )
+                      ],
                     ),
                   ),
                 ),

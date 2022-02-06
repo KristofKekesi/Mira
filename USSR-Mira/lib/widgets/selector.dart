@@ -1,8 +1,6 @@
 // Flutter
 import "package:flutter/material.dart";
-
-// widgets
-import "text_styles.dart";
+import "package:spacejam/spacejam.dart";
 
 // utils
 import "../utils/localization.dart";
@@ -76,7 +74,7 @@ void showSelectors(
                     child: Text(
                       AppLocalizations.of(context)
                           .translate("selectorsandsort"),
-                      style: SpaceJamTextStyles.subHeadline(
+                      style: SpaceJamTextStyles.headlineSmall(
                         context,
                       ),
                     ),
@@ -87,7 +85,7 @@ void showSelectors(
                     ),
                     child: Text(
                       AppLocalizations.of(context).translate("types"),
-                      style: SpaceJamTextStyles.caption(
+                      style: SpaceJamTextStyles.headlineSmall(
                         context,
                         color: Colors.black,
                       ),
@@ -269,7 +267,7 @@ void showSelectors(
                     ),
                     child: Text(
                       AppLocalizations.of(context).translate("sort"),
-                      style: SpaceJamTextStyles.caption(
+                      style: SpaceJamTextStyles.headlineSmall(
                         context,
                         color: Colors.black,
                       ),
@@ -360,7 +358,7 @@ void showSelectors(
               ),
               child: Text(
                 AppLocalizations.of(context).translate("ok"),
-                style: SpaceJamTextStyles.caption(
+                style: SpaceJamTextStyles.headlineSmall(
                   context,
                   color: Colors.black,
                 ),
