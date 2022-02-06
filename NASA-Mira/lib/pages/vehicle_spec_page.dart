@@ -237,8 +237,7 @@ class RoverSpecPageState extends State<RoverSpecPage> {
                   tooltip: AppLocalizations.of(context)
                       .translate("searchImage")
                       .replaceAll("{0}", widget.type),
-                  // TODO(KristofKekesi): Replace with "images".
-                  value: AppLocalizations.of(context).translate("search"),
+                  value: AppLocalizations.of(context).translate("images"),
                   autoSizeTextStyle: AutoSizeTextStyle(group: specPageBigText),
                   action: () {
                     Navigator.push(

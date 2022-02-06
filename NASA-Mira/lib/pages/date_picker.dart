@@ -428,8 +428,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                     valueTextStyle: SpaceJamTextStyles.headline(context),
                     valueFontSize: MediaQuery.of(context).size.width * .08,
                     titleFontSize: MediaQuery.of(context).size.width * .05,
-                    // TODO(KristofKekesi): Replace with "images".
-                    value: AppLocalizations.of(context).translate("search"),
+                    value: AppLocalizations.of(context).translate("images"),
                     tooltip:
                         AppLocalizations.of(context).translate("searchImage"),
                     action: () {
