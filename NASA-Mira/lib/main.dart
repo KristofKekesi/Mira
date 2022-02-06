@@ -78,17 +78,10 @@ class MiraAppState extends State<MiraApp> {
         },
         title: appTitle,
         debugShowCheckedModeBanner: false,
-    theme: ThemeData(
-      primarySwatch: createMaterialColor(appColor),
-      // TextThemes
-      textTheme: const TextTheme(
-        titleMedium: TextStyle(
-          fontWeight: FontWeight.bold,
-          /* fontSize: (MediaQuery.of(context).size.width +
-                 MediaQuery.of(context).size.height) /
-                 2 * .06,
-              */
-          color: Colors.black,
+        theme: ThemeData(
+          primarySwatch: createMaterialColor(appColor),
+          // TextThemes
+          textTheme: SpaceJamThemeData.textTheme(),
         ),
         home: widget.home,
       );
