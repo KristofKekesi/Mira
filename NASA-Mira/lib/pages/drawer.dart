@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:spacejam/spacejam.dart";
 
 // widgets
+import "../utils/haptics.dart";
 import "../widgets/promo.dart";
 
 // utils
@@ -128,6 +129,7 @@ class SidebarDrawer extends StatelessWidget {
                           ),
                           child: GestureDetector(
                             onTap: () {
+                              hapticFeedback();
                               showLicensePage(
                                 context: context,
                                 applicationIcon: Image(
@@ -192,6 +194,7 @@ class SidebarDrawer extends StatelessWidget {
                   Icons.arrow_forward_rounded,
                   tooltip: AppLocalizations.of(context).translate("back"),
                   action: () {
+                    hapticFeedback();
                     Navigator.pop(context);
                   },
                 ),

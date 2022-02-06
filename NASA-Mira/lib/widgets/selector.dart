@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:spacejam/spacejam.dart";
 
 // utils
+import "../utils/haptics.dart";
 import "../utils/localization.dart";
 
 /// The [notifierIsReverse] is a [ValueNotifier] used in
@@ -122,6 +123,7 @@ void showSelectors(
                         selected: areTypesDisabled ||
                             notifierAreHelicoptersVisible.value,
                         onSelected: (bool value) {
+                          hapticFeedback();
                           setState(() {
                             notifierAreHelicoptersVisible.value = value;
                           });
@@ -155,6 +157,7 @@ void showSelectors(
                         selected:
                             areTypesDisabled || notifierAreRoversVisible.value,
                         onSelected: (bool value) {
+                          hapticFeedback();
                           setState(() {
                             notifierAreRoversVisible.value = value;
                           });
@@ -188,6 +191,7 @@ void showSelectors(
                         selected: areTypesDisabled ||
                             notifierAreOrbitersVisible.value,
                         onSelected: (bool value) {
+                          hapticFeedback();
                           setState(() {
                             notifierAreOrbitersVisible.value = value;
                           });
@@ -221,6 +225,7 @@ void showSelectors(
                         selected:
                             areTypesDisabled || notifierAreLandersVisible.value,
                         onSelected: (bool value) {
+                          hapticFeedback();
                           setState(() {
                             notifierAreLandersVisible.value = value;
                           });
@@ -254,6 +259,7 @@ void showSelectors(
                         selected:
                             areTypesDisabled || notifierAreFlybysVisible.value,
                         onSelected: (bool value) {
+                          hapticFeedback();
                           setState(() {
                             notifierAreFlybysVisible.value = value;
                           });
@@ -301,6 +307,7 @@ void showSelectors(
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selected: notifierIsReverse.value,
                         onSelected: (bool value) {
+                          hapticFeedback();
                           setState(() {
                             notifierIsReverse.value = true;
                           });
@@ -331,6 +338,7 @@ void showSelectors(
                         selectedShadowColor: const Color.fromRGBO(0, 0, 0, 0),
                         selected: !notifierIsReverse.value,
                         onSelected: (bool value) {
+                          hapticFeedback();
                           setState(() {
                             notifierIsReverse.value = false;
                           });
@@ -350,6 +358,7 @@ void showSelectors(
         actions: <Widget>[
           GestureDetector(
             onTap: () {
+              hapticFeedback();
               Navigator.pop(context);
             },
             child: Padding(
