@@ -6,11 +6,11 @@ import "dart:convert";
 
 // Flutter
 import "package:auto_size_text/auto_size_text.dart";
+import "package:spacejam/spacejam.dart";
 import "package:flutter/material.dart";
 import "../pass.dart";
 
 // widgets
-import "text_styles.dart";
 import "selector.dart";
 import "min.dart";
 
@@ -35,12 +35,15 @@ int counter = 0;
 
 class _CollectionInner extends StatelessWidget {
   const _CollectionInner({
+    required this.title,
     required this.inputType,
     required this.filter,
     required this.data,
     this.errorString = "",
     Key? key,
   }) : super(key: key);
+
+  final String title;
 
   final String inputType;
   final String filter;
@@ -51,7 +54,7 @@ class _CollectionInner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> roverList = <Widget>[];
+    final List<SpaceJamCollectionItem> roverList = <SpaceJamCollectionItem>[];
     for (int index = 0; index < data.length; index++) {
       bool isPassed = false;
       switch (inputType) {
@@ -90,134 +93,48 @@ class _CollectionInner extends StatelessWidget {
 
       if (isPassed) {
         roverList.add(
-          Tooltip(
-            message: AppLocalizations.of(context).translate("more"),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<Widget>(
-                    builder: (BuildContext context) => RoverSpecPage(
-                      dataSector: index,
-                      apiEnabled: data[index]["api-enabled"],
-                      mission: data[index]["mission"],
-                      name: data[index]["name"],
-                      nick: data[index]["nick"],
-                      type: data[index]["type"],
-                      launch: data[index]["launch"],
-                      arrive: data[index]["arrive"],
-                      deactivated: data[index]["deactivated"],
-                      connectionLost: data[index]["connection-lost"],
-                      end: data[index]["end"],
-                      operator: data[index]["operator"],
-                      manufacturer: data[index]["manufacturer"],
-                    ),
-                  ),
-                );
-              },
-              child: Padding(
-                padding:
-                    EdgeInsets.all(MediaQuery.of(context).size.width * .0125),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: const DecorationImage(
-                      image: AssetImage(appBackground),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        (MediaQuery.of(context).size.width +
-                                MediaQuery.of(context).size.height) /
-                            2 *
-                            .04,
-                      ),
-                    ),
-                  ),
-                  width: MediaQuery.of(context).size.width * .38749,
-                  height: MediaQuery.of(context).size.height * .2,
-                  child: Padding(
-                    padding: EdgeInsets.all(
-                      (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                          2 *
-                          .03,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            data[index]["mission"] == null
-                                ? const Min()
-                                : AutoSizeText(
-                                    data[index]["mission"],
-                                    style: SpaceJamTextStyles.caption(context),
-                                    group: roverGridCaption,
-                                    maxLines: 1,
-                                    minFontSize: 1,
-                                  ),
-                            AutoSizeText(
-                              data[index]["nick"] ?? data[index]["name"],
-                              group: roverGridTitle,
-                              maxLines: 2,
-                              overflow: TextOverflow.fade,
-                              style:
-                                  SpaceJamTextStyles.defaultTextStyle(context),
-                              minFontSize: 1,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                AutoSizeText(
-                                  AppLocalizations.of(context)
-                                      .translate("state"),
-                                  style: SpaceJamTextStyles.caption(context),
-                                  group: roverGridCaption,
-                                  maxLines: 1,
-                                  minFontSize: 1,
-                                ),
-                                Text(
-                                  data[index]["status"] == "active"
-                                      ? AppLocalizations.of(context)
-                                          .translate("active")
-                                      : AppLocalizations.of(context)
-                                          .translate("inactive"),
-                                  style: SpaceJamTextStyles.defaultTextStyle(
-                                    context,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Icon(
-                              Icons.arrow_forward_rounded,
-                              size: MediaQuery.of(context).size.width * .075,
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+          SpaceJamCollectionItem(
+            upperCaption: data[index]["mission"],
+            upperValue: data[index]["nick"] ?? data[index]["name"],
+            lowerCaption: AppLocalizations.of(context).translate("state"),
+            lowerValue: data[index]["status"] == "active"
+                ? AppLocalizations.of(context).translate("active")
+                : AppLocalizations.of(context).translate("inactive"),
+            tooltip: AppLocalizations.of(context).translate("more"),
+            backgroundImage: const DecorationImage(
+              image: AssetImage(appBackground),
+              fit: BoxFit.cover,
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<Widget>(
+                  builder: (BuildContext context) => RoverSpecPage(
+                    dataSector: index,
+                    apiEnabled: data[index]["api-enabled"],
+                    mission: data[index]["mission"],
+                    name: data[index]["name"],
+                    nick: data[index]["nick"],
+                    type: data[index]["type"],
+                    launch: data[index]["launch"],
+                    arrive: data[index]["arrive"],
+                    deactivated: data[index]["deactivated"],
+                    connectionLost: data[index]["connection-lost"],
+                    end: data[index]["end"],
+                    operator: data[index]["operator"],
+                    manufacturer: data[index]["manufacturer"],
                   ),
                 ),
-              ),
-            ),
+              );
+            },
           ),
         );
       }
     }
 
-    return SizedBox(
-      width: MediaQuery.of(context).size.width * .825,
-      child: Wrap(
-        children: roverList,
-      ),
+    return SpaceJamCollection(
+      items: roverList,
+      title: title,
     );
   }
 }
@@ -258,13 +175,14 @@ class CollectionState extends State<Collection> {
   @override
   Widget build(BuildContext context) => ValueListenableBuilder<bool>(
         builder: (BuildContext context, bool value, Widget? child) {
-          Widget _roverGridInnerWithSort() {
+          Widget _roverGridInnerWithSort(String title) {
             if (notifierIsReverse.value) {
               return _CollectionInner(
                 data: hardCodeData.reversed.toList(),
                 inputType: widget.inputType,
                 filter: widget.filter,
                 errorString: widget.errorString,
+                title: title,
               );
             } else {
               return _CollectionInner(
@@ -272,6 +190,7 @@ class CollectionState extends State<Collection> {
                 inputType: widget.inputType,
                 filter: widget.filter,
                 errorString: widget.errorString,
+                title: title,
               );
             }
           }
@@ -294,72 +213,14 @@ class CollectionState extends State<Collection> {
                           }
                         });
                       }
-                      if (updated == false) {
-                        return Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.only(
-                                top: MediaQuery.of(context).size.width * .05,
-                                left: (MediaQuery.of(context).size.width +
-                                        MediaQuery.of(context).size.height) /
-                                    2 *
-                                    .04,
-                              ),
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  AppLocalizations.of(context)
-                                          .translateWithoutNullSafety(
-                                        "${widget.filter}s",
-                                      ) ??
-                                      widget.errorString,
-                                  style: SpaceJamTextStyles.headline(context),
-                                ),
-                              ),
-                            ),
-                            _roverGridInnerWithSort(),
-                          ],
-                        );
-                      } else {
-                        return Column(
-                          children: <Widget>[
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                  top: MediaQuery.of(context).size.width * .05,
-                                  left: (MediaQuery.of(context).size.width +
-                                          MediaQuery.of(context).size.height) /
-                                      2 *
-                                      .04,
-                                ),
-                                child: Text(
-                                  AppLocalizations.of(context)
-                                          .translateWithoutNullSafety(
-                                        "${widget.filter}s",
-                                      ) ??
-                                      widget.errorString,
-                                  style: SpaceJamTextStyles.headline(context),
-                                ),
-                              ),
-                            ),
-                            _roverGridInnerWithSort(),
-                          ],
-                        );
-                      }
-                    } else {
-                      return Column(
-                        children: <Widget>[
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              widget.filter,
-                              style: SpaceJamTextStyles.caption(context),
-                            ),
-                          ),
-                          const Min(),
-                        ],
+                      return _roverGridInnerWithSort(
+                        AppLocalizations.of(context).translateWithoutNullSafety(
+                              "${widget.filter}s",
+                            ) ??
+                            widget.errorString,
                       );
+                    } else {
+                      return const Min();
                     }
                   },
                 );

@@ -6,18 +6,10 @@ import "package:dio/dio.dart";
 
 // Flutter
 import "package:flutter/material.dart";
-import "../pass.dart";
-
-// widgets
-import "../widgets/text_styles.dart";
-import "../widgets/content_box.dart";
-import "../widgets/appbar.dart";
-import "../widgets/button.dart";
-
-// pages
-import "fullscreen.dart";
+import "package:spacejam/spacejam.dart";
 
 // utils
+import "../pass.dart";
 import "../utils/fetch.dart";
 import "../utils/get_th.dart";
 import "../utils/localization.dart";
@@ -35,7 +27,7 @@ String imageCounter(BuildContext context, int num) {
   }
 }
 
-FutureBuilder<Response<dynamic>> _data(String url) =>
+FutureBuilder<Response<dynamic>> _imageSearchResult(String url) =>
     FutureBuilder<Response<dynamic>>(
       future: fetchAPI(url),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
@@ -55,8 +47,10 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                 ),
                 child: Text(
                   AppLocalizations.of(context).translate("imgNoRes"),
-                  style:
-                      SpaceJamTextStyles.caption(context, color: Colors.black),
+                  style: SpaceJamTextStyles.bodySmall(
+                    context,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             );
@@ -159,10 +153,11 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                                         ),
                                         Text(
                                           imageCounter(context, data.length),
-                                          style: SpaceJamTextStyles.subHeadline(
+                                          style:
+                                              SpaceJamTextStyles.headlineSmall(
                                             context,
                                             color: Colors.white,
-                                            weight: FontWeight.normal,
+                                            fontWeight: FontWeight.normal,
                                           ),
                                         ),
                                       ],
@@ -180,118 +175,58 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
               );
             }
             serializedImages.add(
-              ContentBox(
+              SpaceJamContainer(
                 title: data[index]["id"].toString(),
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                          2 *
-                          .02,
-                    ),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * .9,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              (MediaQuery.of(context).size.width +
-                                      MediaQuery.of(context).size.height) /
-                                  2 *
-                                  .02,
-                            ),
-                          ),
-                          color: Colors.black,
+                backgroundImage: const DecorationImage(
+                  image: AssetImage(appBackground),
+                  fit: BoxFit.cover,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(
+                        bottom: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                            2 *
+                            .02,
+                      ),
+                      child: SpaceJamImageBox(
+                        Image.network(
+                          data[index]["img_src"],
                         ),
-                        width: MediaQuery.of(context).size.width * .9 -
-                            (MediaQuery.of(context).size.width +
-                                    MediaQuery.of(context).size.height) /
-                                2 *
-                                .02,
-                        //height: MediaQuery.of(context).size.height * .4,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              (MediaQuery.of(context).size.width +
-                                      MediaQuery.of(context).size.height) /
-                                  2 *
-                                  .02,
-                            ),
-                          ),
-                          child: Stack(
-                            alignment: Alignment.bottomRight,
-                            children: <Widget>[
-                              Image.network(
-                                data[index]["img_src"],
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute<Widget>(
-                                      builder: (BuildContext context) =>
-                                          FullScreen(
-                                        image: Image.network(
-                                          data[index]["img_src"],
-                                        ),
-                                        imageURL: data[index]["img_src"],
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Tooltip(
-                                  message: AppLocalizations.of(context)
-                                      .translate("fullscreen"),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(
-                                      (MediaQuery.of(context).size.width +
-                                              MediaQuery.of(context)
-                                                  .size
-                                                  .height) /
-                                          2 *
-                                          .02,
-                                    ),
-                                    child: Icon(
-                                      Icons.fullscreen,
-                                      color: Colors.white,
-                                      size: MediaQuery.of(context).size.width *
-                                          .075,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        imageURL: data[index]["img_src"],
+                        autoHeight: true,
+                        semanticLabel:
+                            "An image made by the Perseverance rover.",
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: (MediaQuery.of(context).size.width +
-                              MediaQuery.of(context).size.height) /
-                          2 *
-                          .02,
+                    Padding(
+                      padding: EdgeInsets.only(
+                        bottom: (MediaQuery.of(context).size.width +
+                                MediaQuery.of(context).size.height) /
+                            2 *
+                            .02,
+                      ),
+                      child: SpaceJamButton(
+                        title:
+                            AppLocalizations.of(context).translate("captured"),
+                        value: data[index]["earth_date"].replaceAll("-", "/") +
+                            " (" +
+                            data[index]["sol"].toString() +
+                            getTh(context, data[index]["sol"]) +
+                            " sol)",
+                        valueFontSize: MediaQuery.of(context).size.width * .08,
+                        titleFontSize: MediaQuery.of(context).size.width * .05,
+                      ),
                     ),
-                    child: Button(
-                      title: AppLocalizations.of(context).translate("captured"),
-                      value: data[index]["earth_date"].replaceAll("-", "/") +
-                          " (" +
-                          data[index]["sol"].toString() +
-                          getTh(context, data[index]["sol"]) +
-                          " sol)",
+                    SpaceJamButton(
+                      title: AppLocalizations.of(context).translate("camera"),
+                      value: data[index]["camera"]["name"],
                       valueFontSize: MediaQuery.of(context).size.width * .08,
                       titleFontSize: MediaQuery.of(context).size.width * .05,
-                    ),
-                  ),
-                  Button(
-                    title: AppLocalizations.of(context).translate("camera"),
-                    value: data[index]["camera"]["name"],
-                    valueFontSize: MediaQuery.of(context).size.width * .08,
-                    titleFontSize: MediaQuery.of(context).size.width * .05,
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             );
           }
@@ -313,13 +248,17 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                   children: <Widget>[
                     Text(
                       AppLocalizations.of(context).translate("imgError"),
-                      style: SpaceJamTextStyles.caption(context,
-                          color: Colors.black,),
+                      style: SpaceJamTextStyles.bodySmall(
+                        context,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
                       "${snapshot.error}",
-                      style: SpaceJamTextStyles.caption(context,
-                          color: Colors.black,),
+                      style: SpaceJamTextStyles.bodySmall(
+                        context,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),
@@ -346,7 +285,7 @@ FutureBuilder<Response<dynamic>> _data(String url) =>
                   ),
                   child: Text(
                     AppLocalizations.of(context).translate("loading"),
-                    style: SpaceJamTextStyles.defaultTextStyle(
+                    style: SpaceJamTextStyles.bodyMedium(
                       context,
                       color: Colors.black,
                     ),
@@ -387,34 +326,20 @@ class SearchWindowState extends State<SearchWindow> {
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Colors.white,
-        body: Stack(
+        body: SpaceJamPage(
+          animated: "off",
+          title: widget.name,
+          subtitle: widget.time,
+          locale: AppLocalizations.of(context).locale,
+          appBarLeftAction: SpaceJamAppBarAction(
+            Icons.arrow_back_rounded,
+            tooltip: AppLocalizations.of(context).translate("back"),
+            action: () {
+              Navigator.pop(context);
+            },
+          ),
           children: <Widget>[
-            ListView(
-              children: <Widget>[
-                Opacity(
-                  opacity: 0,
-                  child: Appbar(
-                    title: widget.name,
-                    subtitle: widget.time,
-                    leftAction: const AppBarAction(
-                      icon: Icons.arrow_back_rounded,
-                    ),
-                  ),
-                ),
-                _data(widget.url),
-              ],
-            ),
-            Appbar(
-              title: widget.name,
-              subtitle: widget.time,
-              leftAction: AppBarAction(
-                icon: Icons.arrow_back_rounded,
-                tooltip: AppLocalizations.of(context).translate("back"),
-                action: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
+            _imageSearchResult(widget.url),
           ],
         ),
       );

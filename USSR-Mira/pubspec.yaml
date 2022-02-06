@@ -28,6 +28,7 @@ dependencies:
 
 dev_dependencies:
   all_lint_rules_community: ^0.0.7
+  spacejam: ^1.1.7
   flutter_test:
     sdk: flutter
   integration_test:
