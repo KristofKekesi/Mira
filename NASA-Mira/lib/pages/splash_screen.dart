@@ -1,4 +1,5 @@
 // Flutter
+import "package:flutter/services.dart";
 import "package:spacejam/spacejam.dart";
 import "package:flutter/material.dart";
 import "package:splashscreen/splashscreen.dart";
@@ -8,7 +9,7 @@ import "../utils/localization.dart";
 import "../pass.dart";
 
 /// Splash screen of the app.
-class SplashScreenPage extends StatelessWidget {
+class SplashScreenPage extends StatefulWidget {
   /// Constructor
   const SplashScreenPage({
     required this.child,
@@ -17,6 +18,34 @@ class SplashScreenPage extends StatelessWidget {
 
   /// The widget that will displayed after the splashscreen.
   final Widget child;
+
+  @override
+  SplashScreenState createState() => SplashScreenState();
+}
+
+/// The stateful part of the widget.
+class SplashScreenState extends State<SplashScreenPage> {
+  @override
+  void initState() {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.white,
+        statusBarBrightness: Brightness.dark,
+      ),
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.black,
+        statusBarBrightness: Brightness.light,
+      ),
+    );
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -42,7 +71,7 @@ class SplashScreenPage extends StatelessWidget {
           useLoader: true,
           loaderColor: Colors.white,
           styleTextUnderTheLoader: const TextStyle(),
-          navigateAfterSeconds: child,
+          navigateAfterSeconds: widget.child,
         ),
       );
 }
