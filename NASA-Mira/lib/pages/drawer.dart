@@ -162,7 +162,7 @@ class SidebarDrawer extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "3.0.0 [12]",
+                          "3.0.0 [13]",
                           style: SpaceJamTextStyles.bodySmall(
                             context,
                             color: Colors.black,
