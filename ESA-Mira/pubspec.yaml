@@ -1,9 +1,7 @@
 name: esamira
-description: A new Flutter project.
+description: ESA Mira. Part of the Mira collection.
 
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 version: 3.0.0+13
 
 environment:
