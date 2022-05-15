@@ -107,7 +107,7 @@ class DatePickerPageState extends State<DatePickerPage> {
 
   @override
   Widget build(BuildContext context) {
-    void _changeValue(bool value) {
+    void changeValue(bool value) {
       setState(() => timeFormat = value);
     }
 
@@ -405,7 +405,7 @@ class DatePickerPageState extends State<DatePickerPage> {
                             inactiveThumbColor: Colors.white,
                             activeColor: Colors.white,
                             splashRadius: 0,
-                            onChanged: _changeValue,
+                            onChanged: changeValue,
                           ),
                         ),
                         Text(

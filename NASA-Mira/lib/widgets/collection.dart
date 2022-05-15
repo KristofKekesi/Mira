@@ -175,7 +175,7 @@ class CollectionState extends State<Collection> {
   @override
   Widget build(BuildContext context) => ValueListenableBuilder<bool>(
         builder: (BuildContext context, bool value, Widget? child) {
-          Widget _roverGridInnerWithSort(String title) {
+          Widget roverGridInnerWithSort(String title) {
             if (notifierIsReverse.value) {
               return _CollectionInner(
                 data: hardCodeData.reversed.toList(),
@@ -213,7 +213,7 @@ class CollectionState extends State<Collection> {
                           }
                         });
                       }
-                      return _roverGridInnerWithSort(
+                      return roverGridInnerWithSort(
                         AppLocalizations.of(context).translateWithoutNullSafety(
                               "${widget.filter}s",
                             ) ??

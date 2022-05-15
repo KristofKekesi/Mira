@@ -1,10 +1,10 @@
 // Flutter
-import "package:flutter/services.dart";
 import "package:spacejam/spacejam.dart";
 import "package:flutter/material.dart";
 import "package:splashscreen/splashscreen.dart";
 
 // utils
+import "../utils/dark_titlebar.dart";
 import "../utils/localization.dart";
 import "../pass.dart";
 
@@ -27,24 +27,14 @@ class SplashScreenPage extends StatefulWidget {
 class SplashScreenState extends State<SplashScreenPage> {
   @override
   void initState() {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: Colors.white,
-        statusBarBrightness: Brightness.dark,
-      ),
-    );
     super.initState();
+    setTitlebar("dark");
   }
 
   @override
   void dispose() {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: Colors.black,
-        statusBarBrightness: Brightness.light,
-      ),
-    );
     super.dispose();
+    setTitlebar("light");
   }
 
   @override

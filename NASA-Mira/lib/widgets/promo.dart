@@ -120,7 +120,7 @@ class PromoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<bool> _widgetOpacity() async {
+    Future<bool> widgetOpacity() async {
       try {
         final List<InternetAddress> result =
             await InternetAddress.lookup("google.com");
@@ -132,7 +132,7 @@ class PromoWidget extends StatelessWidget {
     }
 
     return FutureBuilder<bool>(
-      future: _widgetOpacity(),
+      future: widgetOpacity(),
       builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data ?? false) {
