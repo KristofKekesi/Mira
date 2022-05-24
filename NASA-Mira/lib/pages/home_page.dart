@@ -27,6 +27,14 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SpaceJamPage(
         title: "NASA Mira",
+        appBarLeftAction: Theme.of(context).platform == TargetPlatform.android
+            ? SpaceJamAppBarAction(
+                Icons.arrow_back_rounded,
+                action: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              )
+            : null,
         appBarRightAction: SpaceJamAppBarAction(
           Icons.menu,
           tooltip: AppLocalizations.of(context).translate("selectors"),
